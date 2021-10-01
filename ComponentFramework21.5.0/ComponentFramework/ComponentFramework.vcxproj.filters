@@ -108,6 +108,9 @@
     <ClCompile Include="Randomizer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SceneMenu.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -202,6 +205,9 @@
     </ClInclude>
     <ClInclude Include="Randomizer.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMenu.h">
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
