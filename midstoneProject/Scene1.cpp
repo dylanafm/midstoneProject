@@ -3,10 +3,8 @@
 #include "Debug.h"
 #include "Scene1.h"
 
-#include "ObjLoader.h"
-#include "Mesh.h"
-#include "Shader.h"
-#include "Texture.h"
+
+
 #include "MMath.h"
 #include "Physics.h"
 
