@@ -1,3 +1,5 @@
+#ifndef BODY_H
+#define BODY_H
 #include "Vector.h"
 
 using namespace MATH;
@@ -15,3 +17,4 @@ public:
 	Vec3 getPos() { return pos; }
 };
 
+#endif
