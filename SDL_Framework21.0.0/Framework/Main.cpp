@@ -1,5 +1,6 @@
 #include <iostream>
 #include "GameManager.h"
+#include <SDL.h>
 
 
 int main(int argc, char* args[]) { /// Standard C-style entry point, you need to use it
