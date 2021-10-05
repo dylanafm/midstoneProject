@@ -6,13 +6,16 @@
 #include "SDL_TTF.h"
 
 mainMenu::mainMenu(SDL_Window* sdlWindow_) {
+	window = sdlWindow_;
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+	//TTF Initialization
 
 	if (TTF_Init() < 0) {
 		std::cout << "Error initializing SDL_ttf: " << TTF_GetError() << std::endl;
 	}
 
-	window = sdlWindow_;
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+	//TTF Loading
 
 	font = TTF_OpenFont("OpenSans.ttf", 64);
 	if (!font) {
@@ -146,19 +149,70 @@ void mainMenu::Render() {
 	SDL_SetRenderDrawColor(renderer, colorValueQ.x, colorValueQ.y, colorValueQ.z, 255);
 	SDL_RenderFillRect(renderer, &Quit);
 
+	//Levels Text
 
-
-	SDL_Color color = { 120, 0, 0 };
-
-	text = TTF_RenderText_Solid(font, "Hello World!", color);
+	text = TTF_RenderText_Solid(font, "Levels", SDL_Color{ 120, 255, 0 });
 	if (!text) {
 		std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
 	}
 	text_texture = SDL_CreateTextureFromSurface(renderer, text);
 
-	SDL_Rect dest = { 0, 0, 240, 240 };
+	SDL_Rect temp = Levels;
+	temp.x += 300;
+	temp.w -= 600;
 
-	SDL_RenderCopy(renderer, text_texture, NULL, &dest);
+	SDL_RenderCopy(renderer, text_texture, NULL, &temp);
+
+	SDL_DestroyTexture(text_texture);
+	SDL_FreeSurface(text);
+
+	//Settings Text
+
+	text = TTF_RenderText_Solid(font, "Settings", SDL_Color{ 120, 255, 0 });
+	if (!text) {
+		std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
+	}
+	text_texture = SDL_CreateTextureFromSurface(renderer, text);
+
+	temp = Settings;
+	temp.x += 300;
+	temp.w -= 600;
+
+	SDL_RenderCopy(renderer, text_texture, NULL, &temp);
+
+	SDL_DestroyTexture(text_texture);
+	SDL_FreeSurface(text);
+
+	//Tutorial Text
+
+	text = TTF_RenderText_Solid(font, "Tutorial", SDL_Color{ 120, 255, 0 });
+	if (!text) {
+		std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
+	}
+	text_texture = SDL_CreateTextureFromSurface(renderer, text);
+
+	temp = Tutorial;
+	temp.x += 300;
+	temp.w -= 600;
+
+	SDL_RenderCopy(renderer, text_texture, NULL, &temp);
+
+	SDL_DestroyTexture(text_texture);
+	SDL_FreeSurface(text);
+
+	//Quit Text
+
+	text = TTF_RenderText_Solid(font, "Quit", SDL_Color{ 120, 255, 0 });
+	if (!text) {
+		std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
+	}
+	text_texture = SDL_CreateTextureFromSurface(renderer, text);
+
+	temp = Quit;
+	temp.x += 300;
+	temp.w -= 600;
+
+	SDL_RenderCopy(renderer, text_texture, NULL, &temp);
 
 	SDL_DestroyTexture(text_texture);
 	SDL_FreeSurface(text);
