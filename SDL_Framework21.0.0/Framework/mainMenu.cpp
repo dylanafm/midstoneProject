@@ -2,11 +2,22 @@
 #include "mainMenu.h"
 #include "GameManager.h"
 #include <SDL.h>
+#include <SDL_image.h>
 #include "SDL_TTF.h"
 
 mainMenu::mainMenu(SDL_Window* sdlWindow_) {
+
+	if (TTF_Init() < 0) {
+		std::cout << "Error initializing SDL_ttf: " << TTF_GetError() << std::endl;
+	}
+
 	window = sdlWindow_;
-	
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+	font = TTF_OpenFont("OpenSans.ttf", 64);
+	if (!font) {
+		std::cout << "Failed to load font: " << TTF_GetError() << std::endl;
+	}
 	
 	Levels.x = 250;
 	Levels.y = 200;
@@ -50,7 +61,10 @@ bool mainMenu::OnCreate() {
 	return true;
 }
 
-void mainMenu::OnDestroy() {}
+void mainMenu::OnDestroy() {
+	TTF_CloseFont(font);
+	TTF_Quit();
+}
 
 void mainMenu::Update(const float deltaTime) {
 	SDL_Event event;
@@ -108,34 +122,48 @@ void mainMenu::Update(const float deltaTime) {
 }
 
 void mainMenu::Render() {
-	SDL_Surface* screenSurface = SDL_GetWindowSurface(window);
-	SDL_FillRect(screenSurface, nullptr, SDL_MapRGB(screenSurface->format, 0, 0, 0));
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+	SDL_RenderClear(renderer);
 	Vec3 screenCoords;
-	
-	
 
+	//Levels Button
 
-
-	
-	SDL_FillRect(screenSurface, &Levels, SDL_MapRGB(screenSurface->format, colorValueL.x, colorValueL.y, colorValueL.z));
+	SDL_SetRenderDrawColor(renderer, colorValueL.x, colorValueL.y, colorValueL.z, 255);
+	SDL_RenderFillRect(renderer, &Levels);
 
 	//Settings Button
-	
-	SDL_FillRect(screenSurface, &Settings, SDL_MapRGB(screenSurface->format, colorValueS.x, colorValueS.y, colorValueS.z));
+
+	SDL_SetRenderDrawColor(renderer, colorValueS.x, colorValueS.y, colorValueS.z, 255);
+	SDL_RenderFillRect(renderer, &Settings);
 
 	///Tutorial Button
-	
-	SDL_FillRect(screenSurface, &Tutorial, SDL_MapRGB(screenSurface->format, colorValueT.x, colorValueT.y, colorValueT.z));
+
+	SDL_SetRenderDrawColor(renderer, colorValueT.x, colorValueT.y, colorValueT.z, 255);
+	SDL_RenderFillRect(renderer, &Tutorial);
 
 	//Quit Button
+
+	SDL_SetRenderDrawColor(renderer, colorValueQ.x, colorValueQ.y, colorValueQ.z, 255);
+	SDL_RenderFillRect(renderer, &Quit);
+
+
+
+	SDL_Color color = { 120, 0, 0 };
+
+	text = TTF_RenderText_Solid(font, "Hello World!", color);
+	if (!text) {
+		std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
+	}
+	text_texture = SDL_CreateTextureFromSurface(renderer, text);
+
+	SDL_Rect dest = { 0, 0, 240, 240 };
+
+	SDL_RenderCopy(renderer, text_texture, NULL, &dest);
+
+	SDL_DestroyTexture(text_texture);
+	SDL_FreeSurface(text);
 	
-	
-	SDL_FillRect(screenSurface, &Quit, SDL_MapRGB(screenSurface->format, colorValueQ.x, colorValueQ.y, colorValueQ.z));
-	
-	
-	
-	
-	
-	
-	SDL_UpdateWindowSurface(window);
+
+
+	SDL_RenderPresent(renderer);
 }
