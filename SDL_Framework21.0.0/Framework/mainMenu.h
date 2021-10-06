@@ -20,14 +20,32 @@ private:
 	SDL_Rect Tutorial;
 	SDL_Rect Quit;
 
+
+	SDL_Rect Back;
+
+
+	SDL_Rect LevelOne;
+	SDL_Rect LevelTwo;
+	SDL_Rect LevelThree;
+
+
+
 	Vec3 colorValueL;
 	Vec3 colorValueS;
 	Vec3 colorValueT;
 	Vec3 colorValueQ;
+	
+	
+	Vec3 colorValueBack;
+	Vec3 colorValueLevelOne;
 
 	TTF_Font* font;
 	SDL_Surface* text;
 	SDL_Texture* text_texture;
+
+
+	int currentMenu = 1; // Switch between menus in the main menu. 1 = Main Menu, 2 = Levels Menu, 3 = Settings Menu, 4 = Tutorial Menu
+
 
 public:
 	mainMenu(SDL_Window* sdlWindow);
