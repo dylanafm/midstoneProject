@@ -3,27 +3,10 @@
 #include "GameManager.h"
 #include <SDL.h>
 #include <SDL_image.h>
-#include "SDL_TTF.h"
 
 mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 	window = sdlWindow_;
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
-
-
-	
-	//TTF Initialization
-
-	if (TTF_Init() < 0) {
-		std::cout << "Error initializing SDL_ttf: " << TTF_GetError() << std::endl;
-	}
-
-	//TTF Loading
-
-	font = TTF_OpenFont("OpenSans.ttf", 64);
-	if (!font) {
-		std::cout << "Failed to load font: " << TTF_GetError() << std::endl;
-	}
 	
 	//Buttons and Colors
 	Back.x = 50;
@@ -99,9 +82,8 @@ bool mainMenu::OnCreate() {
 }
 
 void mainMenu::OnDestroy() {
+	newText.~Text();
 	SDL_DestroyRenderer(renderer);
-	TTF_CloseFont(font);
-	TTF_Quit();
 }
 
 void mainMenu::Update(const float deltaTime) {
@@ -315,73 +297,14 @@ void mainMenu::Render() {
 		SDL_SetRenderDrawColor(renderer, colorValueQ.x, colorValueQ.y, colorValueQ.z, 255);
 		SDL_RenderFillRect(renderer, &Quit);
 
-		//Levels Text
+		newText.writeText("Levels", SDL_Color{ 120, 255, 0 }, SDL_Rect{ Levels.x + 300, Levels.y, Levels.w - 600, Levels.h }, renderer);
 
-		text = TTF_RenderText_Solid(font, "Levels", SDL_Color{ 120, 255, 0 });
-		if (!text) {
-			std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
-		}
-		text_texture = SDL_CreateTextureFromSurface(renderer, text);
+		newText.writeText("Settings", SDL_Color{ 120, 255, 0 }, SDL_Rect{ Settings.x + 300, Settings.y, Settings.w - 600, Settings.h }, renderer);
 
-		SDL_Rect temp = Levels;
-		temp.x += 300;
-		temp.w -= 600;
+		newText.writeText("Tutorial", SDL_Color{ 120, 255, 0 }, SDL_Rect{ Tutorial.x + 300, Tutorial.y, Tutorial.w - 600, Tutorial.h }, renderer);
 
-		SDL_RenderCopy(renderer, text_texture, NULL, &temp);
+		newText.writeText("Quit", SDL_Color{ 120, 255, 0 }, SDL_Rect{ Quit.x + 300, Quit.y, Quit.w - 600, Quit.h }, renderer);
 
-		SDL_DestroyTexture(text_texture);
-		SDL_FreeSurface(text);
-
-		//Settings Text
-
-		text = TTF_RenderText_Solid(font, "Settings", SDL_Color{ 120, 255, 0 });
-		if (!text) {
-			std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
-		}
-		text_texture = SDL_CreateTextureFromSurface(renderer, text);
-
-		temp = Settings;
-		temp.x += 300;
-		temp.w -= 600;
-
-		SDL_RenderCopy(renderer, text_texture, NULL, &temp);
-
-		SDL_DestroyTexture(text_texture);
-		SDL_FreeSurface(text);
-
-		//Tutorial Text
-
-		text = TTF_RenderText_Solid(font, "Tutorial", SDL_Color{ 120, 255, 0 });
-		if (!text) {
-			std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
-		}
-		text_texture = SDL_CreateTextureFromSurface(renderer, text);
-
-		temp = Tutorial;
-		temp.x += 300;
-		temp.w -= 600;
-
-		SDL_RenderCopy(renderer, text_texture, NULL, &temp);
-
-		SDL_DestroyTexture(text_texture);
-		SDL_FreeSurface(text);
-
-		//Quit Text
-
-		text = TTF_RenderText_Solid(font, "Quit", SDL_Color{ 120, 255, 0 });
-		if (!text) {
-			std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
-		}
-		text_texture = SDL_CreateTextureFromSurface(renderer, text);
-
-		temp = Quit;
-		temp.x += 300;
-		temp.w -= 600;
-
-		SDL_RenderCopy(renderer, text_texture, NULL, &temp);
-
-		SDL_DestroyTexture(text_texture);
-		SDL_FreeSurface(text);
 	}
 	else if (currentMenu == 2){
 	
@@ -392,23 +315,7 @@ void mainMenu::Render() {
 		SDL_SetRenderDrawColor(renderer, colorValueLevelOne.x, colorValueLevelOne.y, colorValueLevelOne.z, 255);
 		SDL_RenderFillRect(renderer, &LevelOne);
 
-
-
-		text = TTF_RenderText_Solid(font, "Level One", SDL_Color{ 120, 255, 0 });
-		if (!text) {
-			std::cout << "Failed to render text: " << TTF_GetError() << std::endl;
-		}
-		text_texture = SDL_CreateTextureFromSurface(renderer, text);
-
-		SDL_Rect temp = LevelOne;
-		temp.x += 30;
-		temp.w -= 60;
-		SDL_RenderCopy(renderer, text_texture, NULL, &temp);
-
-		SDL_DestroyTexture(text_texture);
-		SDL_FreeSurface(text);
-
-
+		newText.writeText("Level One", SDL_Color{ 120, 255, 0 }, SDL_Rect{ LevelOne.x, LevelOne.y, LevelOne.w, LevelOne.h }, renderer);
 	}
 	else  if (currentMenu == 3) {
 	SDL_SetRenderDrawColor(renderer, colorValueBack.x, colorValueBack.y, colorValueBack.z, 255);

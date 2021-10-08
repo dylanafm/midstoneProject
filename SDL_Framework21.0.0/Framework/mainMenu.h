@@ -7,6 +7,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "SDL_TTF.h"
+#include "Text.h"
 
 using namespace MATH;
 class mainMenu : public Scene {
@@ -43,6 +44,7 @@ private:
 	SDL_Surface* text;
 	SDL_Texture* text_texture;
 
+	Text newText;
 
 	int currentMenu = 1; // Switch between menus in the main menu. 1 = Main Menu, 2 = Levels Menu, 3 = Settings Menu, 4 = Tutorial Menu
 	int newScene = 0; // Switch between scenes. -1 = Quit, 1 = LevelOne, 0 = Dont switch
