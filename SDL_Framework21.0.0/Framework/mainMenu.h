@@ -45,7 +45,7 @@ private:
 
 
 	int currentMenu = 1; // Switch between menus in the main menu. 1 = Main Menu, 2 = Levels Menu, 3 = Settings Menu, 4 = Tutorial Menu
-	int newScene = 0;
+	int newScene = 0; // Switch between scenes. -1 = Quit, 1 = LevelOne, 0 = Dont switch
 
 public:
 	mainMenu(SDL_Window* sdlWindow);

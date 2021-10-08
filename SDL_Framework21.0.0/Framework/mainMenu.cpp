@@ -164,7 +164,7 @@ void mainMenu::Update(const float deltaTime) {
 				}
 				if ((x > Quit.x) && (x < Quit.x + Quit.w) && (y > Quit.y) && (y < Quit.y + Quit.h))
 				{
-					newScene = 2;
+					newScene = -1; //Switch scene
 					
 				}
 			}
@@ -202,7 +202,7 @@ void mainMenu::Update(const float deltaTime) {
 					}
 					else if ((x > LevelOne.x) && (x < LevelOne.x + LevelOne.w) && (y > LevelOne.y) && (y < LevelOne.y + LevelOne.h))
 					{
-						newScene = 1;
+						newScene = 1; //Switch scene
 					}
 
 				}

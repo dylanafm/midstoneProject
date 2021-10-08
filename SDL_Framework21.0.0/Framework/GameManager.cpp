@@ -54,27 +54,14 @@ void GameManager::Run() {
 	SDL_Event sdlEvent;
 	timer->Start();
 	while (isRunning) {
-		/*while (SDL_PollEvent(&sdlEvent)) {
-			if (sdlEvent.type == SDL_QUIT) {
-				isRunning = false;
-			}
-			else if (sdlEvent.type == SDL_KEYDOWN) {
-				switch (sdlEvent.key.keysym.scancode) {
-				case SDL_SCANCODE_ESCAPE:
-					isRunning = false;
-					break;
-				default:
-					break;
-				}
-			}
-		}*/
 
+		//Check if need to switch scenes
 		if (currentScene->getScene() == 1) {
 			currentScene->OnDestroy();
 			currentScene = new LevelOne(windowPtr->GetSDL_Window());
 			currentScene->OnCreate();
 		}
-		if (currentScene->getScene() == 2) {
+		if (currentScene->getScene() == -1) {
 			isRunning = false;
 		}
 
