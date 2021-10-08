@@ -3,6 +3,7 @@
 
 
 #include "MMath.h"
+#include "Text.h"	
 #include <SDL.h>
 #include <SDL_image.h>
 #include "SDL_TTF.h"
@@ -13,25 +14,30 @@ using namespace MATH;
 class button
 {
 private:
-
 	SDL_Event event;
+	
+	const char* text;
 
 	Vec3 colorBase;
 	Vec3 colorHighlighted;
 	Vec3 currentColor;
+	SDL_Color textColor;
+
 
 	SDL_Rect NewButton;
-	SDL_Renderer* renderer;
+	
+	Text buttonText;
 public:
-
-	button(SDL_Rect NewButton_, Vec3 colorBase_, Vec3 colorHighlighted_);
+	
+	button();
+	button(int x, int y, int w, int h, Vec3 colorBase_, Vec3 colorHighlighted_, Vec3 textColor2, const char* text_);
 	~button();
 	
 
 	bool buttonClicked(SDL_Event event);
 
-	void Update(const float time);
-	void Render(SDL_Window* sdlWindow_);
+	void Update();
+	void Render(SDL_Renderer* renderer);
 
 
 

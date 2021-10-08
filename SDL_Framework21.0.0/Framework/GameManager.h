@@ -19,6 +19,7 @@ private:
 	bool isRunning;
 	Scene *currentScene;
 
+
 public:
 	GameManager();
 	~GameManager();

@@ -1,12 +1,27 @@
 #include "button.h"
 
-button::button(SDL_Rect NewButton_, Vec3 colorBase_, Vec3 colorHighlighted_)
+button::button() {
+
+	NewButton.x = 0; 
+	NewButton.y = 0;
+	NewButton.w = 0; 
+	NewButton.h = 0; 
+	colorBase = Vec3(0,0,0); 
+	colorHighlighted = Vec3(0, 0, 0);
+	textColor = SDL_Color{ 0, 0, 0 };
+	text = "Default Text";
+
+}
+
+button::button(int x, int y, int w, int h, Vec3 colorBase_, Vec3 colorHighlighted_, Vec3 textColor2, const char* text_)
 {
-	NewButton = NewButton_; colorBase = colorBase_; colorHighlighted = colorHighlighted_;
+	NewButton.x = x; NewButton.y = y; NewButton.w = w; NewButton.h = h; colorBase = colorBase_; 
+	colorHighlighted = colorHighlighted_; textColor.r = textColor2.x; textColor.g = textColor2.y; textColor.b = textColor2.z; text = text_;
 }
 
 button::~button()
 {
+	
 }
 
 
@@ -37,7 +52,7 @@ bool button::buttonClicked(SDL_Event event_)
 	
 }
 
-void button::Update(const float time)
+void button::Update()
 {
 	if (SDL_PollEvent(&event))
 	{
@@ -58,13 +73,25 @@ void button::Update(const float time)
 
 }
 
-void button::Render(SDL_Window* sdlWindow_)
+void button::Render(SDL_Renderer* renderer)
 {
-	renderer = SDL_CreateRenderer(sdlWindow_, -1, SDL_RENDERER_ACCELERATED);
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-	SDL_RenderClear(renderer);
+	/*SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+	SDL_RenderClear(renderer);*/
+	
 
 	SDL_SetRenderDrawColor(renderer, currentColor.x, currentColor.y, currentColor.z, 255);
 	SDL_RenderFillRect(renderer, &NewButton);
+	SDL_Rect textBox;
+
+	textBox.x = NewButton.x + 300;
+	textBox.y = NewButton.y;
+	textBox.w = NewButton.w - 600;
+	textBox.h = NewButton.h;
+	
+	buttonText.writeText(text, SDL_Color{ textColor }, textBox, renderer);
+	
+	//SDL_RenderPresent(renderer);
+	
+
 }
 

@@ -39,13 +39,13 @@ void LevelOne::Update(const float deltaTime) {
 }
 
 void LevelOne::Render() {
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+	SDL_SetRenderDrawColor(renderer, 0, 120, 120, 0);
 	SDL_RenderClear(renderer);
 
 
 	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 	SDL_RenderFillRect(renderer, &harryBox);
 
-
 	SDL_RenderPresent(renderer);
+
 }

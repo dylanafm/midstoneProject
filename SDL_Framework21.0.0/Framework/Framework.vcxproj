@@ -156,6 +156,7 @@
     <ClCompile Include="mainMenu.cpp" />
     <ClCompile Include="MMath.cpp" />
     <ClCompile Include="Scene0.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="VMath.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="MMath.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene0.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="VMath.h" />

@@ -51,9 +51,6 @@
     <ClCompile Include="LevelOne.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="button.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Body.h">
@@ -93,9 +90,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LevelOne.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
