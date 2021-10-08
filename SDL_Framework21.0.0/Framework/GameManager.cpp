@@ -68,11 +68,16 @@ void GameManager::Run() {
 				}
 			}
 		}*/
+
 		if (currentScene->getScene() == 1) {
 			currentScene->OnDestroy();
 			currentScene = new LevelOne(windowPtr->GetSDL_Window());
 			currentScene->OnCreate();
 		}
+		if (currentScene->getScene() == 2) {
+			isRunning = false;
+		}
+
 		currentScene->Update(timer->GetDeltaTime());
 		currentScene->Render();
 		timer->UpdateFrameTicks();

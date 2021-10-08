@@ -56,7 +56,6 @@ public:
 	void Render();
 	int getScene() {
 		int temp = newScene;
-		newScene = 0;
 		return temp;
 	}
 };
