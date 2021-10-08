@@ -1,6 +1,5 @@
 #ifndef VECTOR_H
 #define VECTOR_H
-#include <cmath>
 #include <iostream>
 #include <string> /// Used for passing exceptions 
 		///
@@ -32,6 +31,12 @@ namespace  MATH {
 
 	struct Vec3 {
 		float  x,y,z;	///  Structures are default public
+		
+
+		//Vec3(const Vec3&) = delete;
+		//Vec3(Vec3&&) = delete;
+		//Vec3& operator=(const Vec3&) = delete;
+		//Vec3& operator=(Vec3&&) = delete;
 
 		/// Just a little utility to populate a vector
 		inline void set( float x_, float y_, float z_ ) {

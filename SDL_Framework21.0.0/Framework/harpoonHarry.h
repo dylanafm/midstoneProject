@@ -4,9 +4,16 @@
 
 #include "Body.h"
 #include <SDL.h>
+#include "Vector.h"
+
 class harpoonHarry : public Body
 {
 private:
+
+
+public:
+	harpoonHarry();
+	~harpoonHarry();
 
 	int health;
 	Vec3 pos;
@@ -14,14 +21,15 @@ private:
 	Vec3 accel;
 	float mass;
 
-public:
-	harpoonHarry();
-	~harpoonHarry();
-
 	void Update(float deltaTime);
 
 	void applyForce(const Vec3 force) { accel = force / mass; }
 
+	/*inline void setPos(const Vec3& pos_) { pos_ = pos; }
+	inline void setVel(const Vec3& vel_) { vel_ = vel; }
+	inline Vec3 getVel() { return vel; }
+	inline void setAccel(const Vec3& accel_) { accel_ = accel; }
+	inline Vec3 getAccel() { return accel; }*/
 
 	Vec3 getPos() { return pos; }
 	Vec3 getVel() { return vel; }
