@@ -35,7 +35,7 @@ bool GameManager::OnCreate() {
 		return false;
 	}
 
-	currentScene = new LevelOne(windowPtr->GetSDL_Window());
+	currentScene = new mainMenu(windowPtr->GetSDL_Window());
 	if (currentScene == nullptr) {
 		OnDestroy();
 		return false;
@@ -51,11 +51,31 @@ bool GameManager::OnCreate() {
 
 /// Here's the whole game
 void GameManager::Run() {
+	SDL_Event sdlEvent;
 	timer->Start();
 	while (isRunning) {
-		timer->UpdateFrameTicks();
+		/*while (SDL_PollEvent(&sdlEvent)) {
+			if (sdlEvent.type == SDL_QUIT) {
+				isRunning = false;
+			}
+			else if (sdlEvent.type == SDL_KEYDOWN) {
+				switch (sdlEvent.key.keysym.scancode) {
+				case SDL_SCANCODE_ESCAPE:
+					isRunning = false;
+					break;
+				default:
+					break;
+				}
+			}
+		}*/
+		if (currentScene->getScene() == 1) {
+			currentScene->OnDestroy();
+			currentScene = new LevelOne(windowPtr->GetSDL_Window());
+			currentScene->OnCreate();
+		}
 		currentScene->Update(timer->GetDeltaTime());
 		currentScene->Render();
+		timer->UpdateFrameTicks();
 
 		/// Keeep the event loop running at a proper rate
 		SDL_Delay(timer->GetSleepTime(60)); ///60 frames per sec

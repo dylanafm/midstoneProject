@@ -45,7 +45,7 @@ private:
 
 
 	int currentMenu = 1; // Switch between menus in the main menu. 1 = Main Menu, 2 = Levels Menu, 3 = Settings Menu, 4 = Tutorial Menu
-
+	int newScene = 0;
 
 public:
 	mainMenu(SDL_Window* sdlWindow);
@@ -54,6 +54,11 @@ public:
 	void OnDestroy();
 	void Update(const float time);
 	void Render();
+	int getScene() {
+		int temp = newScene;
+		newScene = 0;
+		return temp;
+	}
 };
 
 #endif

@@ -30,7 +30,9 @@ bool LevelOne::OnCreate() {
 	return true;
 }
 
-void LevelOne::OnDestroy() {}
+void LevelOne::OnDestroy() {
+	SDL_DestroyRenderer(renderer);
+}
 
 void LevelOne::Update(const float deltaTime) {
 	harry->Update(deltaTime);
@@ -39,16 +41,11 @@ void LevelOne::Update(const float deltaTime) {
 void LevelOne::Render() {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 	SDL_RenderClear(renderer);
-	Vec3 screenCoords;
-
-	SDL_Surface* screenSurface = SDL_GetWindowSurface(window);
-	SDL_FillRect(screenSurface, nullptr, SDL_MapRGB(screenSurface->format, 0, 0, 0));
 
 
 	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 	SDL_RenderFillRect(renderer, &harryBox);
 
-	SDL_UpdateWindowSurface(window);
 
 	SDL_RenderPresent(renderer);
 }

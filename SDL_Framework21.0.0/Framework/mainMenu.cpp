@@ -99,6 +99,7 @@ bool mainMenu::OnCreate() {
 }
 
 void mainMenu::OnDestroy() {
+	SDL_DestroyRenderer(renderer);
 	TTF_CloseFont(font);
 	TTF_Quit();
 }
@@ -163,7 +164,7 @@ void mainMenu::Update(const float deltaTime) {
 				}
 				if ((x > Quit.x) && (x < Quit.x + Quit.w) && (y > Quit.y) && (y < Quit.y + Quit.h))
 				{
-
+					newScene = 1;
 
 				}
 			}

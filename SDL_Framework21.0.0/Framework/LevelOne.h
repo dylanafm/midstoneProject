@@ -25,6 +25,9 @@ public:
 	void OnDestroy();
 	void Update(const float time);
 	void Render();
+	int getScene() {
+		return 0;
+	};
 };
 
 #endif
