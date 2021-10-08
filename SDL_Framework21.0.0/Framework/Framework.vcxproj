@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Body.cpp" />
+    <ClCompile Include="button.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="harpoonHarry.cpp" />
     <ClCompile Include="LevelOne.cpp" />
@@ -161,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Body.h" />
+    <ClInclude Include="button.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="harpoonHarry.h" />
     <ClInclude Include="LevelOne.h" />
