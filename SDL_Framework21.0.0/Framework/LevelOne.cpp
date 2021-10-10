@@ -6,8 +6,6 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 
 	window = sdlWindow_;
 
-	SDL_Event e;
-
 	harry = new harpoonHarry();
 
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
@@ -44,16 +42,15 @@ void LevelOne::OnDestroy() {
 
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
-	//harry->Update(deltaTime);
+	harry->Update(deltaTime);
 	while (SDL_PollEvent(&event))
 	{
 		harry->HandleEvents(event);
 	}
-	printf("%f", harry->vel.y);
+	//printf("%f", harry->vel.y);
 
-	harryBox.x += harry->vel.x * deltaTime + 0.5f * harry->accel.x * deltaTime * deltaTime;
-	harryBox.y += harry->vel.y * deltaTime + 0.5f * harry->accel.y * deltaTime * deltaTime;
-	harry->vel += harry->accel * deltaTime;
+	harryBox.x = harry->pos.x;
+	harryBox.y = harry->pos.y;
 }
 
 void LevelOne::Render() {

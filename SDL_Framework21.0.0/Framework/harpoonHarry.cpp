@@ -14,12 +14,12 @@ void harpoonHarry::HandleEvents(SDL_Event sdlEvent) {
 			switch (sdlEvent.key.keysym.scancode) {
 			case SDL_SCANCODE_W:
 				printf("up!");
-				applyForce(Vec3(0.0f, 10.0f, 0.0f));
+				applyForce(Vec3(0.0f, 100.0f, 0.0f));
 				break;
 
 			case SDL_SCANCODE_S:
 				printf("down!");
-				applyForce(Vec3(0.0f, -10.0f, 0.0f));
+				applyForce(Vec3(0.0f, -100.0f, 0.0f));
 				break;
 			}
 		}
@@ -28,7 +28,8 @@ void harpoonHarry::HandleEvents(SDL_Event sdlEvent) {
 
 void harpoonHarry::Update(float deltaTime)
 {
-	
+	pos += vel * deltaTime + 0.5f * accel * deltaTime * deltaTime;
+	vel += accel * deltaTime;
 		//Movement Code
 		//https://wiki.libsdl.org/SDL_KeyboardEvent
 		// if (    keyboard input   ) { Acceleration = Accel + Vec3(0, 2, 0)..........
@@ -36,8 +37,7 @@ void harpoonHarry::Update(float deltaTime)
 			//else { accel = 0.0f, 0.0, 0.0    Vel = 0 etc...
 			//position = initail velocity * time    +   1/2   (accel * time
 
-	pos += vel * deltaTime + 0.5f * accel * deltaTime * deltaTime;
-	vel += accel * deltaTime;
+	
 }
 
 
