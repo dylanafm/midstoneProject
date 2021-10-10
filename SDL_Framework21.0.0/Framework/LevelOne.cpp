@@ -18,6 +18,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	harryBox.y = harry->pos.y;
 	harryBox.w = 50.0f;
 	harryBox.h = 50.0f;
+	harry->mass = 10.0f;
 
 
 }
@@ -43,11 +44,16 @@ void LevelOne::OnDestroy() {
 
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
-	harry->Update(deltaTime);
+	//harry->Update(deltaTime);
 	while (SDL_PollEvent(&event))
 	{
 		harry->HandleEvents(event);
 	}
+	printf("%f", harry->vel.y);
+
+	harryBox.x += harry->vel.x * deltaTime + 0.5f * harry->accel.x * deltaTime * deltaTime;
+	harryBox.y += harry->vel.y * deltaTime + 0.5f * harry->accel.y * deltaTime * deltaTime;
+	harry->vel += harry->accel * deltaTime;
 }
 
 void LevelOne::Render() {
