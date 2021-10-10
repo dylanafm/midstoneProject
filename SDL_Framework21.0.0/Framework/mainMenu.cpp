@@ -12,13 +12,13 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 	Levels = button(250, 200, 800, 40, Vec3(255, 255, 255), Vec3(0, 255, 255), Vec3(120, 255, 0), "Levels");
 	Settings = button(250, 300, 800, 40, Vec3(255, 255, 255), Vec3(0, 255, 255), Vec3(120, 255, 0), "Settings");
 	Tutorial = button(250, 400, 800, 40, Vec3(255, 255, 255), Vec3(0, 255, 255), Vec3(120, 255, 0), "Tutorial");
-	Quit = button(250, 500, 800, 40, Vec3(255, 255, 255), Vec3(0, 255, 255), Vec3(120, 255, 0), "Quit");
+	Quit = button(250, 500, 800, 40, Vec3(255, 255, 255), Vec3(255, 0, 0), Vec3(120, 255, 0), "Quit");
 
 	Back = button(50, 50, 50, 50, Vec3(255, 255, 255), Vec3(255, 0, 0), Vec3(120, 255, 0), "Back");
 
 	LevelOne = button(250, 200, 200, 200, Vec3(255, 255, 255), Vec3(0, 255, 255), Vec3(120, 255, 0), "Level One");
-	LevelTwo = button(350, 200, 200, 200, Vec3(255, 255, 255), Vec3(0, 255, 255), Vec3(120, 255, 0), "Level Two");
-	LevelThree = button(450, 200, 200, 200, Vec3(255, 255, 255), Vec3(0, 255, 255), Vec3(120, 255, 0), "LevelThree");
+	//LevelTwo = button(350, 200, 200, 200, Vec3(255, 255, 255), Vec3(0, 255, 255), Vec3(120, 255, 0), "Level Two");
+	//LevelThree = button(450, 200, 200, 200, Vec3(255, 255, 255), Vec3(0, 255, 255), Vec3(120, 255, 0), "LevelThree");
 
 	
 	
@@ -47,7 +47,7 @@ void mainMenu::OnDestroy() {
 }
 
 void mainMenu::Update(const float deltaTime) {
-	SDL_Event event{};
+	SDL_Event event;
 
 	Levels.Update();
 	Settings.Update();
@@ -59,22 +59,26 @@ void mainMenu::Update(const float deltaTime) {
 	LevelTwo.Update();
 	LevelThree.Update();
 
+	while(SDL_PollEvent(&event))
+	{
+		if (LevelOne.buttonClicked(event) && currentMenu == 2) { newScene = 1; }
 
-	if (Levels.buttonClicked(event)) { currentMenu = 2; }
-	if (Settings.buttonClicked(event)) { currentMenu = 3; }
-	if (Tutorial.buttonClicked(event)) { currentMenu = 4; }
-	if (Quit.buttonClicked(event)) { newScene = -1; }
-	
-	if (Back.buttonClicked(event)) { currentMenu = 1; }
+		if (Levels.buttonClicked(event)) { currentMenu = 2; }
+		if (Settings.buttonClicked(event)) { currentMenu = 3; }
+		if (Tutorial.buttonClicked(event)) { currentMenu = 4; }
+		if (Quit.buttonClicked(event)) { newScene = -1; }
 
-	if (LevelOne.buttonClicked(event)) { newScene = 1; }
+		if (Back.buttonClicked(event)) { currentMenu = 1; }
+
+		
+	}
 
 }
 
 void mainMenu::Render() {
 
-	//SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-	//SDL_RenderClear(renderer);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+	SDL_RenderClear(renderer);
 	Vec3 screenCoords;
 	
 	if (currentMenu == 1) {
@@ -102,13 +106,10 @@ void mainMenu::Render() {
 		Back.Render(renderer);
 
 
-}
+	}
 	else {
 		Back.Render(renderer);
 
 	}
 	SDL_RenderPresent(renderer);
-
-	SDL_UpdateWindowSurface(window);
-
 }

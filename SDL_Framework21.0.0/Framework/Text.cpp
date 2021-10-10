@@ -3,8 +3,8 @@
 
 Text::Text()
 {
-	text = NULL;
-	text_texture = NULL;
+	text = nullptr;
+	text_texture = nullptr;
 
 	//TTF Initialization
 

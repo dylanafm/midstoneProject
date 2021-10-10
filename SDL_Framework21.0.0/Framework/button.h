@@ -14,8 +14,6 @@ using namespace MATH;
 class button
 {
 private:
-	SDL_Event event;
-	
 	const char* text;
 
 	Vec3 colorBase;
@@ -25,8 +23,7 @@ private:
 
 
 	SDL_Rect NewButton;
-	
-	Text buttonText;
+
 public:
 	
 	button();

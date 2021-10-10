@@ -51,7 +51,6 @@ bool GameManager::OnCreate() {
 
 /// Here's the whole game
 void GameManager::Run() {
-	SDL_Event sdlEvent;
 	timer->Start();
 	while (isRunning) {
 
