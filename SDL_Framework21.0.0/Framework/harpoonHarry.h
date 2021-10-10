@@ -21,7 +21,7 @@ public:
 	Vec3 accel;
 	float mass;
 
-	void HandleEvents(const SDL_Event& sdlEvent);
+	void HandleEvents(SDL_Event sdlEvent);
 
 	void Update(float deltaTime);
 

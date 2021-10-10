@@ -44,7 +44,10 @@ void LevelOne::OnDestroy() {
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
 	harry->Update(deltaTime);
-	harry->HandleEvents(event);
+	while (SDL_PollEvent(&event))
+	{
+		harry->HandleEvents(event);
+	}
 }
 
 void LevelOne::Render() {

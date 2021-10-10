@@ -9,11 +9,11 @@ harpoonHarry::harpoonHarry()
 harpoonHarry::~harpoonHarry()
 {
 }
-void harpoonHarry::HandleEvents(const SDL_Event& sdlEvent) {
+void harpoonHarry::HandleEvents(SDL_Event sdlEvent) {
 		if (sdlEvent.type == SDL_KEYDOWN) {
-			printf("press!");
 			switch (sdlEvent.key.keysym.scancode) {
 			case SDL_SCANCODE_W:
+				printf("press!");
 				this->applyForce(Vec3(100.0f, 0.0f, 0.0f));
 				applyForce(Vec3(100.0f, 0.0f, 0.0f));
 				break;
