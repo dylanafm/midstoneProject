@@ -21,6 +21,8 @@ public:
 	Vec3 accel;
 	float mass;
 
+	void HandleEvents(const SDL_Event& sdlEvent);
+
 	void Update(float deltaTime);
 
 	void applyForce(const Vec3 force) { accel = force / mass; }

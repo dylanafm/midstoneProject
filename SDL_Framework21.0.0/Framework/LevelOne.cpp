@@ -1,8 +1,15 @@
 #include "LevelOne.h"
 #include <SDL.h>
+#include "Timer.h"
+
 LevelOne::LevelOne(SDL_Window* sdlWindow_) {
+
 	window = sdlWindow_;
+
+	SDL_Event e;
+
 	harry = new harpoonHarry();
+
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
@@ -35,7 +42,9 @@ void LevelOne::OnDestroy() {
 }
 
 void LevelOne::Update(const float deltaTime) {
+	SDL_Event event;
 	harry->Update(deltaTime);
+	harry->HandleEvents(event);
 }
 
 void LevelOne::Render() {

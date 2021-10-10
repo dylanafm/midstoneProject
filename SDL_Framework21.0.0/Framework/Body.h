@@ -15,6 +15,7 @@ public:
 	~Body();
 	void Update(float deltaTime);
 	Vec3 getPos() { return pos; }
+
 };
 
 #endif

@@ -21,5 +21,6 @@ Body::~Body(){
 }
 
 void Body::Update(float deltaTime){
-	
+	pos += vel * deltaTime + 0.5f * accel * deltaTime * deltaTime;
+	vel += accel * deltaTime;
 }
