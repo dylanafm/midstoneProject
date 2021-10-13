@@ -4,6 +4,7 @@ harpoonHarry::harpoonHarry()
 	pos = Vec3(500.0f, 50.0f, 200.0f);
 	vel = Vec3(0.0f, 0.0f, 0.0f);
 	accel = Vec3(0.0f, 0.0f, 0.0f);
+	drag = 0.005f;
 }
 
 harpoonHarry::~harpoonHarry()
@@ -13,13 +14,21 @@ void harpoonHarry::HandleEvents(SDL_Event sdlEvent) {
 		if (sdlEvent.type == SDL_KEYDOWN) {
 			switch (sdlEvent.key.keysym.scancode) {
 			case SDL_SCANCODE_W:
-				printf("up!");
-				applyForce(Vec3(0.0f, 100.0f, 0.0f));
+				printf("up!\n");
+				applyForce(Vec3(0.0f, -100.0f, 0.0f));
 				break;
 
 			case SDL_SCANCODE_S:
-				printf("down!");
-				applyForce(Vec3(0.0f, -100.0f, 0.0f));
+				printf("down!\n");
+				applyForce(Vec3(0.0f, 100.0f, 0.0f));
+				break;
+			case SDL_SCANCODE_A:
+				printf("left!\n");
+				applyForce(Vec3(-100.0f, 0.0f, 0.0f));
+				break;
+			case SDL_SCANCODE_D:
+				printf("right!\n");
+				applyForce(Vec3(100.0f, 0.0f, 0.0f));
 				break;
 			}
 		}

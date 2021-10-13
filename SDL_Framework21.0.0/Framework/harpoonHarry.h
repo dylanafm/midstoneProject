@@ -19,6 +19,7 @@ public:
 	Vec3 pos;
 	Vec3 vel;
 	Vec3 accel;
+	float drag;
 	float mass;
 
 	void HandleEvents(SDL_Event sdlEvent);
