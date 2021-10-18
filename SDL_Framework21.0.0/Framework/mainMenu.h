@@ -35,9 +35,6 @@ private:
 
 
 
-	TTF_Font* font;
-	SDL_Surface* text;
-	SDL_Texture* text_texture;
 
 	Text newText;
 
@@ -51,9 +48,11 @@ public:
 	void OnDestroy();
 	void Update(const float time);
 	void Render();
+	bool getPaused() {
+		return false;
+	}
 	int getScene() {
-		int temp = newScene;
-		return temp;
+		return newScene;
 	}
 };
 

@@ -22,7 +22,9 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 }
 
 LevelOne::~LevelOne() {
-
+	delete window;
+	delete harry;
+	delete renderer;
 }
 
 bool LevelOne::OnCreate() {
@@ -45,9 +47,20 @@ void LevelOne::Update(const float deltaTime) {
 	harry->Update(deltaTime);
 	while (SDL_PollEvent(&event))
 	{
+		if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
+			std::cout << "esc";
+			paused = !paused;
+		}
 		harry->HandleEvents(event);
 	}
-	//printf("%f", harry->vel.y);
+	
+	if (paused) {
+		pMenu.pauseUpdate(event);
+		newScene = pMenu.getScene();
+		paused = pMenu.getPaused();
+		
+		if (!paused) pMenu.setDefault();
+	}
 
 	harryBox.x = harry->pos.x;
 	harryBox.y = harry->pos.y;
@@ -57,9 +70,10 @@ void LevelOne::Render() {
 	SDL_SetRenderDrawColor(renderer, 0, 120, 120, 0);
 	SDL_RenderClear(renderer);
 
-
 	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 	SDL_RenderFillRect(renderer, &harryBox);
+
+	if (paused)	pMenu.pauseRender(renderer);
 
 	SDL_RenderPresent(renderer);
 

@@ -26,6 +26,8 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 }
 
 mainMenu::~mainMenu() {
+	delete window;
+	delete renderer;
 }
 
 bool mainMenu::OnCreate() {

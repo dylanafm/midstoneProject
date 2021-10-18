@@ -6,6 +6,7 @@
 #include <SDL.h>
 #include "Body.h"
 #include "harpoonHarry.h"
+#include "pauseMenu.h"
 
 using namespace MATH;
 class LevelOne : public Scene {
@@ -17,6 +18,11 @@ private:
 	SDL_Rect harryBox;
 	SDL_Renderer* renderer;
 
+	pauseMenu pMenu;
+
+	bool paused = false;
+
+	int newScene = 0;
 
 public:
 	LevelOne(SDL_Window* sdlWindow);
@@ -25,9 +31,12 @@ public:
 	void OnDestroy();
 	void Update(const float time);
 	void Render();
+	bool getPaused() {
+		return paused;
+	}
 	int getScene() {
-		return 0;
-	};
+		return newScene;
+	}
 };
 
 #endif

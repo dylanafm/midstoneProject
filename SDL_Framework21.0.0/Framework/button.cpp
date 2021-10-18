@@ -70,9 +70,15 @@ void button::Render(SDL_Renderer* renderer)
 	SDL_RenderFillRect(renderer, &NewButton);
 	SDL_Rect textBox;
 
-	textBox.x = NewButton.x + 300;
+	if (NewButton.w > 600) {
+		textBox.x = NewButton.x + 300;
+		textBox.w = NewButton.w - 600;
+	}
+	else {
+		textBox.x = NewButton.x;
+		textBox.w = NewButton.w;
+	}
 	textBox.y = NewButton.y;
-	textBox.w = NewButton.w - 600;
 	textBox.h = NewButton.h;
 	
 	Text buttonText;

@@ -8,6 +8,7 @@ public:
 	virtual void Update(const float time) = 0;
 	virtual void Render() = 0;
 	virtual int getScene() = 0;
+	virtual bool getPaused() = 0;
 };
 
 #endif
