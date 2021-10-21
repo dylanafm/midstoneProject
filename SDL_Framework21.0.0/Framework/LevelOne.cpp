@@ -1,4 +1,5 @@
 #include "LevelOne.h"
+#include "Physics.h"
 #include <SDL.h>
 #include "Timer.h"
 
@@ -16,7 +17,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	harryBox.y = harry->pos.y;
 	harryBox.w = 50.0f;
 	harryBox.h = 50.0f;
-	harry->mass = 10.0f;
+	harry->mass = 3000.0f;
 
 
 }
@@ -34,6 +35,8 @@ bool LevelOne::OnCreate() {
 	Matrix4 ndc = MMath::viewportNDC(w, h);
 	Matrix4 ortho = MMath::orthographic(0.0f, 30.0f, 0.0f, 15.0f, 0.0f, 1.0f);
 	projectionMatrix = ndc * ortho;
+
+	harry->calculateMass(800.0f);
 
 	return true;
 }
@@ -64,6 +67,10 @@ void LevelOne::Update(const float deltaTime) {
 
 	harryBox.x = harry->pos.x;
 	harryBox.y = harry->pos.y;
+
+	Physics::ApplyForces(*harry, 10.0f);
+	Physics::SimpleNewtonMotion(*harry, deltaTime);
+
 }
 
 void LevelOne::Render() {

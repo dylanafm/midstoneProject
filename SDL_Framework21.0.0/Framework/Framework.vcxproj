@@ -156,6 +156,7 @@
     <ClCompile Include="mainMenu.cpp" />
     <ClCompile Include="MMath.cpp" />
     <ClCompile Include="pauseMenu.cpp" />
+    <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Scene0.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MMath.h" />
     <ClInclude Include="pauseMenu.h" />
+    <ClInclude Include="Physics.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene0.h" />
     <ClInclude Include="Text.h" />

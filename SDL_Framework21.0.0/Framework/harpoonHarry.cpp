@@ -5,6 +5,9 @@ harpoonHarry::harpoonHarry()
 	vel = Vec3(0.0f, 0.0f, 0.0f);
 	accel = Vec3(0.0f, 0.0f, 0.0f);
 	drag = 0.005f;
+	accelCurrent = Vec3(0.0f, 0.0f, 0.0f);
+	accelPrevious = Vec3(0.0f, 0.0f, 0.0f);
+	mass = 0.0f;
 }
 
 harpoonHarry::~harpoonHarry()
