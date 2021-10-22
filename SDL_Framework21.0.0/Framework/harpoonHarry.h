@@ -17,7 +17,7 @@ public:
 
 	int health;
 	Vec3 pos, vel, accelPrevious, accelCurrent, accel;
-	float drag, mass, angle, angularVel, angularAccel, rotationalI, radius, length, coefficient;
+	float drag, mass, radius, length, coefficient;
 
 
 	void HandleEvents(SDL_Event sdlEvent);

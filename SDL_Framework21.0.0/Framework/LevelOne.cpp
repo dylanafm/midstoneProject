@@ -68,7 +68,7 @@ void LevelOne::Update(const float deltaTime) {
 	harryBox.x = harry->pos.x;
 	harryBox.y = harry->pos.y;
 
-	Physics::ApplyForces(*harry, 10.0f);
+	Physics::ApplyForces(*harry, 0.0f);
 	Physics::SimpleNewtonMotion(*harry, deltaTime);
 
 }

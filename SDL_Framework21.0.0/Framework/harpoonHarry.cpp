@@ -7,7 +7,10 @@ harpoonHarry::harpoonHarry()
 	drag = 0.005f;
 	accelCurrent = Vec3(0.0f, 0.0f, 0.0f);
 	accelPrevious = Vec3(0.0f, 0.0f, 0.0f);
-	mass = 0.0f;
+	radius = 1.0f;
+	length = 1.0f;
+	coefficient = 2000.0f;
+	mass = 800 * radius * radius * length * 3.14;
 }
 
 harpoonHarry::~harpoonHarry()
