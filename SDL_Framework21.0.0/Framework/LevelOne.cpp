@@ -19,6 +19,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	harryBox.h = 50.0f;
 	harry->mass = 10.0f;
 
+	newHud = HUD(harry->pos.x);
 
 }
 
@@ -48,6 +49,8 @@ void LevelOne::OnDestroy() {
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
 	harry->Update(deltaTime);
+
+
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
@@ -76,6 +79,8 @@ void LevelOne::Update(const float deltaTime) {
 void LevelOne::Render() {
 	SDL_SetRenderDrawColor(renderer, 0, 120, 120, 0);
 	SDL_RenderClear(renderer);
+
+	newHud.displayHud(window, renderer);
 
 	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 	SDL_RenderFillRect(renderer, &harryBox);
