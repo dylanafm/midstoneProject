@@ -18,8 +18,9 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	harryBox.w = 50.0f;
 	harryBox.h = 50.0f;
 	harry->mass = 10.0f;
+	harry->health = 100;
 
-	newHud = HUD(harry->pos.x);
+	newHud = HUD(harry->health);
 
 }
 
@@ -80,7 +81,7 @@ void LevelOne::Render() {
 	SDL_SetRenderDrawColor(renderer, 0, 120, 120, 0);
 	SDL_RenderClear(renderer);
 
-	newHud.displayHud(window, renderer);
+	newHud.displayHud(renderer, 25, 25, 50, 50);
 
 	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 	SDL_RenderFillRect(renderer, &harryBox);
