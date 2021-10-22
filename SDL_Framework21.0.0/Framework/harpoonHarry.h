@@ -16,7 +16,7 @@ public:
 	~harpoonHarry();
 
 	int health;
-	Vec3 pos, vel, accelPrevious, accelCurrent, accel;
+	Vec3 pos, vel, accelPrevious, accelCurrent, accel, finalForce;
 	float drag, mass, radius, length, coefficient;
 
 

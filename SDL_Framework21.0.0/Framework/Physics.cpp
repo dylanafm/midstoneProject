@@ -15,19 +15,18 @@ void Physics::ApplyForces(harpoonHarry& object, const float waterHeight)
 	{
 		V = 3.14 * object.radius * object.radius * object.length - 0.5 * object.radius * object.radius * (theta - sin(theta)) * object.length;
 	}
-	else if (object.pos.y > waterHeight + object.radius) {
+	else if (object.pos.y < waterHeight + object.radius) {
 		V = 0.0f;
 	}
 	else{
 		V = 3.14 * object.radius * object.radius * object.length;
 	}
-	Vec3 Fw = object.mass * Vec3(0.0f, -9.8f, 0.0f);
+	Vec3 Fw = object.mass * Vec3(0.0f, 9.8f, 0.0f);
 	Vec3 Fd = -object.coefficient * object.vel;
-	Vec3 Fb = 997.0f * Vec3(0.0f, 9.8f, 0.0f) * V;
+	Vec3 Fb = 997.0f * Vec3(0.0f, -9.8f, 0.0f) * V;
 	Vec3 Ffinal = Fw + Fd + Fb;
-	//std::cout << object.vel.y << std::endl;
-	std::cout << Fw.y << " " << Fd.y << " " << Fb.y << std::endl;
-	object.applyForce(Ffinal);
+	//std::cout << Fw.y << " " << Fd.y << " " << Fb.y << std::endl;
+	object.finalForce += Ffinal;
 }
 
 void Physics::SimpleNewtonMotion(harpoonHarry& object, const float deltaTime) {

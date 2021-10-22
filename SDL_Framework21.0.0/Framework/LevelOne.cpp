@@ -17,8 +17,6 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	harryBox.y = harry->pos.y;
 	harryBox.w = 50.0f;
 	harryBox.h = 50.0f;
-	harry->mass = 10.0f;
-	harry->health = 100;
 
 	newHud = HUD(harry->health);
 
@@ -51,7 +49,6 @@ void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
 	harry->Update(deltaTime);
 
-
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
@@ -72,7 +69,7 @@ void LevelOne::Update(const float deltaTime) {
 	harryBox.x = harry->pos.x;
 	harryBox.y = harry->pos.y;
 
-	//Physics::ApplyForces(*harry, 0.0f);
+	Physics::ApplyForces(*harry, 0.0f);
 	//Physics::SimpleNewtonMotion(*harry, deltaTime);
 
 }
