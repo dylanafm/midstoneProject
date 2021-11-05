@@ -68,8 +68,8 @@ void LevelOne::Update(const float deltaTime) {
 			std::cout << "esc";
 			paused = !paused;
 		}
-		harry->HandleEvents(event);
 	}
+	harry->HandleEvents(event);
 	
 	if (harry->health <= 0) {
 		if (!paused)	paused = true;
