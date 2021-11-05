@@ -1,6 +1,9 @@
 #include "harpoonHarry.h"
 #include <math.h>
+#include <cmath>
+#include <iostream>
 #include "VMath.h"
+
 harpoonHarry::harpoonHarry()
 {
 	
@@ -18,6 +21,8 @@ harpoonHarry::harpoonHarry()
 	finalForce = Vec3(0.0f, 0.0f, 0.0f);
 	texture = nullptr;
 	angle = 0.0;
+	anglePrevious = 0.0;
+	flip = 0.0;
 
 
 	harryBox.x = pos.x;
@@ -84,20 +89,15 @@ void harpoonHarry::Update(float deltaTime)
 	if (vel.y > 90.0f) vel.y = 90.0f;
 	if (vel.y < -90.0f) vel.y = -90.0f;
 
+	anglePrevious = angle;
+	double angleCurrent = atan2(vel.y, vel.x) * 180.0 / M_PI + flip;
 
-	//if (vel.x >= 0.0f) {
-	//	angle = static_cast<double>(vel.y) + 90.0f;
-	//}
-	//else {
-	//	angle = static_cast<double>(vel.y) - 90.w0f;
-	//}
+	if (angleCurrent - anglePrevious > 180.0f)  flip -= 360;
+	if (angleCurrent - anglePrevious < -180.0f) flip += 360;
 
-	angle = atan2(vel.y, vel.x) * 180 / M_PI;
+	angle = atan2(vel.y, vel.x) * 180.0 / M_PI + flip;
 
-	//angle += (360.0f * vel.x * deltaTime) / (2.0f * M_PI * harryBox.w / 2.0f);
-
-	
-	std::cout << angle << std::endl;
+	angle = angle + 0.9 * (anglePrevious - angle); // Lerp function
 
 	harryBox.x = pos.x;
 	harryBox.y = pos.y;

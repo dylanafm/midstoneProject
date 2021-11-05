@@ -19,7 +19,7 @@ public:
 	int health;
 	Vec3 pos, vel, accelPrevious, accelCurrent, accel, finalForce;
 	float drag, mass, radius, length, coefficient;
-	double angle;
+	double angle, anglePrevious, flip;
 	SDL_Rect harryBox;
 	SDL_Texture* texture;
 
