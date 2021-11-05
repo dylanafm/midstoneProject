@@ -1,4 +1,6 @@
 #include "harpoonHarry.h"
+#include <math.h>
+#include "VMath.h"
 harpoonHarry::harpoonHarry()
 {
 	
@@ -14,6 +16,8 @@ harpoonHarry::harpoonHarry()
 	mass = 100.0f;
 	health = 3;
 	finalForce = Vec3(0.0f, 0.0f, 0.0f);
+	texture = nullptr;
+	angle = 0.0;
 
 
 	harryBox.x = pos.x;
@@ -68,10 +72,32 @@ void harpoonHarry::HandleEvents(SDL_Event sdlEvent) {
 
 void harpoonHarry::Update(float deltaTime)
 {
+	//if (finalForce.y > 9000.0f) finalForce.y = 9000.0f;
+	//if (finalForce.y < -9000.0f) finalForce.y = -9000.0f;
+	//std::cout << finalForce.y << std::endl;
+
 	applyForce(finalForce);
 	finalForce = Vec3(0.0f, 0.0f, 0.0f);
 	pos += vel * deltaTime + 0.5f * accelPrevious * deltaTime * deltaTime;
 	vel += 0.5 * (accelCurrent + accelPrevious) * deltaTime;
+
+	if (vel.y > 90.0f) vel.y = 90.0f;
+	if (vel.y < -90.0f) vel.y = -90.0f;
+
+
+	//if (vel.x >= 0.0f) {
+	//	angle = static_cast<double>(vel.y) + 90.0f;
+	//}
+	//else {
+	//	angle = static_cast<double>(vel.y) - 90.w0f;
+	//}
+
+	angle = atan2(vel.y, vel.x) * 180 / M_PI;
+
+	//angle += (360.0f * vel.x * deltaTime) / (2.0f * M_PI * harryBox.w / 2.0f);
+
+	
+	std::cout << angle << std::endl;
 
 	harryBox.x = pos.x;
 	harryBox.y = pos.y;
@@ -141,8 +167,10 @@ void harpoonHarry::isCollided(Fish* fish, harpoonHarry* harry)
 
 void harpoonHarry::render(SDL_Renderer* render)
 {
-	SDL_SetRenderDrawColor(render, 255, 255, 0, 255);
-	SDL_RenderFillRect(render, &harryBox);
+	//SDL_SetRenderDrawColor(render, 255, 255, 0, 255);
+	//SDL_RenderFillRect(render, &harryBox);
+
+	SDL_RenderCopyEx(render, texture, nullptr, &harryBox, angle, nullptr, SDL_FLIP_NONE);
 }
 
 

@@ -32,7 +32,17 @@ bool LevelOne::OnCreate() {
 	Matrix4 ortho = MMath::orthographic(0.0f, 30.0f, 0.0f, 15.0f, 0.0f, 1.0f);
 	projectionMatrix = ndc * ortho;
 
-	//harry->calculateMass(800.0f);
+	SDL_Surface* harryImage = IMG_Load("harry.png");
+	SDL_Texture* harryTexture = SDL_CreateTextureFromSurface(renderer, harryImage);
+	if (harryTexture == nullptr) printf("%s\n", SDL_GetError());
+	if (harryImage == nullptr) {
+		std::cerr << "Can't open the image" << std::endl;
+		return false;
+	}
+	else {
+		harry->setTexture(harryTexture);
+		SDL_FreeSurface(harryImage);
+	}
 
 	return true;
 }

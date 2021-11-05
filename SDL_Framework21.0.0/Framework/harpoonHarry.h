@@ -19,7 +19,9 @@ public:
 	int health;
 	Vec3 pos, vel, accelPrevious, accelCurrent, accel, finalForce;
 	float drag, mass, radius, length, coefficient;
+	double angle;
 	SDL_Rect harryBox;
+	SDL_Texture* texture;
 
 	void HandleEvents(SDL_Event sdlEvent);
 
@@ -42,6 +44,9 @@ public:
 	Vec3 getPos() { return pos; }
 	Vec3 getVel() { return vel; }
 	Vec3 getAccel() { return accel;  }
+
+	void setTexture(SDL_Texture* texture_) { texture = texture_; }
+	SDL_Texture* getTexture() { return texture; }
 
 
 
