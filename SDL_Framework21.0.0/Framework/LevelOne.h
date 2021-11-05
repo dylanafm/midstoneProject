@@ -7,19 +7,24 @@
 #include "Body.h"
 #include "harpoonHarry.h"
 #include "pauseMenu.h"
+#include "DeathMenu.h"
 #include "HUD.h"
 #include "Fish.h"
+
 
 using namespace MATH;
 class LevelOne : public Scene {
 private:
 	harpoonHarry* harry;
-	Fish* fish;
+	Fish* fish1;
+	Fish* fish2;
+	Fish* fish3;
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 
 	SDL_Renderer* renderer;
 
+	DeathMenu dMenu;
 	pauseMenu pMenu;
 	bool paused = false;
 

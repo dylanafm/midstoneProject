@@ -8,7 +8,9 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	window = sdlWindow_;
 
 	harry = new harpoonHarry();
-	fish = new Fish(SDL_Rect{ 200, 200, 50, 50 });
+	fish1 = new Fish(SDL_Rect{ 200, 200, 50, 50 });
+	fish2 = new Fish(SDL_Rect{ 300, 250, 50, 50 });
+	fish3 = new Fish(SDL_Rect{ 200, 25, 50, 50 });
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
@@ -41,9 +43,15 @@ void LevelOne::OnDestroy() {
 
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
+
 	harry->Update(deltaTime);
-	fish->Update(deltaTime);
-	harry->isCollided(fish,harry);
+	fish1->Update(deltaTime);
+	fish2->Update(deltaTime);
+	fish3->Update(deltaTime);
+	harry->isCollided(fish1,harry);
+	harry->isCollided(fish2,harry);
+	harry->isCollided(fish3,harry);
+
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
@@ -53,12 +61,20 @@ void LevelOne::Update(const float deltaTime) {
 		harry->HandleEvents(event);
 	}
 	
-	if (paused) {
+	if (harry->health <= 0) {
+		if (!paused)	paused = true;
+		dMenu.deathUpdate(event);
+		newScene = dMenu.getScene();
+		paused = dMenu.getPaused();
+
+		//if (!paused) pMenu.setDefault(); // Reset the Pause menu when Resume was pressed
+	}
+	else if (paused) {
 		pMenu.pauseUpdate(event);
 		newScene = pMenu.getScene();
 		paused = pMenu.getPaused();
-		
-		if (!paused) pMenu.setDefault();
+
+		if (!paused) pMenu.setDefault(); // Reset the Pause menu when Resume was pressed
 	}
 
 
@@ -71,13 +87,16 @@ void LevelOne::Render() {
 	SDL_SetRenderDrawColor(renderer, 0, 120, 120, 0);
 	SDL_RenderClear(renderer);
 
-	fish->Render(renderer);
+	fish1->Render(renderer);
+	fish2->Render(renderer);
+	fish3->Render(renderer);
 	harry->render(renderer);
 	newHud.displayHud(renderer, 25, 25, 50, 50, harry);
 
 
 
-	if (paused)	pMenu.pauseRender(renderer);
+	if (harry->health <= 0) dMenu.deathRender(renderer);
+	else if (paused)	pMenu.pauseRender(renderer);
 
 	SDL_RenderPresent(renderer);
 

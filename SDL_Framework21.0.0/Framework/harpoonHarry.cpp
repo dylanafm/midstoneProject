@@ -12,7 +12,7 @@ harpoonHarry::harpoonHarry()
 	length = 1.7f;
 	coefficient = 50.0f;
 	mass = 100.0f;
-	health = 100;
+	health = 3;
 	finalForce = Vec3(0.0f, 0.0f, 0.0f);
 
 
@@ -133,7 +133,7 @@ bool harpoonHarry::checkCollision(harpoonHarry* harry, Fish* fish)
 void harpoonHarry::isCollided(Fish* fish, harpoonHarry* harry)
 {
 	if ((harry->checkCollision(harry, fish)) == true) {
-		health -= 3;
+		health--;
 		std::cout << "Health = " << health << "\n";
 		delete fish;
 	}
