@@ -1,6 +1,7 @@
 #include "harpoonHarry.h"
 harpoonHarry::harpoonHarry()
 {
+	
 	pos = Vec3(500.0f, 50.0f, 200.0f);
 	vel = Vec3(0.0f, 0.0f, 0.0f);
 	accel = Vec3(0.0f, 0.0f, 0.0f);
@@ -13,6 +14,13 @@ harpoonHarry::harpoonHarry()
 	mass = 100.0f;
 	health = 100;
 	finalForce = Vec3(0.0f, 0.0f, 0.0f);
+
+
+	harryBox.x = pos.x;
+	harryBox.y = pos.y;
+	harryBox.w = 50.0f;
+	harryBox.h = 50.0f;
+
 }
 
 harpoonHarry::~harpoonHarry(){
@@ -65,6 +73,8 @@ void harpoonHarry::Update(float deltaTime)
 	pos += vel * deltaTime + 0.5f * accelPrevious * deltaTime * deltaTime;
 	vel += 0.5 * (accelCurrent + accelPrevious) * deltaTime;
 
+	harryBox.x = pos.x;
+	harryBox.y = pos.y;
 		//Movement Code
 		//https://wiki.libsdl.org/SDL_KeyboardEvent
 		// if (    keyboard input   ) { Acceleration = Accel + Vec3(0, 2, 0)..........
@@ -73,6 +83,66 @@ void harpoonHarry::Update(float deltaTime)
 			//position = initail velocity * time    +   1/2   (accel * time
 
 	
+}
+
+bool harpoonHarry::checkCollision(harpoonHarry* harry, Fish* fish)
+{
+	//The sides of the rectangles
+	int leftA, leftB;
+	int rightA, rightB;
+	int topA, topB;
+	int bottomA, bottomB;
+
+	//Calculate the sides of rect A
+	leftA = harryBox.x;
+	rightA = harryBox.x + harryBox.w;
+	topA = harryBox.y;
+	bottomA = harryBox.y + harryBox.h;
+
+	//Calculate the sides of rect B
+	leftB = fish->body.x;
+	rightB = fish->body.x + fish->body.w;
+	topB = fish->body.y;
+	bottomB = fish->body.y + fish->body.h;
+
+	if (bottomA <= topB)
+	{
+		return false;
+	}
+
+	if (topA >= bottomB)
+	{
+		return false;
+	}
+
+	if (rightA <= leftB)
+	{
+		return false;
+	}
+
+	if (leftA >= rightB)
+	{
+		return false;
+	}
+
+	//If none of the sides from A are outside B
+	std::cout << "BANG!\n";
+	return true;
+}
+
+void harpoonHarry::isCollided(Fish* fish, harpoonHarry* harry)
+{
+	if ((harry->checkCollision(harry, fish)) == true) {
+		health -= 3;
+		std::cout << "Health = " << health << "\n";
+		delete fish;
+	}
+}
+
+void harpoonHarry::render(SDL_Renderer* render)
+{
+	SDL_SetRenderDrawColor(render, 255, 255, 0, 255);
+	SDL_RenderFillRect(render, &harryBox);
 }
 
 

@@ -4,21 +4,20 @@
 
 #include <SDL.h>
 #include "Text.h"
+#include "harpoonHarry.h"
+
 class HUD
 {
 private:
-	int health;
 	int hX, hY, hW, hH;
 
 
 public:
 	HUD();
-	HUD(int health_);
 	~HUD();
 
-	void displayHud(SDL_Renderer* renderer, int hX_, int hY_, int hW_, int hH_);
+	void displayHud(SDL_Renderer* renderer, int hX_, int hY_, int hW_, int hH_, harpoonHarry* harry);
 
-	inline int GetHealth() { return health; }
 };
 
 

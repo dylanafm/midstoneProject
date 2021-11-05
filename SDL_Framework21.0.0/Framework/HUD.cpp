@@ -2,22 +2,17 @@
 #include <iostream>
 HUD::HUD()
 {
-	health = 0;
-
-
-
-}
-
-HUD::HUD(int health_)
-{
-	health = health_;
+	hX = 0;
+	hY = 0;
+	hW = 0;
+	hH = 0;
 }
 
 HUD::~HUD()
 {
 }
 
-void HUD::displayHud(SDL_Renderer* renderer, int hX_, int hY_, int hW_, int hH_)
+void HUD::displayHud(SDL_Renderer* renderer, int hX_, int hY_, int hW_, int hH_, harpoonHarry* harry)
 {
 	hX = hX_;
 	hY = hY_;
@@ -25,7 +20,7 @@ void HUD::displayHud(SDL_Renderer* renderer, int hX_, int hY_, int hW_, int hH_)
 	hH = hH_;
 
 	char HealthText[100];
-	sprintf_s(HealthText, "%d", health);
+	sprintf_s(HealthText, "HP :  %i", harry->health);
 
 	Text NewText;
 

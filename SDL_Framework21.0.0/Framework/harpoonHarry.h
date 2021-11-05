@@ -5,6 +5,7 @@
 #include "Body.h"
 #include <SDL.h>
 #include "Vector.h"
+#include "Fish.h"
 
 class harpoonHarry : public Body
 {
@@ -18,7 +19,7 @@ public:
 	int health;
 	Vec3 pos, vel, accelPrevious, accelCurrent, accel, finalForce;
 	float drag, mass, radius, length, coefficient;
-
+	SDL_Rect harryBox;
 
 	void HandleEvents(SDL_Event sdlEvent);
 
@@ -26,6 +27,11 @@ public:
 
 	void applyForce(const Vec3 force) { accel = force / mass; accelPrevious = accelCurrent; accelCurrent = force / mass;}
 
+	bool checkCollision(harpoonHarry* harry, Fish* fish);
+
+	void isCollided(Fish* fish, harpoonHarry* harry);
+
+	void render(SDL_Renderer* render);
 	/*inline void setPos(const Vec3& pos_) { pos_ = pos; }
 	inline void setVel(const Vec3& vel_) { vel_ = vel; }
 	inline Vec3 getVel() { return vel; }

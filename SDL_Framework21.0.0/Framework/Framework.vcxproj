@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="button.cpp" />
+    <ClCompile Include="Fish.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="harpoonHarry.cpp" />
     <ClCompile Include="HUD.cpp" />
@@ -167,6 +168,7 @@
   <ItemGroup>
     <ClInclude Include="Body.h" />
     <ClInclude Include="button.h" />
+    <ClInclude Include="Fish.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="harpoonHarry.h" />
     <ClInclude Include="HUD.h" />

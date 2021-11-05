@@ -8,14 +8,16 @@
 #include "harpoonHarry.h"
 #include "pauseMenu.h"
 #include "HUD.h"
+#include "Fish.h"
+
 using namespace MATH;
 class LevelOne : public Scene {
 private:
 	harpoonHarry* harry;
+	Fish* fish;
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 
-	SDL_Rect harryBox;
 	SDL_Renderer* renderer;
 
 	pauseMenu pMenu;

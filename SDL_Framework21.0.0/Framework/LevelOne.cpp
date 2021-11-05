@@ -8,17 +8,11 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	window = sdlWindow_;
 
 	harry = new harpoonHarry();
-
+	fish = new Fish(SDL_Rect{ 200, 200, 50, 50 });
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
 
-	harryBox.x = harry->pos.x;
-	harryBox.y = harry->pos.y;
-	harryBox.w = 50.0f;
-	harryBox.h = 50.0f;
-
-	newHud = HUD(harry->health);
 
 }
 
@@ -48,7 +42,8 @@ void LevelOne::OnDestroy() {
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
 	harry->Update(deltaTime);
-
+	fish->Update(deltaTime);
+	harry->isCollided(fish,harry);
 	while (SDL_PollEvent(&event))
 	{
 		if (event.type == SDL_KEYDOWN && event.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
@@ -66,8 +61,6 @@ void LevelOne::Update(const float deltaTime) {
 		if (!paused) pMenu.setDefault();
 	}
 
-	harryBox.x = harry->pos.x;
-	harryBox.y = harry->pos.y;
 
 	Physics::ApplyForces(*harry, 0.0f);
 	//Physics::SimpleNewtonMotion(*harry, deltaTime);
@@ -78,10 +71,11 @@ void LevelOne::Render() {
 	SDL_SetRenderDrawColor(renderer, 0, 120, 120, 0);
 	SDL_RenderClear(renderer);
 
-	newHud.displayHud(renderer, 25, 25, 50, 50);
+	fish->Render(renderer);
+	harry->render(renderer);
+	newHud.displayHud(renderer, 25, 25, 50, 50, harry);
 
-	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
-	SDL_RenderFillRect(renderer, &harryBox);
+
 
 	if (paused)	pMenu.pauseRender(renderer);
 
