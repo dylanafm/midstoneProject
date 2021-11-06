@@ -8,19 +8,21 @@ button::button() {
 	buttonBox.h = 0;
 	textColor = SDL_Color{ 0, 0, 0 };
 	text = "Default Text";
+	textureOriginal = nullptr;
+	textureHovered = nullptr;
 	texture = nullptr;
 }
 
 button::button(int x, int y, int w, int h, Vec3 textColor2, const char* text_)
 {
-	buttonBox.x = x; buttonBox.y = y; buttonBox.w = w; buttonBox.h = h; texture = nullptr;
+	buttonBox.x = x; buttonBox.y = y; buttonBox.w = w; buttonBox.h = h; textureOriginal = nullptr; textureHovered = nullptr; texture = nullptr;
 	textColor.r = textColor2.x; textColor.g = textColor2.y; textColor.b = textColor2.z; text = text_;
 
 	textBox = buttonBox;
-	textBox.x += 15;
-	//textBox.y += 10;
-	textBox.w -= 30;
-	textBox.h -= 5;
+	textBox.x += buttonBox.w / 25.0;
+	textBox.w -= buttonBox.w / 12.5;
+	textBox.y -= buttonBox.h / 20;
+	
 }
 
 button::~button()
@@ -54,19 +56,33 @@ bool button::buttonClicked(SDL_Event event_)
 	return false;
 }
 
-bool button::setImage(const char* path, SDL_Renderer* renderer)
+bool button::setImage(const char* pathOriginal, const char* pathHovered, SDL_Renderer* renderer)
 {
-	SDL_Surface* tempSurface = IMG_Load(path);
+	SDL_Surface* tempSurface = IMG_Load(pathOriginal);
 	SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
 	if (tempTexture == nullptr) printf("%s\n", SDL_GetError());
 	if (tempSurface == nullptr) {
-		std::cerr << "Can't open the image" << std::endl;
+		std::cerr << "Can't open the original image" << std::endl;
 		return false;
 	}
 	else {
-		texture = tempTexture;
+		textureOriginal = tempTexture;
 		SDL_FreeSurface(tempSurface);
 	}
+
+	tempSurface = IMG_Load(pathHovered);
+	tempTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
+	if (tempTexture == nullptr) printf("%s\n", SDL_GetError());
+	if (tempSurface == nullptr) {
+		std::cerr << "Can't open the hoover image" << std::endl;
+		return false;
+	}
+	else {
+		textureHovered = tempTexture;
+		SDL_FreeSurface(tempSurface);
+	}
+	texture = textureOriginal;
+
 	return true;
 }
 
@@ -78,10 +94,10 @@ void button::Update()
 
 	if ((x > buttonBox.x) && (x < buttonBox.x + buttonBox.w) && (y > buttonBox.y) && (y < buttonBox.y + buttonBox.h))
 	{
-		//setImage();
+		texture = textureHovered;
 	}
 	else { 
-
+		texture = textureOriginal;
 	}
 }
 

@@ -9,20 +9,16 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 	window = sdlWindow_;
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-	Levels = new button(450, 200, 400, 60, Vec3(20, 20, 210), "Levels");
-	Settings = new button(450, 300, 400, 60, Vec3(120, 255, 0), "Settings");
-	Tutorial = new button(450, 400, 400, 60, Vec3(120, 255, 0), "Tutorial");
-	Quit = new button(450, 500, 400, 60, Vec3(120, 255, 0), "Quit");
+	Levels = new button(490, 195, 300, 60, Vec3(20, 20, 210), "Levels");
+	Settings = new button(440, 295, 400, 60, Vec3(20, 20, 210), "Settings");
+	Tutorial = new button(440, 395, 400, 60, Vec3(20, 20, 210), "Tutorial");
+	Quit = new button(540, 495, 200, 60, Vec3(20, 20, 210), "Quit");
 
-	Back = new button(50, 50, 50, 50, Vec3(120, 255, 0), "Back");
+	Back = new button(50, 50, 50, 50, Vec3(20, 20, 210), "Back");
 
-	LevelOne = new button(250, 200, 200, 200, Vec3(120, 255, 0), "Level One");
+	LevelOne = new button(250, 200, 200, 200, Vec3(20, 20, 210), "1");
 	//LevelTwo = button(350, 200, 200, 200, Vec3(255, 255, 255), Vec3(0, 255, 255), Vec3(120, 255, 0), "Level Two");
 	//LevelThree = button(450, 200, 200, 200, Vec3(255, 255, 255), Vec3(0, 255, 255), Vec3(120, 255, 0), "LevelThree");
-
-	
-	
-
 }
 
 mainMenu::~mainMenu() {
@@ -38,37 +34,45 @@ bool mainMenu::OnCreate() {
 	Matrix4 ortho = MMath::orthographic(0.0f, 30.0f, 0.0f, 15.0f, 0.0f, 1.0f);
 	projectionMatrix = ndc * ortho;
 
-	if (!Levels->setImage("textures/blue_button01.png", renderer)) return false;
-	if (!Settings->setImage("textures/blue_button01.png", renderer)) return false;
-	if (!Tutorial->setImage("textures/blue_button01.png", renderer)) return false;
-	if (!Quit->setImage("textures/blue_button01.png", renderer)) return false;
-	if (!Back->setImage("textures/blue_button01.png", renderer)) return false;
-	if (!LevelOne->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!Levels->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+	if (!Settings->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+	if (!Tutorial->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+	if (!Quit->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+	if (!Back->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+	if (!LevelOne->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
 
-	backgroundTexture = SDL_CreateTextureFromSurface(renderer, IMG_Load("textures/3_game_background.png"));
+	if (!setBackground()) return false;
 
 	return true;
 }
 
 void mainMenu::OnDestroy() {
-	
-
-
 	SDL_DestroyRenderer(renderer);
 }
 
 void mainMenu::Update(const float deltaTime) {
 	SDL_Event event;
 
-	Levels->Update();
-	Settings->Update();
-	Tutorial->Update();
-	Quit->Update();
+	if (currentMenu == 1) {
+		Levels->Update();
+		Settings->Update();
+		Tutorial->Update();
+		Quit->Update();
+	}
+	else if (currentMenu == 2) {
 
-	Back->Update();
-	LevelOne->Update();
-	LevelTwo->Update();
-	LevelThree->Update();
+		Back->Update();
+		LevelOne->Update();
+		//LevelTwo->Update(renderer);
+		//LevelThree->Update(renderer);
+
+	}
+	else  if (currentMenu == 3) {
+		Back->Update();
+	}
+	else {
+		Back->Update();
+	}
 
 	while(SDL_PollEvent(&event))
 	{
@@ -126,4 +130,20 @@ void mainMenu::Render() {
 
 	}
 	SDL_RenderPresent(renderer);
+}
+
+bool mainMenu::setBackground()
+{
+	SDL_Surface* tempSurface = IMG_Load("textures/3_game_background.png");
+	SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
+	if (tempTexture == nullptr) printf("%s\n", SDL_GetError());
+	if (tempSurface == nullptr) {
+		std::cerr << "Can't open the original image" << std::endl;
+		return false;
+	}
+	else {
+		backgroundTexture = tempTexture;
+		SDL_FreeSurface(tempSurface);
+	}
+	return true;
 }

@@ -54,6 +54,7 @@ public:
 	int getScene() {
 		return newScene;
 	}
+	bool setBackground();
 };
 
 #endif

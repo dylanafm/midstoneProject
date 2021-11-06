@@ -19,6 +19,8 @@ private:
 	Vec3 colorBase;
 	SDL_Color textColor;
 
+	SDL_Texture* textureOriginal;
+	SDL_Texture* textureHovered;
 	SDL_Texture* texture;
 	SDL_Rect buttonBox;
 	SDL_Rect textBox;
@@ -31,7 +33,7 @@ public:
 	
 
 	bool buttonClicked(SDL_Event event);
-	bool setImage(const char* path, SDL_Renderer* renderer);
+	bool setImage(const char* pathOriginal, const char* pathHovered, SDL_Renderer* renderer);
 
 	void Update();
 	void Render(SDL_Renderer* renderer);

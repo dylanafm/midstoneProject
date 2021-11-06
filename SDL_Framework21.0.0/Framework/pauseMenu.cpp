@@ -2,13 +2,14 @@
 
 pauseMenu::pauseMenu()
 {
-	Resume = new button(250, 100, 800, 40, Vec3(120, 255, 0), "Resume");
-	Restart = new button(250, 200, 800, 40, Vec3(120, 255, 0), "Restart");
-	MainMenu = new button(250, 300, 800, 40, Vec3(120, 255, 0), "Main Menu");
-	Settings = new button(250, 400, 800, 40, Vec3(120, 255, 0), "Settings");
-	Tutorial = new button(250, 500, 800, 40, Vec3(120, 255, 0), "Tutorial");
-	Quit = new button(250, 600, 800, 40, Vec3(120, 255, 0), "Quit");
-	Back = new button(50, 50, 50, 50, Vec3(120, 255, 0), "Back");
+	Resume = new button(490, 95, 300, 60, Vec3(20, 20, 210), "Resume");
+	Restart = new button(465, 195, 350, 60, Vec3(20, 20, 210), "Restart");
+	MainMenu = new button(415, 295, 450, 60, Vec3(20, 20, 210), "Main Menu");
+	Settings = new button(440, 395, 400, 60, Vec3(20, 20, 210), "Settings");
+	Tutorial = new button(440, 495, 400, 60, Vec3(20, 20, 210), "Tutorial");
+	Quit = new button(540, 595, 200, 60, Vec3(20, 20, 210), "Quit");
+
+	Back = new button(50, 50, 50, 50, Vec3(20, 20, 210), "Back");
 
 }
 
@@ -56,12 +57,12 @@ void pauseMenu::pauseRender(SDL_Renderer* renderer)
 
 bool pauseMenu::setUpButtons(SDL_Renderer* renderer)
 {
-	if (!Resume->setImage("textures/blue_button01.png", renderer)) return false;
-	if (!Restart->setImage("textures/blue_button01.png", renderer)) return false;
-	if (!MainMenu->setImage("textures/blue_button01.png", renderer)) return false;
-	if (!Settings->setImage("textures/blue_button01.png", renderer)) return false;
-	if (!Tutorial->setImage("textures/blue_button01.png", renderer)) return false;
-	if (!Quit->setImage("textures/blue_button01.png", renderer)) return false;
-	if (!Back->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!Resume->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+	if (!Restart->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+	if (!MainMenu->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+	if (!Settings->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+	if (!Tutorial->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+	if (!Quit->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+	if (!Back->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
 	return true;
 }

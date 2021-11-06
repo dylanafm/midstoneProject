@@ -72,8 +72,6 @@ void LevelOne::Update(const float deltaTime) {
 		dMenu->deathUpdate(event);
 		newScene = dMenu->getScene();
 		paused = dMenu->getPaused();
-
-		//if (!paused) pMenu.setDefault(); // Reset the Pause menu when Resume was pressed
 	}
 	else if (paused) {
 		pMenu->pauseUpdate(event);

@@ -142,9 +142,6 @@ void harpoonHarry::isCollided(Fish* fish, harpoonHarry* harry)
 
 void harpoonHarry::render(SDL_Renderer* render)
 {
-	//SDL_SetRenderDrawColor(render, 255, 255, 0, 255);
-	//SDL_RenderFillRect(render, &harryBox);
-
 	SDL_RenderCopyEx(render, texture, nullptr, &harryBox, angle, nullptr, SDL_FLIP_NONE);
 }
 
