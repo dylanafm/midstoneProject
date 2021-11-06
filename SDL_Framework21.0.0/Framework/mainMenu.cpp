@@ -38,14 +38,14 @@ bool mainMenu::OnCreate() {
 	Matrix4 ortho = MMath::orthographic(0.0f, 30.0f, 0.0f, 15.0f, 0.0f, 1.0f);
 	projectionMatrix = ndc * ortho;
 
-	if (!Levels->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
-	if (!Settings->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
-	if (!Tutorial->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
-	if (!Quit->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
-	if (!Back->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
-	if (!LevelOne->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
+	if (!Levels->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!Settings->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!Tutorial->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!Quit->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!Back->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!LevelOne->setImage("textures/blue_button01.png", renderer)) return false;
 
-	backgroundTexture = SDL_CreateTextureFromSurface(renderer, IMG_Load("3_game_background.png"));
+	backgroundTexture = SDL_CreateTextureFromSurface(renderer, IMG_Load("textures/3_game_background.png"));
 
 	return true;
 }

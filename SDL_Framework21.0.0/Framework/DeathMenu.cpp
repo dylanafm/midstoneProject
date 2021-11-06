@@ -33,8 +33,8 @@ void DeathMenu::deathRender(SDL_Renderer* renderer)
 
 bool DeathMenu::setUpButtons(SDL_Renderer* renderer)
 {
-	if (!Restart->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
-	if (!MainMenu->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
-	if (!Quit->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
+	if (!Restart->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!MainMenu->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!Quit->setImage("textures/blue_button01.png", renderer)) return false;
 	return true;
 }

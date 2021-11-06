@@ -54,17 +54,18 @@ bool button::buttonClicked(SDL_Event event_)
 	return false;
 }
 
-bool button::setImage(SDL_Surface* image, SDL_Renderer* renderer)
+bool button::setImage(const char* path, SDL_Renderer* renderer)
 {
-	SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(renderer, image);
+	SDL_Surface* tempSurface = IMG_Load(path);
+	SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
 	if (tempTexture == nullptr) printf("%s\n", SDL_GetError());
-	if (image == nullptr) {
+	if (tempSurface == nullptr) {
 		std::cerr << "Can't open the image" << std::endl;
 		return false;
 	}
 	else {
 		texture = tempTexture;
-		SDL_FreeSurface(image); //is it clearing properly?
+		SDL_FreeSurface(tempSurface);
 	}
 	return true;
 }
@@ -77,7 +78,7 @@ void button::Update()
 
 	if ((x > buttonBox.x) && (x < buttonBox.x + buttonBox.w) && (y > buttonBox.y) && (y < buttonBox.y + buttonBox.h))
 	{
-
+		//setImage();
 	}
 	else { 
 

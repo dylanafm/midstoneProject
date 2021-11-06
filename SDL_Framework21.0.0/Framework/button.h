@@ -31,7 +31,7 @@ public:
 	
 
 	bool buttonClicked(SDL_Event event);
-	bool setImage(SDL_Surface* image, SDL_Renderer* renderer);
+	bool setImage(const char* path, SDL_Renderer* renderer);
 
 	void Update();
 	void Render(SDL_Renderer* renderer);

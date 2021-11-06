@@ -56,12 +56,12 @@ void pauseMenu::pauseRender(SDL_Renderer* renderer)
 
 bool pauseMenu::setUpButtons(SDL_Renderer* renderer)
 {
-	if (!Resume->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
-	if (!Restart->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
-	if (!MainMenu->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
-	if (!Settings->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
-	if (!Tutorial->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
-	if (!Quit->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
-	if (!Back->setImage(IMG_Load("buttonOriginal.png"), renderer)) return false;
+	if (!Resume->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!Restart->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!MainMenu->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!Settings->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!Tutorial->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!Quit->setImage("textures/blue_button01.png", renderer)) return false;
+	if (!Back->setImage("textures/blue_button01.png", renderer)) return false;
 	return true;
 }

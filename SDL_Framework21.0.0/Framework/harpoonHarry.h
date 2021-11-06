@@ -4,6 +4,7 @@
 
 #include "Body.h"
 #include <SDL.h>
+#include <SDL_image.h>
 #include "Vector.h"
 #include "Fish.h"
 
@@ -45,7 +46,7 @@ public:
 	Vec3 getVel() { return vel; }
 	Vec3 getAccel() { return accel;  }
 
-	bool setImage(SDL_Surface* image, SDL_Renderer* renderer);
+	bool setImage(const char* path, SDL_Renderer* renderer);
 	SDL_Texture* getTexture() { return texture; }
 
 

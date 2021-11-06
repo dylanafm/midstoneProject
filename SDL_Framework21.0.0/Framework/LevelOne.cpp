@@ -38,7 +38,7 @@ bool LevelOne::OnCreate() {
 	if (!pMenu->setUpButtons(renderer)) return false;
 	if (!dMenu->setUpButtons(renderer)) return false;
 
-	if (!harry->setImage(IMG_Load("harry.png"), renderer)) return false;
+	if (!harry->setImage("textures/harry.png", renderer)) return false;
 
 	return true;
 }
