@@ -14,7 +14,7 @@ Text::Text()
 
 	//TTF Loading
 
-	font = TTF_OpenFont("OpenSans.ttf", 64);
+	font = TTF_OpenFont("MochiyPopOne-Regular.ttf", 128);
 	if (!font) {
 		std::cout << "Failed to load font: " << TTF_GetError() << std::endl;
 	}

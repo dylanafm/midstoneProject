@@ -6,9 +6,9 @@
 class DeathMenu
 {
 private:
-	button Restart;
-	button MainMenu;
-	button Quit;
+	button* Restart;
+	button* MainMenu;
+	button* Quit;
 
 	int currentMenu = 1;
 	int newScene = 0;
@@ -30,6 +30,7 @@ public:
 		paused = true;
 		newScene = 0;
 	}
+	bool setUpButtons(SDL_Renderer* renderer);
 
 };
 #endif

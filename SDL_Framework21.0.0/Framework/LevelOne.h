@@ -24,8 +24,8 @@ private:
 
 	SDL_Renderer* renderer;
 
-	DeathMenu dMenu;
-	pauseMenu pMenu;
+	DeathMenu* dMenu;
+	pauseMenu* pMenu;
 	bool paused = false;
 
 	int newScene = 0;

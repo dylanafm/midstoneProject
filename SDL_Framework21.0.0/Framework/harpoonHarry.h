@@ -45,7 +45,7 @@ public:
 	Vec3 getVel() { return vel; }
 	Vec3 getAccel() { return accel;  }
 
-	void setTexture(SDL_Texture* texture_) { texture = texture_; }
+	bool setImage(SDL_Surface* image, SDL_Renderer* renderer);
 	SDL_Texture* getTexture() { return texture; }
 
 

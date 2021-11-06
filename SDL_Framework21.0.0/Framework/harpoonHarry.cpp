@@ -148,4 +148,20 @@ void harpoonHarry::render(SDL_Renderer* render)
 	SDL_RenderCopyEx(render, texture, nullptr, &harryBox, angle, nullptr, SDL_FLIP_NONE);
 }
 
+bool harpoonHarry::setImage(SDL_Surface* image, SDL_Renderer* renderer)
+{
+	//SDL_Surface* harryImage = IMG_Load("harry.png");
+	SDL_Texture* harryTexture = SDL_CreateTextureFromSurface(renderer, image);
+	if (harryTexture == nullptr) printf("%s\n", SDL_GetError());
+	if (image == nullptr) {
+		std::cerr << "Can't open the image" << std::endl;
+		return false;
+	}
+	else {
+		texture = harryTexture;
+		SDL_FreeSurface(image);
+	}
+	return true;
+}
+
 

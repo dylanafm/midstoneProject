@@ -2,20 +2,25 @@
 
 button::button() {
 
-	NewButton.x = 0; 
-	NewButton.y = 0;
-	NewButton.w = 0; 
-	NewButton.h = 0; 
-	colorBase = Vec3(0,0,0); 
-	colorHighlighted = Vec3(0, 0, 0);
+	buttonBox.x = 0;
+	buttonBox.y = 0;
+	buttonBox.w = 0;
+	buttonBox.h = 0;
 	textColor = SDL_Color{ 0, 0, 0 };
 	text = "Default Text";
+	texture = nullptr;
 }
 
-button::button(int x, int y, int w, int h, Vec3 colorBase_, Vec3 colorHighlighted_, Vec3 textColor2, const char* text_)
+button::button(int x, int y, int w, int h, Vec3 textColor2, const char* text_)
 {
-	NewButton.x = x; NewButton.y = y; NewButton.w = w; NewButton.h = h; colorBase = colorBase_; 
-	colorHighlighted = colorHighlighted_; textColor.r = textColor2.x; textColor.g = textColor2.y; textColor.b = textColor2.z; text = text_;
+	buttonBox.x = x; buttonBox.y = y; buttonBox.w = w; buttonBox.h = h; texture = nullptr;
+	textColor.r = textColor2.x; textColor.g = textColor2.y; textColor.b = textColor2.z; text = text_;
+
+	textBox = buttonBox;
+	textBox.x += 15;
+	//textBox.y += 10;
+	textBox.w -= 30;
+	textBox.h -= 5;
 }
 
 button::~button()
@@ -41,13 +46,27 @@ bool button::buttonClicked(SDL_Event event_)
 		y = event_.button.y;
 
 		//If the mouse is over the levels button
-		if ((x > NewButton.x) && (x < NewButton.x + NewButton.w) && (y > NewButton.y) && (y < NewButton.y + NewButton.h))
+		if ((x > buttonBox.x) && (x < buttonBox.x + buttonBox.w) && (y > buttonBox.y) && (y < buttonBox.y + buttonBox.h))
 		{
 			return true;
-
 		}
 	}
 	return false;
+}
+
+bool button::setImage(SDL_Surface* image, SDL_Renderer* renderer)
+{
+	SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(renderer, image);
+	if (tempTexture == nullptr) printf("%s\n", SDL_GetError());
+	if (image == nullptr) {
+		std::cerr << "Can't open the image" << std::endl;
+		return false;
+	}
+	else {
+		texture = tempTexture;
+		SDL_FreeSurface(image); //is it clearing properly?
+	}
+	return true;
 }
 
 void button::Update()
@@ -56,30 +75,18 @@ void button::Update()
 	Uint32 buttons;
 	buttons = SDL_GetMouseState(&x, &y);
 
-	if ((x > NewButton.x) && (x < NewButton.x + NewButton.w) && (y > NewButton.y) && (y < NewButton.y + NewButton.h))
+	if ((x > buttonBox.x) && (x < buttonBox.x + buttonBox.w) && (y > buttonBox.y) && (y < buttonBox.y + buttonBox.h))
 	{
-		currentColor = colorHighlighted;
 
 	}
-	else { currentColor = colorBase; }
+	else { 
+
+	}
 }
 
 void button::Render(SDL_Renderer* renderer)
 {
-	SDL_SetRenderDrawColor(renderer, currentColor.x, currentColor.y, currentColor.z, 255);
-	SDL_RenderFillRect(renderer, &NewButton);
-	SDL_Rect textBox;
-
-	if (NewButton.w > 600) {
-		textBox.x = NewButton.x + 300;
-		textBox.w = NewButton.w - 600;
-	}
-	else {
-		textBox.x = NewButton.x;
-		textBox.w = NewButton.w;
-	}
-	textBox.y = NewButton.y;
-	textBox.h = NewButton.h;
+	SDL_RenderCopyEx(renderer, texture, nullptr, &buttonBox, 0.0, nullptr, SDL_FLIP_NONE);
 	
 	Text buttonText;
 	buttonText.writeText(text, SDL_Color{ textColor }, textBox, renderer);

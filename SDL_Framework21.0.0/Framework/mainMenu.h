@@ -19,21 +19,21 @@ private:
 
 	
 	
-	button Levels;
-	button Settings;
-	button Tutorial;
-	button Quit;
+	button* Levels;
+	button* Settings;
+	button* Tutorial;
+	button* Quit;
 	
 	
-	button Back;
+	button* Back;
 
 
 
-	button LevelOne;
-	button LevelTwo;
-	button LevelThree;
+	button* LevelOne;
+	button* LevelTwo;
+	button* LevelThree;
 
-
+	SDL_Texture* backgroundTexture;
 
 
 	Text newText;

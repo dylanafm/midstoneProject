@@ -6,14 +6,14 @@
 class pauseMenu
 {
 private:
-	button Resume;
-	button Restart;
-	button MainMenu;
-	button Settings;
-	button Tutorial;
-	button Quit;
+	button* Resume;
+	button* Restart;
+	button* MainMenu;
+	button* Settings;
+	button* Tutorial;
+	button* Quit;
 
-	button Back;
+	button* Back;
 
 	int currentMenu = 1;
 	int newScene = 0;
@@ -35,6 +35,7 @@ public:
 		paused = true;
 		newScene = 0;
 	}
+	bool setUpButtons(SDL_Renderer* renderer);
 
 };
 #endif

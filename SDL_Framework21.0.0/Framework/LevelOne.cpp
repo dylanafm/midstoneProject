@@ -32,17 +32,13 @@ bool LevelOne::OnCreate() {
 	Matrix4 ortho = MMath::orthographic(0.0f, 30.0f, 0.0f, 15.0f, 0.0f, 1.0f);
 	projectionMatrix = ndc * ortho;
 
-	SDL_Surface* harryImage = IMG_Load("harry.png");
-	SDL_Texture* harryTexture = SDL_CreateTextureFromSurface(renderer, harryImage);
-	if (harryTexture == nullptr) printf("%s\n", SDL_GetError());
-	if (harryImage == nullptr) {
-		std::cerr << "Can't open the image" << std::endl;
-		return false;
-	}
-	else {
-		harry->setTexture(harryTexture);
-		SDL_FreeSurface(harryImage);
-	}
+	pMenu = new pauseMenu();
+	dMenu = new DeathMenu();
+
+	if (!pMenu->setUpButtons(renderer)) return false;
+	if (!dMenu->setUpButtons(renderer)) return false;
+
+	if (!harry->setImage(IMG_Load("harry.png"), renderer)) return false;
 
 	return true;
 }
@@ -73,18 +69,18 @@ void LevelOne::Update(const float deltaTime) {
 	
 	if (harry->health <= 0) {
 		if (!paused)	paused = true;
-		dMenu.deathUpdate(event);
-		newScene = dMenu.getScene();
-		paused = dMenu.getPaused();
+		dMenu->deathUpdate(event);
+		newScene = dMenu->getScene();
+		paused = dMenu->getPaused();
 
 		//if (!paused) pMenu.setDefault(); // Reset the Pause menu when Resume was pressed
 	}
 	else if (paused) {
-		pMenu.pauseUpdate(event);
-		newScene = pMenu.getScene();
-		paused = pMenu.getPaused();
+		pMenu->pauseUpdate(event);
+		newScene = pMenu->getScene();
+		paused = pMenu->getPaused();
 
-		if (!paused) pMenu.setDefault(); // Reset the Pause menu when Resume was pressed
+		if (!paused) pMenu->setDefault(); // Reset the Pause menu when Resume was pressed
 	}
 
 
@@ -105,8 +101,8 @@ void LevelOne::Render() {
 
 
 
-	if (harry->health <= 0) dMenu.deathRender(renderer);
-	else if (paused)	pMenu.pauseRender(renderer);
+	if (harry->health <= 0) dMenu->deathRender(renderer);
+	else if (paused) pMenu->pauseRender(renderer);
 
 	SDL_RenderPresent(renderer);
 

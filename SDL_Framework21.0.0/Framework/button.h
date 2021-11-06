@@ -17,21 +17,21 @@ private:
 	const char* text;
 
 	Vec3 colorBase;
-	Vec3 colorHighlighted;
-	Vec3 currentColor;
 	SDL_Color textColor;
 
-
-	SDL_Rect NewButton;
+	SDL_Texture* texture;
+	SDL_Rect buttonBox;
+	SDL_Rect textBox;
 
 public:
 	
 	button();
-	button(int x, int y, int w, int h, Vec3 colorBase_, Vec3 colorHighlighted_, Vec3 textColor2, const char* text_);
+	button(int x, int y, int w, int h, Vec3 textColor2, const char* text_);
 	~button();
 	
 
 	bool buttonClicked(SDL_Event event);
+	bool setImage(SDL_Surface* image, SDL_Renderer* renderer);
 
 	void Update();
 	void Render(SDL_Renderer* renderer);
