@@ -152,6 +152,7 @@
     <ClCompile Include="DeathMenu.cpp" />
     <ClCompile Include="Fish.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="Harpoon.cpp" />
     <ClCompile Include="harpoonHarry.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="LevelOne.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="DeathMenu.h" />
     <ClInclude Include="Fish.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Harpoon.h" />
     <ClInclude Include="harpoonHarry.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="LevelOne.h" />
