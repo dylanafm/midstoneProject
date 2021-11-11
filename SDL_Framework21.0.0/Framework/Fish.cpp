@@ -1,4 +1,5 @@
 #include "Fish.h"
+#include "TextureManager.h"
 Fish::Fish() 
 {
 	pos = Vec3(450.0f, 100.0f, 100.0f);
@@ -12,13 +13,15 @@ Fish::Fish()
 	accel = Vec3(0.0f, 0.0f, 0.0f);
 	accelCurrent = Vec3(0.0f, 0.0f, 0.0f);
 	accelPrevious = Vec3(0.0f, 0.0f, 0.0f);
+
 }
 Fish::~Fish()
 {
 }
-Fish::Fish(SDL_Rect body_)
+Fish::Fish(SDL_Rect body_, SDL_Renderer* renderer)
 {
 	body = body_;
+	fishRender = renderer;
 }
 void Fish::Update(float deltaTime)
 {
@@ -27,8 +30,16 @@ void Fish::Update(float deltaTime)
 }
 void Fish::Render(SDL_Renderer* renderer)
 {
-	SDL_SetRenderDrawColor(renderer, 100, 150, 0, 255);
-	SDL_RenderFillRect(renderer, &body);
+	fishTex = TextureManager::LoadTexture("textures/blobfish.png", fishRender);
+
+	if (fishTex == nullptr) {
+		printf("Where da fish at?\n");
+	}
+	SDL_RenderCopy(renderer, fishTex, nullptr, &body);
+
+
+	//SDL_SetRenderDrawColor(renderer, 100, 150, 0, 255);
+	//SDL_RenderFillRect(renderer, &body);
 	//printf("Rendered!\n");
 
 	//std::cout << body.x << ", " << body.y << " , " << body.w << " , " << body.h << "\n";

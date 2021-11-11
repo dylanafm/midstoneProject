@@ -3,17 +3,20 @@
 #include <SDL.h>
 #include "Timer.h"
 
+
 LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 
 	window = sdlWindow_;
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
+
+	map = new Map(renderer);
 	harry = new harpoonHarry();
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
 
-	fish[0] = new Fish(SDL_Rect{ 200, 200, 50, 50 });
-	fish[1] = new Fish(SDL_Rect{ 300, 250, 50, 50 });
-	fish[2] = new Fish(SDL_Rect{ 200, 25, 50, 50 });
+	fish[0] = new Fish(SDL_Rect{ 200, 200, 50, 50 }, renderer);
+	fish[1] = new Fish(SDL_Rect{ 900, 400, 50, 50 }, renderer);
+	fish[2] = new Fish(SDL_Rect{ 400, 600, 50, 50 }, renderer);
 }
 
 LevelOne::~LevelOne() {
@@ -109,21 +112,24 @@ void LevelOne::Update(const float deltaTime) {
 }
 
 void LevelOne::Render() {
-	SDL_SetRenderDrawColor(renderer, 0, 120, 120, 0);
+	//SDL_SetRenderDrawColor(renderer, 0, 120, 120, 0);
+
 	SDL_RenderClear(renderer);
+	map->DrawMap(renderer);
 
 	harry->render(renderer);
 
 	if (harpoon != nullptr) harpoon->render(renderer);
 
+
 	for (int i = 0; i < std::size(fish); i++) {
 		if (fish[i] != nullptr) fish[i]->Render(renderer);
 	}
 	
-	newHud.displayHud(renderer, 25, 25, 50, 50, harry);
-
+	//hud.displayHUD(renderer, 25, 25, 50, 50, harry);
 	if (harry->health <= 0) dMenu->deathRender(renderer);
 	else if (paused) pMenu->pauseRender(renderer);
+
 
 	SDL_RenderPresent(renderer);
 

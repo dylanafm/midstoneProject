@@ -6,6 +6,7 @@
 #include "LevelOne.h"
 #include <iostream>
 
+
 GameManager::GameManager() {
 	windowPtr = nullptr;
 	timer = nullptr;

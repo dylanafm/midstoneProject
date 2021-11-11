@@ -3,11 +3,15 @@
 #include "GameManager.h"
 #include <SDL.h>
 #include <SDL_image.h>
+#include "TextureManager.h"
 
 
 mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 	window = sdlWindow_;
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+	logoTex = TextureManager::LoadTexture("textures/HarryLogo.png", renderer);
+	logoBox = SDL_Rect{ 430, 10, 400, 200 };
 
 	Levels = new button(490, 195, 300, 60, Vec3(20, 20, 210), "Levels");
 	Settings = new button(440, 295, 400, 60, Vec3(20, 20, 210), "Settings");
@@ -99,11 +103,12 @@ void mainMenu::Render() {
 
 	SDL_RenderCopyEx(renderer, backgroundTexture, nullptr, new SDL_Rect{ 0, 0, 1280, 720 }, 0.0, nullptr, SDL_FLIP_NONE);
 	
+
 	if (currentMenu == 1) {
 		
 		
 		//Levels Button
-		
+		SDL_RenderCopy(renderer, logoTex, nullptr, &logoBox);
 
 		Levels->Render(renderer);
 		Settings->Render(renderer);

@@ -12,7 +12,7 @@
 #include "HUD.h"
 #include "Fish.h"
 #include "Harpoon.h"
-
+#include "Map.h"
 
 using namespace MATH;
 class LevelOne : public Scene {
@@ -23,6 +23,8 @@ private:
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 
+	LevelOne* level;
+
 	SDL_Renderer* renderer;
 
 	DeathMenu* dMenu;
@@ -32,9 +34,14 @@ private:
 	int newScene = 0;
 	bool isFired = false;
 	float timer = 0.0f, finalTime = 3.0f;
+
+
+	Map* map;
+
+	//HUD hud;
 public:
 
-	HUD newHud;
+	//HUD hud;
 
 	LevelOne(SDL_Window* sdlWindow);
 	~LevelOne();
@@ -50,6 +57,8 @@ public:
 		return newScene;
 	}
 
+	float getFinalTime() { return finalTime; }
+	
 };
 
 #endif

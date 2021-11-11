@@ -158,11 +158,13 @@
     <ClCompile Include="LevelOne.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="mainMenu.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="MMath.cpp" />
     <ClCompile Include="pauseMenu.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Scene0.cpp" />
     <ClCompile Include="Text.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="VMath.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -178,6 +180,7 @@
     <ClInclude Include="HUD.h" />
     <ClInclude Include="LevelOne.h" />
     <ClInclude Include="mainMenu.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MMath.h" />
     <ClInclude Include="pauseMenu.h" />
@@ -185,6 +188,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene0.h" />
     <ClInclude Include="Text.h" />
+    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="VMath.h" />

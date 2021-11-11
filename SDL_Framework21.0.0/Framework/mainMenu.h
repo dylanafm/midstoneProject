@@ -35,6 +35,9 @@ private:
 
 	SDL_Texture* backgroundTexture;
 
+	SDL_Texture* logoTex;
+
+	SDL_Rect logoBox;
 
 	Text newText;
 

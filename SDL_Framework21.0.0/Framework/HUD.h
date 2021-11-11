@@ -5,7 +5,7 @@
 #include <SDL.h>
 #include "Text.h"
 #include "harpoonHarry.h"
-
+#include "LevelOne.h"
 class HUD
 {
 private:
@@ -16,8 +16,8 @@ public:
 	HUD();
 	~HUD();
 
-	void displayHud(SDL_Renderer* renderer, int hX_, int hY_, int hW_, int hH_, harpoonHarry* harry);
-
+	void displayHUD(SDL_Renderer* renderer, int hX_, int hY_, int hW_, int hH_, harpoonHarry* harry);
+	//void displayTimer(SDL_Renderer* renderer, int hX_, int hY_, int hW_, int hH_, harpoonHarry* harry);
 };
 
 
