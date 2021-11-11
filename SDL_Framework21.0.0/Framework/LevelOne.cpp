@@ -102,11 +102,11 @@ void LevelOne::Update(const float deltaTime) {
 			harpoon = nullptr;
 		}
 	}
-	if (isFired) {
-		timer += deltaTime;
-		if (timer >= finalTime) {
-			isFired = false;
-			timer = 0.0f;
+	if (isFired && reloadTimer != nullptr) {
+		reloadTimer->Update(deltaTime, isFired);
+		if (!isFired) {
+			reloadTimer = nullptr;
+			delete reloadTimer;
 		}
 	}
 }
@@ -148,5 +148,7 @@ void LevelOne::spawnHarpoon()
 	Vec3 velocity = VMath::normalize(direction) * 420.0f;
 	harpoon = new Harpoon(position, velocity);
 	harpoon->setImage("textures/Harpoon.png", renderer);
+
 	isFired = true;
+	reloadTimer = new InGameTimer(3.0f);
 }

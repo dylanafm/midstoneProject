@@ -12,8 +12,8 @@
 #include "HUD.h"
 #include "Fish.h"
 #include "Harpoon.h"
+#include "InGameTImer.h"
 #include "Map.h"
-
 using namespace MATH;
 class LevelOne : public Scene {
 private:
@@ -30,15 +30,11 @@ private:
 	DeathMenu* dMenu;
 	pauseMenu* pMenu;
 	bool paused = false;
-
+	Map* map;
+	InGameTimer* reloadTimer;
 	int newScene = 0;
 	bool isFired = false;
 	float timer = 0.0f, finalTime = 3.0f;
-
-
-	Map* map;
-
-	//HUD hud;
 public:
 
 	//HUD hud;
