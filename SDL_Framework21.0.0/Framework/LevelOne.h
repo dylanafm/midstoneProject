@@ -12,6 +12,7 @@
 #include "HUD.h"
 #include "Fish.h"
 #include "Harpoon.h"
+#include "InGameTimer.h"
 
 
 using namespace MATH;
@@ -31,7 +32,8 @@ private:
 
 	int newScene = 0;
 	bool isFired = false;
-	float timer = 0.0f, finalTime = 3.0f;
+
+	InGameTimer* reloadTimer;
 public:
 
 	HUD newHud;
