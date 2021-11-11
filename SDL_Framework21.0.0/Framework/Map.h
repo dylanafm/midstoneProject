@@ -9,6 +9,8 @@ public:
 	Map(SDL_Renderer* renderer);
 	~Map();
 
+	//Vec3 pos;
+
 	void LoadMap(int arr[23][40]);
 	void DrawMap(SDL_Renderer* renderer);
 	

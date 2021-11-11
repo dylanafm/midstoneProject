@@ -39,12 +39,19 @@ Map::Map(SDL_Renderer* renderer) {
 		printf("Yo Water not loadin\n");
 	}
 	LoadMap(lvl1);
+	
+	//pos.x = 
+
+
 
 	src.x = src.y = 0;
-	src.w = dest.w = 32;
-	src.h = dest.h = 32;
+	src.w =  32;
+	src.h =  32;
 
 	dest.x = dest.y = 0;
+
+	dest.w = 32;
+	dest.h = 32;
 }
 
 void Map::LoadMap(int arr[23][40])

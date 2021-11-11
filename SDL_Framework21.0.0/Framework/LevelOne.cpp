@@ -9,6 +9,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	window = sdlWindow_;
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
+	
 
 	map = new Map(renderer);
 	harry = new harpoonHarry();

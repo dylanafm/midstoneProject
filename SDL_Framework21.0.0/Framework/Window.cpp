@@ -1,6 +1,7 @@
 #include "Window.h"
 #include <SDL.h>
 #include <iostream> /// Umer likes this over printf() - too bad
+#include <SDL_image.h>
 
 
 Window::Window(int width_, int height_){
@@ -8,6 +9,7 @@ Window::Window(int width_, int height_){
 	window = nullptr;
 	width = width_;
 	height = height_;
+	
 }
 
 bool Window::OnCreate(){
@@ -27,7 +29,9 @@ bool Window::OnCreate(){
 		std::cout << "SDL_Error: " << SDL_GetError() << std::endl;
 		return false;
 	}
+	SDL_SetWindowIcon(window, icon);
 	return true;
+
 }
 
 void Window::OnDestroy(){
