@@ -35,7 +35,7 @@ public:
 
 	bool checkBossCollision(harpoonHarry* harry, boss* boss1);
 
-	void isCollided(Fish* fish, harpoonHarry* harry);
+	bool isCollided(Fish* fish, harpoonHarry* harry);
 
 	bool isBossCollided(boss* boss1, harpoonHarry* harry);
 

@@ -20,9 +20,10 @@ boss::~boss()
 {
 }
 
-boss::boss(SDL_Rect body_)
+boss::boss(SDL_Rect body_, SDL_Renderer* renderer)
 {
 	body = body_;
+	bossTex = TextureManager::LoadTexture("textures/bossPNG.png", renderer);
 }
 
 void boss::Update(float deltaTime)
@@ -33,10 +34,5 @@ void boss::Update(float deltaTime)
 
 void boss::Render(SDL_Renderer* renderer)
 {
-	bossTex = TextureManager::LoadTexture("textures/bossPNG.png", renderer);
-
-	if (bossTex == nullptr) {
-		printf("Where da fish at?\n");
-	}
 	SDL_RenderCopy(renderer, bossTex, nullptr, &body);
 }

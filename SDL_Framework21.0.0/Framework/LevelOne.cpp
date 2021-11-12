@@ -11,7 +11,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 
 
 	map = new Map(renderer);
-	boss1 = new boss(SDL_Rect{ 1000, 500, 200, 200 });	
+	boss1 = new boss(SDL_Rect{ 1000, 500, 200, 200 }, renderer);	
 	boss1->health = 3;
 	harry = new harpoonHarry();
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
@@ -65,7 +65,12 @@ void LevelOne::Update(const float deltaTime) {
 	for (int i = 0; i < std::size(fish); i++) {
 
 		if (fish[i] != nullptr) fish[i]->Update(deltaTime);
-		if (fish[i] != nullptr) harry->isCollided(fish[i], harry);
+		if (fish[i] != nullptr) {
+			if (harry->isCollided(fish[i], harry)) {
+				fish[i] = nullptr;
+				delete fish[i];
+			}
+		}
 
 		if (harpoon != nullptr && fish[i] != nullptr) {
 			if (harpoon->isCollided(fish[i], harpoon)) {

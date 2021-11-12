@@ -175,13 +175,14 @@ bool harpoonHarry::checkBossCollision(harpoonHarry* harry, boss* boss1)
 	return true;
 }
 
-void harpoonHarry::isCollided(Fish* fish, harpoonHarry* harry)
+bool harpoonHarry::isCollided(Fish* fish, harpoonHarry* harry)
 {
 	if ((harry->checkCollision(harry, fish)) == true) {
 		health--;
 		std::cout << "Health = " << health << "\n";
-		delete fish;
+		return true;
 	}
+	return false;
 }
 
 bool harpoonHarry::isBossCollided(boss* boss1, harpoonHarry* harry)

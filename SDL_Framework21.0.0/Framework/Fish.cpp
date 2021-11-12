@@ -22,6 +22,7 @@ Fish::Fish(SDL_Rect body_, SDL_Renderer* renderer)
 {
 	body = body_;
 	fishRender = renderer;
+	fishTex = TextureManager::LoadTexture("textures/blobfish.png", renderer);
 }
 void Fish::Update(float deltaTime)
 {
@@ -30,11 +31,6 @@ void Fish::Update(float deltaTime)
 }
 void Fish::Render(SDL_Renderer* renderer)
 {
-	fishTex = TextureManager::LoadTexture("textures/blobfish.png", renderer);
-
-	if (fishTex == nullptr) {
-		printf("Where da fish at?\n");
-	}
 	SDL_RenderCopy(renderer, fishTex, nullptr, &body);
 
 

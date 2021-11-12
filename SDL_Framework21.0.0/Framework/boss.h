@@ -12,7 +12,7 @@ class boss
 public:
 	boss();
 	~boss();
-	boss(SDL_Rect body);
+	boss(SDL_Rect body, SDL_Renderer* renderer);
 	Vec3 pos, vel, accelPrevious, accelCurrent, accel;
 	int health;
 	SDL_Rect body;
