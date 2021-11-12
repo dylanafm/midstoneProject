@@ -3,8 +3,9 @@
 #include <cmath>
 #include <iostream>
 #include "VMath.h"
+#include "TextureManager.h"
 
-harpoonHarry::harpoonHarry()
+harpoonHarry::harpoonHarry(SDL_Renderer* renderer, const char* path)
 {
 	
 	pos = Vec3(500.0f, 50.0f, 200.0f);
@@ -19,7 +20,6 @@ harpoonHarry::harpoonHarry()
 	mass = 100.0f;
 	health = 3;
 	finalForce = Vec3(0.0f, 0.0f, 0.0f);
-	texture = nullptr;
 	angle = 0.0;
 	anglePrevious = 0.0;
 	flip = 0.0;
@@ -30,6 +30,7 @@ harpoonHarry::harpoonHarry()
 	harryBox.w = 50.0f;
 	harryBox.h = 50.0f;
 
+	texture = TextureManager::LoadTexture(path, renderer);
 }
 
 harpoonHarry::~harpoonHarry(){
@@ -85,7 +86,7 @@ void harpoonHarry::Update(float deltaTime)
 	//position = initail velocity * time    +   1/2   (accel * time
 }
 
-bool harpoonHarry::checkCollision(harpoonHarry* harry, Fish* fish)
+bool harpoonHarry::checkCollision(harpoonHarry* harry, Enemy* enemy)
 {
 	//The sides of the rectangles
 	int leftA, leftB;
@@ -100,10 +101,10 @@ bool harpoonHarry::checkCollision(harpoonHarry* harry, Fish* fish)
 	bottomA = harryBox.y + harryBox.h;
 
 	//Calculate the sides of rect B
-	leftB = fish->body.x;
-	rightB = fish->body.x + fish->body.w;
-	topB = fish->body.y;
-	bottomB = fish->body.y + fish->body.h;
+	leftB = enemy->body.x;
+	rightB = enemy->body.x + enemy->body.w;
+	topB = enemy->body.y;
+	bottomB = enemy->body.y + enemy->body.h;
 
 	if (bottomA <= topB)
 	{
@@ -130,64 +131,9 @@ bool harpoonHarry::checkCollision(harpoonHarry* harry, Fish* fish)
 	return true;
 }
 
-bool harpoonHarry::checkBossCollision(harpoonHarry* harry, boss* boss1)
+bool harpoonHarry::isCollided(harpoonHarry* harry, Enemy* enemy)
 {
-	//The sides of the rectangles
-	int leftA, leftB;
-	int rightA, rightB;
-	int topA, topB;
-	int bottomA, bottomB;
-
-	//Calculate the sides of rect A
-	leftA = harryBox.x;
-	rightA = harryBox.x + harryBox.w;
-	topA = harryBox.y;
-	bottomA = harryBox.y + harryBox.h;
-
-	//Calculate the sides of rect B
-	leftB = boss1->body.x;
-	rightB = boss1->body.x + boss1->body.w;
-	topB = boss1->body.y;
-	bottomB = boss1->body.y + boss1->body.h;
-
-	if (bottomA <= topB)
-	{
-		return false;
-	}
-
-	if (topA >= bottomB)
-	{
-		return false;
-	}
-
-	if (rightA <= leftB)
-	{
-		return false;
-	}
-
-	if (leftA >= rightB)
-	{
-		return false;
-	}
-
-	//If none of the sides from A are outside B
-	std::cout << "BANG!\n";
-	return true;
-}
-
-bool harpoonHarry::isCollided(Fish* fish, harpoonHarry* harry)
-{
-	if ((harry->checkCollision(harry, fish)) == true) {
-		health--;
-		std::cout << "Health = " << health << "\n";
-		return true;
-	}
-	return false;
-}
-
-bool harpoonHarry::isBossCollided(boss* boss1, harpoonHarry* harry)
-{
-	if ((harry->checkBossCollision(harry, boss1)) == true) {
+	if ((harry->checkCollision(harry, enemy)) == true) {
 		health--;
 		std::cout << "Health = " << health << "\n";
 		return true;
@@ -198,20 +144,4 @@ bool harpoonHarry::isBossCollided(boss* boss1, harpoonHarry* harry)
 void harpoonHarry::render(SDL_Renderer* render)
 {
 	SDL_RenderCopyEx(render, texture, nullptr, &harryBox, angle, nullptr, SDL_FLIP_NONE);
-}
-
-bool harpoonHarry::setImage(const char* path, SDL_Renderer* renderer)
-{
-	SDL_Surface* harryImage = IMG_Load(path);
-	SDL_Texture* harryTexture = SDL_CreateTextureFromSurface(renderer, harryImage);
-	if (harryTexture == nullptr) printf("%s\n", SDL_GetError());
-	if (harryImage == nullptr) {
-		std::cerr << "Can't open the image" << std::endl;
-		return false;
-	}
-	else {
-		texture = harryTexture;
-		SDL_FreeSurface(harryImage);
-	}
-	return true;
 }

@@ -11,14 +11,14 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 
 
 	map = new Map(renderer);
-	boss1 = new boss(SDL_Rect{ 1000, 500, 200, 200 }, renderer);	
+	boss1 = new boss(SDL_Rect{ 1000, 500, 200, 200 }, renderer, "textures/bossPNG.png");
 	boss1->health = 3;
-	harry = new harpoonHarry();
+	harry = new harpoonHarry(renderer, "textures/harry.png");
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
 
-	fish[0] = new Fish(SDL_Rect{ 200, 200, 50, 50 }, renderer);
-	fish[1] = new Fish(SDL_Rect{ 900, 400, 50, 50 }, renderer);
-	fish[2] = new Fish(SDL_Rect{ 400, 600, 50, 50 }, renderer);
+	fish[0] = new Fish(SDL_Rect{ 200, 200, 50, 50 }, renderer, "textures/blobfish.png");
+	fish[1] = new Fish(SDL_Rect{ 900, 400, 50, 50 }, renderer, "textures/blobfish.png");
+	fish[2] = new Fish(SDL_Rect{ 400, 600, 50, 50 }, renderer, "textures/blobfish.png");
 }
 
 LevelOne::~LevelOne() {
@@ -41,8 +41,6 @@ bool LevelOne::OnCreate() {
 	if (!pMenu->setUpButtons(renderer)) return false;
 	if (!dMenu->setUpButtons(renderer)) return false;
 
-	if (!harry->setImage("textures/harry.png", renderer)) return false;
-
 	return true;
 }
 
@@ -56,7 +54,7 @@ void LevelOne::Update(const float deltaTime) {
 	harry->Update(deltaTime);
 	if(harpoon != nullptr) harpoon->Update(deltaTime);
 	if (boss1 != nullptr){ 
-		if (harry->isBossCollided(boss1, harry)) {
+		if (harry->isCollided(harry, boss1)) {
 			boss1 = nullptr;
 			delete boss1;
 		}
@@ -66,7 +64,7 @@ void LevelOne::Update(const float deltaTime) {
 
 		if (fish[i] != nullptr) fish[i]->Update(deltaTime);
 		if (fish[i] != nullptr) {
-			if (harry->isCollided(fish[i], harry)) {
+			if (harry->isCollided(harry, fish[i])) {
 				fish[i] = nullptr;
 				delete fish[i];
 			}
@@ -83,7 +81,7 @@ void LevelOne::Update(const float deltaTime) {
 	}
 
 	if (harpoon != nullptr && boss1 != nullptr) {
-		if (harpoon->isBossCollided(boss1, harpoon)) {
+		if (harpoon->isCollided(boss1, harpoon)) {
 			if (boss1->health > 1) {
 				boss1->health -= 1;
 				harpoon = nullptr;
@@ -177,8 +175,7 @@ void LevelOne::spawnHarpoon()
 	Vec3 position = Vec3(harry->pos.x + 10.0f, harry->pos.y + 19.75f, 0.0f);
 	Vec3 direction = Vec3(xf - position.x - 15.0f, yf - position.y - 5.25f, 0.0f);
 	Vec3 velocity = VMath::normalize(direction) * 420.0f;
-	harpoon = new Harpoon(position, velocity);
-	harpoon->setImage("textures/Harpoon.png", renderer);
+	harpoon = new Harpoon(position, velocity, renderer, "textures/Harpoon.png");
 
 	isFired = true;
 	reloadTimer = new InGameTimer(3.0f);

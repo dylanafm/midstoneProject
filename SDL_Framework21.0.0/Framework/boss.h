@@ -3,23 +3,16 @@
 
 #include <SDL.h>
 #include "Vector.h"
+#include "Enemy.h"
 
 
 using namespace MATH;
 
-class boss
+class boss : public Enemy
 {
 public:
-	boss();
+	boss(SDL_Rect body_, SDL_Renderer* renderer, const char* path);
 	~boss();
-	boss(SDL_Rect body, SDL_Renderer* renderer);
-	Vec3 pos, vel, accelPrevious, accelCurrent, accel;
-	int health;
-	SDL_Rect body;
-	SDL_Texture* bossTex;
-	void Update(float deltaTime);
-	void Render(SDL_Renderer* renderer);
-
 };
 
 #endif

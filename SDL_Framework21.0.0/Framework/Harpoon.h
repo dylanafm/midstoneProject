@@ -14,7 +14,7 @@ private:
 
 
 public:
-	Harpoon(Vec3 pos_, Vec3 vel_);
+	Harpoon(Vec3 pos_, Vec3 vel_, SDL_Renderer* renderer, const char* path);
 	~Harpoon();
 
 	Vec3 pos, vel, accelPrevious, accelCurrent, accel, finalForce;
@@ -35,9 +35,7 @@ public:
 
 	bool MouseClicked(SDL_Event event_);
 
-	bool isCollided(Fish* fish, Harpoon* harry);
-
-	bool isBossCollided(boss* boss1, Harpoon* harry);
+	bool isCollided(Enemy* enemy, Harpoon* harry);
 
 };
 

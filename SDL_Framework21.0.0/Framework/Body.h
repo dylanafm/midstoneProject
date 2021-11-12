@@ -5,7 +5,7 @@
 using namespace MATH;
 
 class Body {
-private:
+public:
 	Vec3 pos;
 	Vec3 vel;
 	Vec3 accel;

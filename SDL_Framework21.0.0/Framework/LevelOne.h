@@ -15,7 +15,10 @@
 #include "InGameTImer.h"
 #include "Map.h"
 #include "boss.h"
+#include "Enemy.h"
+
 using namespace MATH;
+
 class LevelOne : public Scene {
 private:
 	harpoonHarry* harry;

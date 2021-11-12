@@ -15,11 +15,11 @@ private:
 
 
 public:
-	harpoonHarry();
+	harpoonHarry(SDL_Renderer* renderer, const char* path);
 	~harpoonHarry();
 
 	int health;
-	Vec3 pos, vel, accelPrevious, accelCurrent, accel, finalForce;
+	Vec3 accelPrevious, accelCurrent, accel, finalForce;
 	float drag, mass, radius, length, coefficient;
 	double angle, anglePrevious, flip;
 	SDL_Rect harryBox;
@@ -31,17 +31,12 @@ public:
 
 	void applyForce(const Vec3 force) { accel = force / mass; accelPrevious = accelCurrent; accelCurrent = force / mass;}
 
-	bool checkCollision(harpoonHarry* harry, Fish* fish);
+	bool checkCollision(harpoonHarry* harry, Enemy* enemy);
 
-	bool checkBossCollision(harpoonHarry* harry, boss* boss1);
-
-	bool isCollided(Fish* fish, harpoonHarry* harry);
-
-	bool isBossCollided(boss* boss1, harpoonHarry* harry);
+	bool isCollided(harpoonHarry* harry, Enemy* enemy);
 
 	void render(SDL_Renderer* render);
 
-	bool setImage(const char* path, SDL_Renderer* renderer);
 	SDL_Texture* getTexture() { return texture; }
 
 

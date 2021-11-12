@@ -3,24 +3,16 @@
 
 #include <SDL.h>
 #include "Vector.h"
+#include "Enemy.h"
 
 
 using namespace MATH;
 
-class Fish
+class Fish : public Enemy
 {
 public:
-	Fish();
+	Fish(SDL_Rect body_, SDL_Renderer* renderer, const char* path);
 	~Fish();
-	Fish(SDL_Rect body, SDL_Renderer* renderer);
-	Vec3 pos, vel, accelPrevious, accelCurrent, accel;
-	int health;
-	SDL_Rect body;
-	SDL_Renderer* fishRender;
-	SDL_Texture* fishTex;
-	void Update(float deltaTime);
-	void Render(SDL_Renderer* renderer);
-
 };
 
 #endif

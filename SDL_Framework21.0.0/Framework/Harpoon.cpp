@@ -3,8 +3,9 @@
 #include <cmath>
 #include <iostream>
 #include "VMath.h"
+#include "TextureManager.h"
 
-Harpoon::Harpoon(Vec3 pos_, Vec3 vel_)
+Harpoon::Harpoon(Vec3 pos_, Vec3 vel_, SDL_Renderer* renderer, const char* path)
 {
 	pos = pos_;
 	vel = vel_;
@@ -25,6 +26,8 @@ Harpoon::Harpoon(Vec3 pos_, Vec3 vel_)
 	harpoonBox.y = pos.y;
 	harpoonBox.w = 30.0f;
 	harpoonBox.h = 10.5f;
+
+	texture = TextureManager::LoadTexture(path, renderer);
 }
 
 Harpoon::~Harpoon() {
@@ -56,22 +59,6 @@ void Harpoon::render(SDL_Renderer* render)
 	SDL_RenderCopyEx(render, texture, nullptr, &harpoonBox, angle, nullptr, SDL_FLIP_NONE);
 }
 
-bool Harpoon::setImage(const char* path, SDL_Renderer* renderer)
-{
-	SDL_Surface* harryImage = IMG_Load(path);
-	SDL_Texture* harryTexture = SDL_CreateTextureFromSurface(renderer, harryImage);
-	if (harryTexture == nullptr) printf("%s\n", SDL_GetError());
-	if (harryImage == nullptr) {
-		std::cerr << "Can't open the image" << std::endl;
-		return false;
-	}
-	else {
-		texture = harryTexture;
-		SDL_FreeSurface(harryImage);
-	}
-	return true;
-}
-
 bool Harpoon::MouseClicked(SDL_Event event_)
 {
 	int x, y;
@@ -89,7 +76,7 @@ bool Harpoon::MouseClicked(SDL_Event event_)
 	return false;
 }
 
-bool Harpoon::isCollided(Fish* fish, Harpoon* harpoon)
+bool Harpoon::isCollided(Enemy* enemy, Harpoon* harpoon)
 {
 	//The sides of the rectangles
 	int leftA, leftB;
@@ -104,55 +91,10 @@ bool Harpoon::isCollided(Fish* fish, Harpoon* harpoon)
 	bottomA = harpoonBox.y + harpoonBox.h;
 
 	//Calculate the sides of rect B
-	leftB = fish->body.x;
-	rightB = fish->body.x + fish->body.w;
-	topB = fish->body.y;
-	bottomB = fish->body.y + fish->body.h;
-
-	if (bottomA <= topB)
-	{
-		return false;
-	}
-
-	if (topA >= bottomB)
-	{
-		return false;
-	}
-
-	if (rightA <= leftB)
-	{
-		return false;
-	}
-
-	if (leftA >= rightB)
-	{
-		return false;
-	}
-
-	//If none of the sides from A are outside B
-	std::cout << "BANG!\n";
-	return true;
-}
-
-bool Harpoon::isBossCollided(boss* boss1, Harpoon* harry)
-{
-	//The sides of the rectangles
-	int leftA, leftB;
-	int rightA, rightB;
-	int topA, topB;
-	int bottomA, bottomB;
-
-	//Calculate the sides of rect A
-	leftA = harpoonBox.x;
-	rightA = harpoonBox.x + harpoonBox.w;
-	topA = harpoonBox.y;
-	bottomA = harpoonBox.y + harpoonBox.h;
-
-	//Calculate the sides of rect B
-	leftB = boss1->body.x;
-	rightB = boss1->body.x + boss1->body.w;
-	topB = boss1->body.y;
-	bottomB = boss1->body.y + boss1->body.h;
+	leftB = enemy->body.x;
+	rightB = enemy->body.x + enemy->body.w;
+	topB = enemy->body.y;
+	bottomB = enemy->body.y + enemy->body.h;
 
 	if (bottomA <= topB)
 	{
