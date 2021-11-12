@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\GameDev\SDL2_ttf-2.0.15\include;C:\GameDev\OpenGL\include;C:\GameDev\SDL\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\GameDev\SDL2_mixer-2.0.4\include;C:\GameDev\SDL2_ttf-2.0.15\include;C:\GameDev\OpenGL\include;C:\GameDev\SDL\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -95,8 +95,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\GameDev\SDL2_ttf-2.0.15\lib\x86;C:\GameDev\OpenGL\lib;C:\GameDev\SDL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\GameDev\SDL2_mixer-2.0.4\lib\x86;C:\GameDev\SDL2_ttf-2.0.15\lib\x86;C:\GameDev\OpenGL\lib;C:\GameDev\SDL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -162,6 +162,7 @@
     <ClCompile Include="mainMenu.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MMath.cpp" />
+    <ClCompile Include="musicPlayer.cpp" />
     <ClCompile Include="pauseMenu.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Scene0.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MMath.h" />
+    <ClInclude Include="musicPlayer.h" />
     <ClInclude Include="pauseMenu.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="Scene.h" />

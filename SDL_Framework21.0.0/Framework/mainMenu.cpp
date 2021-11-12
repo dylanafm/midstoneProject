@@ -10,6 +10,7 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 	window = sdlWindow_;
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
+	Song = new musicPlayer("Music/mainmenutheme.mp3");
 	logoTex = TextureManager::LoadTexture("textures/HarryLogo.png", renderer);
 	logoBox = SDL_Rect{ 430, 10, 400, 200 };
 
@@ -33,7 +34,7 @@ mainMenu::~mainMenu() {
 bool mainMenu::OnCreate() {
 	int w, h;
 	SDL_GetWindowSize(window, &w, &h);
-
+	Song->playSong();
 	Matrix4 ndc = MMath::viewportNDC(w, h);
 	Matrix4 ortho = MMath::orthographic(0.0f, 30.0f, 0.0f, 15.0f, 0.0f, 1.0f);
 	projectionMatrix = ndc * ortho;

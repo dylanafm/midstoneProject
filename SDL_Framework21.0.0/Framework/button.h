@@ -15,7 +15,7 @@ class button
 {
 private:
 	const char* text;
-
+	
 	Vec3 colorBase;
 	SDL_Color textColor;
 

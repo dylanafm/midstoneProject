@@ -1,5 +1,6 @@
 #include "Window.h"
 #include <SDL.h>
+#include <SDL_mixer.h>
 #include <iostream> /// Umer likes this over printf() - too bad
 #include <SDL_image.h>
 
@@ -17,7 +18,10 @@ bool Window::OnCreate(){
 		std::cout << "SDL_Error: " << SDL_GetError() << std::endl;
 		return false;
 	}
-
+	SDL_Init(SDL_INIT_AUDIO);
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+		std::cout << "Error: " << Mix_GetError() << std::endl;
+	}
 	window = SDL_CreateWindow("Harpoon Harry", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
 	if (window == nullptr) {
 		std::cout << "SDL_Error: " << SDL_GetError() << std::endl;
@@ -46,6 +50,7 @@ void Window::OnDestroy(){
 	}
 	
 	///Exit the SDL subsystems
+	Mix_Quit();
 	SDL_Quit();
 
 }

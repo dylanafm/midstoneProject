@@ -8,6 +8,7 @@
 #include <SDL_image.h>
 #include "SDL_TTF.h"
 #include "Text.h"
+#include "musicPlayer.h"
 #include "button.h"
 
 using namespace MATH;
@@ -41,6 +42,7 @@ private:
 
 	Text newText;
 
+	musicPlayer* Song;
 	int currentMenu = 1; // Switch between menus in the main menu. 1 = Main Menu, 2 = Levels Menu, 3 = Settings Menu, 4 = Tutorial Menu
 	int newScene = 0; // Switch between scenes. -1 = Quit, 1 = LevelOne, 0 = Dont switch
 

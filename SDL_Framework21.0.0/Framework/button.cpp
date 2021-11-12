@@ -11,6 +11,8 @@ button::button() {
 	textureOriginal = nullptr;
 	textureHovered = nullptr;
 	texture = nullptr;
+	
+
 }
 
 button::button(int x, int y, int w, int h, Vec3 textColor2, const char* text_)
