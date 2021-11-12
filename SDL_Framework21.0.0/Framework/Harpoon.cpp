@@ -133,3 +133,48 @@ bool Harpoon::isCollided(Fish* fish, Harpoon* harpoon)
 	std::cout << "BANG!\n";
 	return true;
 }
+
+bool Harpoon::isBossCollided(boss* boss1, Harpoon* harry)
+{
+	//The sides of the rectangles
+	int leftA, leftB;
+	int rightA, rightB;
+	int topA, topB;
+	int bottomA, bottomB;
+
+	//Calculate the sides of rect A
+	leftA = harpoonBox.x;
+	rightA = harpoonBox.x + harpoonBox.w;
+	topA = harpoonBox.y;
+	bottomA = harpoonBox.y + harpoonBox.h;
+
+	//Calculate the sides of rect B
+	leftB = boss1->body.x;
+	rightB = boss1->body.x + boss1->body.w;
+	topB = boss1->body.y;
+	bottomB = boss1->body.y + boss1->body.h;
+
+	if (bottomA <= topB)
+	{
+		return false;
+	}
+
+	if (topA >= bottomB)
+	{
+		return false;
+	}
+
+	if (rightA <= leftB)
+	{
+		return false;
+	}
+
+	if (leftA >= rightB)
+	{
+		return false;
+	}
+
+	//If none of the sides from A are outside B
+	std::cout << "BANG!\n";
+	return true;
+}

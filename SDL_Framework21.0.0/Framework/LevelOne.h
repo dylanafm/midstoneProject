@@ -14,12 +14,14 @@
 #include "Harpoon.h"
 #include "InGameTImer.h"
 #include "Map.h"
+#include "boss.h"
 using namespace MATH;
 class LevelOne : public Scene {
 private:
 	harpoonHarry* harry;
 	Harpoon* harpoon;
 	Fish* fish[3];
+	boss* boss1;
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 

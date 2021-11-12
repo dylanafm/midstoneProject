@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Body.cpp" />
+    <ClCompile Include="boss.cpp" />
     <ClCompile Include="button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DeathMenu.cpp" />
@@ -174,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Body.h" />
+    <ClInclude Include="boss.h" />
     <ClInclude Include="button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DeathMenu.h" />

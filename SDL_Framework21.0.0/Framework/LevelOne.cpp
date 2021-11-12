@@ -9,9 +9,10 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	window = sdlWindow_;
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-	
 
 	map = new Map(renderer);
+	boss1 = new boss(SDL_Rect{ 1000, 500, 200, 200 });	
+	boss1->health = 3;
 	harry = new harpoonHarry();
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
 
@@ -54,6 +55,12 @@ void LevelOne::Update(const float deltaTime) {
 
 	harry->Update(deltaTime);
 	if(harpoon != nullptr) harpoon->Update(deltaTime);
+	if (boss1 != nullptr){ 
+		if (harry->isBossCollided(boss1, harry)) {
+			boss1 = nullptr;
+			delete boss1;
+		}
+	}
 
 	for (int i = 0; i < std::size(fish); i++) {
 
@@ -66,6 +73,23 @@ void LevelOne::Update(const float deltaTime) {
 				fish[i] = nullptr;
 				delete harpoon;
 				delete fish[i];
+			}
+		}
+	}
+
+	if (harpoon != nullptr && boss1 != nullptr) {
+		if (harpoon->isBossCollided(boss1, harpoon)) {
+			if (boss1->health > 1) {
+				boss1->health -= 1;
+				harpoon = nullptr;
+				delete harpoon;
+				std::cout << boss1->health << std::endl;
+			}
+			else {
+				harpoon = nullptr;
+				boss1 = nullptr;
+				delete harpoon;
+				delete boss1;
 			}
 		}
 	}
@@ -119,7 +143,8 @@ void LevelOne::Render() {
 	map->DrawMap(renderer);
 
 	harry->render(renderer);
-
+	if (boss1 != nullptr)
+	boss1->Render(renderer);
 	if (harpoon != nullptr) harpoon->render(renderer);
 
 

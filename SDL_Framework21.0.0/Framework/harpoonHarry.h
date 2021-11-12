@@ -7,6 +7,7 @@
 #include <SDL_image.h>
 #include "Vector.h"
 #include "Fish.h"
+#include "boss.h"
 
 class harpoonHarry : public Body
 {
@@ -32,7 +33,11 @@ public:
 
 	bool checkCollision(harpoonHarry* harry, Fish* fish);
 
+	bool checkBossCollision(harpoonHarry* harry, boss* boss1);
+
 	void isCollided(Fish* fish, harpoonHarry* harry);
+
+	bool isBossCollided(boss* boss1, harpoonHarry* harry);
 
 	void render(SDL_Renderer* render);
 

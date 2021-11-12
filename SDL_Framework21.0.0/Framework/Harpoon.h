@@ -7,7 +7,7 @@
 #include <SDL_image.h>
 #include "Vector.h"
 #include "Fish.h"
-
+#include "boss.h"
 class Harpoon : public Body
 {
 private:
@@ -36,6 +36,8 @@ public:
 	bool MouseClicked(SDL_Event event_);
 
 	bool isCollided(Fish* fish, Harpoon* harry);
+
+	bool isBossCollided(boss* boss1, Harpoon* harry);
 
 };
 

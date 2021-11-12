@@ -130,6 +130,51 @@ bool harpoonHarry::checkCollision(harpoonHarry* harry, Fish* fish)
 	return true;
 }
 
+bool harpoonHarry::checkBossCollision(harpoonHarry* harry, boss* boss1)
+{
+	//The sides of the rectangles
+	int leftA, leftB;
+	int rightA, rightB;
+	int topA, topB;
+	int bottomA, bottomB;
+
+	//Calculate the sides of rect A
+	leftA = harryBox.x;
+	rightA = harryBox.x + harryBox.w;
+	topA = harryBox.y;
+	bottomA = harryBox.y + harryBox.h;
+
+	//Calculate the sides of rect B
+	leftB = boss1->body.x;
+	rightB = boss1->body.x + boss1->body.w;
+	topB = boss1->body.y;
+	bottomB = boss1->body.y + boss1->body.h;
+
+	if (bottomA <= topB)
+	{
+		return false;
+	}
+
+	if (topA >= bottomB)
+	{
+		return false;
+	}
+
+	if (rightA <= leftB)
+	{
+		return false;
+	}
+
+	if (leftA >= rightB)
+	{
+		return false;
+	}
+
+	//If none of the sides from A are outside B
+	std::cout << "BANG!\n";
+	return true;
+}
+
 void harpoonHarry::isCollided(Fish* fish, harpoonHarry* harry)
 {
 	if ((harry->checkCollision(harry, fish)) == true) {
@@ -137,6 +182,16 @@ void harpoonHarry::isCollided(Fish* fish, harpoonHarry* harry)
 		std::cout << "Health = " << health << "\n";
 		delete fish;
 	}
+}
+
+bool harpoonHarry::isBossCollided(boss* boss1, harpoonHarry* harry)
+{
+	if ((harry->checkBossCollision(harry, boss1)) == true) {
+		health--;
+		std::cout << "Health = " << health << "\n";
+		return true;
+	}
+	return false;
 }
 
 void harpoonHarry::render(SDL_Renderer* render)
