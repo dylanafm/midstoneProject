@@ -11,7 +11,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	
 	bg = new Background(renderer);
 	stage = 1;
-	boss1 = new boss(SDL_Rect{ 1000, 500, 200, 200 }, 0.025f, renderer, "textures/bossPNG.png");
+	boss1 = new boss(SDL_Rect{ 1000, 500, 200, 200 }, 2.0f, renderer, "textures/bossPNG.png");
 	boss1->health = 3;
 	harry = new harpoonHarry(renderer, "textures/harry.png");
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
@@ -62,7 +62,7 @@ void LevelOne::OnDestroy() {
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
 	if (!paused) {
-		if (bg->getProg() <= 5.0F) {
+		if (bg->getProg() <= 50.0f) {
 			bg->Scroll();
 			for (int i = 0; i < std::size(fish); i++) {
 				if (fish[i] != nullptr) fish[i]->Scroll();

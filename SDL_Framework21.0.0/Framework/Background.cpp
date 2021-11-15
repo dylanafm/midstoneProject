@@ -83,7 +83,7 @@ void Background::Scroll()
 		cout << scrollOffset * -1 / 10;
 	}
 
-	if (progress >= 5.0f) {
+	if (progress >= 50.0f) {
 		scrolling = false; //Stop scrolling at level progress %
 	}
 }

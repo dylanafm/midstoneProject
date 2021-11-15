@@ -53,38 +53,49 @@ void harpoonHarry::HandleEvents(SDL_Event sdlEvent) {
 
 void harpoonHarry::Update(float deltaTime)
 {
-	//if (finalForce.y > 9000.0f) finalForce.y = 9000.0f;
-	//if (finalForce.y < -9000.0f) finalForce.y = -9000.0f;
-	//std::cout << finalForce.y << std::endl;
+	if (pos.x <= 0) {
 
-	applyForce(finalForce);
-	finalForce = Vec3(0.0f, 0.0f, 0.0f);
-	pos += vel * deltaTime + 0.5f * accelPrevious * deltaTime * deltaTime;
-	vel += 0.5 * (accelCurrent + accelPrevious) * deltaTime;
+		pos.x = 1;
 
-	if (vel.y > 90.0f) vel.y = 90.0f;
-	if (vel.y < -90.0f) vel.y = -90.0f;
+	}
+	else if (pos.x >= 1225) {
 
-	anglePrevious = angle;
-	double angleCurrent = atan2(vel.y, vel.x) * 180.0 / M_PI + flip;
+		pos.x = 1224;
+	}
+	else if (pos.y <= 0)
+	{
+		pos.y = 1;
+	}
+	else if (pos.y >= 675) {
+		
+		pos.y = 674;
+	}
+	else
+	{
 
-	if (angleCurrent - anglePrevious > 180.0f)  flip -= 360;
-	if (angleCurrent - anglePrevious < -180.0f) flip += 360;
 
-	angle = atan2(vel.y, vel.x) * 180.0 / M_PI + flip;
+		applyForce(finalForce);
+		finalForce = Vec3(0.0f, 0.0f, 0.0f);
+		pos += vel * deltaTime + 0.5f * accelPrevious * deltaTime * deltaTime;
+		vel += 0.5 * (accelCurrent + accelPrevious) * deltaTime;
 
-	angle = angle + 0.9 * (anglePrevious - angle); // Lerp function
+		if (vel.y > 90.0f) vel.y = 90.0f;
+		if (vel.y < -90.0f) vel.y = -90.0f;
 
-	harryBox.x = pos.x;
-	harryBox.y = pos.y;
+		anglePrevious = angle;
+		double angleCurrent = atan2(vel.y, vel.x) * 180.0 / M_PI + flip;
 
-	//Movement Code
-	//https://wiki.libsdl.org/SDL_KeyboardEvent
-	// if (    keyboard input   ) { Acceleration = Accel + Vec3(0, 2, 0)..........
+		if (angleCurrent - anglePrevious > 180.0f)  flip -= 360;
+		if (angleCurrent - anglePrevious < -180.0f) flip += 360;
 
-	//else { accel = 0.0f, 0.0, 0.0    Vel = 0 etc...
-	//position = initail velocity * time    +   1/2   (accel * time
-}
+		angle = atan2(vel.y, vel.x) * 180.0 / M_PI + flip;
+
+		angle = angle + 0.9 * (anglePrevious - angle); // Lerp function
+
+		harryBox.x = pos.x;
+		harryBox.y = pos.y;
+	}
+	}
 
 bool harpoonHarry::checkCollision(harpoonHarry* harry, Enemy* enemy)
 {
