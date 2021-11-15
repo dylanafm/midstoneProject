@@ -15,6 +15,8 @@ Enemy::Enemy() {
 
 	texture = nullptr;
 	health = 1;
+
+	scrollSpeed = 1.0f;
 }
 
 
@@ -22,11 +24,11 @@ Enemy::~Enemy() {
 
 }
 
-Enemy::Enemy(SDL_Rect body_, SDL_Renderer* renderer, const char* path)
+Enemy::Enemy(SDL_Rect body_, float scrollSpeed_ , SDL_Renderer* renderer, const char* path)
 {
 	body = body_;
 	pos = Vec3(body.x, body.y, 0.0f);
-
+	scrollSpeed = scrollSpeed_;
 	vel = Vec3(0.0f, 0.0f, 0.0f);
 	accel = Vec3(0.0f, 0.0f, 0.0f);
 	accelCurrent = Vec3(0.0f, 0.0f, 0.0f);
@@ -40,6 +42,11 @@ void Enemy::Update(float deltaTime)
 {
 	pos += vel * deltaTime + 0.5f * accelPrevious * deltaTime * deltaTime;
 	vel += 0.5 * (accelCurrent + accelPrevious) * deltaTime;
+	
+}
+void Enemy::Scroll()
+{
+	body.x = body.x - scrollSpeed;
 }
 
 void Enemy::Render(SDL_Renderer* renderer)

@@ -11,7 +11,7 @@ using namespace MATH;
 class boss : public Enemy
 {
 public:
-	boss(SDL_Rect body_, SDL_Renderer* renderer, const char* path);
+	boss(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path);
 	~boss();
 };
 

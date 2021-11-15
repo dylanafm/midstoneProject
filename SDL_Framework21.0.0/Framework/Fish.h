@@ -11,7 +11,7 @@ using namespace MATH;
 class Fish : public Enemy
 {
 public:
-	Fish(SDL_Rect body_, SDL_Renderer* renderer, const char* path);
+	Fish(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path);
 	~Fish();
 };
 

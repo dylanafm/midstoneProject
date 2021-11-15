@@ -16,11 +16,20 @@
 #include "Map.h"
 #include "boss.h"
 #include "Enemy.h"
+#include "Background.h"
 
 using namespace MATH;
+class HUD;
+class Background;
 
 class LevelOne : public Scene {
 private:
+
+	HUD* playerHUD;
+
+	Background* bg;
+
+
 	harpoonHarry* harry;
 	Harpoon* harpoon;
 	Fish* fish[3];
@@ -28,7 +37,6 @@ private:
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 
-	LevelOne* level;
 
 	SDL_Renderer* renderer;
 
@@ -36,6 +44,7 @@ private:
 	pauseMenu* pMenu;
 	bool paused = false;
 	Map* map;
+	int stage;
 	InGameTimer* reloadTimer;
 	int newScene = 0;
 	bool isFired = false;
