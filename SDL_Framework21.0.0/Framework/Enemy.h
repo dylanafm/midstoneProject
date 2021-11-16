@@ -29,7 +29,7 @@ public:
 	virtual void Update(float deltaTime);
 	void UpdateHealthBar(SDL_Renderer* r, int h);
 	void Scroll();
-	void Render(SDL_Renderer* renderer);
+	virtual void Render(SDL_Renderer* renderer);
 };
 
 #endif
