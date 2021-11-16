@@ -28,8 +28,8 @@ private:
 	HUD* playerHUD;
 
 	Background* bg;
-
-
+	//Animator* a;
+	
 	harpoonHarry* harry;
 	Harpoon* harpoon;
 	Fish* fish[3];

@@ -8,7 +8,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 
 	window = sdlWindow_;
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-	
+	//a = new Animator(renderer);
 	bg = new Background(renderer);
 	stage = 1;
 	boss1 = new boss(SDL_Rect{ 1000, 500, 200, 200 }, 2.0f, renderer, "textures/bossPNG.png");
@@ -61,6 +61,7 @@ void LevelOne::OnDestroy() {
 
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
+
 	if (!paused) {
 		if (bg->getProg() <= 50.0f) {
 			bg->Scroll();
@@ -171,6 +172,7 @@ void LevelOne::Render() {
 
 	SDL_RenderClear(renderer);
 	bg->Render(renderer);
+	//a->Render(renderer);
 	harry->render(renderer);
 	if (!paused) {
 		playerHUD->displayHUD(renderer, 20, 10, 50, 50, harry, reloadTimer, bg);
