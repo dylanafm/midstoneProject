@@ -13,10 +13,11 @@ class musicPlayer
 public:
 
 	int volume;
-	musicPlayer(const char* fileName);
+	musicPlayer(const char* fileName, int volume_);
 	~musicPlayer();
 	Mix_Music* song;
 	void playSong();
+	void pauseSong();
 	void stopSong();
 private:
 	

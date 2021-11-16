@@ -14,7 +14,7 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 
 	startTimer = true;
 
-	Song = new musicPlayer("Music/mainmenutheme.mp3");
+	Song = new musicPlayer("Music/mainmenutheme.mp3", 2);
 	//Song->volume = 2;
 	logoTex = TextureManager::LoadTexture("textures/HarryLogo.png", renderer);
 	logoBox = SDL_Rect{ 430, 10, 400, 200 };

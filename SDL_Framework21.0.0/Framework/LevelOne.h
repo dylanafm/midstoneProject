@@ -12,18 +12,20 @@
 #include "HUD.h"
 #include "Fish.h"
 #include "Harpoon.h"
-#include "InGameTImer.h"
+#include "InGameTimer.h"
 #include "Map.h"
 #include "boss.h"
 #include "Enemy.h"
 #include "Background.h"
-
+#include "musicPlayer.h"
 using namespace MATH;
 class HUD;
 class Background;
 
 class LevelOne : public Scene {
 private:
+
+	musicPlayer* song;
 
 	HUD* playerHUD;
 
