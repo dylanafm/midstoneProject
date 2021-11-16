@@ -17,6 +17,10 @@ Enemy::Enemy() {
 	health = 1;
 
 	scrollSpeed = 1.0f;
+
+	
+
+	
 }
 
 
@@ -35,6 +39,9 @@ Enemy::Enemy(SDL_Rect body_, float scrollSpeed_ , SDL_Renderer* renderer, const 
 	accelPrevious = Vec3(0.0f, 0.0f, 0.0f);
 
 	texture = TextureManager::LoadTexture(path, renderer);
+	HealthTex = TextureManager::LoadTexture("textures/Health.png", renderer);
+	BarTex = TextureManager::LoadTexture("textures/FullBar.png", renderer);
+
 	health = 1;
 }
 
@@ -44,6 +51,14 @@ void Enemy::Update(float deltaTime)
 	vel += 0.5 * (accelCurrent + accelPrevious) * deltaTime;
 	
 }
+void Enemy::UpdateHealthBar(SDL_Renderer* r, int h) {
+	HealthBar = SDL_Rect{ body.x + 45, body.y - 40 , h * 50 , 15 };
+	TotalBar = SDL_Rect{ body.x + 45, body.y - 40 , 150, 15 };
+	SDL_RenderCopy(r, BarTex, nullptr, &TotalBar);
+	SDL_RenderCopy(r, HealthTex, nullptr, &HealthBar);
+
+	cout << HealthBar.x << endl;
+}
 void Enemy::Scroll()
 {
 	body.x = body.x - scrollSpeed;
@@ -51,5 +66,8 @@ void Enemy::Scroll()
 
 void Enemy::Render(SDL_Renderer* renderer)
 {
+
+	
 	SDL_RenderCopy(renderer, texture, nullptr, &body);
+
 }

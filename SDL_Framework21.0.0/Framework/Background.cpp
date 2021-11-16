@@ -44,7 +44,6 @@ Background::~Background()
 
 void Background::Scroll()
 {
-	cout << scrolling << endl;
 	if (scrolling == true) {
 		progress = progress + 0.09f;
 		//Sea
@@ -80,7 +79,6 @@ void Background::Scroll()
 		{
 			scrollOffset = 0;
 		}
-		cout << scrollOffset * -1 / 10;
 	}
 
 	if (progress >= 50.0f) {

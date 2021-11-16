@@ -62,6 +62,8 @@ void LevelOne::OnDestroy() {
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
 
+
+
 	if (!paused) {
 		if (bg->getProg() <= 50.0f) {
 			bg->Scroll();
@@ -166,6 +168,7 @@ void LevelOne::Update(const float deltaTime) {
 			delete reloadTimer;
 		}
 	}
+
 }
 
 void LevelOne::Render() {
@@ -174,6 +177,8 @@ void LevelOne::Render() {
 	bg->Render(renderer);
 	//a->Render(renderer);
 	harry->render(renderer);
+	if (boss1 != nullptr) boss1->UpdateHealthBar(renderer, boss1->health);
+
 	if (!paused) {
 		playerHUD->displayHUD(renderer, 20, 10, 50, 50, harry, reloadTimer, bg);
 	}
