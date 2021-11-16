@@ -15,6 +15,7 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 	startTimer = true;
 
 	Song = new musicPlayer("Music/mainmenutheme.mp3");
+	//Song->volume = 2;
 	logoTex = TextureManager::LoadTexture("textures/HarryLogo.png", renderer);
 	logoBox = SDL_Rect{ 430, 10, 400, 200 };
 
@@ -66,7 +67,8 @@ void mainMenu::OnDestroy() {
 
 void mainMenu::Update(const float deltaTime) {
 	SDL_Event event;
-	
+	if (Song == nullptr) { cout << "Song is Null" << endl; }
+
 	if (currentMenu == 0) {
 		
 		if (timer != nullptr && startTimer == true) timer->Update(deltaTime, startTimer);
@@ -96,17 +98,18 @@ void mainMenu::Update(const float deltaTime) {
 
 	while(SDL_PollEvent(&event))
 	{
-		if (Start->buttonClicked(event) && currentMenu == 0) { currentMenu = 1; }
-		if (LevelOne->buttonClicked(event) && currentMenu == 2) { newScene = 1; }
 
-		if (Levels->buttonClicked(event)) { 
+		if (Start->buttonClicked(event) && currentMenu == 0) { currentMenu = 1; }
+		if (LevelOne->buttonClicked(event) && currentMenu == 2) { newScene = 1; Song->stopSong(); }
+
+		if (Levels->buttonClicked(event) && currentMenu == 1) { 
 			currentMenu = 2; 
 		}
-		if (Settings->buttonClicked(event)) { currentMenu = 3; }
-		if (Tutorial->buttonClicked(event)) { currentMenu = 4; }
-		if (Quit->buttonClicked(event)) { newScene = -1; }
+		if (Settings->buttonClicked(event) && currentMenu == 1) { currentMenu = 3; }
+		if (Tutorial->buttonClicked(event) && currentMenu == 1) { currentMenu = 4; }
+		if (Quit->buttonClicked(event) && currentMenu == 1) { newScene = -1; }
 
-		if (Back->buttonClicked(event)) { currentMenu = 1; }
+		if (Back->buttonClicked(event) && !currentMenu == 0 ) { currentMenu = 1; }
 
 		
 	}
