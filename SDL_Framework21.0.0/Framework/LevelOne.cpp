@@ -19,10 +19,17 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	playerHUD = new HUD();
 
 	
-		
-	//fish[0] = new Fish(SDL_Rect{ 200, 200, 50, 50 }, 1, renderer, "textures/blobfish.png");
-	//fish[1] = new Fish(SDL_Rect{ 2000, 400, 50, 50 }, 1, renderer, "textures/blobfish.png");
-	//fish[2] = new Fish(SDL_Rect{ 400, 600, 50, 50 }, 1, renderer, "textures/blobfish.png");
+	song = new musicPlayer("Music/levelonetheme.ogg", 2);
+	fish[0] = new Fish(SDL_Rect{ 200, 200, 50, 50 }, 1, renderer, "textures/blobfish.png");
+	fish[1] = new Fish(SDL_Rect{ 2000, 400, 50, 50 }, 1, renderer, "textures/blobfish.png");
+	fish[2] = new Fish(SDL_Rect{ 400, 600, 50, 50 }, 1, renderer, "textures/blobfish.png");
+	
+
+
+	
+
+	
+	
 }
 
 LevelOne::~LevelOne() {
@@ -38,6 +45,8 @@ bool LevelOne::OnCreate() {
 	Matrix4 ndc = MMath::viewportNDC(w, h);
 	Matrix4 ortho = MMath::orthographic(0.0f, 30.0f, 0.0f, 15.0f, 0.0f, 1.0f);
 	projectionMatrix = ndc * ortho;
+
+	song->playSong();
 
 	pMenu = new pauseMenu();
 	dMenu = new DeathMenu();
@@ -64,6 +73,8 @@ void LevelOne::Update(const float deltaTime) {
 			}
 			//if (boss1 != nullptr) boss1->Scroll();
 		}
+
+		
 	}
 		harry->Update(deltaTime);
 

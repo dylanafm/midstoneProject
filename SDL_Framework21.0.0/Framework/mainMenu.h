@@ -48,6 +48,7 @@ private:
 	Text newText;
 
 	musicPlayer* Song;
+
 	int currentMenu = 0; // Switch between menus in the main menu. 0 = Intro 1 = Main Menu, 2 = Levels Menu, 3 = Settings Menu, 4 = Tutorial Menu 
 	int newScene = 0; // Switch between scenes. -1 = Quit, 1 = LevelOne, 0 = Dont switch
 	bool startTimer;
