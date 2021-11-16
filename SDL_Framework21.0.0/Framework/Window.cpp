@@ -19,7 +19,7 @@ bool Window::OnCreate(){
 		return false;
 	}
 	SDL_Init(SDL_INIT_AUDIO);
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+	if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
 		std::cout << "Error: " << Mix_GetError() << std::endl;
 	}
 	window = SDL_CreateWindow("Harpoon Harry", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);

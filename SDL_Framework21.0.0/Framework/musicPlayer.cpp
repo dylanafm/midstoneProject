@@ -11,7 +11,7 @@ musicPlayer::~musicPlayer() {
 
 }
 void musicPlayer::playSong() {
-
 	Mix_PlayMusic(song, -1);
-	
+	if (song == nullptr) { cout << "Song is Null" << endl; }
+
 }
