@@ -49,7 +49,8 @@ void Enemy::Update(float deltaTime)
 {
 	pos += vel * deltaTime + 0.5f * accelPrevious * deltaTime * deltaTime;
 	vel += 0.5 * (accelCurrent + accelPrevious) * deltaTime;
-	
+	body.x = pos.x;
+	body.y = pos.y;
 }
 void Enemy::UpdateHealthBar(SDL_Renderer* r, int h) {
 	HealthBar = SDL_Rect{ body.x + 45, body.y - 40 , h * 50 , 15 };
@@ -57,11 +58,11 @@ void Enemy::UpdateHealthBar(SDL_Renderer* r, int h) {
 	SDL_RenderCopy(r, BarTex, nullptr, &TotalBar);
 	SDL_RenderCopy(r, HealthTex, nullptr, &HealthBar);
 
-	cout << HealthBar.x << endl;
+	//cout << HealthBar.x << endl;
 }
 void Enemy::Scroll()
 {
-	body.x = body.x - scrollSpeed;
+	pos.x = pos.x - scrollSpeed;
 }
 
 void Enemy::Render(SDL_Renderer* renderer)

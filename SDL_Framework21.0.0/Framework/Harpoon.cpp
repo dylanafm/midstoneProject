@@ -45,13 +45,6 @@ void Harpoon::Update(float deltaTime)
 
 	harpoonBox.x = pos.x;
 	harpoonBox.y = pos.y;
-
-	//Movement Code
-	//https://wiki.libsdl.org/SDL_KeyboardEvent
-	// if (    keyboard input   ) { Acceleration = Accel + Vec3(0, 2, 0)..........
-
-	//else { accel = 0.0f, 0.0, 0.0    Vel = 0 etc...
-	//position = initail velocity * time    +   1/2   (accel * time
 }
 
 void Harpoon::render(SDL_Renderer* render)

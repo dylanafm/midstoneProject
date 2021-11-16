@@ -26,7 +26,7 @@ public:
 	SDL_Texture* HealthTex;
 	
 
-	void Update(float deltaTime);
+	virtual void Update(float deltaTime);
 	void UpdateHealthBar(SDL_Renderer* r, int h);
 	void Scroll();
 	void Render(SDL_Renderer* renderer);

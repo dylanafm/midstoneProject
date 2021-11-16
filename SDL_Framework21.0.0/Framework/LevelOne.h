@@ -17,6 +17,7 @@
 #include "boss.h"
 #include "Enemy.h"
 #include "Background.h"
+#include "Projectile.h"
 
 using namespace MATH;
 class HUD;
@@ -36,7 +37,7 @@ private:
 	boss* boss1;
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
-
+	Projectile* projectile;
 
 	SDL_Renderer* renderer;
 
@@ -46,9 +47,12 @@ private:
 	Map* map;
 	int stage;
 	InGameTimer* reloadTimer;
+	InGameTimer* projectileReloadTimer;
+	InGameTimer* biteTimer;
 	int newScene = 0;
 	bool isFired = false;
-	float timer = 0.0f, finalTime = 3.0f;
+	bool isProjectileFired = false;
+	bool isBitten = false;
 public:
 
 	//HUD hud;
@@ -60,15 +64,13 @@ public:
 	void Update(const float time);
 	void Render();
 	void spawnHarpoon();
+	void spawnProjectile();
 	bool getPaused() {
 		return paused;
 	}
 	int getScene() {
 		return newScene;
-	}
-
-	float getFinalTime() { return finalTime; }
-	
+	}	
 };
 
 #endif

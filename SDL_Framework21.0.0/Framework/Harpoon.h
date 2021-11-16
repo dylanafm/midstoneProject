@@ -29,7 +29,6 @@ public:
 
 	void render(SDL_Renderer* render);
 
-	bool setImage(const char* path, SDL_Renderer* renderer);
 	SDL_Texture* getTexture() { return texture; }
 	void setPosition(Vec3 pos_) { pos = pos_; }
 

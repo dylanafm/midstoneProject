@@ -11,7 +11,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	//a = new Animator(renderer);
 	bg = new Background(renderer);
 	stage = 1;
-	boss1 = new boss(SDL_Rect{ 1000, 500, 200, 200 }, 2.0f, renderer, "textures/bossPNG.png");
+	boss1 = new boss(SDL_Rect{ 1280, 360, 200, 200 }, 2.0f, renderer, "textures/bossPNG.png");
 	boss1->health = 3;
 	harry = new harpoonHarry(renderer, "textures/harry.png");
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
@@ -20,16 +20,9 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 
 	
 		
-	fish[0] = new Fish(SDL_Rect{ 200, 200, 50, 50 }, 1, renderer, "textures/blobfish.png");
-	fish[1] = new Fish(SDL_Rect{ 2000, 400, 50, 50 }, 1, renderer, "textures/blobfish.png");
-	fish[2] = new Fish(SDL_Rect{ 400, 600, 50, 50 }, 1, renderer, "textures/blobfish.png");
-	
-
-
-	
-
-	
-	
+	//fish[0] = new Fish(SDL_Rect{ 200, 200, 50, 50 }, 1, renderer, "textures/blobfish.png");
+	//fish[1] = new Fish(SDL_Rect{ 2000, 400, 50, 50 }, 1, renderer, "textures/blobfish.png");
+	//fish[2] = new Fish(SDL_Rect{ 400, 600, 50, 50 }, 1, renderer, "textures/blobfish.png");
 }
 
 LevelOne::~LevelOne() {
@@ -63,39 +56,44 @@ void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
 
 
-
 	if (!paused) {
 		if (bg->getProg() <= 50.0f) {
 			bg->Scroll();
 			for (int i = 0; i < std::size(fish); i++) {
 				if (fish[i] != nullptr) fish[i]->Scroll();
 			}
-			if (boss1 != nullptr) boss1->Scroll();
+			//if (boss1 != nullptr) boss1->Scroll();
 		}
 	}
 		harry->Update(deltaTime);
 
 		if (harpoon != nullptr) harpoon->Update(deltaTime);
 		if (boss1 != nullptr) {
-			if (harry->isCollided(harry, boss1)) {
-				boss1 = nullptr;
-				delete boss1;
+			if (!isBitten) {
+				if (harry->isCollided(harry, boss1)) {
+					biteTimer = new InGameTimer(2.0f);
+					isBitten = true;
+				}
 			}
 		}
+
+		if (projectile != nullptr) projectile->Update(deltaTime);
 
 		for (int i = 0; i < std::size(fish); i++) {
 
 			if (fish[i] != nullptr) fish[i]->Update(deltaTime);
-			if (boss1 != nullptr) boss1->Update(deltaTime);
-
+			if (boss1 != nullptr && bg->getProg() >= 50.0f) { 
+				boss1->Update(deltaTime, harry); 
+				if(!isProjectileFired)	spawnProjectile();
+			}
 
 
 			if (fish[i] != nullptr) {
 
 
 				if (harry->isCollided(harry, fish[i])) {
-					fish[i] = nullptr;
 					delete fish[i];
+					fish[i] = nullptr;
 				}
 			}
 
@@ -117,7 +115,7 @@ void LevelOne::Update(const float deltaTime) {
 				boss1->health -= 1;
 				harpoon = nullptr;
 				delete harpoon;
-				std::cout << boss1->health << std::endl;
+				//std::cout << boss1->health << std::endl;
 			}
 			else {
 				harpoon = nullptr;
@@ -153,7 +151,6 @@ void LevelOne::Update(const float deltaTime) {
 	}
 
 	Physics::ApplyForces(*harry, 0.0f);
-	//Physics::SimpleNewtonMotion(*harry, deltaTime);
 
 	if (harpoon != nullptr) {
 		if (harpoon->pos.x < -50.0f || harpoon->pos.x > 1300.0f || harpoon->pos.y < -50.0f || harpoon->pos.y > 800.0f) {
@@ -168,6 +165,20 @@ void LevelOne::Update(const float deltaTime) {
 			delete reloadTimer;
 		}
 	}
+	if (isBitten && biteTimer != nullptr) {
+		biteTimer->Update(deltaTime, isBitten);
+		if (!isBitten) {
+			biteTimer = nullptr;
+			delete biteTimer;
+		}
+	}
+	if (isProjectileFired && projectileReloadTimer != nullptr) {
+		projectileReloadTimer->Update(deltaTime, isProjectileFired);
+		if (!isProjectileFired) {
+			projectileReloadTimer = nullptr;
+			delete projectileReloadTimer;
+		}
+	}
 
 }
 
@@ -177,6 +188,7 @@ void LevelOne::Render() {
 	bg->Render(renderer);
 	//a->Render(renderer);
 	harry->render(renderer);
+	if (projectile != nullptr) projectile->Render(renderer);
 	if (boss1 != nullptr) boss1->UpdateHealthBar(renderer, boss1->health);
 
 	if (!paused) {
@@ -214,4 +226,17 @@ void LevelOne::spawnHarpoon()
 
 	isFired = true;
 	reloadTimer = new InGameTimer(3.0f);
+}
+
+void LevelOne::spawnProjectile()
+{
+	//Vec3 axes(0, 0, 1);
+	//Matrix4 rotate(boss1->angle, axes);
+
+	Vec3 direction = Vec3(harry->pos.x + 25.0f - boss1->pos.x, harry->pos.y + 25.0f - boss1->pos.y, 0.0f);
+	Vec3 velocity = VMath::normalize(direction) * 420.0f;
+	projectile = new Projectile(boss1->pos, velocity, renderer, "textures/Bubble_1.png");
+
+	isProjectileFired = true;
+	projectileReloadTimer = new InGameTimer(3.0f);
 }
