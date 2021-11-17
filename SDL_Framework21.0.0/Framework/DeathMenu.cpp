@@ -17,9 +17,9 @@ void DeathMenu::deathUpdate(SDL_Event event_)
 	MainMenu->Update();
 	Quit->Update();
 
-	if (Restart->buttonClicked(event_)) { newScene = 1; paused = false; }
-	if (MainMenu->buttonClicked(event_)) { newScene = 2; paused = false; }
-	if (Quit->buttonClicked(event_)) { newScene = -1; paused = false; }
+	if (Restart->buttonClicked(event_)) { Restart->click->playSFX();  newScene = 1; paused = false; }
+	if (MainMenu->buttonClicked(event_)) { MainMenu->click->playSFX(); newScene = 2; paused = false; }
+	if (Quit->buttonClicked(event_)) { Quit->click->playSFX(); newScene = -1; paused = false; }
 }
 
 void DeathMenu::deathRender(SDL_Renderer* renderer)

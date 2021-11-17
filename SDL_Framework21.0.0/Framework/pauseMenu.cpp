@@ -26,15 +26,14 @@ void pauseMenu::pauseUpdate(SDL_Event event_)
 	Tutorial->Update();
 	Quit->Update();
 	Back->Update();
-
-	if (Resume->buttonClicked(event_)) { paused = false; }
-	if (Restart->buttonClicked(event_)) { newScene = 1; paused = false; }
-	if (MainMenu->buttonClicked(event_)) { newScene = 2; paused = false; }
-	if (Settings->buttonClicked(event_)) { currentMenu = 3; }
-	if (Tutorial->buttonClicked(event_)) { currentMenu = 4; }
-	if (Quit->buttonClicked(event_)) { newScene = -1; paused = false; }
-
-	if (Back->buttonClicked(event_)) { currentMenu = 1; }
+	if (Resume->buttonClicked(event_) && (currentMenu == 1)) { Resume->click->playSFX(); paused = false; }
+	if (Restart->buttonClicked(event_) && (currentMenu == 1)) { Restart->click->playSFX(); newScene = 1; paused = false; }
+	if (MainMenu->buttonClicked(event_) && (currentMenu == 1)) { MainMenu->click->playSFX(); newScene = 2; paused = false; }
+	if (Settings->buttonClicked(event_) && (currentMenu == 1)) { Settings->click->playSFX(); currentMenu = 3; }
+	if (Tutorial->buttonClicked(event_) && (currentMenu == 1)) { Tutorial->click->playSFX(); currentMenu = 4; }
+	if (Quit->buttonClicked(event_) && (currentMenu == 1)) { Quit->click->playSFX(); newScene = -1; paused = false; }
+	if (Back->buttonClicked(event_)) { printf("click");  Back->click->playSFX(); currentMenu = 1; }
+	
 }
 
 void pauseMenu::pauseRender(SDL_Renderer* renderer)

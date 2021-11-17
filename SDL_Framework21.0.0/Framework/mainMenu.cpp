@@ -99,17 +99,18 @@ void mainMenu::Update(const float deltaTime) {
 	while(SDL_PollEvent(&event))
 	{
 
-		if (Start->buttonClicked(event) && currentMenu == 0) { currentMenu = 1; }
-		if (LevelOne->buttonClicked(event) && currentMenu == 2) { newScene = 1; Song->stopSong(); }
+		if (Start->buttonClicked(event) && currentMenu == 0) { Start->click->playSFX(); currentMenu = 1; }
+		if (LevelOne->buttonClicked(event) && currentMenu == 2) { LevelOne->click->playSFX(); newScene = 1; Song->stopSong(); }
 
-		if (Levels->buttonClicked(event) && currentMenu == 1) { 
+		if (Levels->buttonClicked(event) && currentMenu == 1) {
+			Levels->click->playSFX();
 			currentMenu = 2; 
 		}
-		if (Settings->buttonClicked(event) && currentMenu == 1) { currentMenu = 3; }
-		if (Tutorial->buttonClicked(event) && currentMenu == 1) { currentMenu = 4; }
-		if (Quit->buttonClicked(event) && currentMenu == 1) { newScene = -1; }
+		if (Settings->buttonClicked(event) && currentMenu == 1) { Settings->click->playSFX(); currentMenu = 3; }
+		if (Tutorial->buttonClicked(event) && currentMenu == 1) { Tutorial->click->playSFX(); currentMenu = 4; }
+		if (Quit->buttonClicked(event) && currentMenu == 1) { Quit->click->playSFX(); newScene = -1; }
 
-		if (Back->buttonClicked(event) && !currentMenu == 0 ) { currentMenu = 1; }
+		if (Back->buttonClicked(event) && !currentMenu == 0 ) { Back->click->playSFX(); currentMenu = 1; }
 
 		
 	}

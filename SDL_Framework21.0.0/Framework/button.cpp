@@ -24,7 +24,8 @@ button::button(int x, int y, int w, int h, Vec3 textColor2, const char* text_)
 	textBox.x += buttonBox.w / 25.0;
 	textBox.w -= buttonBox.w / 12.5;
 	textBox.y -= buttonBox.h / 20;
-	
+	click = new sfx("SFX/menuSelect.wav", 10);
+
 }
 
 button::~button()
@@ -44,7 +45,6 @@ bool button::buttonClicked(SDL_Event event_)
 	
 	if (event_.button.button == SDL_BUTTON_LEFT && event_.type == SDL_MOUSEBUTTONDOWN)
 	{
-
 		//Get the mouse offsets
 		x = event_.button.x;
 		y = event_.button.y;
@@ -52,6 +52,7 @@ bool button::buttonClicked(SDL_Event event_)
 		//If the mouse is over the levels button
 		if ((x > buttonBox.x) && (x < buttonBox.x + buttonBox.w) && (y > buttonBox.y) && (y < buttonBox.y + buttonBox.h))
 		{
+
 			return true;
 		}
 	}
