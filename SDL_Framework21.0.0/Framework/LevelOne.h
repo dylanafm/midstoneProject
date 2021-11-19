@@ -19,9 +19,11 @@
 #include "Background.h"
 #include "Projectile.h"
 #include "musicPlayer.h"
+#include "healthPickup.h"
 
 using namespace MATH;
 class HUD;
+class healthPickup;
 class Background;
 
 class LevelOne : public Scene {
@@ -41,6 +43,7 @@ private:
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 	Projectile* projectile;
+	healthPickup* hp;
 
 	SDL_Renderer* renderer;
 

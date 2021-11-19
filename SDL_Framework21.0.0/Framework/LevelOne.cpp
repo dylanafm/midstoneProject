@@ -14,6 +14,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	boss1->health = 5;
 	harry = new harpoonHarry(renderer, "textures/harry.png");
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
+	hp = new healthPickup(Vec3(400.0f, 300.0f, 0.0f), 2.0f, renderer);
 	
 	playerHUD = new HUD();
 
@@ -82,17 +83,20 @@ void LevelOne::OnDestroy() {
 
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
-
+	
+	hp->update(deltaTime);
 
 	if (!paused) {
 		if (bg->getProg() <= 100.0f) {
 			bg->Scroll();
+			hp->scroll();
 			for (int i = 0; i < std::size(fish); i++) {
 				if (fish[i] != nullptr) fish[i]->Scroll();
 			}
 			//if (boss1 != nullptr) boss1->Scroll();
 		}
 
+		
 		
 	}
 		harry->Update(deltaTime);
@@ -216,6 +220,7 @@ void LevelOne::Render() {
 
 	SDL_RenderClear(renderer);
 	bg->Render(renderer);
+	hp->render(renderer);
 	//a->Render(renderer);
 	harry->render(renderer);
 	if (projectile != nullptr) projectile->Render(renderer);
