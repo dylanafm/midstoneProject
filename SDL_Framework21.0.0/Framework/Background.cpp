@@ -45,7 +45,7 @@ Background::~Background()
 void Background::Scroll()
 {
 	if (scrolling == true) {
-		progress = progress + 0.09f;
+		progress = progress + 0.03f;
 		//Sea
 		seaOffset = seaOffset - 1;
 		if (seaOffset < -sea.getWidth())
@@ -81,7 +81,7 @@ void Background::Scroll()
 		}
 	}
 
-	if (progress >= 50.0f) {
+	if (progress >= 100.0f) {
 		scrolling = false; //Stop scrolling at level progress %
 	}
 }

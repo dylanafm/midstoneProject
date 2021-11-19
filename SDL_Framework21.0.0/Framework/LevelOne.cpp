@@ -10,9 +10,8 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	//a = new Animator(renderer);
 	bg = new Background(renderer);
-	stage = 1;
-	boss1 = new boss(SDL_Rect{ 1280, 360, 200, 200 }, 2.0f, renderer, "textures/bossPNG.png");
-	boss1->health = 3;
+	boss1 = new boss(SDL_Rect{ 1280, 360, 300, 200 }, 1, renderer, "textures/bossPNG.png");
+	boss1->health = 5;
 	harry = new harpoonHarry(renderer, "textures/harry.png");
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
 	
@@ -20,9 +19,29 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 
 	
 	song = new musicPlayer("Music/levelonetheme.ogg", 2);
-	fish[0] = new Fish(SDL_Rect{ 200, 200, 50, 50 }, 1, renderer, "textures/blobfish.png");
-	fish[1] = new Fish(SDL_Rect{ 2000, 400, 50, 50 }, 1, renderer, "textures/blobfish.png");
-	fish[2] = new Fish(SDL_Rect{ 400, 600, 50, 50 }, 1, renderer, "textures/blobfish.png");
+
+
+	fish[0] = new Fish(SDL_Rect{ 400, 200, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[1] = new Fish(SDL_Rect{ 800, 400, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[2] = new Fish(SDL_Rect{ 1200, 600, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[3] = new Fish(SDL_Rect{ 1600, 300, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[4] = new Fish(SDL_Rect{ 2000, 100, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[5] = new Fish(SDL_Rect{ 2400, 500, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[6] = new Fish(SDL_Rect{ 2800, 200, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[7] = new Fish(SDL_Rect{ 3200, 600, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[8] = new Fish(SDL_Rect{ 3600, 300, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[9] = new Fish(SDL_Rect{ 4000, 640, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[10] = new Fish(SDL_Rect{ 4400, 220, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[11] = new Fish(SDL_Rect{ 4800, 115, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[12] = new Fish(SDL_Rect{ 5200, 450, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[13] = new Fish(SDL_Rect{ 5600, 500, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[14] = new Fish(SDL_Rect{ 6000, 630, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[15] = new Fish(SDL_Rect{ 6400, 200, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[16] = new Fish(SDL_Rect{ 6800, 340, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[17] = new Fish(SDL_Rect{ 7200, 112, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[18] = new Fish(SDL_Rect{ 7600, 400, 50, 50 }, 2, renderer, "textures/blobfish.png");
+	fish[19] = new Fish(SDL_Rect{ 8000, 320, 50, 50 }, 2, renderer, "textures/blobfish.png");
+
 	
 
 
@@ -66,7 +85,7 @@ void LevelOne::Update(const float deltaTime) {
 
 
 	if (!paused) {
-		if (bg->getProg() <= 50.0f) {
+		if (bg->getProg() <= 100.0f) {
 			bg->Scroll();
 			for (int i = 0; i < std::size(fish); i++) {
 				if (fish[i] != nullptr) fish[i]->Scroll();
@@ -93,7 +112,7 @@ void LevelOne::Update(const float deltaTime) {
 		for (int i = 0; i < std::size(fish); i++) {
 
 			if (fish[i] != nullptr) fish[i]->Update(deltaTime);
-			if (boss1 != nullptr && bg->getProg() >= 50.0f) { 
+			if (boss1 != nullptr && bg->getProg() >= 100.0f) { 
 				boss1->Update(deltaTime, harry); 
 				if(!isProjectileFired)	spawnProjectile();
 			}

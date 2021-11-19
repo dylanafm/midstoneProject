@@ -36,7 +36,7 @@ private:
 	
 	harpoonHarry* harry;
 	Harpoon* harpoon;
-	Fish* fish[3];
+	Fish* fish[20];
 	boss* boss1;
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
@@ -48,7 +48,6 @@ private:
 	pauseMenu* pMenu;
 	bool paused = false;
 	Map* map;
-	int stage;
 	InGameTimer* reloadTimer;
 	InGameTimer* projectileReloadTimer;
 	InGameTimer* biteTimer;

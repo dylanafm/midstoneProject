@@ -53,8 +53,9 @@ void Enemy::Update(float deltaTime)
 	body.y = pos.y;
 }
 void Enemy::UpdateHealthBar(SDL_Renderer* r, int h) {
-	HealthBar = SDL_Rect{ body.x + 45, body.y - 40 , h * 50 , 15 };
-	TotalBar = SDL_Rect{ body.x + 45, body.y - 40 , 150, 15 };
+	int tHeatlh = 5 * 25;
+	HealthBar = SDL_Rect{ body.x + 35, body.y - 40 , h * 25 , 15 };
+	TotalBar = SDL_Rect{ body.x + 35, body.y - 40 , tHeatlh, 15 };
 	SDL_RenderCopy(r, BarTex, nullptr, &TotalBar);
 	SDL_RenderCopy(r, HealthTex, nullptr, &HealthBar);
 

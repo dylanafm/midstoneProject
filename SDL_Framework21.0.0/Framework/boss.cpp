@@ -13,7 +13,7 @@ boss::~boss()
 void boss::Update(float deltaTime, harpoonHarry* harry)
 {
 	Vec3 direction = Vec3(harry->pos.x - pos.x - 100.0f, harry->pos.y - pos.y - 100.0f, 0.0f);
-	vel = VMath::normalize(direction) * 20.0f;
+	vel = VMath::normalize(direction) * 5.0f;
 
 	pos += vel * deltaTime + 0.5f * accelPrevious * deltaTime * deltaTime;
 	vel += 0.5 * (accelCurrent + accelPrevious) * deltaTime;
