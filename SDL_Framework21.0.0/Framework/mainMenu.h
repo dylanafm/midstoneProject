@@ -15,6 +15,8 @@
 using namespace MATH;
 class mainMenu : public Scene {
 private:
+
+
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 	SDL_Renderer* renderer;
@@ -25,7 +27,7 @@ private:
 	button* Settings;
 	button* Tutorial;
 	button* Quit;
-	
+	button* Credits;
 	
 	button* Back;
 
@@ -36,9 +38,13 @@ private:
 	button* LevelThree;
 
 	SDL_Texture* backgroundTexture;
+	SDL_Texture* creditBG;
+
+
 
 	SDL_Texture* logoTex;
 	SDL_Texture* slam;
+	SDL_Texture* slamCred;
 
 	Text slamText;
 	InGameTimer* timer;
@@ -49,7 +55,12 @@ private:
 
 	musicPlayer* Song;
 
-	int currentMenu = 0; // Switch between menus in the main menu. 0 = Intro 1 = Main Menu, 2 = Levels Menu, 3 = Settings Menu, 4 = Tutorial Menu 
+
+	int creditScroll;
+
+	Text creditText[9];
+
+	int currentMenu = 0; // Switch between menus in the main menu. 0 = Intro 1 = Main Menu, 2 = Levels Menu, 3 = Settings Menu, 4 = Tutorial Menu 5 = Credit
 	int newScene = 0; // Switch between scenes. -1 = Quit, 1 = LevelOne, 0 = Dont switch
 	bool startTimer;
 public:

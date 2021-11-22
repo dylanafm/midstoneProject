@@ -9,7 +9,7 @@
 mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 	window = sdlWindow_;
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
+	creditScroll = 700;
 	timer = new InGameTimer(3.0f);
 
 	startTimer = true;
@@ -19,15 +19,18 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 	logoTex = TextureManager::LoadTexture("textures/HarryLogo.png", renderer);
 	logoBox = SDL_Rect{ 430, 10, 400, 200 };
 
+
 	slam = TextureManager::LoadTexture("textures/Slam.png", renderer);
-	
+	slamCred = TextureManager::LoadTexture("textures/Slam.png", renderer);
+
+	creditBG = TextureManager::LoadTexture("textures/CreditsBG.jpg", renderer);
 
 	Start = new button(470, 600, 300, 60, Vec3(20, 20, 210), "Continue");
 	Levels = new button(490, 195, 300, 60, Vec3(20, 20, 210), "Levels");
 	Settings = new button(440, 295, 400, 60, Vec3(20, 20, 210), "Settings");
 	Tutorial = new button(440, 395, 400, 60, Vec3(20, 20, 210), "Tutorial");
 	Quit = new button(540, 495, 200, 60, Vec3(20, 20, 210), "Quit");
-
+	Credits = new button(1150, 650, 100, 60, Vec3(20, 20, 210), "Credits");
 	Back = new button(50, 50, 50, 50, Vec3(20, 20, 210), "Back");
 
 	LevelOne = new button(250, 200, 200, 200, Vec3(20, 20, 210), "1");
@@ -55,6 +58,7 @@ bool mainMenu::OnCreate() {
 	if (!Quit->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
 	if (!Back->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
 	if (!LevelOne->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+	if (!Credits->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
 
 	if (!setBackground()) return false;
 
@@ -80,6 +84,7 @@ void mainMenu::Update(const float deltaTime) {
 		Settings->Update();
 		Tutorial->Update();
 		Quit->Update();
+		Credits->Update();
 	}
 	else if (currentMenu == 2) {
 
@@ -92,7 +97,11 @@ void mainMenu::Update(const float deltaTime) {
 	else  if (currentMenu == 3) {
 		Back->Update();
 	}
+	else if (currentMenu == 4) {
+		Back->Update();
+	}
 	else {
+		if (creditScroll > -700) { creditScroll -= 2; }		
 		Back->Update();
 	}
 
@@ -108,6 +117,7 @@ void mainMenu::Update(const float deltaTime) {
 		}
 		if (Settings->buttonClicked(event) && currentMenu == 1) { Settings->click->playSFX(); currentMenu = 3; }
 		if (Tutorial->buttonClicked(event) && currentMenu == 1) { Tutorial->click->playSFX(); currentMenu = 4; }
+		if (Credits->buttonClicked(event) && currentMenu == 1) { Credits->click->playSFX(); currentMenu = 5; creditScroll = 700; }
 		if (Quit->buttonClicked(event) && currentMenu == 1) { Quit->click->playSFX(); newScene = -1; }
 
 		if (Back->buttonClicked(event) && !currentMenu == 0 ) { Back->click->playSFX(); currentMenu = 1; }
@@ -121,8 +131,15 @@ void mainMenu::Render() {
 
 	//SDL_SetRenderDrawColor(renderer, 0, 120, 200, 0);
 	SDL_RenderClear(renderer);
+	if(currentMenu == 5) {
+		SDL_RenderCopyEx(renderer, creditBG, nullptr, new SDL_Rect{ 0, 0, 1280, 720 }, 0.0, nullptr, SDL_FLIP_NONE);
+	}
+	else {
+		SDL_RenderCopyEx(renderer, backgroundTexture, nullptr, new SDL_Rect{ 0, 0, 1280, 720 }, 0.0, nullptr, SDL_FLIP_NONE);
 
-	SDL_RenderCopyEx(renderer, backgroundTexture, nullptr, new SDL_Rect{ 0, 0, 1280, 720 }, 0.0, nullptr, SDL_FLIP_NONE);
+
+	}
+
 	if (currentMenu == 0) {
 		
 
@@ -136,7 +153,7 @@ void mainMenu::Render() {
 		}
 		else
 		{
-			logoBox = SDL_Rect{ 300 ,50, 700	, 700 };
+			logoBox = SDL_Rect{ 300 ,50, 700, 700 };
 			SDL_RenderCopy(renderer, slam, nullptr, &logoBox);
 			slamText.writeText("A Slam Productions Game", SDL_Color{ 0, 0, 0 }, SDL_Rect{ 300, 600, 800, 100 }, renderer);
 			
@@ -156,7 +173,7 @@ void mainMenu::Render() {
 		Settings->Render(renderer);
 		Tutorial->Render(renderer);
 		Quit->Render(renderer);
-		
+		Credits->Render(renderer);
 
 	}
 	else if (currentMenu == 2){
@@ -172,8 +189,25 @@ void mainMenu::Render() {
 
 
 	}
-	else {
+	else if (currentMenu == 4) {
 		Back->Render(renderer);
+
+	}
+	else
+	{
+		//cout << creditScroll << endl;
+		Back->Render(renderer);
+		creditText[1].writeText("Credits", SDL_Color{ 255, 255, 255 }, SDL_Rect{ 550, creditScroll, 250, 50 }, renderer);
+		creditText[2].writeText("Slam Productions Team", SDL_Color{ 255, 255, 255 }, SDL_Rect{ 575, creditScroll + 100, 200, 40 }, renderer);
+		creditText[3].writeText("Dylan Miller", SDL_Color{ 255, 255, 255 }, SDL_Rect{ 600, creditScroll + 200, 150, 30 }, renderer);
+		creditText[4].writeText("Julien Eustasie", SDL_Color{ 255, 255, 255 }, SDL_Rect{ 600, creditScroll + 300, 150, 30 }, renderer);
+		creditText[5].writeText("Kenneth Tumandao", SDL_Color{ 255, 255, 255 }, SDL_Rect{ 600, creditScroll + 400, 150, 30 }, renderer);
+		creditText[6].writeText("Vladimir Ianuskin", SDL_Color{ 255, 255, 255 }, SDL_Rect{ 600, creditScroll + 500, 150, 30 }, renderer);
+		creditText[7].writeText("Assets Used", SDL_Color{ 255, 255, 255 }, SDL_Rect{ 550, creditScroll + 600, 250, 40 }, renderer);
+
+		creditText[8].writeText("Follow The Slam Productions Twitter! @SlamProdCA For Development Updates!", SDL_Color{ 255, 255, 255 }, SDL_Rect{ 300, creditScroll + 900, 800, 75 }, renderer);
+		logoBox = SDL_Rect{ 476 , creditScroll + 990 , 485, 485 };
+		SDL_RenderCopy(renderer, slamCred, nullptr, &logoBox);
 
 	}
 	SDL_RenderPresent(renderer);
