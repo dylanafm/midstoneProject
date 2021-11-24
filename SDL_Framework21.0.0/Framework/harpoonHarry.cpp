@@ -29,8 +29,15 @@ harpoonHarry::harpoonHarry(SDL_Renderer* renderer, const char* path)
 	harryBox.y = pos.y;
 	harryBox.w = 50.0f;
 	harryBox.h = 50.0f;
-
 	texture = TextureManager::LoadTexture(path, renderer);
+
+	SDL_QueryTexture(texture, nullptr, nullptr, &imageW, &imageH);
+	
+	crop = SDL_Rect{ 0, 0, imageW, imageH };
+
+	currentFrame = 0;
+	amountFrameX = 0;
+	amountFrameY = 0;
 }
 
 harpoonHarry::~harpoonHarry(){
@@ -154,5 +161,39 @@ bool harpoonHarry::isCollided(harpoonHarry* harry, Enemy* enemy)
 
 void harpoonHarry::render(SDL_Renderer* render)
 {
-	SDL_RenderCopyEx(render, texture, nullptr, &harryBox, angle, nullptr, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(render, texture, &crop, &harryBox, angle, nullptr, SDL_FLIP_NONE);
+}
+
+void harpoonHarry::PlayAnim(int beginFrame, int endFrame, int row, float frameSpeed) {
+
+	if (animDelay + frameSpeed < SDL_GetTicks()) {
+
+		if (endFrame <= currentFrame)
+		{
+			currentFrame = beginFrame;
+		}
+		else {
+			currentFrame++;
+		}
+
+
+		crop.x = currentFrame * imageW / amountFrameX;
+		crop.y = row * (imageH / amountFrameY);
+		crop.w = imageW / amountFrameX;
+		crop.h = imageH / amountFrameY;
+		
+		animDelay = SDL_GetTicks();
+	}
+
+
+
+}
+
+
+void harpoonHarry::SetUpAnim(int amountFrameX_, int amountFrameY_) {
+
+	amountFrameX = amountFrameX_;
+	amountFrameY = amountFrameY_;
+
+
 }
