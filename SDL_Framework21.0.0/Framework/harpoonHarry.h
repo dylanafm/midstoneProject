@@ -7,7 +7,6 @@
 #include <SDL_image.h>
 #include "Vector.h"
 #include "Fish.h"
-#include <gif_lib.h>
 
 class harpoonHarry : public Body
 {

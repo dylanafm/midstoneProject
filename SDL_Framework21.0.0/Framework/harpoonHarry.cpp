@@ -161,7 +161,7 @@ bool harpoonHarry::isCollided(harpoonHarry* harry, Enemy* enemy)
 
 void harpoonHarry::render(SDL_Renderer* render)
 {
-	SDL_RenderCopyEx(render, texture, &crop, &harryBox, angle, nullptr, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(render, texture, &crop, &harryBox, angle + 90.0, nullptr, SDL_FLIP_NONE);
 }
 
 void harpoonHarry::PlayAnim(int beginFrame, int endFrame, int row, float frameSpeed) {
