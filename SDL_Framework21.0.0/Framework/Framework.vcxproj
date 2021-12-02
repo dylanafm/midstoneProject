@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="boss.cpp" />
@@ -180,6 +181,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Body.h" />
     <ClInclude Include="boss.h" />

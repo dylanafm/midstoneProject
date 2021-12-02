@@ -7,6 +7,7 @@
 #include "Enemy.h"
 
 using namespace MATH;
+class harpoonHarry;
 
 class boss : public Enemy
 {

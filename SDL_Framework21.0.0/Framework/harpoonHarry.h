@@ -7,18 +7,22 @@
 #include <SDL_image.h>
 #include "Vector.h"
 #include "Fish.h"
-
+#include "Animation.h"
+class Animation;
 class harpoonHarry : public Body
 {
 private:
-	int imageH;
-	int imageW;
+
 
 public:
+
+	Animation* swim;
+
+
 	harpoonHarry(SDL_Renderer* renderer, const char* path, float radius_);
 	~harpoonHarry();
 
-	int health, currentFrame, animDelay, amountFrameX, amountFrameY;
+	int health;
 	Vec3 accelPrevious, accelCurrent, accel, finalForce, center;
 	float drag, mass, radius, length, coefficient, radiusInPixels;
 	double angle, anglePrevious, flip;

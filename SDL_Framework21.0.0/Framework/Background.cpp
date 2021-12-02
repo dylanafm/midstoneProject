@@ -35,7 +35,7 @@ Background::Background(SDL_Renderer* r)
 	mOffset = 0;
 	rockOffset = 0;
 	groundOffset = 0;
-	progress = 99;
+	progress = 0;
 }
 
 Background::~Background()

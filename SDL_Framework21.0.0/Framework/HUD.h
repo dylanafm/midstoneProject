@@ -9,6 +9,8 @@
 #include "InGameTimer.h"
 #include "LevelOne.h"
 #include "Background.h"
+class harpoonHarry;
+
 class HUD
 {
 private:

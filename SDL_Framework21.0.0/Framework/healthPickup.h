@@ -2,6 +2,8 @@
 #define HEALTHPICKUP_H
 #include "LevelOne.h"
 #include "LTexture.h"
+class harpoonHarry;
+
 class healthPickup
 {
 public:

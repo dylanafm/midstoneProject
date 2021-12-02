@@ -13,7 +13,6 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	boss1->health = 5;
 	harry = new harpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
-	harry->SetUpAnim(8, 1);
 	hp = new healthPickup(Vec3(400.0f, 300.0f, 0.0f), 2.0f, renderer);
 	
 	playerHUD = new HUD();
@@ -234,7 +233,7 @@ void LevelOne::Render() {
 
 	if (!paused) {
 	
-		harry->PlayAnim(0, 7, 0, 175);
+		harry->swim->PlayAnim(0, 7, 0, 175);
 
 		
 		playerHUD->displayHUD(renderer, 20, 10, 50, 50, harry, reloadTimer, bg);

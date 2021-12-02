@@ -25,7 +25,9 @@ using namespace MATH;
 class HUD;
 class healthPickup;
 class Background;
-
+class harpoonHarry;
+class boss;
+class Harpoon;
 class LevelOne : public Scene {
 private:
 
