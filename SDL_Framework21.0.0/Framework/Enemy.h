@@ -11,6 +11,7 @@ public:
 	int health;
 	float scrollSpeed, radiusInPixels;
 	SDL_Rect body;
+	SDL_Rect crop;
 	SDL_Texture* texture;
 
 	Enemy();

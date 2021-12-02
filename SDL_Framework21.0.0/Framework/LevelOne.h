@@ -28,6 +28,7 @@ class Background;
 class harpoonHarry;
 class boss;
 class Harpoon;
+class Fish;
 class LevelOne : public Scene {
 private:
 

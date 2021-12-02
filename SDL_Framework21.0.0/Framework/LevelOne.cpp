@@ -234,7 +234,6 @@ void LevelOne::Render() {
 	if (!paused) {
 	
 		harry->swim->PlayAnim(0, 7, 0, 175);
-
 		
 		playerHUD->displayHUD(renderer, 20, 10, 50, 50, harry, reloadTimer, bg);
 	}
@@ -245,6 +244,8 @@ void LevelOne::Render() {
 
 	for (int i = 0; i < std::size(fish); i++) {
 		if (fish[i] != nullptr) fish[i]->Render(renderer);
+		if (fish[i] != nullptr && !paused) fish[i]->fishAnim->PlayAnim(0, 5, 0, 175);
+
 	}
 	
 	if (harry->health <= 0) dMenu->deathRender(renderer);
