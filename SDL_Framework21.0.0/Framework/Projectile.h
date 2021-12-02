@@ -5,19 +5,13 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "Vector.h"
+#include "Enemy.h"
 
-class Projectile
+class Projectile : public Enemy
 {
 public:
-	Vec3 pos, vel, accelPrevious, accelCurrent, accel, finalForce;
-	SDL_Rect body;
-	SDL_Texture* texture;
-
-	Projectile(Vec3 pos_, Vec3 vel_, SDL_Renderer* renderer, const char* path);
+	Projectile(SDL_Rect body_, Vec3 vel_, SDL_Renderer* renderer, const char* path, float radius_);
 	~Projectile();
-
-	void Update(float deltaTime);
-	void Render(SDL_Renderer* renderer);
 };
 
 #endif

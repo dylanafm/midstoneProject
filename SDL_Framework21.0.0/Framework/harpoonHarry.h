@@ -15,12 +15,12 @@ private:
 	int imageW;
 
 public:
-	harpoonHarry(SDL_Renderer* renderer, const char* path);
+	harpoonHarry(SDL_Renderer* renderer, const char* path, float radius_);
 	~harpoonHarry();
 
 	int health, currentFrame, animDelay, amountFrameX, amountFrameY;
-	Vec3 accelPrevious, accelCurrent, accel, finalForce;
-	float drag, mass, radius, length, coefficient;
+	Vec3 accelPrevious, accelCurrent, accel, finalForce, center;
+	float drag, mass, radius, length, coefficient, radiusInPixels;
 	double angle, anglePrevious, flip;
 	
 	SDL_Rect harryBox;

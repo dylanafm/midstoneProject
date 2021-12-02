@@ -12,7 +12,7 @@ class boss : public Enemy
 {
 public:
 	double angle;
-	boss(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path);
+	boss(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_);
 	~boss();
 	void Update(float deltaTime, harpoonHarry* harry);
 	void Render(SDL_Renderer* renderer) override;

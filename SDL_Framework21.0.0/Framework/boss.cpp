@@ -1,8 +1,8 @@
 #include "boss.h"
 #include "VMath.h"
 
-boss::boss(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path):
-	Enemy(body_, scrollSpeed, renderer, path){
+boss::boss(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_):
+	Enemy(body_, scrollSpeed, renderer, path, radius_){
 	angle = 0.0;
 }
 
@@ -13,7 +13,7 @@ boss::~boss()
 void boss::Update(float deltaTime, harpoonHarry* harry)
 {
 	Vec3 direction = Vec3(harry->pos.x - pos.x - 100.0f, harry->pos.y - pos.y - 100.0f, 0.0f);
-	vel = VMath::normalize(direction) * 5.0f;
+	vel = VMath::normalize(direction) * 4.0f;
 
 	pos += vel * deltaTime + 0.5f * accelPrevious * deltaTime * deltaTime;
 	vel += 0.5 * (accelCurrent + accelPrevious) * deltaTime;

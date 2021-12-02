@@ -5,7 +5,7 @@
 #include "VMath.h"
 #include "TextureManager.h"
 
-harpoonHarry::harpoonHarry(SDL_Renderer* renderer, const char* path)
+harpoonHarry::harpoonHarry(SDL_Renderer* renderer, const char* path, float radius_)
 {
 	
 	pos = Vec3(500.0f, 50.0f, 200.0f);
@@ -14,7 +14,6 @@ harpoonHarry::harpoonHarry(SDL_Renderer* renderer, const char* path)
 	drag = 0.005f;
 	accelCurrent = Vec3(0.0f, 0.0f, 0.0f);
 	accelPrevious = Vec3(0.0f, 0.0f, 0.0f);
-	radius = 0.3f;
 	length = 1.7f;
 	coefficient = 50.0f;
 	mass = 100.0f;
@@ -23,6 +22,7 @@ harpoonHarry::harpoonHarry(SDL_Renderer* renderer, const char* path)
 	angle = 0.0;
 	anglePrevious = 0.0;
 	flip = 0.0;
+	radius = 0.3f;
 
 
 	harryBox.x = pos.x;
@@ -38,6 +38,8 @@ harpoonHarry::harpoonHarry(SDL_Renderer* renderer, const char* path)
 	currentFrame = 0;
 	amountFrameX = 0;
 	amountFrameY = 0;
+
+	radiusInPixels = radius_;
 }
 
 harpoonHarry::~harpoonHarry(){
@@ -106,47 +108,17 @@ void harpoonHarry::Update(float deltaTime)
 
 bool harpoonHarry::checkCollision(harpoonHarry* harry, Enemy* enemy)
 {
-	//The sides of the rectangles
-	int leftA, leftB;
-	int rightA, rightB;
-	int topA, topB;
-	int bottomA, bottomB;
+	
+	Vec3 enemyCenter = Vec3(enemy->pos.x + enemy->body.w / 2.0f, enemy->pos.y + enemy->body.h / 2.0f, 0.0f);
+	Vec3 harryCenter = Vec3(harry->pos.x + harry->harryBox.w / 2.0f, harry->pos.y + harry->harryBox.h / 2.0f, 0.0f);
 
-	//Calculate the sides of rect A
-	leftA = harryBox.x;
-	rightA = harryBox.x + harryBox.w;
-	topA = harryBox.y;
-	bottomA = harryBox.y + harryBox.h;
-
-	//Calculate the sides of rect B
-	leftB = enemy->body.x;
-	rightB = enemy->body.x + enemy->body.w;
-	topB = enemy->body.y;
-	bottomB = enemy->body.y + enemy->body.h;
-
-	if (bottomA <= topB)
-	{
-		return false;
+	if (((enemyCenter.x - harryCenter.x) * (enemyCenter.x - harryCenter.x) +
+		(harryCenter.y - enemyCenter.y) * (harryCenter.y - enemyCenter.y)) <=
+		((enemy->radiusInPixels + harry->radiusInPixels) * (enemy->radiusInPixels + harry->radiusInPixels))) {
+		return true;
 	}
 
-	if (topA >= bottomB)
-	{
-		return false;
-	}
-
-	if (rightA <= leftB)
-	{
-		return false;
-	}
-
-	if (leftA >= rightB)
-	{
-		return false;
-	}
-
-	//If none of the sides from A are outside B
-	std::cout << "BANG!\n";
-	return true;
+	return false;
 }
 
 bool harpoonHarry::isCollided(harpoonHarry* harry, Enemy* enemy)

@@ -9,13 +9,14 @@ class Enemy {
 public:
 	Vec3 pos, vel, accelPrevious, accelCurrent, accel;
 	int health;
-	float scrollSpeed;
+	float scrollSpeed, radiusInPixels;
+	SDL_Rect body;
+	SDL_Texture* texture;
 
 	Enemy();
 	~Enemy();
-	Enemy(SDL_Rect body, float scrollSpeed, SDL_Renderer* renderer, const char* path);
-	SDL_Rect body;
-	SDL_Texture* texture;
+	Enemy(SDL_Rect body, Vec3 vel_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_);
+	Enemy(SDL_Rect body, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_);
 
 	//Health Bar
 
