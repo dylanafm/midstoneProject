@@ -46,7 +46,7 @@ private:
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 	Projectile* projectile;
-	healthPickup* hp;
+	healthPickup* hp[9];
 
 	SDL_Renderer* renderer;
 

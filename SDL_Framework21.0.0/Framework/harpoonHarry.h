@@ -9,6 +9,7 @@
 #include "Fish.h"
 #include "Animation.h"
 class Animation;
+class healthPickup;
 class harpoonHarry : public Body
 {
 private:
@@ -41,6 +42,10 @@ public:
 	bool checkCollision(harpoonHarry* harry, Enemy* enemy);
 
 	bool isCollided(harpoonHarry* harry, Enemy* enemy);
+
+	bool checkHealthCollision(harpoonHarry* harry, healthPickup* hp);
+
+	bool isHealthCollided(harpoonHarry* harry, healthPickup* hp);
 
 	void render(SDL_Renderer* render);
 

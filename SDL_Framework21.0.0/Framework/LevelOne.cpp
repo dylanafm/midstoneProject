@@ -13,13 +13,20 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	boss1->health = 5;
 	harry = new harpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
-	hp = new healthPickup(Vec3(400.0f, 300.0f, 0.0f), 2.0f, renderer);
 	
 	playerHUD = new HUD();
 
-	
 	song = new musicPlayer("Music/levelonetheme.ogg", 2);
 
+	hp[0] = new healthPickup(Vec3(1000.0f, 600.0f, 0.0f), 2.0f, renderer);
+	hp[1] = new healthPickup(Vec3(1400.0f, 400.0f, 0.0f), 2.0f, renderer);
+	hp[2] = new healthPickup(Vec3(1800.0f, 150.0f, 0.0f), 2.0f, renderer);
+	hp[3] = new healthPickup(Vec3(2200.0f, 115.0f, 0.0f), 2.0f, renderer);
+	hp[4] = new healthPickup(Vec3(2400.0f, 200.0f, 0.0f), 2.0f, renderer);
+	hp[5] = new healthPickup(Vec3(2800.0f, 500.0f, 0.0f), 2.0f, renderer);
+	hp[6] = new healthPickup(Vec3(3200.0f, 640.0f, 0.0f), 2.0f, renderer);
+	hp[7] = new healthPickup(Vec3(3600.0f, 460.0f, 0.0f), 2.0f, renderer);
+	hp[8] = new healthPickup(Vec3(4000.0f, 11.0f, 0.0f), 2.0f, renderer);
 
 	fish[0] = new Fish(SDL_Rect{ 400, 200, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
 	fish[1] = new Fish(SDL_Rect{ 800, 400, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
@@ -82,13 +89,21 @@ void LevelOne::OnDestroy() {
 
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
-	
-	hp->update(deltaTime);
-
+	for (int i = 0; i < std::size(hp); i++) {
+		if (hp[i] != nullptr)  hp[i]->update(deltaTime);
+		if (hp[i] != nullptr) {
+			if (harry->isHealthCollided(harry, hp[i])) {
+				delete hp[i];
+				hp[i] = nullptr;
+			}
+		}
+	}
 	if (!paused) {
 		if (bg->getProg() <= 100.0f) {
 			bg->Scroll();
-			hp->scroll();
+			for (int i = 0; i < std::size(hp); i++) {
+				if (hp[i] != nullptr) hp[i]->scroll();
+			}
 			for (int i = 0; i < std::size(fish); i++) {
 				if (fish[i] != nullptr) fish[i]->Scroll();
 			}
@@ -225,7 +240,9 @@ void LevelOne::Render() {
 
 	SDL_RenderClear(renderer);
 	bg->Render(renderer);
-	hp->render(renderer);
+	for (int i = 0; i < std::size(hp); i++) {
+		if (hp[i] != nullptr) hp[i]->render(renderer);
+	}
 	//a->Render(renderer);
 	harry->render(renderer);
 	if (projectile != nullptr) projectile->Render(renderer);

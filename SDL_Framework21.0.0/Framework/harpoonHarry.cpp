@@ -130,6 +130,34 @@ bool harpoonHarry::isCollided(harpoonHarry* harry, Enemy* enemy)
 	return false;
 }
 
+bool harpoonHarry::checkHealthCollision(harpoonHarry* harry, healthPickup* hp)
+{
+	Vec3 hpCenter = Vec3(hp->pos.x + hp->body.w / 2.0f, hp->pos.y + hp->body.h / 2.0f, 0.0f);
+	Vec3 harryCenter = Vec3(harry->pos.x + harry->harryBox.w / 2.0f, harry->pos.y + harry->harryBox.h / 2.0f, 0.0f);
+
+	if (((hpCenter.x - harryCenter.x) * (hpCenter.x - harryCenter.x) +
+		(harryCenter.y - hpCenter.y) * (harryCenter.y - hpCenter.y)) <=
+		((hp->radiusInPixels + harry->radiusInPixels) * (hp->radiusInPixels + harry->radiusInPixels))) {
+		return true;
+	}
+
+	return false;
+}
+
+bool harpoonHarry::isHealthCollided(harpoonHarry* harry, healthPickup* hp)
+{
+
+	if ((harry->checkHealthCollision(harry, hp)) == true) {
+		if (health >= 3) { health = 3; }
+		else {
+			health++;
+		}
+			std::cout << "Health = " << health << "\n";
+			return true;
+	}
+	return false;
+}
+
 void harpoonHarry::render(SDL_Renderer* render)
 {
 	crop = swim->getCrop();
