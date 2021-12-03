@@ -40,7 +40,8 @@ private:
 	SDL_Texture* backgroundTexture;
 	SDL_Texture* creditBG;
 
-
+	SDL_Texture* tutorialIMG;
+	SDL_Rect tutorialBox;
 
 	SDL_Texture* logoTex;
 	SDL_Texture* slam;

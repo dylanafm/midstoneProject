@@ -19,6 +19,9 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 	logoTex = TextureManager::LoadTexture("textures/HarryLogo.png", renderer);
 	logoBox = SDL_Rect{ 430, 10, 400, 200 };
 
+	tutorialIMG = TextureManager::LoadTexture("textures/TutorialPic.png", renderer);
+	tutorialBox = SDL_Rect{ 100 , 50, 1100, 600 };
+
 
 	slam = TextureManager::LoadTexture("textures/Slam.png", renderer);
 	slamCred = TextureManager::LoadTexture("textures/Slam.png", renderer);
@@ -190,6 +193,7 @@ void mainMenu::Render() {
 
 	}
 	else if (currentMenu == 4) {
+		SDL_RenderCopy(renderer, tutorialIMG, nullptr, &tutorialBox);
 		Back->Render(renderer);
 
 	}

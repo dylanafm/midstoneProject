@@ -1,6 +1,7 @@
 #include "pauseMenu.h"
+#include "TextureManager.h"
 
-pauseMenu::pauseMenu()
+pauseMenu::pauseMenu(SDL_Renderer* r)
 {
 	Resume = new button(490, 95, 300, 60, Vec3(20, 20, 210), "Resume");
 	Restart = new button(465, 195, 350, 60, Vec3(20, 20, 210), "Restart");
@@ -10,6 +11,10 @@ pauseMenu::pauseMenu()
 	Quit = new button(540, 595, 200, 60, Vec3(20, 20, 210), "Quit");
 
 	Back = new button(50, 50, 50, 50, Vec3(20, 20, 210), "Back");
+
+
+	tutorialIMG = TextureManager::LoadTexture("textures/TutorialPic.png", r);
+	tutorialBox = SDL_Rect{ 100 , 50, 1100, 600 };
 
 }
 
@@ -50,6 +55,7 @@ void pauseMenu::pauseRender(SDL_Renderer* renderer)
 		Back->Render(renderer);
 	}
 	else if (currentMenu == 4) {
+		SDL_RenderCopy(renderer, tutorialIMG, nullptr, &tutorialBox);
 		Back->Render(renderer);
 	}
 }

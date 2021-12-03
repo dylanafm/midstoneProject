@@ -15,13 +15,16 @@ private:
 
 	button* Back;
 
+	SDL_Texture* tutorialIMG;
+	SDL_Rect tutorialBox;
+
 	int currentMenu = 1;
 	int newScene = 0;
 
 	bool paused = true;
 
 public:
-	pauseMenu();
+	pauseMenu(SDL_Renderer* r);
 	~pauseMenu();
 	void pauseUpdate(SDL_Event event_);
 	void pauseRender(SDL_Renderer* renderer);
