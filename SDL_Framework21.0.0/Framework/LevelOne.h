@@ -20,6 +20,7 @@
 #include "Projectile.h"
 #include "musicPlayer.h"
 #include "healthPickup.h"
+#include "sfx.h"
 
 using namespace MATH;
 class HUD;
@@ -79,6 +80,14 @@ public:
 	int getScene() {
 		return newScene;
 	}	
+
+	sfx* harpoonShoot;
+	sfx* fishHurt;
+	sfx* playerHurt;
+	sfx* playerDie;
+	sfx* bossHurt;
+	sfx* healthsfx;
+
 };
 
 #endif

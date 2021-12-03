@@ -49,7 +49,13 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	fish[18] = new Fish(SDL_Rect{ 7600, 400, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
 	fish[19] = new Fish(SDL_Rect{ 8000, 320, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
 
-	
+	harpoonShoot = new sfx("SFX/shoot.ogg", 10);
+	fishHurt = new sfx("SFX/blobdeath.wav", 10);
+	playerHurt = new sfx("SFX/pain.wav", 10);
+	playerDie = new sfx("SFX/die.wav", 10);
+	bossHurt = new sfx("SFX/bossdeath.wav", 10);
+	healthsfx = new sfx("SFX/life_pickup.flac", 10);
+
 
 
 	
@@ -93,6 +99,7 @@ void LevelOne::Update(const float deltaTime) {
 		if (hp[i] != nullptr)  hp[i]->update(deltaTime);
 		if (hp[i] != nullptr) {
 			if (harry->isHealthCollided(harry, hp[i])) {
+				healthsfx->playSFX();
 				delete hp[i];
 				hp[i] = nullptr;
 			}
@@ -119,6 +126,8 @@ void LevelOne::Update(const float deltaTime) {
 	if (boss1 != nullptr) {
 		if (!isBitten) {
 			if (harry->isCollided(harry, boss1)) {
+				playerHurt->playSFX();
+
 				biteTimer = new InGameTimer(2.0f);
 				isBitten = true;
 			}
@@ -128,6 +137,7 @@ void LevelOne::Update(const float deltaTime) {
 	if (projectile != nullptr) {
 		projectile->Update(deltaTime);
 		if (harry->isCollided(harry, projectile)) {
+			playerHurt->playSFX();
 			delete projectile;
 			projectile = nullptr;
 		}
@@ -146,6 +156,8 @@ void LevelOne::Update(const float deltaTime) {
 
 
 			if (harry->isCollided(harry, fish[i])) {
+				playerHurt->playSFX();
+
 				delete fish[i];
 				fish[i] = nullptr;
 			}
@@ -153,6 +165,7 @@ void LevelOne::Update(const float deltaTime) {
 
 		if (harpoon != nullptr && fish[i] != nullptr) {
 			if (harpoon->isCollided(fish[i], harpoon)) {
+				fishHurt->playSFX();
 				harpoon = nullptr;
 				fish[i] = nullptr;
 				delete harpoon;
@@ -166,12 +179,15 @@ void LevelOne::Update(const float deltaTime) {
 	if (harpoon != nullptr && boss1 != nullptr) {
 		if (harpoon->isCollided(boss1, harpoon)) {
 			if (boss1->health > 1) {
+				bossHurt->playSFX();
 				boss1->health -= 1;
 				harpoon = nullptr;
 				delete harpoon;
 				//std::cout << boss1->health << std::endl;
 			}
 			else {
+				bossHurt->playSFX();
+
 				harpoon = nullptr;
 				boss1 = nullptr;
 				delete harpoon;
@@ -194,6 +210,7 @@ void LevelOne::Update(const float deltaTime) {
 	harry->HandleEvents(event);
 	
 	if (harry->health <= 0) {
+		playerDie->playSFX();
 		if (!paused) paused = true;
 		newScene = dMenu->getScene();
 		paused = dMenu->getPaused();
@@ -285,6 +302,7 @@ void LevelOne::spawnHarpoon()
 	Vec3 direction = Vec3(xf - position.x - 15.0f, yf - position.y - 5.25f, 0.0f);
 	Vec3 velocity = VMath::normalize(direction) * 420.0f;
 	harpoon = new Harpoon(position, velocity, renderer, "textures/Harpoon.png");
+	harpoonShoot->playSFX();
 
 	isFired = true;
 	reloadTimer = new InGameTimer(3.0f);
