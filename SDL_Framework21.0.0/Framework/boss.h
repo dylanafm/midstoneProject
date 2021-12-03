@@ -5,8 +5,9 @@
 #include "Vector.h"
 #include "harpoonHarry.h"
 #include "Enemy.h"
-
+#include "Animation.h"
 using namespace MATH;
+class Animation;
 class harpoonHarry;
 
 class boss : public Enemy
@@ -17,6 +18,7 @@ public:
 	~boss();
 	void Update(float deltaTime, harpoonHarry* harry);
 	void Render(SDL_Renderer* renderer) override;
+	Animation* swim;
 };
 
 #endif

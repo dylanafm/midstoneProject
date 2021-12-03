@@ -4,6 +4,8 @@
 boss::boss(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_):
 	Enemy(body_, scrollSpeed, renderer, path, radius_){
 	angle = 0.0;
+	swim = new Animation(texture);
+	swim->SetUpAnim(2, 1);
 }
 
 boss::~boss()
@@ -26,6 +28,7 @@ void boss::Update(float deltaTime, harpoonHarry* harry)
 
 void boss::Render(SDL_Renderer* renderer)
 {
+	crop = swim->getCrop();
 	//SDL_RendererFlip flip = (SDL_RendererFlip)(SDL_FLIP_HORIZONTAL | SDL_FLIP_VERTICAL);
-	SDL_RenderCopyEx(renderer, texture, nullptr, &body, angle, nullptr, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer, texture, &crop, &body, angle, nullptr, SDL_FLIP_NONE);
 }
