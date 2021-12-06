@@ -148,7 +148,7 @@ void LevelOne::Update(const float deltaTime) {
 		if (fish[i] != nullptr) fish[i]->Update(deltaTime);
 		if (boss1 != nullptr && bg->getProg() >= 100.0f) { 
 			boss1->Update(deltaTime, harry); 
-			//if(!isProjectileFired)	spawnProjectile();
+			if(!isProjectileFired)	spawnProjectile();
 		}
 
 
@@ -312,11 +312,12 @@ void LevelOne::spawnHarpoon()
 void LevelOne::spawnProjectile()
 {
 	Vec3 axes(0, 0, 1);
-	std::cout << boss1->angle << std::endl;
-	Matrix4 temp = MMath::rotate((float)boss1->angle, axes);
-	Vec3 TranslationVector = - boss1->pos + Vec3(boss1->body.w / 2, boss1->body.h / 2, 0.0f);
-	Vec3 rotatedPoint = temp * TranslationVector;
-	Vec3 newPos = boss1->pos - rotatedPoint;
+	Matrix4 rotation = MMath::rotate((float)boss1->angle, axes);
+	Vec3 centerPos = Vec3(150.0f, 30.0f, 0.0f);
+	Vec3 offset = rotation * centerPos;
+	Vec3 bossCenter = boss1->pos + Vec3(boss1->body.w / 2, boss1->body.h / 2, 0.0f);
+	Vec3 newPos = bossCenter - offset;
+
 
 	Vec3 direction = Vec3(harry->pos.x + 25.0f - newPos.x, harry->pos.y + 25.0f - newPos.y, 0.0f);
 	Vec3 velocity = VMath::normalize(direction) * 300.0f;
