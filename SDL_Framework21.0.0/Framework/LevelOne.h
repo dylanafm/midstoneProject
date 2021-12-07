@@ -9,6 +9,7 @@
 #include "harpoonHarry.h"
 #include "pauseMenu.h"
 #include "DeathMenu.h"
+#include "finishMenu.h"
 #include "HUD.h"
 #include "Fish.h"
 #include "Harpoon.h"
@@ -60,6 +61,7 @@ private:
 
 	DeathMenu* dMenu;
 	pauseMenu* pMenu;
+	finishMenu* fMenu;
 	bool paused = false;
 	Map* map;
 	InGameTimer* reloadTimer;

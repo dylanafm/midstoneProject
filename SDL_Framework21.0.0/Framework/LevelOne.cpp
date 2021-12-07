@@ -9,7 +9,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	//a = new Animator(renderer);
 	bg = new Background(renderer);
-	boss1 = new boss(SDL_Rect{ 1280, 360, 300, 200 }, 1, renderer, "textures/bossAnim.png", 100.0f);
+	boss1 = new boss(SDL_Rect{ 2000, 360, 300, 200 }, 2.0f, renderer, "textures/bossAnim.png", 100.0f);
 	boss1->health = 5;
 	harry = new harpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
@@ -86,10 +86,12 @@ bool LevelOne::OnCreate() {
 	song->playSong();
 
 	pMenu = new pauseMenu(renderer);
+	fMenu = new finishMenu(renderer);
 	dMenu = new DeathMenu();
 
 	if (!pMenu->setUpButtons(renderer)) return false;
 	if (!dMenu->setUpButtons(renderer)) return false;
+	if (!fMenu->setUpButtons(renderer)) return false;
 
 	return true;
 }
@@ -136,7 +138,6 @@ void LevelOne::Update(const float deltaTime) {
 			}
 			//if (boss1 != nullptr) boss1->Scroll();
 		}
-		
 
 		
 		
@@ -189,9 +190,9 @@ void LevelOne::Update(const float deltaTime) {
 	for (int i = 0; i < std::size(fish); i++) {
 
 		if (fish[i] != nullptr) fish[i]->Update(deltaTime);
-		if (boss1 != nullptr && bg->getProg() >= 100.0f) { 
+		if (boss1 != nullptr && bg->getProg() >= 90.0f) { 
 			boss1->Update(deltaTime, harry); 
-			if(!isProjectileFired)	spawnProjectile();
+			if(!isProjectileFired && boss1->pos.x < 1200.0f)	spawnProjectile();
 		}
 
 
@@ -249,20 +250,27 @@ void LevelOne::Update(const float deltaTime) {
 			}
 		}
 		if (harry->health <= 0) dMenu->deathUpdate(event);
-		else if (paused) pMenu->pauseUpdate(event);
+		else if (boss1 != nullptr && paused) pMenu->pauseUpdate(event);
+		if (boss1 == nullptr && paused) fMenu->finishUpdate(event);
 	}
 	harry->HandleEvents(event);
-	
+	if (boss1 == nullptr && !paused) paused = !paused;
+
 	if (harry->health <= 0) {
 		playerDie->playSFX();
 		if (!paused) paused = true;
 		newScene = dMenu->getScene();
 		paused = dMenu->getPaused();
 	}
-	else if (paused) {
+	else if (boss1 != nullptr && paused) {
 		newScene = pMenu->getScene();
 		paused = pMenu->getPaused();
 		if (!paused) pMenu->setDefault(); // Reset the Pause menu when Resume was pressed
+	}
+	if (boss1 == nullptr && paused) {
+		newScene = fMenu->getScene();
+		paused = fMenu->getPaused();
+		if (!paused) fMenu->setDefault(); // Reset the Finish menu when Resume was pressed
 	}
 
 	Physics::ApplyForces(*harry, 0.0f);
@@ -296,6 +304,8 @@ void LevelOne::Update(const float deltaTime) {
 			if (fish[i] != nullptr) fish[i]->Move(deltaTime, 200);
 		}
 	}
+
+	
 }
 
 void LevelOne::Render() {
@@ -338,7 +348,8 @@ void LevelOne::Render() {
 	}
 	
 	if (harry->health <= 0) dMenu->deathRender(renderer);
-	else if (paused) pMenu->pauseRender(renderer);
+	else if (boss1 != nullptr && paused) pMenu->pauseRender(renderer);
+	if (boss1 == nullptr && paused) fMenu->finishRender(renderer);
 
 
 	SDL_RenderPresent(renderer);

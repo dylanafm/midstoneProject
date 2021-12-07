@@ -1,26 +1,26 @@
-#ifndef DEATHMENU_H
-#define DEATHMENU_H
+#ifndef FINISHMENU_H
+#define FINISHMENU_H
 
 #include "button.h"
+#include "Text.h"
 
-class DeathMenu
+class finishMenu
 {
 private:
-	button* Restart;
+	button* NextLevel;
 	button* MainMenu;
 	button* Quit;
 	Text text;
 
-	int currentMenu = 1;
 	int newScene = 0;
 
 	bool paused = true;
 
 public:
-	DeathMenu();
-	~DeathMenu();
-	void deathUpdate(SDL_Event event_);
-	void deathRender(SDL_Renderer* renderer);
+	finishMenu(SDL_Renderer* r);
+	~finishMenu();
+	void finishUpdate(SDL_Event event_);
+	void finishRender(SDL_Renderer* renderer);
 	bool getPaused() {
 		return paused;
 	}

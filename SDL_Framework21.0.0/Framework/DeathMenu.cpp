@@ -25,6 +25,7 @@ void DeathMenu::deathUpdate(SDL_Event event_)
 void DeathMenu::deathRender(SDL_Renderer* renderer)
 {
 	if (currentMenu == 1) {
+		text.writeText("You Died", SDL_Color{ 255, 0, 0 }, SDL_Rect{ 440, 150, 400, 60 }, renderer);
 		Restart->Render(renderer);
 		MainMenu->Render(renderer);
 		Quit->Render(renderer);
