@@ -16,11 +16,14 @@
 #include "Map.h"
 #include "boss.h"
 #include "Enemy.h"
+#include "ShieldPU.h"
 #include "Background.h"
 #include "Projectile.h"
 #include "musicPlayer.h"
 #include "healthPickup.h"
 #include "sfx.h"
+#include "Powerups.h"
+#include "MGHarpoon.h"
 
 using namespace MATH;
 class HUD;
@@ -30,18 +33,22 @@ class harpoonHarry;
 class boss;
 class Harpoon;
 class Fish;
+class ShieldPU;
+class MGHarpoon;
 class LevelOne : public Scene {
 private:
 
 	musicPlayer* song;
-
+	int currentHarpoon;
+	ShieldPU* Shield;
+	MGHarpoon* rf;
 	HUD* playerHUD;
 
 	Background* bg;
 	//Animator* a;
 	
 	harpoonHarry* harry;
-	Harpoon* harpoon;
+	Harpoon* harpoon[50];
 	Fish* fish[20];
 	boss* boss1;
 	SDL_Window* window;

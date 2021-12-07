@@ -13,7 +13,7 @@ class healthPickup;
 class harpoonHarry : public Body
 {
 private:
-
+	
 
 public:
 
@@ -25,9 +25,9 @@ public:
 
 	int health;
 	Vec3 accelPrevious, accelCurrent, accel, finalForce, center;
-	float drag, mass, radius, length, coefficient, radiusInPixels;
+	float drag, mass, radius, length, coefficient, radiusInPixels, timeRemaining, gunTimeRemain;
 	double angle, anglePrevious, flip;
-	
+	bool Shielded, rapidFire;
 	SDL_Rect harryBox;
 	SDL_Rect crop;
 

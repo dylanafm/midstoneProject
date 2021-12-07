@@ -8,7 +8,8 @@
 
 harpoonHarry::harpoonHarry(SDL_Renderer* renderer, const char* path, float radius_)
 {
-	
+	timeRemaining = 0.0f;
+	gunTimeRemain = 0.0f;
 	pos = Vec3(500.0f, 50.0f, 200.0f);
 	vel = Vec3(0.0f, 0.0f, 0.0f);
 	accel = Vec3(0.0f, 0.0f, 0.0f);
@@ -35,7 +36,8 @@ harpoonHarry::harpoonHarry(SDL_Renderer* renderer, const char* path, float radiu
 	swim = new Animation(texture);
 	swim->SetUpAnim(8, 1);
 
-
+	Shielded = false;
+	rapidFire = false;
 	
 
 	radiusInPixels = radius_;
@@ -60,7 +62,31 @@ void harpoonHarry::HandleEvents(SDL_Event sdlEvent) {
 }
 
 void harpoonHarry::Update(float deltaTime)
+
+	
 {
+	if (timeRemaining > 0.0f) {
+
+		timeRemaining -= deltaTime;
+
+	}
+	if (timeRemaining <= 0.0f)
+	{
+		Shielded = false;
+	}
+
+	if (gunTimeRemain > 0.0f) {
+
+		gunTimeRemain -= deltaTime;
+
+	}
+	if (gunTimeRemain <= 0.0f)
+	{
+		rapidFire = false;
+	}
+
+
+	
 	if (pos.x <= 0) {
 
 		pos.x = 1;
@@ -122,11 +148,19 @@ bool harpoonHarry::checkCollision(harpoonHarry* harry, Enemy* enemy)
 
 bool harpoonHarry::isCollided(harpoonHarry* harry, Enemy* enemy)
 {
-	if ((harry->checkCollision(harry, enemy)) == true) {
-		health--;
-		std::cout << "Health = " << health << "\n";
-		return true;
+	if (!Shielded) {
+		if ((harry->checkCollision(harry, enemy)) == true) {
+			health--;
+			std::cout << "Health = " << health << "\n";
+			return true;
+		}
 	}
+	else {
+		if ((harry->checkCollision(harry, enemy)) == true) {
+			return true;
+		}
+	}
+	
 	return false;
 }
 

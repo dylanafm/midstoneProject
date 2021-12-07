@@ -135,6 +135,15 @@
     <ClCompile Include="Text.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Powerups.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShieldPU.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MGHarpoon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainMenu.h">
@@ -238,6 +247,15 @@
     </ClInclude>
     <ClInclude Include="TextureManager.h">
       <Filter>Header Files\Audio Video</Filter>
+    </ClInclude>
+    <ClInclude Include="Powerups.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShieldPU.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MGHarpoon.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
