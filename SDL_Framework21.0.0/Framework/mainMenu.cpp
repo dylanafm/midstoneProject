@@ -37,7 +37,7 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 	Back = new button(50, 50, 50, 50, Vec3(20, 20, 210), "Back");
 
 	LevelOne = new button(250, 200, 200, 200, Vec3(20, 20, 210), "1");
-	//LevelTwo = button(350, 200, 200, 200, Vec3(255, 255, 255), Vec3(0, 255, 255), Vec3(120, 255, 0), "Level Two");
+	LevelTwo = new button(700, 200, 200, 200, Vec3(20, 20, 210), "2");
 	//LevelThree = button(450, 200, 200, 200, Vec3(255, 255, 255), Vec3(0, 255, 255), Vec3(120, 255, 0), "LevelThree");
 }
 
@@ -61,6 +61,8 @@ bool mainMenu::OnCreate() {
 	if (!Quit->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
 	if (!Back->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
 	if (!LevelOne->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+	if (!LevelTwo->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
+
 	if (!Credits->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
 
 	if (!setBackground()) return false;
@@ -93,7 +95,7 @@ void mainMenu::Update(const float deltaTime) {
 
 		Back->Update();
 		LevelOne->Update();
-		//LevelTwo->Update(renderer);
+		LevelTwo->Update();
 		//LevelThree->Update(renderer);
 
 	}
@@ -113,6 +115,7 @@ void mainMenu::Update(const float deltaTime) {
 
 		if (Start->buttonClicked(event) && currentMenu == 0) { Start->click->playSFX(); currentMenu = 1; }
 		if (LevelOne->buttonClicked(event) && currentMenu == 2) { LevelOne->click->playSFX(); newScene = 1; Song->stopSong(); }
+		if (LevelTwo->buttonClicked(event) && currentMenu == 2) { LevelTwo->click->playSFX(); newScene = 3; Song->stopSong(); }
 
 		if (Levels->buttonClicked(event) && currentMenu == 1) {
 			Levels->click->playSFX();
@@ -183,7 +186,7 @@ void mainMenu::Render() {
 	
 		Back->Render(renderer);
 		LevelOne->Render(renderer);
-		//LevelTwo->Render(renderer);
+		LevelTwo->Render(renderer);
 		//LevelThree->Render(renderer);
 		
 	}

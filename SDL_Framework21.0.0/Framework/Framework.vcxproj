@@ -164,6 +164,7 @@
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="InGameTimer.cpp" />
     <ClCompile Include="LevelOne.cpp" />
+    <ClCompile Include="LevelTwo.cpp" />
     <ClCompile Include="LTexture.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="mainMenu.cpp" />
@@ -202,6 +203,7 @@
     <ClInclude Include="HUD.h" />
     <ClInclude Include="InGameTimer.h" />
     <ClInclude Include="LevelOne.h" />
+    <ClInclude Include="LevelTwo.h" />
     <ClInclude Include="LTexture.h" />
     <ClInclude Include="mainMenu.h" />
     <ClInclude Include="Map.h" />

@@ -1,40 +1,76 @@
 #include "Background.h"
 #include <iostream>
 
-Background::Background(SDL_Renderer* r)
+Background::Background(SDL_Renderer* r, int o1, const char* Layer1, int o2, const char* Layer2, int o3, const char* Layer3, int o4,
+	const char* Layer4, int o5, const char* Layer5, int o6, const char* Layer6,
+	int o7, const char* Layer7, int o8, const char* Layer8, float LevelSpeed_)
 {
-	if (!sea.loadFromFile("textures/layers/1.png", r))
+	if (!b1.loadFromFile(Layer1, r))
 	{
 		printf("Failed to load background texture!\n");
 
 	}
-	if (!wave.loadFromFile("textures/layers/2.png", r))
+	if (!b2.loadFromFile(Layer2, r))
 	{
 		printf("Failed to load background texture!\n");
 
 	}
-	if (!mountain.loadFromFile("textures/layers/3.png", r))
+	if (!b3.loadFromFile(Layer3, r))
 	{
 		printf("Failed to load background texture!\n");
 
 	}
-	if (!rock.loadFromFile("textures/layers/4.png", r))
+	if (!b4.loadFromFile(Layer4, r))
 	{
 		printf("Failed to load background texture!\n");
 
 	}
-	if (!ground.loadFromFile("textures/layers/5.png", r))
+	if (!b5.loadFromFile(Layer5, r))
 	{
 		printf("Failed to load background texture!\n");
 
 	}
+	if (!b6.loadFromFile(Layer6, r))
+	{
+		printf("Failed to load background texture!\n");
+
+	}if (!b7.loadFromFile(Layer7, r))
+	{
+		printf("Failed to load background texture!\n");
+
+	}
+	if (!b8.loadFromFile(Layer8, r))
+	{
+		printf("Failed to load background texture!\n");
+
+	}
+
+
+
+
+
+
+	LevelSpeed = LevelSpeed_;
 	scrolling = true;
 	scrollOffset = 0;
-	seaOffset = 0;
-	waveOffset = 0;
-	mOffset = 0;
-	rockOffset = 0;
-	groundOffset = 0;
+	b1Speed = o1;
+	b2Speed = o2;
+	b3Speed = o3;
+	b4Speed = o4;
+	b5Speed = o5;
+	b6Speed = o6;
+	b7Speed = o7;
+	b8Speed = o8;
+
+	b1Offset = 0;
+	b2Offset = 0;
+	b3Offset = 0;
+	b4Offset = 0;
+	b5Offset = 0;
+	b6Offset = 0;
+	b7Offset = 0;
+	b8Offset = 0;
+
 	progress = 0;
 }
 
@@ -45,39 +81,57 @@ Background::~Background()
 void Background::Scroll()
 {
 	if (scrolling == true) {
-		progress = progress + 0.03f;
-		//Sea
-		seaOffset = seaOffset - 1;
-		if (seaOffset < -sea.getWidth())
+		progress = progress + LevelSpeed;
+		//Layer 1
+		b1Offset = b1Offset - b1Speed;
+		if (b1Offset < -b1.getWidth())
 		{
-			seaOffset = 0;
+			b1Offset = 0;
 		}
 		//Waves
-		waveOffset = waveOffset - 1;
-		if (waveOffset < -wave.getWidth())
+		b2Offset = b2Offset - b2Speed;
+		if (b2Offset < -b2.getWidth())
 		{
-			waveOffset = 0;
+			b2Offset = 0;
 		}
 
 		//Mountain
-		mOffset = mOffset - 4;
-		if (mOffset < -mountain.getWidth())
+		b3Offset = b3Offset - b3Speed;
+		if (b3Offset < -b3.getWidth())
 		{
-			mOffset = 0;
+			b3Offset = 0;
 		}
 
 		//Rock
-		rockOffset = rockOffset - 3;
-		if (rockOffset < -rock.getWidth())
+		b4Offset = b4Offset - b4Speed;
+		if (b4Offset < -b4.getWidth())
 		{
-			rockOffset = 0;
+			b4Offset = 0;
 		}
 
 		//Ground
-		scrollOffset = scrollOffset - 3;
-		if (scrollOffset < -ground.getWidth())
+		b5Offset = b5Offset - b5Speed;
+		if (b5Offset < -b5.getWidth())
 		{
-			scrollOffset = 0;
+			b5Offset = 0;
+		}
+
+		b6Offset = b6Offset - b6Speed;
+		if (b6Offset < -b6.getWidth())
+		{
+			b6Offset = 0;
+		}
+
+		b7Offset = b7Offset - b7Speed;
+		if (b7Offset < -b7.getWidth())
+		{
+			b7Offset = 0;
+		}
+
+		b8Offset = b8Offset - b8Speed;
+		if (b8Offset < -b8.getWidth())
+		{
+			b8Offset = 0;
 		}
 	}
 
@@ -89,21 +143,31 @@ void Background::Scroll()
 void Background::Render(SDL_Renderer* render)
 {
 
-	sea.render(render, seaOffset, 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
-	sea.render(render, seaOffset + sea.getWidth(), 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+	b1.render(render, b1Offset, 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+	b1.render(render, b1Offset + b1.getWidth(), 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
 
-	wave.render(render, waveOffset, 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
-	wave.render(render, waveOffset + wave.getWidth(), 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+	b2.render(render, b2Offset, 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+	b2.render(render, b2Offset + b2.getWidth(), 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
 
-	mountain.render(render, mOffset, 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
-	mountain.render(render, mOffset + mountain.getWidth(), 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+	b3.render(render, b3Offset, 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+	b3.render(render, b3Offset + b3.getWidth(), 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
 
-	rock.render(render, rockOffset, 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
-	rock.render(render, rockOffset + rock.getWidth(), 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+	b4.render(render, b4Offset, 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+	b4.render(render, b4Offset + b4.getWidth(), 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
 
-	ground.render(render, scrollOffset, 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
-	ground.render(render, scrollOffset + ground.getWidth(), 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+	b5.render(render, b5Offset, 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+	b5.render(render, b5Offset + b5.getWidth(), 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
 
+	b6.render(render, b6Offset, 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+	b6.render(render, b6Offset + b6.getWidth(), 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+
+	b7.render(render, b7Offset, 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+	b7.render(render, b7Offset + b7.getWidth(), 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+
+	b8.render(render, b8Offset, 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+	b8.render(render, b8Offset + b8.getWidth(), 0, nullptr, 0, nullptr, SDL_FLIP_NONE);
+
+	
 
 }
 

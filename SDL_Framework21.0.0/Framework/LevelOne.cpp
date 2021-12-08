@@ -8,7 +8,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	window = sdlWindow_;
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	//a = new Animator(renderer);
-	bg = new Background(renderer);
+	bg = new Background(renderer, 1, "textures/layers/1.png", 1, "textures/layers/2.png", 2, "textures/layers/3.png", 3, "textures/layers/4.png", 3, "textures/layers/5.png", 4, "textures/layers/6.png", 0, "textures/filler.png", 0, "textures/filler.png", 0.03f);
 	boss1 = new boss(SDL_Rect{ 2000, 360, 300, 200 }, 2.0f, renderer, "textures/bossAnim.png", 100.0f);
 	boss1->health = 5;
 	harry = new harpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);

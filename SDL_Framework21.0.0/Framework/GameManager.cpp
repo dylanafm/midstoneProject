@@ -4,6 +4,8 @@
 #include "Scene0.h"
 #include "mainMenu.h"
 #include "LevelOne.h"
+#include "LevelTwo.h"
+
 #include <iostream>
 
 
@@ -59,6 +61,11 @@ void GameManager::Run() {
 		if (currentScene->getScene() == 1) {
 			currentScene->OnDestroy();
 			currentScene = new LevelOne(windowPtr->GetSDL_Window());
+			currentScene->OnCreate();
+		}
+		if (currentScene->getScene() == 3) {
+			currentScene->OnDestroy();
+			currentScene = new LevelTwo(windowPtr->GetSDL_Window());
 			currentScene->OnCreate();
 		}
 		if (currentScene->getScene() == 2) {

@@ -144,6 +144,9 @@
     <ClCompile Include="MGHarpoon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LevelTwo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="finishMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -258,6 +261,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MGHarpoon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelTwo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="finishMenu.h">
