@@ -150,6 +150,9 @@
     <ClCompile Include="finishMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TigerFish.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mainMenu.h">
@@ -268,6 +271,9 @@
     </ClInclude>
     <ClInclude Include="finishMenu.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TigerFish.h">
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

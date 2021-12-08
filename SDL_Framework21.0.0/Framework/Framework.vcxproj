@@ -157,6 +157,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="finishMenu.cpp" />
     <ClCompile Include="Fish.cpp" />
+    <ClCompile Include="TigerFish.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Harpoon.cpp" />
     <ClCompile Include="harpoonHarry.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="finishMenu.h" />
     <ClInclude Include="Fish.h" />
+    <ClInclude Include="TigerFish.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Harpoon.h" />
     <ClInclude Include="harpoonHarry.h" />

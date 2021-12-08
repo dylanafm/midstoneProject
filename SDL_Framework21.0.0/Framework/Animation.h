@@ -22,6 +22,5 @@ private:
 
 	SDL_Rect crop;
 
-
 };
 #endif // !ANIMATION_H

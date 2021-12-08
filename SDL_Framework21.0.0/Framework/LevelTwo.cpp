@@ -29,26 +29,26 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	hp[7] = new healthPickup(Vec3(3600.0f, 460.0f, 0.0f), 2.0f, renderer);
 	hp[8] = new healthPickup(Vec3(4000.0f, 11.0f, 0.0f), 2.0f, renderer);
 
-	fish[0] = new Fish(SDL_Rect{ 400, 200, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[1] = new Fish(SDL_Rect{ 800, 50, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[2] = new Fish(SDL_Rect{ 1200, 600, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[3] = new Fish(SDL_Rect{ 1600, 300, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[4] = new Fish(SDL_Rect{ 2000, 100, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[5] = new Fish(SDL_Rect{ 2400, 500, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[6] = new Fish(SDL_Rect{ 2800, 200, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[7] = new Fish(SDL_Rect{ 3200, 600, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[8] = new Fish(SDL_Rect{ 3600, 300, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[9] = new Fish(SDL_Rect{ 4000, 640, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[10] = new Fish(SDL_Rect{ 4400, 220, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[11] = new Fish(SDL_Rect{ 4800, 115, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[12] = new Fish(SDL_Rect{ 5200, 450, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[13] = new Fish(SDL_Rect{ 5600, 500, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[14] = new Fish(SDL_Rect{ 6000, 630, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[15] = new Fish(SDL_Rect{ 6400, 200, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[16] = new Fish(SDL_Rect{ 6800, 340, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[17] = new Fish(SDL_Rect{ 7200, 112, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[18] = new Fish(SDL_Rect{ 7600, 400, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[19] = new Fish(SDL_Rect{ 8000, 320, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	tigerFish[0] = new TigerFish(SDL_Rect{ 400, 200, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[1] = new TigerFish(SDL_Rect{ 800, 50, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[2] = new TigerFish(SDL_Rect{ 1200, 600, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[3] = new TigerFish(SDL_Rect{ 1600, 300, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[4] = new TigerFish(SDL_Rect{ 2000, 100, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[5] = new TigerFish(SDL_Rect{ 2400, 500, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[6] = new TigerFish(SDL_Rect{ 2800, 200, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[7] = new TigerFish(SDL_Rect{ 3200, 600, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[8] = new TigerFish(SDL_Rect{ 3600, 300, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[9] = new TigerFish(SDL_Rect{ 4000, 640, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[10] = new TigerFish(SDL_Rect{ 4400, 220, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[11] = new TigerFish(SDL_Rect{ 4800, 115, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[12] = new TigerFish(SDL_Rect{ 5200, 450, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[13] = new TigerFish(SDL_Rect{ 5600, 500, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[14] = new TigerFish(SDL_Rect{ 6000, 630, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[15] = new TigerFish(SDL_Rect{ 6400, 200, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[16] = new TigerFish(SDL_Rect{ 6800, 340, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[17] = new TigerFish(SDL_Rect{ 7200, 112, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[18] = new TigerFish(SDL_Rect{ 7600, 400, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[19] = new TigerFish(SDL_Rect{ 8000, 320, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
 
 
 
@@ -132,8 +132,8 @@ void LevelTwo::Update(const float deltaTime) {
 			for (int i = 0; i < std::size(hp); i++) {
 				if (hp[i] != nullptr) hp[i]->scroll();
 			}
-			for (int i = 0; i < std::size(fish); i++) {
-				if (fish[i] != nullptr) fish[i]->Scroll();
+			for (int i = 0; i < std::size(tigerFish); i++) {
+				if (tigerFish[i] != nullptr) tigerFish[i]->Scroll();
 			}
 			//if (boss1 != nullptr) boss1->Scroll();
 		}
@@ -146,15 +146,15 @@ void LevelTwo::Update(const float deltaTime) {
 	for (int i = 0; i < std::size(harpoon); i++) {
 		if (harpoon[i] != nullptr) harpoon[i]->Update(deltaTime);
 
-		for (int ii = 0; ii < std::size(fish); ii++) {
+		for (int ii = 0; ii < std::size(tigerFish); ii++) {
 
-			if (harpoon[i] != nullptr && fish[ii] != nullptr) {
-				if (harpoon[i]->isCollided(fish[ii], harpoon[i])) {
+			if (harpoon[i] != nullptr && tigerFish[ii] != nullptr) {
+				if (harpoon[i]->isCollided(tigerFish[ii], harpoon[i])) {
 					fishHurt->playSFX();
 					harpoon[i] = nullptr;
-					fish[ii] = nullptr;
+					tigerFish[ii] = nullptr;
 					delete harpoon[i];
-					delete fish[ii];
+					delete tigerFish[ii];
 
 				}
 			}
@@ -187,23 +187,23 @@ void LevelTwo::Update(const float deltaTime) {
 		}
 	}
 
-	for (int i = 0; i < std::size(fish); i++) {
+	for (int i = 0; i < std::size(tigerFish); i++) {
 
-		if (fish[i] != nullptr) fish[i]->Update(deltaTime);
+		if (tigerFish[i] != nullptr) tigerFish[i]->Update(deltaTime);
 		if (boss1 != nullptr && bg->getProg() >= 100.0f) {
 			boss1->Update(deltaTime, harry);
 			if (!isProjectileFired)	spawnProjectile();
 		}
 
 
-		if (fish[i] != nullptr) {
+		if (tigerFish[i] != nullptr) {
 
 
-			if (harry->isCollided(harry, fish[i])) {
+			if (harry->isCollided(harry, tigerFish[i])) {
 				playerHurt->playSFX();
 
-				delete fish[i];
-				fish[i] = nullptr;
+				delete tigerFish[i];
+				tigerFish[i] = nullptr;
 			}
 		}
 
@@ -293,8 +293,8 @@ void LevelTwo::Update(const float deltaTime) {
 
 
 	if (!paused) {
-		for (int i = 0; i < std::size(fish); i++) {
-			if (fish[i] != nullptr) fish[i]->Move(deltaTime, 200);
+		for (int i = 0; i < std::size(tigerFish); i++) {
+			if (tigerFish[i] != nullptr) tigerFish[i]->Move(deltaTime, 200);
 		}
 	}
 }
@@ -332,9 +332,9 @@ void LevelTwo::Render() {
 		if (harpoon[i] != nullptr) harpoon[i]->render(renderer);
 	}
 
-	for (int i = 0; i < std::size(fish); i++) {
-		if (fish[i] != nullptr) fish[i]->Render(renderer);
-		if (fish[i] != nullptr && !paused) fish[i]->fishAnim->PlayAnim(0, 5, 0, 175);
+	for (int i = 0; i < std::size(tigerFish); i++) {
+		if (tigerFish[i] != nullptr) tigerFish[i]->Render(renderer);
+		if (tigerFish[i] != nullptr && !paused) tigerFish[i]->tigerFishAnim->PlayAnim(0, 2, 0, 175);
 
 	}
 
