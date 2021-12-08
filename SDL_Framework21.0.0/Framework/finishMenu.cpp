@@ -17,7 +17,7 @@ void finishMenu::finishUpdate(SDL_Event event_)
 	NextLevel->Update();
 	MainMenu->Update();
 	Quit->Update();
-	if (NextLevel->buttonClicked(event_)) { NextLevel->click->playSFX(); newScene = 1; paused = false; }
+	if (NextLevel->buttonClicked(event_)) { NextLevel->click->playSFX(); newScene = 3; paused = false; }
 	if (MainMenu->buttonClicked(event_)) { MainMenu->click->playSFX(); newScene = 2; paused = false; }
 	if (Quit->buttonClicked(event_)) { Quit->click->playSFX(); newScene = -1; paused = false; }
 }
