@@ -71,7 +71,7 @@ Background::Background(SDL_Renderer* r, int o1, const char* Layer1, int o2, cons
 	b7Offset = 0;
 	b8Offset = 0;
 
-	progress = 90;
+	progress = 0;
 }
 
 Background::~Background()
