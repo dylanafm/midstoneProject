@@ -17,6 +17,8 @@ public:
 	
 	float getProg() { return progress; }
 
+	void SetProgress(float progress_) { progress = progress_; }
+
 private:
 	
 	bool scrolling;

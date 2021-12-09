@@ -14,6 +14,10 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	harry = new harpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
 	
+
+	bg->SetProgress(99.0f);
+
+
 	playerHUD = new HUD();
 	currentHarpoon = 0;
 	song = new musicPlayer("Music/levelonetheme.ogg", 2);

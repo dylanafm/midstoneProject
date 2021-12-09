@@ -10,6 +10,10 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	//a = new Animator(renderer);
 	bg = new Background(renderer, 1, "textures/layers2/1.png", 1, "textures/layers2/2.png", 2, "textures/layers2/3.png", 3, "textures/layers2/4.png", 1, "textures/layers2/5.png", 4, "textures/layers2/6.png", 4, "textures/layers2/7.png", 4, "textures/layers2/8.png", 0.03f);
 
+	bg->SetProgress(99.0f);
+
+
+
 	boss1 = new boss(SDL_Rect{ 1280, 360, 300, 200 }, 1, renderer, "textures/bossAnim.png", 100.0f);
 	boss1->health = 5;
 	harry = new harpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
@@ -80,10 +84,13 @@ bool LevelTwo::OnCreate() {
 
 	pMenu = new pauseMenu(renderer);
 	dMenu = new DeathMenu();
+	fMenu = new finishMenu(renderer);
 
 	if (!pMenu->setUpButtons(renderer)) return false;
 	if (!dMenu->setUpButtons(renderer)) return false;
+	if (!fMenu->setUpButtons(renderer)) return false;
 
+	fMenu->GameWin = true;
 	return true;
 }
 
@@ -242,7 +249,8 @@ void LevelTwo::Update(const float deltaTime) {
 			}
 		}
 		if (harry->health <= 0) dMenu->deathUpdate(event);
-		else if (paused) pMenu->pauseUpdate(event);
+		else if (boss1 != nullptr && paused) pMenu->pauseUpdate(event);
+		if (boss1 == nullptr && paused) fMenu->finishUpdate(event);
 	}
 	harry->HandleEvents(event);
 
@@ -255,10 +263,15 @@ void LevelTwo::Update(const float deltaTime) {
 		newScene = dMenu->getScene();
 		paused = dMenu->getPaused();
 	}
-	else if (paused) {
+	else if (boss1 != nullptr && paused) {
 		newScene = pMenu->getScene();
 		paused = pMenu->getPaused();
 		if (!paused) pMenu->setDefault(); // Reset the Pause menu when Resume was pressed
+	}
+	if (boss1 == nullptr && paused) {
+		newScene = fMenu->getScene();
+		paused = fMenu->getPaused();
+		if (!paused) fMenu->setDefault(); // Reset the Finish menu when Resume was pressed
 	}
 
 	Physics::ApplyForces(*harry, 0.0f);
@@ -334,8 +347,8 @@ void LevelTwo::Render() {
 	}
 
 	if (harry->health <= 0) dMenu->deathRender(renderer);
-	else if (paused) pMenu->pauseRender(renderer);
-
+	else if (boss1 != nullptr && paused) pMenu->pauseRender(renderer);
+	if (boss1 == nullptr && paused) fMenu->finishRender(renderer);
 
 	SDL_RenderPresent(renderer);
 

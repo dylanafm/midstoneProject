@@ -33,6 +33,7 @@ public:
 	}
 	bool setUpButtons(SDL_Renderer* renderer);
 
+	bool GameWin;
 };
 #endif
 

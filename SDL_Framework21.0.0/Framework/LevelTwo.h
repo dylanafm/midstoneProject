@@ -60,6 +60,7 @@ private:
 
 	DeathMenu* dMenu;
 	pauseMenu* pMenu;
+	finishMenu* fMenu;
 	bool paused = false;
 	Map* map;
 	InGameTimer* reloadTimer;
