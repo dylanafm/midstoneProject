@@ -20,35 +20,33 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	song = new musicPlayer("Music/levelonetheme.ogg", 2);
 
 	hp[0] = new healthPickup(Vec3(1000.0f, 600.0f, 0.0f), 2.0f, renderer);
-	hp[1] = new healthPickup(Vec3(1400.0f, 400.0f, 0.0f), 2.0f, renderer);
-	hp[2] = new healthPickup(Vec3(1800.0f, 150.0f, 0.0f), 2.0f, renderer);
-	hp[3] = new healthPickup(Vec3(2200.0f, 115.0f, 0.0f), 2.0f, renderer);
-	hp[4] = new healthPickup(Vec3(2400.0f, 200.0f, 0.0f), 2.0f, renderer);
-	hp[5] = new healthPickup(Vec3(2800.0f, 500.0f, 0.0f), 2.0f, renderer);
-	hp[6] = new healthPickup(Vec3(3200.0f, 640.0f, 0.0f), 2.0f, renderer);
-	hp[7] = new healthPickup(Vec3(3600.0f, 460.0f, 0.0f), 2.0f, renderer);
-	hp[8] = new healthPickup(Vec3(4000.0f, 11.0f, 0.0f), 2.0f, renderer);
+	hp[1] = new healthPickup(Vec3(2400.0f, 400.0f, 0.0f), 2.0f, renderer);
+	hp[2] = new healthPickup(Vec3(3800.0f, 150.0f, 0.0f), 2.0f, renderer);
+	hp[3] = new healthPickup(Vec3(4200.0f, 115.0f, 0.0f), 2.0f, renderer);
+	hp[4] = new healthPickup(Vec3(5400.0f, 200.0f, 0.0f), 2.0f, renderer);
+	hp[5] = new healthPickup(Vec3(6800.0f, 500.0f, 0.0f), 2.0f, renderer);
+	hp[6] = new healthPickup(Vec3(7200.0f, 640.0f, 0.0f), 2.0f, renderer);
 
-	tigerFish[0] = new TigerFish(SDL_Rect{ 400, 200, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[1] = new TigerFish(SDL_Rect{ 800, 50, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[2] = new TigerFish(SDL_Rect{ 1200, 600, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[3] = new TigerFish(SDL_Rect{ 1600, 300, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[4] = new TigerFish(SDL_Rect{ 2000, 100, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[5] = new TigerFish(SDL_Rect{ 2400, 500, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[6] = new TigerFish(SDL_Rect{ 2800, 200, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[7] = new TigerFish(SDL_Rect{ 3200, 600, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[8] = new TigerFish(SDL_Rect{ 3600, 300, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[9] = new TigerFish(SDL_Rect{ 4000, 640, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[10] = new TigerFish(SDL_Rect{ 4400, 220, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[11] = new TigerFish(SDL_Rect{ 4800, 115, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[12] = new TigerFish(SDL_Rect{ 5200, 450, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[13] = new TigerFish(SDL_Rect{ 5600, 500, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[14] = new TigerFish(SDL_Rect{ 6000, 630, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[15] = new TigerFish(SDL_Rect{ 6400, 200, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[16] = new TigerFish(SDL_Rect{ 6800, 340, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[17] = new TigerFish(SDL_Rect{ 7200, 112, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[18] = new TigerFish(SDL_Rect{ 7600, 400, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[19] = new TigerFish(SDL_Rect{ 8000, 320, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[0] = new TigerFish(SDL_Rect{ 400, 100, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[1] = new TigerFish(SDL_Rect{ 800, 50, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[2] = new TigerFish(SDL_Rect{ 1200, 450, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[3] = new TigerFish(SDL_Rect{ 1600, 150, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[4] = new TigerFish(SDL_Rect{ 2000, 600, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[5] = new TigerFish(SDL_Rect{ 2400, 100, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[6] = new TigerFish(SDL_Rect{ 2800, 200, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[7] = new TigerFish(SDL_Rect{ 3200, 500, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[8] = new TigerFish(SDL_Rect{ 3600, 150, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[9] = new TigerFish(SDL_Rect{ 4000, 240, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[10] = new TigerFish(SDL_Rect{ 4400, 620, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[11] = new TigerFish(SDL_Rect{ 4800, 115, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[12] = new TigerFish(SDL_Rect{ 5200, 350, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[13] = new TigerFish(SDL_Rect{ 5600, 600, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[14] = new TigerFish(SDL_Rect{ 6000, 130, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[15] = new TigerFish(SDL_Rect{ 6400, 300, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[16] = new TigerFish(SDL_Rect{ 6800, 540, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[17] = new TigerFish(SDL_Rect{ 7200, 112, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[18] = new TigerFish(SDL_Rect{ 7600, 400, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[19] = new TigerFish(SDL_Rect{ 8000, 320, 70, 70 }, 2, renderer, "textures/TigerFish.png", 25.0f);
 
 
 
@@ -61,12 +59,6 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	playerDie = new sfx("SFX/die.wav", 10);
 	bossHurt = new sfx("SFX/bossdeath.wav", 10);
 	healthsfx = new sfx("SFX/life_pickup.flac", 10);
-
-
-
-
-
-
 
 }
 
