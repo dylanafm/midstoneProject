@@ -253,6 +253,7 @@ void LevelTwo::Update(const float deltaTime) {
 		if (boss1 == nullptr && paused) fMenu->finishUpdate(event);
 	}
 	harry->HandleEvents(event);
+	if (boss1 == nullptr && !paused) paused = !paused;
 
 	if (harry->health <= 0 && !paused) {
 		playerDie->playSFX();
