@@ -9,8 +9,8 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	//a = new Animator(renderer);
 	bg = new Background(renderer, 1, "textures/layers/1.png", 1, "textures/layers/2.png", 2, "textures/layers/3.png", 3, "textures/layers/4.png", 3, "textures/layers/5.png", 4, "textures/layers/6.png", 0, "textures/filler.png", 0, "textures/filler.png", 0.03f);
-	boss1 = new boss(SDL_Rect{ 2000, 360, 300, 200 }, 2.0f, renderer, "textures/bossAnim.png", 100.0f);
-	boss1->health = 5;
+	SharkBoss = new Shark(SDL_Rect{ 2000, 360, 300, 200 }, 2.0f, renderer, "textures/SharkBoss.png", 100.0f);
+	SharkBoss->health = 5;
 	harry = new harpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
 	
@@ -136,7 +136,7 @@ void LevelOne::Update(const float deltaTime) {
 			for (int i = 0; i < std::size(fish); i++) {
 				if (fish[i] != nullptr) fish[i]->Scroll();
 			}
-			//if (boss1 != nullptr) boss1->Scroll();
+			//if (SharkBoss != nullptr) SharkBoss->Scroll();
 		}
 
 		
@@ -167,9 +167,9 @@ void LevelOne::Update(const float deltaTime) {
 		}
 
 	}
-	if (boss1 != nullptr) {
+	if (SharkBoss != nullptr) {
 		if (!isBitten) {
-			if (harry->isCollided(harry, boss1)) {
+			if (harry->isCollided(harry, SharkBoss)) {
 				playerHurt->playSFX();
 
 				biteTimer = new InGameTimer(2.0f);
@@ -190,9 +190,9 @@ void LevelOne::Update(const float deltaTime) {
 	for (int i = 0; i < std::size(fish); i++) {
 
 		if (fish[i] != nullptr) fish[i]->Update(deltaTime);
-		if (boss1 != nullptr && bg->getProg() >= 90.0f) { 
-			boss1->Update(deltaTime, harry); 
-			if(!isProjectileFired && boss1->pos.x < 1200.0f)	spawnProjectile();
+		if (SharkBoss != nullptr && bg->getProg() >= 90.0f) { 
+			SharkBoss->Update(deltaTime, harry); 
+			/*if(!isProjectileFired && SharkBoss->pos.x < 1200.0f)	spawnProjectile();*/
 		}
 
 
@@ -211,22 +211,22 @@ void LevelOne::Update(const float deltaTime) {
 
 	}
 	for (int i = 0; i < std::size(harpoon); i++) {
-		if (harpoon[i] != nullptr && boss1 != nullptr) {
-			if (harpoon[i]->isCollided(boss1, harpoon[i])) {
-				if (boss1->health > 1) {
+		if (harpoon[i] != nullptr && SharkBoss != nullptr) {
+			if (harpoon[i]->isCollided(SharkBoss, harpoon[i])) {
+				if (SharkBoss->health > 1) {
 					bossHurt->playSFX();
-					boss1->health -= 1;
+					SharkBoss->health -= 1;
 					harpoon[i] = nullptr;
 					delete harpoon[i];
-					//std::cout << boss1->health << std::endl;
+					//std::cout << SharkBoss->health << std::endl;
 				}
 				else {
 					bossHurt->playSFX();
 
 					harpoon[i] = nullptr;
-					boss1 = nullptr;
+					SharkBoss = nullptr;
 					delete harpoon[i];
-					delete boss1;
+					delete SharkBoss;
 				}
 			}
 		}
@@ -250,11 +250,11 @@ void LevelOne::Update(const float deltaTime) {
 			}
 		}
 		if (harry->health <= 0) dMenu->deathUpdate(event);
-		else if (boss1 != nullptr && paused) pMenu->pauseUpdate(event);
-		if (boss1 == nullptr && paused) fMenu->finishUpdate(event);
+		else if (SharkBoss != nullptr && paused) pMenu->pauseUpdate(event);
+		if (SharkBoss == nullptr && paused) fMenu->finishUpdate(event);
 	}
 	harry->HandleEvents(event);
-	if (boss1 == nullptr && !paused) paused = !paused;
+	if (SharkBoss == nullptr && !paused) paused = !paused;
 
 	if (harry->health <= 0) {
 		playerDie->playSFX();
@@ -262,12 +262,12 @@ void LevelOne::Update(const float deltaTime) {
 		newScene = dMenu->getScene();
 		paused = dMenu->getPaused();
 	}
-	else if (boss1 != nullptr && paused) {
+	else if (SharkBoss != nullptr && paused) {
 		newScene = pMenu->getScene();
 		paused = pMenu->getPaused();
 		if (!paused) pMenu->setDefault(); // Reset the Pause menu when Resume was pressed
 	}
-	if (boss1 == nullptr && paused) {
+	if (SharkBoss == nullptr && paused) {
 		newScene = fMenu->getScene();
 		paused = fMenu->getPaused();
 		if (!paused) fMenu->setDefault(); // Reset the Finish menu when Resume was pressed
@@ -325,17 +325,17 @@ void LevelOne::Render() {
 
 
 	if (projectile != nullptr) projectile->Render(renderer);
-	if (boss1 != nullptr) boss1->UpdateHealthBar(renderer, boss1->health);
+	if (SharkBoss != nullptr) SharkBoss->UpdateHealthBar(renderer, SharkBoss->health);
 
 	if (!paused) {
-		if (boss1 != nullptr) boss1->swim->PlayAnim(0, 1, 0, 175);
+		if (SharkBoss != nullptr) SharkBoss->SharkSwim->PlayAnim(0, 2, 0, 175);
 
 		harry->swim->PlayAnim(0, 7, 0, 175);
 		
 		playerHUD->displayHUD(renderer, 20, 10, 50, 50, harry, reloadTimer, bg);
 	}
-	if (boss1 != nullptr)
-	boss1->Render(renderer);
+	if (SharkBoss != nullptr)
+	SharkBoss->Render(renderer);
 	for (int i = 0; i < std::size(harpoon); i++) {
 
 		if (harpoon[i] != nullptr) harpoon[i]->render(renderer);
@@ -348,8 +348,8 @@ void LevelOne::Render() {
 	}
 	
 	if (harry->health <= 0) dMenu->deathRender(renderer);
-	else if (boss1 != nullptr && paused) pMenu->pauseRender(renderer);
-	if (boss1 == nullptr && paused) fMenu->finishRender(renderer);
+	else if (SharkBoss != nullptr && paused) pMenu->pauseRender(renderer);
+	if (SharkBoss == nullptr && paused) fMenu->finishRender(renderer);
 
 
 	SDL_RenderPresent(renderer);
@@ -390,10 +390,10 @@ void LevelOne::spawnHarpoon()
 void LevelOne::spawnProjectile()
 {
 	Vec3 axes(0, 0, 1);
-	Matrix4 rotation = MMath::rotate((float)boss1->angle, axes);
+	Matrix4 rotation = MMath::rotate((float)SharkBoss->angle, axes);
 	Vec3 centerPos = Vec3(150.0f, 30.0f, 0.0f);
 	Vec3 offset = rotation * centerPos;
-	Vec3 bossCenter = boss1->pos + Vec3(boss1->body.w / 2, boss1->body.h / 2, 0.0f);
+	Vec3 bossCenter = SharkBoss->pos + Vec3(SharkBoss->body.w / 2, SharkBoss->body.h / 2, 0.0f);
 	Vec3 newPos = bossCenter - offset;
 
 

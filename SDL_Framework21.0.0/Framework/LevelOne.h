@@ -15,7 +15,7 @@
 #include "Harpoon.h"
 #include "InGameTimer.h"
 #include "Map.h"
-#include "boss.h"
+#include "Shark.h"
 #include "Enemy.h"
 #include "ShieldPU.h"
 #include "Background.h"
@@ -31,7 +31,7 @@ class HUD;
 class healthPickup;
 class Background;
 class harpoonHarry;
-class boss;
+class Shark;
 class Harpoon;
 class Fish;
 class ShieldPU;
@@ -51,7 +51,7 @@ private:
 	harpoonHarry* harry;
 	Harpoon* harpoon[50];
 	Fish* fish[20];
-	boss* boss1;
+	Shark* SharkBoss;
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 	Projectile* projectile;

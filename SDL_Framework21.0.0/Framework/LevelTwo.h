@@ -14,7 +14,7 @@
 #include "Harpoon.h"
 #include "InGameTimer.h"
 #include "Map.h"
-#include "Shark.h"
+#include "boss.h"
 #include "Enemy.h"
 #include "ShieldPU.h"
 #include "Background.h"
@@ -50,7 +50,7 @@ private:
 	harpoonHarry* harry;
 	Harpoon* harpoon[50];
 	TigerFish* tigerFish[20];
-	Shark* SharkBoss;
+	boss* boss1;
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 	Projectile* projectile;
