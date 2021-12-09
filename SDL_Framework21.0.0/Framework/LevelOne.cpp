@@ -256,8 +256,10 @@ void LevelOne::Update(const float deltaTime) {
 	harry->HandleEvents(event);
 	if (SharkBoss == nullptr && !paused) paused = !paused;
 
-	if (harry->health <= 0) {
+	if (harry->health <= 0 && !paused) {
 		playerDie->playSFX();
+	}
+	if (harry->health <= 0) {
 		if (!paused) paused = true;
 		newScene = dMenu->getScene();
 		paused = dMenu->getPaused();
