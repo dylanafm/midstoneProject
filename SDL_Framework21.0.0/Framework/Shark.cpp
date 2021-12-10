@@ -14,13 +14,17 @@ Shark::~Shark()
 
 void Shark::Update(float deltaTime, harpoonHarry* harry)
 {
-	Vec3 direction = Vec3(harry->pos.x - pos.x - 100.0f, harry->pos.y - pos.y - 100.0f, 0.0f);
-	vel = VMath::normalize(direction) * 4.0f;
+
+	Vec3 direction = Vec3(harry->pos.x - pos.x - 150.0f, harry->pos.y - pos.y - 70.0f, 0.0f);
+	
+	vel = VMath::normalize(direction) * 110.0f;
 
 	pos += vel * deltaTime + 0.5f * accelPrevious * deltaTime * deltaTime;
 	vel += 0.5 * (accelCurrent + accelPrevious) * deltaTime;
 
-	angle = atan2(vel.y, vel.x) * 180.0 / M_PI + 180;
+	if (direction.x > 5.0f || direction.x < -5.0f || direction.y > 5.0f || direction.y < -5.0f) {
+		angle = atan2(vel.y, vel.x) * 180.0 / M_PI + 180;
+	}
 
 	body.x = pos.x;
 	body.y = pos.y;

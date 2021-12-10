@@ -8,55 +8,89 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	window = sdlWindow_;
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	//a = new Animator(renderer);
-	bg = new Background(renderer, 1, "textures/layers/1.png", 1, "textures/layers/2.png", 2, "textures/layers/3.png", 3, "textures/layers/4.png", 3, "textures/layers/5.png", 4, "textures/layers/6.png", 0, "textures/filler.png", 0, "textures/filler.png", 0.03f);
-	SharkBoss = new Shark(SDL_Rect{ 2000, 360, 300, 200 }, 2.0f, renderer, "textures/SharkBoss.png", 100.0f);
+	bg = new Background(renderer, 1, "textures/layers/1.png", 1, "textures/layers/2.png", 2, "textures/layers/3.png", 3, "textures/layers/4.png", 3, "textures/layers/5.png", 4, "textures/layers/6.png", 0, "textures/filler.png", 0, "textures/filler.png", 0.028f);
+	SharkBoss = new Shark(SDL_Rect{ 1400, 360, 300, 200 }, 2.0f, renderer, "textures/SharkBoss.png", 100.0f);
 	SharkBoss->health = 5;
 	harry = new harpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
 	
 
-	bg->SetProgress(99.0f);
+	//bg->SetProgress(99.0f);
 
 
 	playerHUD = new HUD();
 	currentHarpoon = 0;
 	song = new musicPlayer("Music/levelonetheme.ogg", 2);
 
-	hp[0] = new healthPickup(Vec3(1000.0f, 600.0f, 0.0f), 2.0f, renderer);
-	hp[1] = new healthPickup(Vec3(1400.0f, 400.0f, 0.0f), 2.0f, renderer);
-	hp[2] = new healthPickup(Vec3(1800.0f, 150.0f, 0.0f), 2.0f, renderer);
-	hp[3] = new healthPickup(Vec3(2200.0f, 115.0f, 0.0f), 2.0f, renderer);
-	hp[4] = new healthPickup(Vec3(2400.0f, 200.0f, 0.0f), 2.0f, renderer);
-	hp[5] = new healthPickup(Vec3(2800.0f, 500.0f, 0.0f), 2.0f, renderer);
-	hp[6] = new healthPickup(Vec3(3200.0f, 640.0f, 0.0f), 2.0f, renderer);
-	hp[7] = new healthPickup(Vec3(3600.0f, 460.0f, 0.0f), 2.0f, renderer);
-	hp[8] = new healthPickup(Vec3(4000.0f, 11.0f, 0.0f), 2.0f, renderer);
+	hp[0] = new healthPickup(Vec3(2500.0f, rand() % 720, 0.0f), 2.0f, renderer);
+	hp[1] = new healthPickup(Vec3(3500.0f, rand() % 720, 0.0f), 2.0f, renderer);
+	hp[2] = new healthPickup(Vec3(4500.0f, rand() % 720, 0.0f), 2.0f, renderer);
+	hp[3] = new healthPickup(Vec3(5800.0f, rand() % 720, 0.0f), 2.0f, renderer);
+	hp[4] = new healthPickup(Vec3(8000.0f, rand() % 720, 0.0f), 2.0f, renderer);
 
-	fish[0] = new Fish(SDL_Rect{ 400, 200, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[1] = new Fish(SDL_Rect{ 800, 50, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[2] = new Fish(SDL_Rect{ 1200, 600, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[3] = new Fish(SDL_Rect{ 1600, 300, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[4] = new Fish(SDL_Rect{ 2000, 100, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[5] = new Fish(SDL_Rect{ 2400, 500, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[6] = new Fish(SDL_Rect{ 2800, 200, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[7] = new Fish(SDL_Rect{ 3200, 600, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[8] = new Fish(SDL_Rect{ 3600, 300, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[9] = new Fish(SDL_Rect{ 4000, 640, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[10] = new Fish(SDL_Rect{ 4400, 220, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[11] = new Fish(SDL_Rect{ 4800, 115, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[12] = new Fish(SDL_Rect{ 5200, 450, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[13] = new Fish(SDL_Rect{ 5600, 500, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[14] = new Fish(SDL_Rect{ 6000, 630, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[15] = new Fish(SDL_Rect{ 6400, 200, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[16] = new Fish(SDL_Rect{ 6800, 340, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[17] = new Fish(SDL_Rect{ 7200, 112, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[18] = new Fish(SDL_Rect{ 7600, 400, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-	fish[19] = new Fish(SDL_Rect{ 8000, 320, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
-
-
-
-	Shield = new ShieldPU(SDL_Rect{ 800, 40, 50, 50 }, 2, "textures/Shield.png", renderer);
-	rf = new MGHarpoon(SDL_Rect{ 900, 500, 50, 50 }, 2, "textures/MGH.png", renderer);
+	fish[0] = new Fish(SDL_Rect{ 400, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[1] = new Fish(SDL_Rect{ 800, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[2] = new Fish(SDL_Rect{ 1200, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[3] = new Fish(SDL_Rect{ 1600, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[4] = new Fish(SDL_Rect{ 1600, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[5] = new Fish(SDL_Rect{ 1800, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[6] = new Fish(SDL_Rect{ 1800, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[7] = new Fish(SDL_Rect{ 2000, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[8] = new Fish(SDL_Rect{ 2000, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[9] = new Fish(SDL_Rect{ 3000, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[10] = new Fish(SDL_Rect{ 3000, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[11] = new Fish(SDL_Rect{ 3100, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[12] = new Fish(SDL_Rect{ 3100, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[13] = new Fish(SDL_Rect{ 3200, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[14] = new Fish(SDL_Rect{ 3200, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[15] = new Fish(SDL_Rect{ 3200, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[16] = new Fish(SDL_Rect{ 3300, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[17] = new Fish(SDL_Rect{ 3300, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[18] = new Fish(SDL_Rect{ 3400, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[19] = new Fish(SDL_Rect{ 3400, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[20] = new Fish(SDL_Rect{ 3500, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[21] = new Fish(SDL_Rect{ 3500, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[22] = new Fish(SDL_Rect{ 3500, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[23] = new Fish(SDL_Rect{ 3500, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[24] = new Fish(SDL_Rect{ 3600, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[25] = new Fish(SDL_Rect{ 3600, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[26] = new Fish(SDL_Rect{ 3700, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[27] = new Fish(SDL_Rect{ 3800, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[28] = new Fish(SDL_Rect{ 3900, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[29] = new Fish(SDL_Rect{ 4000, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[30] = new Fish(SDL_Rect{ 4000, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[31] = new Fish(SDL_Rect{ 4000, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[32] = new Fish(SDL_Rect{ 4000, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[33] = new Fish(SDL_Rect{ 5000, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[34] = new Fish(SDL_Rect{ 5000, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[35] = new Fish(SDL_Rect{ 5100, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[36] = new Fish(SDL_Rect{ 5100, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[37] = new Fish(SDL_Rect{ 5200, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[38] = new Fish(SDL_Rect{ 5200, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[39] = new Fish(SDL_Rect{ 5300, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[40] = new Fish(SDL_Rect{ 5300, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[41] = new Fish(SDL_Rect{ 5300, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[42] = new Fish(SDL_Rect{ 5400, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[43] = new Fish(SDL_Rect{ 5500, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[44] = new Fish(SDL_Rect{ 5600, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[45] = new Fish(SDL_Rect{ 6400, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[46] = new Fish(SDL_Rect{ 6500, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[47] = new Fish(SDL_Rect{ 6500, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[48] = new Fish(SDL_Rect{ 6500, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[49] = new Fish(SDL_Rect{ 6500, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[50] = new Fish(SDL_Rect{ 6600, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[51] = new Fish(SDL_Rect{ 6600, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[52] = new Fish(SDL_Rect{ 6700, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[53] = new Fish(SDL_Rect{ 6700, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[54] = new Fish(SDL_Rect{ 6800, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[55] = new Fish(SDL_Rect{ 6800, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[56] = new Fish(SDL_Rect{ 6900, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[57] = new Fish(SDL_Rect{ 6900, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[58] = new Fish(SDL_Rect{ 6900, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	fish[59] = new Fish(SDL_Rect{ 6900, rand() % 720, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
+	
+	//Shield = new ShieldPU(SDL_Rect{ 800, 40, 50, 50 }, 2, "textures/Shield.png", renderer);
+	//rf = new MGHarpoon(SDL_Rect{ 900, 500, 50, 50 }, 2, "textures/MGH.png", renderer);
 
 	harpoonShoot = new sfx("SFX/shoot.ogg", 10);
 	fishHurt = new sfx("SFX/blobdeath.wav", 10);
@@ -163,7 +197,7 @@ void LevelOne::Update(const float deltaTime) {
 				}
 			}
 			if (harpoon[i] != nullptr) {
-				if (harpoon[i]->pos.x < -50.0f || harpoon[i]->pos.x > 1300.0f || harpoon[i]->pos.y < -50.0f || harpoon[i]->pos.y > 800.0f) {
+				if (harpoon[i]->pos.x < -50.0f || harpoon[i]->pos.x > 1280.0f || harpoon[i]->pos.y < 0.0f || harpoon[i]->pos.y > 770.0f) {
 					delete harpoon[i];
 					harpoon[i] = nullptr;
 				}
@@ -191,14 +225,17 @@ void LevelOne::Update(const float deltaTime) {
 		}
 	}
 
+	if (SharkBoss != nullptr && bg->getProg() >= 99.0f) {
+		SharkBoss->Update(deltaTime, harry);
+		/*if(!isProjectileFired && SharkBoss->pos.x < 1200.0f)	spawnProjectile();*/
+		std::cout << SharkBoss->pos.x << " " << SharkBoss->pos.y << std::endl;
+	}
+
+	
+
 	for (int i = 0; i < std::size(fish); i++) {
 
 		if (fish[i] != nullptr) fish[i]->Update(deltaTime);
-		if (SharkBoss != nullptr && bg->getProg() >= 90.0f) { 
-			SharkBoss->Update(deltaTime, harry); 
-			/*if(!isProjectileFired && SharkBoss->pos.x < 1200.0f)	spawnProjectile();*/
-		}
-
 
 		if (fish[i] != nullptr) {
 
@@ -310,8 +347,6 @@ void LevelOne::Update(const float deltaTime) {
 			if (fish[i] != nullptr) fish[i]->Move(deltaTime, 200);
 		}
 	}
-
-	
 }
 
 void LevelOne::Render() {

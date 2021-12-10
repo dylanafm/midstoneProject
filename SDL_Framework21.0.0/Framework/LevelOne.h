@@ -50,12 +50,12 @@ private:
 	
 	harpoonHarry* harry;
 	Harpoon* harpoon[50];
-	Fish* fish[20];
+	Fish* fish[60];
 	Shark* SharkBoss;
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 	Projectile* projectile;
-	healthPickup* hp[9];
+	healthPickup* hp[5];
 
 	SDL_Renderer* renderer;
 
