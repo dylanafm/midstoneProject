@@ -1,7 +1,7 @@
 #include "pauseMenu.h"
 #include "TextureManager.h"
 
-pauseMenu::pauseMenu(SDL_Renderer* r)
+pauseMenu::pauseMenu(SDL_Renderer* r, int currentScene_)
 {
 	Resume = new button(490, 95, 300, 60, Vec3(20, 20, 210), "Resume");
 	Restart = new button(465, 195, 350, 60, Vec3(20, 20, 210), "Restart");
@@ -15,6 +15,7 @@ pauseMenu::pauseMenu(SDL_Renderer* r)
 
 	tutorialIMG = TextureManager::LoadTexture("textures/TutorialPic.png", r);
 	tutorialBox = SDL_Rect{ 100 , 50, 1100, 600 };
+	currentScene = currentScene_;
 
 }
 
@@ -32,7 +33,7 @@ void pauseMenu::pauseUpdate(SDL_Event event_)
 	Quit->Update();
 	Back->Update();
 	if (Resume->buttonClicked(event_) && (currentMenu == 1)) { Resume->click->playSFX(); paused = false; }
-	if (Restart->buttonClicked(event_) && (currentMenu == 1)) { Restart->click->playSFX(); newScene = 1; paused = false; }
+	if (Restart->buttonClicked(event_) && (currentMenu == 1)) { Restart->click->playSFX(); newScene = currentScene; paused = false; }
 	if (MainMenu->buttonClicked(event_) && (currentMenu == 1)) { MainMenu->click->playSFX(); newScene = 2; paused = false; }
 	if (Settings->buttonClicked(event_) && (currentMenu == 1)) { Settings->click->playSFX(); currentMenu = 3; }
 	if (Tutorial->buttonClicked(event_) && (currentMenu == 1)) { Tutorial->click->playSFX(); currentMenu = 4; }

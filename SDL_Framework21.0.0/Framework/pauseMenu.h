@@ -20,11 +20,12 @@ private:
 
 	int currentMenu = 1;
 	int newScene = 0;
+	int currentScene;
 
 	bool paused = true;
 
 public:
-	pauseMenu(SDL_Renderer* r);
+	pauseMenu(SDL_Renderer* r, int currentScene_);
 	~pauseMenu();
 	void pauseUpdate(SDL_Event event_);
 	void pauseRender(SDL_Renderer* renderer);

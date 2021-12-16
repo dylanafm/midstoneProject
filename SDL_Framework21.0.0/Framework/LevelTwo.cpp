@@ -129,8 +129,8 @@ bool LevelTwo::OnCreate() {
 
 	song->playSong();
 
-	pMenu = new pauseMenu(renderer);
-	dMenu = new DeathMenu();
+	pMenu = new pauseMenu(renderer, 3);
+	dMenu = new DeathMenu(3);
 	fMenu = new finishMenu(renderer);
 
 	if (!pMenu->setUpButtons(renderer)) return false;
@@ -237,8 +237,8 @@ void LevelTwo::Update(const float deltaTime) {
 		boss1->Update(deltaTime, harry);
 		if (!isProjectileFired && boss1->pos.x < 1280) {
 			spawnProjectile();
-			spawnUpperProjectile();
-			spawnLowerProjectile();
+			//spawnUpperProjectile();
+			//spawnLowerProjectile();
 		}
 	}
 

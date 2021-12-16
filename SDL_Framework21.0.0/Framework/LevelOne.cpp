@@ -123,9 +123,9 @@ bool LevelOne::OnCreate() {
 
 	song->playSong();
 
-	pMenu = new pauseMenu(renderer);
+	pMenu = new pauseMenu(renderer, 1);
 	fMenu = new finishMenu(renderer);
-	dMenu = new DeathMenu();
+	dMenu = new DeathMenu(1);
 
 	if (!pMenu->setUpButtons(renderer)) return false;
 	if (!dMenu->setUpButtons(renderer)) return false;

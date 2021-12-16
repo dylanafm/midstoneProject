@@ -13,11 +13,12 @@ private:
 
 	int currentMenu = 1;
 	int newScene = 0;
+	int currentScene;
 
 	bool paused = true;
 
 public:
-	DeathMenu();
+	DeathMenu(int currentScene_);
 	~DeathMenu();
 	void deathUpdate(SDL_Event event_);
 	void deathRender(SDL_Renderer* renderer);

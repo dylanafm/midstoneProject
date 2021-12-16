@@ -1,10 +1,11 @@
 #include "DeathMenu.h"
 
-DeathMenu::DeathMenu()
+DeathMenu::DeathMenu(int currentScene_)
 {
 	Restart = new button(465, 230, 350, 60, Vec3(20, 20, 210), "Restart");
 	MainMenu = new button(415, 330, 450, 60, Vec3(20, 20, 210), "Main Menu");
 	Quit = new button(540, 430, 200, 60, Vec3(20, 20, 210), "Quit");
+	currentScene = currentScene_;
 }
 
 DeathMenu::~DeathMenu()
@@ -17,7 +18,7 @@ void DeathMenu::deathUpdate(SDL_Event event_)
 	MainMenu->Update();
 	Quit->Update();
 
-	if (Restart->buttonClicked(event_)) { Restart->click->playSFX();  newScene = 1; paused = false; }
+	if (Restart->buttonClicked(event_)) { Restart->click->playSFX();  newScene = currentScene; paused = false; }
 	if (MainMenu->buttonClicked(event_)) { MainMenu->click->playSFX(); newScene = 2; paused = false; }
 	if (Quit->buttonClicked(event_)) { Quit->click->playSFX(); newScene = -1; paused = false; }
 }
