@@ -49,12 +49,12 @@ private:
 
 	harpoonHarry* harry;
 	Harpoon* harpoon[50];
-	TigerFish* tigerFish[20];
+	TigerFish* tigerFish[80];
 	boss* boss1;
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 	Projectile* projectile;
-	healthPickup* hp[7];
+	healthPickup* hp[4];
 
 	SDL_Renderer* renderer;
 
@@ -82,6 +82,8 @@ public:
 	void Render();
 	void spawnHarpoon();
 	void spawnProjectile();
+	void spawnUpperProjectile();
+	void spawnLowerProjectile();
 	bool getPaused() {
 		return paused;
 	}

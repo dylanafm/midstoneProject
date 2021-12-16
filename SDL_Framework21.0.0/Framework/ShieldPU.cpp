@@ -22,7 +22,7 @@ void ShieldPU::Protect(harpoonHarry* harry)
 
 		pickup->playSFX();
 		harry->Shielded = true;
-		harry->timeRemaining = 20.0f;
+		harry->timeRemaining = 5.0f;
 	}
 	
 }

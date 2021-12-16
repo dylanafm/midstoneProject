@@ -23,7 +23,7 @@ void MGHarpoon::RapidFire(harpoonHarry* harry)
 
 		pickup->playSFX();
 		harry->rapidFire = true;
-		harry->gunTimeRemain = 20.0f;
+		harry->gunTimeRemain = 5.0f;
 	}
 
 }
