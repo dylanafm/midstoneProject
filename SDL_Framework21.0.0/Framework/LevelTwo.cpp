@@ -116,7 +116,24 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 LevelTwo::~LevelTwo() {
 	delete window;
 	delete harry;
+	delete song;
+	delete Shield;
+	delete rf;
+	delete playerHUD;
+	delete harry;
+	delete harpoon;
+	delete tigerFish;
+	delete boss1;
+	delete projectile;
+	delete hp;
 	delete renderer;
+	delete dMenu;
+	delete pMenu;
+	delete fMenu;
+	delete map;
+	delete reloadTimer;
+	delete projectileReloadTimer;
+	delete biteTimer;
 }
 
 bool LevelTwo::OnCreate() {

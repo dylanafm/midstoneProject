@@ -30,7 +30,10 @@ button::button(int x, int y, int w, int h, Vec3 textColor2, const char* text_)
 
 button::~button()
 {
-	
+	delete textureOriginal;
+	delete textureHovered;
+	delete texture;
+	delete click;
 }
 
 

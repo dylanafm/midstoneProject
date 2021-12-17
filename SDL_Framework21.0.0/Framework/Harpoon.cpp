@@ -31,6 +31,7 @@ Harpoon::Harpoon(Vec3 pos_, Vec3 vel_, SDL_Renderer* renderer, const char* path)
 }
 
 Harpoon::~Harpoon() {
+	delete texture;
 }
 
 void Harpoon::Update(float deltaTime)

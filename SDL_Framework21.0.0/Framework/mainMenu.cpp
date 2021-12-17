@@ -43,7 +43,24 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 
 mainMenu::~mainMenu() {
 	delete window;
-	delete renderer;
+	delete Start;
+	delete Levels;
+	delete Settings;
+	delete Tutorial;
+	delete Quit;
+	delete Credits;
+	delete Back;
+	delete LevelOne;
+	delete LevelTwo;
+	delete LevelThree;
+	delete backgroundTexture;
+	delete creditBG;
+	delete tutorialIMG;
+	delete logoTex;
+	delete slam;
+	delete slamCred;
+	delete timer;
+	delete Song;
 }
 
 bool mainMenu::OnCreate() {

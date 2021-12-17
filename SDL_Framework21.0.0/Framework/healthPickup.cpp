@@ -20,6 +20,7 @@ healthPickup::healthPickup(Vec3 pos_, float scrollSpeed_, SDL_Renderer* render)
 
 healthPickup::~healthPickup()
 {
+	delete healthTexture;
 }
 
 void healthPickup::scroll()

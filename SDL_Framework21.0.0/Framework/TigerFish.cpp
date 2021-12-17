@@ -19,6 +19,7 @@ TigerFish::TigerFish(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, 
 }
 TigerFish::~TigerFish()
 {
+	delete tigerFishAnim;
 }
 void TigerFish::Render(SDL_Renderer* renderer)
 {

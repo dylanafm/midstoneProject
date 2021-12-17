@@ -10,6 +10,7 @@ Shark::Shark(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const ch
 
 Shark::~Shark()
 {
+	delete SharkSwim;
 }
 
 void Shark::Update(float deltaTime, harpoonHarry* harry)

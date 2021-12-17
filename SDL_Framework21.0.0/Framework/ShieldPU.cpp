@@ -14,6 +14,7 @@ ShieldPU::ShieldPU(SDL_Rect box_, float scrollSpeed_, const char* path, SDL_Rend
 
 ShieldPU::~ShieldPU()
 {
+	delete tex;
 }
 
 void ShieldPU::Protect(harpoonHarry* harry)
