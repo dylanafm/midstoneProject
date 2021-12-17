@@ -21,14 +21,6 @@ pauseMenu::pauseMenu(SDL_Renderer* r, int currentScene_)
 
 pauseMenu::~pauseMenu()
 {
-	delete Resume;
-	delete Restart;
-	delete MainMenu;
-	delete Settings;
-	delete Tutorial;
-	delete Quit;
-	delete Back;
-	delete tutorialIMG;
 }
 
 void pauseMenu::pauseUpdate(SDL_Event event_)

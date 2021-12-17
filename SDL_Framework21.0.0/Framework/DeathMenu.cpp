@@ -10,9 +10,6 @@ DeathMenu::DeathMenu(int currentScene_)
 
 DeathMenu::~DeathMenu()
 {
-	delete Restart;
-	delete MainMenu;
-	delete Quit;
 }
 
 void DeathMenu::deathUpdate(SDL_Event event_)

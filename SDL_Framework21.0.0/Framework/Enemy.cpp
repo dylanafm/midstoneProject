@@ -25,9 +25,7 @@ Enemy::Enemy() {
 
 
 Enemy::~Enemy() {
-	delete texture;
-	delete BarTex;
-	delete HealthTex;
+
 }
 
 Enemy::Enemy(SDL_Rect body_, Vec3 vel_, float scrollSpeed_, SDL_Renderer* renderer, const char* path, float radius_)

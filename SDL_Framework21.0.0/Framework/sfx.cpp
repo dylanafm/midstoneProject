@@ -14,7 +14,6 @@ sfx::sfx(const char* fileName, int vol_)
 
 sfx::~sfx()
 {
-	delete soundfx;
 }
 
 void sfx::playSFX()

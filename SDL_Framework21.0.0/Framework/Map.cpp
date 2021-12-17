@@ -89,13 +89,6 @@ Map::Map(SDL_Renderer* renderer, int stage) {
 	dest.h = 32;
 }
 
-Map::~Map()
-{
-	delete water;
-	delete sand;
-	delete coral;
-}
-
 void Map::LoadMap(int arr[23][40])
 {
 	for (int row = 0; row < 23; row++)

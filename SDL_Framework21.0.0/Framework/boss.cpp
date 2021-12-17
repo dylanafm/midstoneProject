@@ -10,7 +10,6 @@ boss::boss(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char
 
 boss::~boss()
 {
-	delete swim;
 }
 
 void boss::Update(float deltaTime, harpoonHarry* harry)

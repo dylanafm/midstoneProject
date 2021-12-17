@@ -110,24 +110,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 LevelOne::~LevelOne() {
 	delete window;
 	delete harry;
-	delete song;
-	delete Shield;
-	delete rf;
-	delete playerHUD;
-	delete harry;
-	delete harpoon;
-	delete fish;
-	delete SharkBoss;
-	delete projectile;
-	delete hp;
 	delete renderer;
-	delete dMenu;
-	delete pMenu;
-	delete fMenu;
-	delete map;
-	delete reloadTimer;
-	delete projectileReloadTimer;
-	delete biteTimer;
 }
 
 bool LevelOne::OnCreate() {

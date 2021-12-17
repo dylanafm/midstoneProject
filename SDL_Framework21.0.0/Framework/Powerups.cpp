@@ -11,7 +11,6 @@ Powerups::Powerups(SDL_Rect box_, float scrollSpeed_, const char* path, SDL_Rend
 
 Powerups::~Powerups()
 {
-	delete tex;
 }
 
 void Powerups::Render(SDL_Renderer* renderer)

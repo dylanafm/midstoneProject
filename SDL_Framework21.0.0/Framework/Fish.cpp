@@ -19,7 +19,6 @@ Fish::Fish(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char
 }
 Fish::~Fish()
 {
-	delete fishAnim;
 }
 void Fish::Render(SDL_Renderer* renderer)
 {

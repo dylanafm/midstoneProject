@@ -1,3 +1,4 @@
+
 #include "Animation.h"
 
 Animation::Animation(SDL_Texture* animTex)
