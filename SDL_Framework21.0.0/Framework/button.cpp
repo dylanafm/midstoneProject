@@ -30,7 +30,11 @@ button::button(int x, int y, int w, int h, Vec3 textColor2, const char* text_)
 
 button::~button()
 {
-	
+	//delete text;
+	delete click;
+	SDL_DestroyTexture(textureOriginal);
+	SDL_DestroyTexture(textureHovered);
+	SDL_DestroyTexture(texture);
 }
 
 

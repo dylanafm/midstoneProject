@@ -62,8 +62,6 @@ void harpoonHarry::HandleEvents(SDL_Event sdlEvent) {
 }
 
 void harpoonHarry::Update(float deltaTime)
-
-	
 {
 	if (timeRemaining > 0.0f) {
 

@@ -63,18 +63,20 @@ void GameManager::Run() {
 			currentScene = new LevelOne(windowPtr->GetSDL_Window());
 			currentScene->OnCreate();
 		}
-		if (currentScene->getScene() == 3) {
-			currentScene->OnDestroy();
-			currentScene = new LevelTwo(windowPtr->GetSDL_Window());
-			currentScene->OnCreate();
-		}
-		if (currentScene->getScene() == 2) {
+		else if (currentScene->getScene() == 2) {
 			currentScene->OnDestroy();
 			currentScene = new mainMenu(windowPtr->GetSDL_Window());
 			currentScene->OnCreate();
 		}
-		if (currentScene->getScene() == -1) {
+		else if (currentScene->getScene() == 3) {
+			currentScene->OnDestroy();
+			currentScene = new LevelTwo(windowPtr->GetSDL_Window());
+			currentScene->OnCreate();
+		}
+		else if (currentScene->getScene() == -1) {
 			isRunning = false;
+			currentScene->OnDestroy();
+			break;
 		}
 		if (currentScene->getPaused()) {
 			currentScene->Update(0.0f);

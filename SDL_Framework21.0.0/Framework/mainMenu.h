@@ -31,37 +31,36 @@ private:
 	
 	button* Back;
 
-
-
 	button* LevelOne;
 	button* LevelTwo;
 	button* LevelThree;
 
 	SDL_Texture* backgroundTexture;
+
 	SDL_Texture* creditBG;
 
 	SDL_Texture* tutorialIMG;
 	SDL_Rect tutorialBox;
 
 	SDL_Texture* logoTex;
+	SDL_Rect logoBox;
+
 	SDL_Texture* slam;
 	SDL_Texture* slamCred;
 
 	Text slamText;
-	InGameTimer* timer;
 
-	SDL_Rect logoBox;
+	InGameTimer* timer;
 
 	Text newText;
 
 	musicPlayer* Song;
 
-
 	int creditScroll;
 
 	Text creditText[9];
 
-	int currentMenu = 0; // Switch between menus in the main menu. 0 = Intro 1 = Main Menu, 2 = Levels Menu, 3 = Settings Menu, 4 = Tutorial Menu 5 = Credit
+	int currentMenu = 0; // Switch between menus. 0 = Intro, 1 = Main Menu, 2 = Levels Menu, 3 = Settings Menu, 4 = Tutorial Menu, 5 = Credit
 	int newScene = 0; // Switch between scenes. -1 = Quit, 1 = LevelOne, 0 = Dont switch
 	bool startTimer;
 public:
@@ -77,7 +76,6 @@ public:
 	int getScene() {
 		return newScene;
 	}
-	bool setBackground();
 };
 
 #endif
