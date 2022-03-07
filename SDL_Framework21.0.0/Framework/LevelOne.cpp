@@ -7,16 +7,17 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 
 	window = sdlWindow_;
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
 	//a = new Animator(renderer);
 	bg = new Background(renderer, 1, "textures/layers/1.png", 1, "textures/layers/2.png", 2, "textures/layers/3.png", 3, "textures/layers/4.png", 3, "textures/layers/5.png", 4, "textures/layers/6.png", 0, "textures/filler.png", 0, "textures/filler.png", 0.028f);
+
 	SharkBoss = new Shark(SDL_Rect{ 1400, 360, 300, 200 }, 2.0f, renderer, "textures/SharkBoss.png", 100.0f);
-	SharkBoss->health = 5;
+	SharkBoss->health = 1;
+
 	harry = new harpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
 	
-
-	//bg->SetProgress(99.0f);
-
+	bg->SetProgress(99.0f);
 
 	playerHUD = new HUD();
 	currentHarpoon = 0;
@@ -98,18 +99,10 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	playerDie = new sfx("SFX/die.wav", 10);
 	bossHurt = new sfx("SFX/bossdeath.wav", 10);
 	healthsfx = new sfx("SFX/life_pickup.flac", 10);
-
-
-
-	
-
-	
-	
 }
 
 LevelOne::~LevelOne() {
 	delete window;
-	delete harry;
 	delete renderer;
 }
 
@@ -136,13 +129,41 @@ bool LevelOne::OnCreate() {
 
 void LevelOne::OnDestroy() {
 	SDL_DestroyRenderer(renderer);
+	if (harry != nullptr) delete harry;
+	if (song != nullptr) delete song;
+	if (Shield != nullptr) delete Shield;
+	if (rf != nullptr) delete rf;
+	if (playerHUD != nullptr) delete playerHUD;
+	if (bg != nullptr) delete bg;
+	if (SharkBoss != nullptr) delete SharkBoss;
+	if (projectile != nullptr) delete projectile;
+	if (dMenu != nullptr) delete dMenu;
+	if (pMenu != nullptr) delete pMenu;
+	if (fMenu != nullptr) delete fMenu;
+	if (reloadTimer != nullptr) delete reloadTimer;
+	if (projectileReloadTimer != nullptr) delete projectileReloadTimer;
+	if (biteTimer != nullptr) delete biteTimer;
+	if (harpoonShoot != nullptr) delete harpoonShoot;
+	if (fishHurt != nullptr) delete fishHurt;
+	if (playerHurt != nullptr) delete playerHurt;
+	if (playerDie != nullptr) delete playerDie;
+	if (bossHurt != nullptr) delete bossHurt;
+	if (healthsfx != nullptr) delete healthsfx;
+	for (int i = 0; i < std::size(hp); i++)
+		if (hp[i] != nullptr) delete hp[i];
+	for (int i = 0; i < std::size(fish); i++)
+		if (fish[i] != nullptr) delete fish[i];
+	for (int i = 0; i < std::size(harpoon); i++)
+		if (harpoon[i] != nullptr) delete harpoon[i];
+	if (map != nullptr) delete map;
+	//if (projectionMatrix != nullptr) delete projectionMatrix;
 }
 
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
 	for (int i = 0; i < std::size(hp); i++) {
-		if (hp[i] != nullptr)  hp[i]->update(deltaTime);
 		if (hp[i] != nullptr) {
+			hp[i]->update(deltaTime);
 			if (harry->isHealthCollided(harry, hp[i])) {
 				healthsfx->playSFX();
 				delete hp[i];
@@ -150,16 +171,18 @@ void LevelOne::Update(const float deltaTime) {
 			}
 		}
 	}
-	if (Shield != nullptr)  Shield->Protect(harry); 
-	if (Shield != nullptr && Shield->checkCollide(harry)) {
-		delete Shield;
-		Shield = nullptr;
+	if (Shield != nullptr){  
+		Shield->Protect(harry); 
+		if (Shield->checkCollide(harry))
+			delete Shield;
+			Shield = nullptr;
 	}
 	
-	if (rf != nullptr)  rf->RapidFire(harry);
-	if (rf != nullptr && rf->checkCollide(harry)) {
-		delete rf;
-		rf = nullptr;
+	if (rf != nullptr){  
+		rf->RapidFire(harry);
+		if (rf->checkCollide(harry))
+			delete rf;
+			rf = nullptr;
 	}
 	
 	if (!paused) {
@@ -176,9 +199,6 @@ void LevelOne::Update(const float deltaTime) {
 			}
 			//if (SharkBoss != nullptr) SharkBoss->Scroll();
 		}
-
-		
-		
 	}
 	harry->Update(deltaTime);
 	for (int i = 0; i < std::size(harpoon); i++) {
@@ -341,7 +361,6 @@ void LevelOne::Update(const float deltaTime) {
 		}
 	}
 
-
 	if (!paused) {
 		for (int i = 0; i < std::size(fish); i++) {
 			if (fish[i] != nullptr) fish[i]->Move(deltaTime, 200);
@@ -350,7 +369,6 @@ void LevelOne::Update(const float deltaTime) {
 }
 
 void LevelOne::Render() {
-
 	SDL_RenderClear(renderer);
 	bg->Render(renderer);
 	for (int i = 0; i < std::size(hp); i++) {

@@ -15,6 +15,8 @@ MGHarpoon::MGHarpoon(SDL_Rect box_, float scrollSpeed_, const char* path, SDL_Re
 
 MGHarpoon::~MGHarpoon()
 {
+	delete pickup;
+	SDL_DestroyTexture(tex);
 }
 
 void MGHarpoon::RapidFire(harpoonHarry* harry)

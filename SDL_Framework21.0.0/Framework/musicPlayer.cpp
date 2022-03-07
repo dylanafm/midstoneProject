@@ -14,7 +14,7 @@ musicPlayer::musicPlayer(const char* fileName, int volume_) {
 musicPlayer::~musicPlayer() {
 	Mix_FreeMusic(song);
 	song = nullptr;
-
+	delete song;
 }
 void musicPlayer::playSong() {
 

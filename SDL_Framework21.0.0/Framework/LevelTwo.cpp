@@ -143,6 +143,34 @@ bool LevelTwo::OnCreate() {
 
 void LevelTwo::OnDestroy() {
 	SDL_DestroyRenderer(renderer);
+	if (song != nullptr) delete song;
+	if (Shield != nullptr) delete Shield;
+	if (rf != nullptr) delete rf;
+	if (playerHUD != nullptr) delete playerHUD;
+	if (bg != nullptr) delete bg;
+	if (harry != nullptr) delete harry;
+	if (boss1 != nullptr) delete boss1;
+	if (projectile != nullptr) delete projectile;
+	if (dMenu != nullptr) delete dMenu;
+	if (pMenu != nullptr) delete pMenu;
+	if (fMenu != nullptr) delete fMenu;
+	if (reloadTimer != nullptr) delete reloadTimer;
+	if (projectileReloadTimer != nullptr) delete projectileReloadTimer;
+	if (biteTimer != nullptr) delete biteTimer;
+	if (harpoonShoot != nullptr) delete harpoonShoot;
+	if (fishHurt != nullptr) delete fishHurt;
+	if (playerHurt != nullptr) delete playerHurt;
+	if (playerDie != nullptr) delete playerDie;
+	if (bossHurt != nullptr) delete bossHurt;
+	if (healthsfx != nullptr) delete healthsfx;
+	for (int i = 0; i < std::size(hp); i++)
+		if (hp[i] != nullptr) delete hp[i];
+	for (int i = 0; i < std::size(tigerFish); i++)
+		if (tigerFish[i] != nullptr) delete tigerFish[i];
+	for (int i = 0; i < std::size(harpoon); i++)
+		if (harpoon[i] != nullptr) delete harpoon[i];
+	if (map != nullptr) delete map;
+	//if (projectionMatrix != nullptr) delete projectionMatrix;
 }
 
 void LevelTwo::Update(const float deltaTime) {

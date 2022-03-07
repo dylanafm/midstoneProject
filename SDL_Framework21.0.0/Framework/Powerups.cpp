@@ -11,6 +11,7 @@ Powerups::Powerups(SDL_Rect box_, float scrollSpeed_, const char* path, SDL_Rend
 
 Powerups::~Powerups()
 {
+	SDL_DestroyTexture(tex);
 }
 
 void Powerups::Render(SDL_Renderer* renderer)

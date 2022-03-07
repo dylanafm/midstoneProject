@@ -44,6 +44,8 @@ harpoonHarry::harpoonHarry(SDL_Renderer* renderer, const char* path, float radiu
 }
 
 harpoonHarry::~harpoonHarry(){
+	delete swim;
+	SDL_DestroyTexture(texture);
 }
 void harpoonHarry::HandleEvents(SDL_Event sdlEvent) {
 	const Uint8* keystate = SDL_GetKeyboardState(NULL);

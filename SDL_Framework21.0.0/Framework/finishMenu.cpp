@@ -10,6 +10,9 @@ finishMenu::finishMenu(SDL_Renderer* r)
 
 finishMenu::~finishMenu()
 {
+	delete NextLevel;
+	delete MainMenu;
+	delete Quit;
 }
 
 void finishMenu::finishUpdate(SDL_Event event_)

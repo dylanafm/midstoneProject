@@ -14,6 +14,7 @@ sfx::sfx(const char* fileName, int vol_)
 
 sfx::~sfx()
 {
+	Mix_FreeChunk(soundfx);
 }
 
 void sfx::playSFX()

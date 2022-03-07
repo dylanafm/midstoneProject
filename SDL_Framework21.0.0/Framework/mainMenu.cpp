@@ -34,25 +34,6 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 mainMenu::~mainMenu() {
 	delete window;
 	delete renderer;
-	SDL_DestroyRenderer(renderer);
-	delete Start;
-	delete Levels;
-	delete Settings;
-	delete Tutorial;
-	delete Quit;
-	delete Credits;
-	delete Back;
-	delete LevelOne;
-	delete LevelTwo;
-	delete LevelThree;
-	SDL_DestroyTexture(backgroundTexture);
-	SDL_DestroyTexture(creditBG);
-	SDL_DestroyTexture(tutorialIMG);
-	SDL_DestroyTexture(logoTex);
-	SDL_DestroyTexture(slam);
-	SDL_DestroyTexture(slamCred);
-	delete timer;
-	delete Song;
 }
 
 bool mainMenu::OnCreate() {

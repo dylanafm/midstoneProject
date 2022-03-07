@@ -24,6 +24,9 @@ Text::~Text()
 {
 	TTF_CloseFont(font);
 	TTF_Quit();
+	//delete text;
+	//SDL_FreeSurface(text);
+	//SDL_DestroyTexture(text_texture);
 }
 
 void Text::writeText(const char* message, SDL_Color color, SDL_Rect rect, SDL_Renderer* renderer)

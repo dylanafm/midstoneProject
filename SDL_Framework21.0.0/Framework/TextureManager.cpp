@@ -10,7 +10,7 @@ TextureManager::TextureManager()
 TextureManager::~TextureManager()
 {
     free();
-    
+    SDL_DestroyTexture(mTexture);
 }
 bool TextureManager::loadFromFile(std::string path, SDL_Renderer* r)
 {
