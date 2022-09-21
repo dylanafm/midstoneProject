@@ -8,13 +8,13 @@
 
 using namespace std;
 
-class musicPlayer
+class MusicPlayer
 {
 public:
 
 	int volume;
-	musicPlayer(const char* fileName, int volume_);
-	~musicPlayer();
+	MusicPlayer(const char* fileName, int volume_);
+	~MusicPlayer();
 	Mix_Music* song;
 	void playSong();
 	void pauseSong();

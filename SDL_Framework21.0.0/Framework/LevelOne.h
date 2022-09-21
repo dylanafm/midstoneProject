@@ -20,7 +20,7 @@
 #include "ShieldPU.h"
 #include "Background.h"
 #include "Projectile.h"
-#include "musicPlayer.h"
+#include "MusicPlayer.h"
 #include "healthPickup.h"
 #include "Sfx.h"
 #include "Powerups.h"
@@ -39,7 +39,7 @@ class MGHarpoon;
 class LevelOne : public Scene {
 private:
 
-	musicPlayer* song;
+	MusicPlayer* song;
 	int currentHarpoon;
 	ShieldPU* Shield;
 	MGHarpoon* rf;

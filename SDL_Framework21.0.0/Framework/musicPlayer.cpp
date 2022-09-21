@@ -1,6 +1,6 @@
-#include "musicPlayer.h"
+#include "MusicPlayer.h"
 
-musicPlayer::musicPlayer(const char* fileName, int volume_) {
+MusicPlayer::MusicPlayer(const char* fileName, int volume_) {
 	song = Mix_LoadMUS(fileName);
 	if (!song) {
 		printf("Mix_LoadMUS(\"%s\"): %s\n", fileName, Mix_GetError());
@@ -11,12 +11,12 @@ musicPlayer::musicPlayer(const char* fileName, int volume_) {
 	
 	
 }
-musicPlayer::~musicPlayer() {
+MusicPlayer::~MusicPlayer() {
 	Mix_FreeMusic(song);
 	song = nullptr;
 	delete song;
 }
-void musicPlayer::playSong() {
+void MusicPlayer::playSong() {
 
 	
 	Mix_PlayMusic(song, -1);
@@ -24,14 +24,14 @@ void musicPlayer::playSong() {
 	if (song == nullptr) { cout << "Song is Null" << endl; }
 
 }
-void musicPlayer::stopSong(){
+void MusicPlayer::stopSong(){
 
 	Mix_HaltMusic();
 	song = nullptr;
 
 }
 
-void musicPlayer::pauseSong()
+void MusicPlayer::pauseSong()
 {
 	Mix_PauseMusic();
 

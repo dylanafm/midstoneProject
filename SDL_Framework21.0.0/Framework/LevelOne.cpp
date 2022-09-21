@@ -21,7 +21,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 
 	playerHUD = new HUD();
 	currentHarpoon = 0;
-	song = new musicPlayer("Music/levelonetheme.ogg", 2);
+	song = new MusicPlayer("Music/levelonetheme.ogg", 2);
 
 	hp[0] = new healthPickup(Vec3(2500.0f, rand() % 680, 0.0f), 2.0f, renderer);
 	hp[1] = new healthPickup(Vec3(3500.0f, rand() % 680, 0.0f), 2.0f, renderer);

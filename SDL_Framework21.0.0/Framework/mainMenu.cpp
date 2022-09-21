@@ -15,7 +15,7 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 
 	startTimer = true;
 
-	Song = new musicPlayer("Music/mainmenutheme.mp3", 2);
+	Song = new MusicPlayer("Music/mainmenutheme.mp3", 2);
 	//Song->volume = 2;
 	
 

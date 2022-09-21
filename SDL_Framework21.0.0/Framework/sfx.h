@@ -1,6 +1,6 @@
 #ifndef SFX_H
 #define SFX_H
-#include "musicPlayer.h"
+#include "MusicPlayer.h"
 #include <SDL_mixer.h>
 
 class Sfx

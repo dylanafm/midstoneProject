@@ -108,7 +108,7 @@
     <ClCompile Include="Sfx.cpp">
       <Filter>Source Files\Audio and Video</Filter>
     </ClCompile>
-    <ClCompile Include="musicPlayer.cpp">
+    <ClCompile Include="MusicPlayer.cpp">
       <Filter>Source Files\Audio and Video</Filter>
     </ClCompile>
     <ClCompile Include="LTexture.cpp">
@@ -242,7 +242,7 @@
     <ClInclude Include="Map.h">
       <Filter>Header Files\Audio Video</Filter>
     </ClInclude>
-    <ClInclude Include="musicPlayer.h">
+    <ClInclude Include="MusicPlayer.h">
       <Filter>Header Files\Audio Video</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">

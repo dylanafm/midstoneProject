@@ -8,7 +8,7 @@
 #include <SDL_image.h>
 #include "SDL_TTF.h"
 #include "Text.h"
-#include "musicPlayer.h"
+#include "MusicPlayer.h"
 #include "button.h"
 #include "InGameTimer.h"
 
@@ -54,7 +54,7 @@ private:
 
 	Text newText;
 
-	musicPlayer* Song;
+	MusicPlayer* Song;
 
 	int creditScroll;
 

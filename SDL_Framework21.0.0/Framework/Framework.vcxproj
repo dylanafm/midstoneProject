@@ -174,7 +174,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MGHarpoon.cpp" />
     <ClCompile Include="MMath.cpp" />
-    <ClCompile Include="musicPlayer.cpp" />
+    <ClCompile Include="MusicPlayer.cpp" />
     <ClCompile Include="pauseMenu.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Powerups.cpp" />
@@ -215,7 +215,7 @@
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="MGHarpoon.h" />
     <ClInclude Include="MMath.h" />
-    <ClInclude Include="musicPlayer.h" />
+    <ClInclude Include="MusicPlayer.h" />
     <ClInclude Include="pauseMenu.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="Powerups.h" />
