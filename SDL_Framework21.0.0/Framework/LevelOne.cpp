@@ -93,12 +93,12 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	Shield = new ShieldPU(SDL_Rect{ 3300, rand() % 680, 50, 50 }, 2, "textures/Shield.png", renderer);
 	rf = new MGHarpoon(SDL_Rect{ 6700, rand() % 680, 50, 50 }, 2, "textures/MGH.png", renderer);
 
-	harpoonShoot = new sfx("SFX/shoot.ogg", 10);
-	fishHurt = new sfx("SFX/blobdeath.wav", 10);
-	playerHurt = new sfx("SFX/pain.wav", 10);
-	playerDie = new sfx("SFX/die.wav", 10);
-	bossHurt = new sfx("SFX/bossdeath.wav", 10);
-	healthsfx = new sfx("SFX/life_pickup.flac", 10);
+	harpoonShoot = new Sfx("SFX/shoot.ogg", 10);
+	fishHurt = new Sfx("SFX/blobdeath.wav", 10);
+	playerHurt = new Sfx("SFX/pain.wav", 10);
+	playerDie = new Sfx("SFX/die.wav", 10);
+	bossHurt = new Sfx("SFX/bossdeath.wav", 10);
+	healthsfx = new Sfx("SFX/life_pickup.flac", 10);
 }
 
 LevelOne::~LevelOne() {

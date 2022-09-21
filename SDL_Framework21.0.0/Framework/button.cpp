@@ -24,7 +24,7 @@ button::button(int x, int y, int w, int h, Vec3 textColor2, const char* text_)
 	textBox.x += buttonBox.w / 25.0;
 	textBox.w -= buttonBox.w / 12.5;
 	textBox.y -= buttonBox.h / 20;
-	click = new sfx("SFX/menuSelect.wav", 10);
+	click = new Sfx("SFX/menuSelect.wav", 10);
 
 }
 

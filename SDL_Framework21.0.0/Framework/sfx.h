@@ -3,14 +3,14 @@
 #include "musicPlayer.h"
 #include <SDL_mixer.h>
 
-class sfx
+class Sfx
 {
 public:
 
 	int vol;
 	Mix_Chunk* soundfx;
-	sfx(const char* fileName,int vol_);
-	~sfx();
+	Sfx(const char* fileName,int vol_);
+	~Sfx();
 
 	
 	void playSFX();

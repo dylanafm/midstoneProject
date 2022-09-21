@@ -3,7 +3,7 @@
 
 ShieldPU::ShieldPU(SDL_Rect box_, float scrollSpeed_, const char* path, SDL_Renderer* renderer)
 {
-	pickup = new sfx("SFX/shield.wav", 10);
+	pickup = new Sfx("SFX/shield.wav", 10);
 	box = box_;
 	pos = Vec3(box.x, box.y, 0.0f);
 

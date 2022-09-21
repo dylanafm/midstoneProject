@@ -105,7 +105,7 @@
     <ClCompile Include="TextureManager.cpp">
       <Filter>Source Files\Audio and Video</Filter>
     </ClCompile>
-    <ClCompile Include="sfx.cpp">
+    <ClCompile Include="Sfx.cpp">
       <Filter>Source Files\Audio and Video</Filter>
     </ClCompile>
     <ClCompile Include="musicPlayer.cpp">
@@ -248,7 +248,7 @@
     <ClInclude Include="Scene.h">
       <Filter>Header Files\Audio Video</Filter>
     </ClInclude>
-    <ClInclude Include="sfx.h">
+    <ClInclude Include="Sfx.h">
       <Filter>Header Files\Audio Video</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager.h">

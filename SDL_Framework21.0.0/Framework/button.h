@@ -7,7 +7,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "SDL_TTF.h"
-#include "sfx.h"
+#include "Sfx.h"
 
 using namespace MATH;
 
@@ -26,7 +26,7 @@ private:
 	SDL_Rect buttonBox;
 	SDL_Rect textBox;
 public:
-	sfx* click;
+	Sfx* click;
 
 	button();
 	button(int x, int y, int w, int h, Vec3 textColor2, const char* text_);

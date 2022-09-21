@@ -4,7 +4,7 @@
 
 MGHarpoon::MGHarpoon(SDL_Rect box_, float scrollSpeed_, const char* path, SDL_Renderer* renderer)
 {
-	pickup = new sfx("SFX/MGH.wav", 10);
+	pickup = new Sfx("SFX/MGH.wav", 10);
 	box = box_;
 	pos = Vec3(box.x, box.y, 0.0f);
 

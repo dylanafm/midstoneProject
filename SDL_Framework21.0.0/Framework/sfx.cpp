@@ -1,6 +1,6 @@
-#include "sfx.h"
+#include "Sfx.h"
 
-sfx::sfx(const char* fileName, int vol_)
+Sfx::Sfx(const char* fileName, int vol_)
 {
 	soundfx = Mix_LoadWAV(fileName);
 	if (!soundfx) {
@@ -12,12 +12,12 @@ sfx::sfx(const char* fileName, int vol_)
 
 }
 
-sfx::~sfx()
+Sfx::~Sfx()
 {
 	Mix_FreeChunk(soundfx);
 }
 
-void sfx::playSFX()
+void Sfx::playSFX()
 {
 	Mix_PlayChannel(-1, soundfx, 0);
 	Mix_VolumeChunk(soundfx, vol);

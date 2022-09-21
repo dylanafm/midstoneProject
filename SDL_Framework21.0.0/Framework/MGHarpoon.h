@@ -5,7 +5,7 @@ class Powerups;
 class MGHarpoon
 {
 private:
-	sfx* pickup;
+	Sfx* pickup;
 	Vec3 pos;
 	SDL_Rect box;
 	SDL_Texture* tex;

@@ -22,7 +22,7 @@
 #include "Projectile.h"
 #include "musicPlayer.h"
 #include "healthPickup.h"
-#include "sfx.h"
+#include "Sfx.h"
 #include "Powerups.h"
 #include "MGHarpoon.h"
 
@@ -90,12 +90,12 @@ public:
 		return newScene;
 	}	
 
-	sfx* harpoonShoot;
-	sfx* fishHurt;
-	sfx* playerHurt;
-	sfx* playerDie;
-	sfx* bossHurt;
-	sfx* healthsfx;
+	Sfx* harpoonShoot;
+	Sfx* fishHurt;
+	Sfx* playerHurt;
+	Sfx* playerDie;
+	Sfx* bossHurt;
+	Sfx* healthsfx;
 
 };
 
