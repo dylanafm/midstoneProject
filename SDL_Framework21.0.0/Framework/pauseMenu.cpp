@@ -3,14 +3,14 @@
 
 pauseMenu::pauseMenu(SDL_Renderer* r, int currentScene_)
 {
-	Resume = new button(490, 95, 300, 60, Vec3(20, 20, 210), "Resume");
-	Restart = new button(465, 195, 350, 60, Vec3(20, 20, 210), "Restart");
-	MainMenu = new button(415, 295, 450, 60, Vec3(20, 20, 210), "Main Menu");
-	Settings = new button(440, 395, 400, 60, Vec3(20, 20, 210), "Settings");
-	Tutorial = new button(440, 495, 400, 60, Vec3(20, 20, 210), "Tutorial");
-	Quit = new button(540, 595, 200, 60, Vec3(20, 20, 210), "Quit");
+	Resume = new Button(490, 95, 300, 60, Vec3(20, 20, 210), "Resume");
+	Restart = new Button(465, 195, 350, 60, Vec3(20, 20, 210), "Restart");
+	MainMenu = new Button(415, 295, 450, 60, Vec3(20, 20, 210), "Main Menu");
+	Settings = new Button(440, 395, 400, 60, Vec3(20, 20, 210), "Settings");
+	Tutorial = new Button(440, 495, 400, 60, Vec3(20, 20, 210), "Tutorial");
+	Quit = new Button(540, 595, 200, 60, Vec3(20, 20, 210), "Quit");
 
-	Back = new button(50, 50, 50, 50, Vec3(20, 20, 210), "Back");
+	Back = new Button(50, 50, 50, 50, Vec3(20, 20, 210), "Back");
 
 
 	tutorialIMG = TextureManager::LoadTexture("textures/TutorialPic.png", r);

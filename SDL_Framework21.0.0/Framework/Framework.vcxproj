@@ -152,7 +152,7 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Body.cpp" />
     <ClCompile Include="boss.cpp" />
-    <ClCompile Include="button.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DeathMenu.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -193,7 +193,7 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="Body.h" />
     <ClInclude Include="boss.h" />
-    <ClInclude Include="button.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DeathMenu.h" />
     <ClInclude Include="Enemy.h" />

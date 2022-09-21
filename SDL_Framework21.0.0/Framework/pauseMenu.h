@@ -6,14 +6,14 @@
 class pauseMenu
 {
 private:
-	button* Resume;
-	button* Restart;
-	button* MainMenu;
-	button* Settings;
-	button* Tutorial;
-	button* Quit;
+	Button* Resume;
+	Button* Restart;
+	Button* MainMenu;
+	Button* Settings;
+	Button* Tutorial;
+	Button* Quit;
 
-	button* Back;
+	Button* Back;
 
 	SDL_Texture* tutorialIMG;
 	SDL_Rect tutorialBox;

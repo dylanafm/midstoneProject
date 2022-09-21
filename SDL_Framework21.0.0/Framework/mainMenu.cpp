@@ -19,16 +19,16 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 	//Song->volume = 2;
 	
 
-	Start = new button(470, 600, 300, 60, Vec3(20, 20, 210), "Continue");
-	Levels = new button(490, 195, 300, 60, Vec3(20, 20, 210), "Levels");
-	Settings = new button(440, 295, 400, 60, Vec3(20, 20, 210), "Settings");
-	Tutorial = new button(440, 395, 400, 60, Vec3(20, 20, 210), "Tutorial");
-	Quit = new button(540, 495, 200, 60, Vec3(20, 20, 210), "Quit");
-	Credits = new button(1150, 650, 100, 60, Vec3(20, 20, 210), "Credits");
-	Back = new button(50, 50, 50, 50, Vec3(20, 20, 210), "Back");
+	Start = new Button(470, 600, 300, 60, Vec3(20, 20, 210), "Continue");
+	Levels = new Button(490, 195, 300, 60, Vec3(20, 20, 210), "Levels");
+	Settings = new Button(440, 295, 400, 60, Vec3(20, 20, 210), "Settings");
+	Tutorial = new Button(440, 395, 400, 60, Vec3(20, 20, 210), "Tutorial");
+	Quit = new Button(540, 495, 200, 60, Vec3(20, 20, 210), "Quit");
+	Credits = new Button(1150, 650, 100, 60, Vec3(20, 20, 210), "Credits");
+	Back = new Button(50, 50, 50, 50, Vec3(20, 20, 210), "Back");
 
-	LevelOne = new button(250, 200, 200, 200, Vec3(20, 20, 210), "1");
-	LevelTwo = new button(700, 200, 200, 200, Vec3(20, 20, 210), "2");
+	LevelOne = new Button(250, 200, 200, 200, Vec3(20, 20, 210), "1");
+	LevelTwo = new Button(700, 200, 200, 200, Vec3(20, 20, 210), "2");
 }
 
 mainMenu::~mainMenu() {

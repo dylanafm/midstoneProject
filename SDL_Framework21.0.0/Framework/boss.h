@@ -10,12 +10,12 @@ using namespace MATH;
 class Animation;
 class harpoonHarry;
 
-class boss : public Enemy
+class Boss : public Enemy
 {
 public:
 	double angle;
-	boss(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_);
-	~boss();
+	Boss(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_);
+	~Boss();
 	void Update(float deltaTime, harpoonHarry* harry);
 	void Render(SDL_Renderer* renderer) override;
 	Animation* swim;

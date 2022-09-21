@@ -1,15 +1,15 @@
 #ifndef FINISHMENU_H
 #define FINISHMENU_H
 
-#include "button.h"
+#include "Button.h"
 #include "Text.h"
 
 class finishMenu
 {
 private:
-	button* NextLevel;
-	button* MainMenu;
-	button* Quit;
+	Button* NextLevel;
+	Button* MainMenu;
+	Button* Quit;
 	Text text;
 
 	int newScene = 0;

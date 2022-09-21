@@ -2,9 +2,9 @@
 
 DeathMenu::DeathMenu(int currentScene_)
 {
-	Restart = new button(465, 230, 350, 60, Vec3(20, 20, 210), "Restart");
-	MainMenu = new button(415, 330, 450, 60, Vec3(20, 20, 210), "Main Menu");
-	Quit = new button(540, 430, 200, 60, Vec3(20, 20, 210), "Quit");
+	Restart = new Button(465, 230, 350, 60, Vec3(20, 20, 210), "Restart");
+	MainMenu = new Button(415, 330, 450, 60, Vec3(20, 20, 210), "Main Menu");
+	Quit = new Button(540, 430, 200, 60, Vec3(20, 20, 210), "Quit");
 	currentScene = currentScene_;
 }
 

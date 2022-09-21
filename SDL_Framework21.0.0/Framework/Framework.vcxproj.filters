@@ -138,7 +138,7 @@
     <ClCompile Include="Shark.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="button.cpp">
+    <ClCompile Include="Button.cpp">
       <Filter>Source Files\Audio and Video</Filter>
     </ClCompile>
     <ClCompile Include="Background.cpp">
@@ -230,7 +230,7 @@
     <ClInclude Include="Background.h">
       <Filter>Header Files\Audio Video</Filter>
     </ClInclude>
-    <ClInclude Include="button.h">
+    <ClInclude Include="Button.h">
       <Filter>Header Files\Audio Video</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">

@@ -1,6 +1,6 @@
-#include "button.h"
+#include "Button.h"
 
-button::button() {
+Button::Button() {
 
 	buttonBox.x = 0;
 	buttonBox.y = 0;
@@ -15,7 +15,7 @@ button::button() {
 
 }
 
-button::button(int x, int y, int w, int h, Vec3 textColor2, const char* text_)
+Button::Button(int x, int y, int w, int h, Vec3 textColor2, const char* text_)
 {
 	buttonBox.x = x; buttonBox.y = y; buttonBox.w = w; buttonBox.h = h; textureOriginal = nullptr; textureHovered = nullptr; texture = nullptr;
 	textColor.r = textColor2.x; textColor.g = textColor2.y; textColor.b = textColor2.z; text = text_;
@@ -28,7 +28,7 @@ button::button(int x, int y, int w, int h, Vec3 textColor2, const char* text_)
 
 }
 
-button::~button()
+Button::~Button()
 {
 	//delete text;
 	delete click;
@@ -41,7 +41,7 @@ button::~button()
 
 
 
-bool button::buttonClicked(SDL_Event event_)
+bool Button::buttonClicked(SDL_Event event_)
 {
 	int x, y;
 	Uint32 buttons;
@@ -63,7 +63,7 @@ bool button::buttonClicked(SDL_Event event_)
 	return false;
 }
 
-bool button::setImage(const char* pathOriginal, const char* pathHovered, SDL_Renderer* renderer)
+bool Button::setImage(const char* pathOriginal, const char* pathHovered, SDL_Renderer* renderer)
 {
 	SDL_Surface* tempSurface = IMG_Load(pathOriginal);
 	SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(renderer, tempSurface);
@@ -93,7 +93,7 @@ bool button::setImage(const char* pathOriginal, const char* pathHovered, SDL_Ren
 	return true;
 }
 
-void button::Update()
+void Button::Update()
 {
 	int x, y;
 	Uint32 buttons;
@@ -108,7 +108,7 @@ void button::Update()
 	}
 }
 
-void button::Render(SDL_Renderer* renderer)
+void Button::Render(SDL_Renderer* renderer)
 {
 	SDL_RenderCopyEx(renderer, texture, nullptr, &buttonBox, 0.0, nullptr, SDL_FLIP_NONE);
 	

@@ -3,9 +3,9 @@
 
 finishMenu::finishMenu(SDL_Renderer* r)
 {
-	if(!GameWin) NextLevel = new button(390, 230, 500, 60, Vec3(20, 20, 210), "Next Level");
-	MainMenu = new button(415, 330, 450, 60, Vec3(20, 20, 210), "Main Menu");
-	Quit = new button(540, 430, 200, 60, Vec3(20, 20, 210), "Quit");
+	if(!GameWin) NextLevel = new Button(390, 230, 500, 60, Vec3(20, 20, 210), "Next Level");
+	MainMenu = new Button(415, 330, 450, 60, Vec3(20, 20, 210), "Main Menu");
+	Quit = new Button(540, 430, 200, 60, Vec3(20, 20, 210), "Quit");
 }
 
 finishMenu::~finishMenu()

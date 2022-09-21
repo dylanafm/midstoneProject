@@ -50,7 +50,7 @@ private:
 	harpoonHarry* harry;
 	Harpoon* harpoon[50];
 	TigerFish* tigerFish[80];
-	boss* boss1;
+	Boss* boss1;
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 	Projectile* projectile;

@@ -12,7 +12,7 @@
 using namespace MATH;
 
 
-class button
+class Button
 {
 private:
 	const char* text;
@@ -28,9 +28,9 @@ private:
 public:
 	Sfx* click;
 
-	button();
-	button(int x, int y, int w, int h, Vec3 textColor2, const char* text_);
-	~button();
+	Button();
+	Button(int x, int y, int w, int h, Vec3 textColor2, const char* text_);
+	~Button();
 	
 
 	bool buttonClicked(SDL_Event event);

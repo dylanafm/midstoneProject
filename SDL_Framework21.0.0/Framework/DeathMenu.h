@@ -1,14 +1,14 @@
 #ifndef DEATHMENU_H
 #define DEATHMENU_H
 
-#include "button.h"
+#include "Button.h"
 
 class DeathMenu
 {
 private:
-	button* Restart;
-	button* MainMenu;
-	button* Quit;
+	Button* Restart;
+	Button* MainMenu;
+	Button* Quit;
 	Text text;
 
 	int currentMenu = 1;

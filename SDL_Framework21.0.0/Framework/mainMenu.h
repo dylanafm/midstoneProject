@@ -21,19 +21,19 @@ private:
 	Matrix4 projectionMatrix;
 	SDL_Renderer* renderer;
 
-	button* Start;
+	Button* Start;
 	
-	button* Levels;
-	button* Settings;
-	button* Tutorial;
-	button* Quit;
-	button* Credits;
+	Button* Levels;
+	Button* Settings;
+	Button* Tutorial;
+	Button* Quit;
+	Button* Credits;
 	
-	button* Back;
+	Button* Back;
 
-	button* LevelOne;
-	button* LevelTwo;
-	button* LevelThree;
+	Button* LevelOne;
+	Button* LevelTwo;
+	Button* LevelThree;
 
 	SDL_Texture* backgroundTexture;
 
