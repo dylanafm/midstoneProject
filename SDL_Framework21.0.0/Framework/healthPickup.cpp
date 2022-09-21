@@ -33,7 +33,7 @@ void healthPickup::render(SDL_Renderer* render)
 	SDL_RenderCopy(render, healthTexture, nullptr, &body);
 }
 
-void healthPickup::collide(harpoonHarry* harry)
+void healthPickup::collide(HarpoonHarry* harry)
 {
 }
 

@@ -29,7 +29,6 @@ using namespace MATH;
 class HUD;
 class healthPickup;
 class Background;
-class harpoonHarry;
 class Shark;
 class Harpoon;
 class Fish;

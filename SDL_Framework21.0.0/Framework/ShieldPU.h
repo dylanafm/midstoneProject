@@ -1,7 +1,10 @@
 #ifndef SHIELDPU_H
 #define SHIELDPU_H
 #include "Powerups.h"
+
 class Powerups;
+class HarpoonHarry;
+
 class ShieldPU
 {
 private:

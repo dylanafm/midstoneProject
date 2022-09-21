@@ -30,7 +30,6 @@ using namespace MATH;
 class HUD;
 class healthPickup;
 class Background;
-class HarpoonHarry;
 class Shark;
 class Harpoon;
 class Fish;

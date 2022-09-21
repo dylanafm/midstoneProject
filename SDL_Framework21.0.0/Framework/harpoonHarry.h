@@ -1,24 +1,22 @@
 #ifndef HARPOONHARRY_H
 #define HARPOONHARRY_H
 
-
 #include "Body.h"
 #include <SDL.h>
 #include <SDL_image.h>
 #include "Vector.h"
 #include "Fish.h"
 #include "Animation.h"
+#include "healthPickup.h"
+
 class Animation;
 class healthPickup;
+
 class HarpoonHarry : public Body
 {
-private:
-	
-
 public:
 
 	Animation* swim;
-
 
 	HarpoonHarry(SDL_Renderer* renderer, const char* path, float radius_);
 	~HarpoonHarry();

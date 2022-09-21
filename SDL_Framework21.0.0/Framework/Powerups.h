@@ -3,7 +3,7 @@
 #include "HarpoonHarry.h"
 #include "TextureManager.h"
 
-
+class HarpoonHarry;
 
 class Powerups
 {

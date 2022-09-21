@@ -2,7 +2,9 @@
 #define HEALTHPICKUP_H
 #include "LevelOne.h"
 #include "LTexture.h"
-class harpoonHarry;
+#include "HarpoonHarry.h"
+
+class HarpoonHarry;
 
 class healthPickup
 {
@@ -13,7 +15,7 @@ public:
 	float scrollSpeed, radiusInPixels;
 	void scroll();
 	void render(SDL_Renderer* render);
-	void collide(harpoonHarry* harry);
+	void collide(HarpoonHarry* harry);
 	void update(float deltaTime);
 
 
