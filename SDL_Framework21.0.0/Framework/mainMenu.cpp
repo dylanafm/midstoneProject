@@ -195,7 +195,6 @@ void MainMenu::Render() {
 	}
 	else
 	{
-		//cout << creditScroll << endl;
 		Back->Render(renderer);
 		creditText[1].writeText("Credits", SDL_Color{ 255, 255, 255 }, SDL_Rect{ 550, creditScroll, 250, 50 }, renderer);
 		creditText[2].writeText("Slam Productions Team", SDL_Color{ 255, 255, 255 }, SDL_Rect{ 575, creditScroll + 100, 200, 40 }, renderer);

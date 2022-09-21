@@ -18,16 +18,12 @@ Enemy::Enemy() {
 
 	scrollSpeed = 1.0f;
 	radiusInPixels = 1.0f;
-	
 
-	
 }
 
 
 Enemy::~Enemy() {
 	SDL_DestroyTexture(texture);
-	SDL_DestroyTexture(BarTex);
-	SDL_DestroyTexture(HealthTex);
 }
 
 Enemy::Enemy(SDL_Rect body_, Vec3 vel_, float scrollSpeed_, SDL_Renderer* renderer, const char* path, float radius_)
@@ -41,8 +37,6 @@ Enemy::Enemy(SDL_Rect body_, Vec3 vel_, float scrollSpeed_, SDL_Renderer* render
 	accelPrevious = Vec3(0.0f, 0.0f, 0.0f);
 
 	texture = TextureManager::LoadTexture(path, renderer);
-	HealthTex = TextureManager::LoadTexture("textures/Health.png", renderer);
-	BarTex = TextureManager::LoadTexture("textures/FullBar.png", renderer);
 
 	health = 1;
 	radiusInPixels = radius_;
@@ -59,8 +53,6 @@ Enemy::Enemy(SDL_Rect body_, float scrollSpeed_ , SDL_Renderer* renderer, const 
 	accelPrevious = Vec3(0.0f, 0.0f, 0.0f);
 
 	texture = TextureManager::LoadTexture(path, renderer);
-	HealthTex = TextureManager::LoadTexture("textures/Health.png", renderer);
-	BarTex = TextureManager::LoadTexture("textures/FullBar.png", renderer);
 
 	health = 1;
 	radiusInPixels = radius_;
@@ -73,15 +65,7 @@ void Enemy::Update(float deltaTime)
 	body.x = pos.x;
 	body.y = pos.y;
 }
-void Enemy::UpdateHealthBar(SDL_Renderer* r, int h) {
-	int tHeatlh = 5 * 25;
-	HealthBar = SDL_Rect{ body.x + 35, body.y - 40 , h * 25 , 15 };
-	TotalBar = SDL_Rect{ body.x + 35, body.y - 40 , tHeatlh, 15 };
-	SDL_RenderCopy(r, BarTex, nullptr, &TotalBar);
-	SDL_RenderCopy(r, HealthTex, nullptr, &HealthBar);
 
-	//cout << HealthBar.x << endl;
-}
 void Enemy::Scroll()
 {
 	pos.x = pos.x - scrollSpeed;
@@ -89,8 +73,5 @@ void Enemy::Scroll()
 
 void Enemy::Render(SDL_Renderer* renderer)
 {
-
-	
 	SDL_RenderCopy(renderer, texture, nullptr, &body);
-
 }

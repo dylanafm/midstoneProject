@@ -25,7 +25,6 @@ void Physics::ApplyForces(HarpoonHarry& object, const float waterHeight)
 	Vec3 Fd = -object.coefficient * object.vel;
 	Vec3 Fb = 997.0f * Vec3(0.0f, -9.8f, 0.0f) * V;
 	Vec3 Ffinal = Fw + Fd + Fb;
-	//std::cout << Fw.y << " " << Fd.y << " " << Fb.y << std::endl;
 	object.finalForce += Ffinal;
 }
 

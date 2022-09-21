@@ -10,7 +10,7 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	//a = new Animator(renderer);
 	bg = new Background(renderer, 1, "textures/layers2/1.png", 1, "textures/layers2/2.png", 2, "textures/layers2/3.png", 3, "textures/layers2/4.png", 1, "textures/layers2/5.png", 4, "textures/layers2/6.png", 4, "textures/layers2/7.png", 4, "textures/layers2/8.png", 0.030f);
 
-	bg->SetProgress(0.0f);
+	bg->SetProgress(99.0f);
 
 
 
@@ -150,12 +150,10 @@ void LevelTwo::OnDestroy() {
 	if (bg != nullptr) delete bg;
 	if (harry != nullptr) delete harry;
 	if (boss1 != nullptr) delete boss1;
-	if (projectile != nullptr) delete projectile;
 	if (dMenu != nullptr) delete dMenu;
 	if (pMenu != nullptr) delete pMenu;
 	if (fMenu != nullptr) delete fMenu;
 	if (reloadTimer != nullptr) delete reloadTimer;
-	if (projectileReloadTimer != nullptr) delete projectileReloadTimer;
 	if (biteTimer != nullptr) delete biteTimer;
 	if (harpoonShoot != nullptr) delete harpoonShoot;
 	if (fishHurt != nullptr) delete fishHurt;
@@ -252,22 +250,13 @@ void LevelTwo::Update(const float deltaTime) {
 		}
 	}
 
-	if (projectile != nullptr) {
-		projectile->Update(deltaTime);
-		if (harry->isCollided(harry, projectile)) {
-			if (!harry->Shielded) playerHurt->playSFX();
-			delete projectile;
-			projectile = nullptr;
-		}
-	}
-
 	if (boss1 != nullptr && bg->getProg() >= 99.0f) {
-		boss1->Update(deltaTime, harry);
-		if (!isProjectileFired && boss1->pos.x < 1280) {
-			spawnProjectile();
+		boss1->Update(deltaTime, harry, renderer);
+		//if (!isProjectileFired && boss1->pos.x < 1280) {
+			//spawnProjectile();
 			//spawnUpperProjectile();
 			//spawnLowerProjectile();
-		}
+		//}
 	}
 
 	for (int i = 0; i < std::size(tigerFish); i++) {
@@ -297,7 +286,6 @@ void LevelTwo::Update(const float deltaTime) {
 					boss1->health -= 1;
 					harpoon[i] = nullptr;
 					delete harpoon[i];
-					//std::cout << boss1->health << std::endl;
 				}
 				else {
 					bossHurt->playSFX();
@@ -372,13 +360,6 @@ void LevelTwo::Update(const float deltaTime) {
 			delete biteTimer;
 		}
 	}
-	if (isProjectileFired && projectileReloadTimer != nullptr) {
-		projectileReloadTimer->Update(deltaTime, isProjectileFired);
-		if (!isProjectileFired) {
-			projectileReloadTimer = nullptr;
-			delete projectileReloadTimer;
-		}
-	}
 
 
 	if (!paused) {
@@ -404,7 +385,6 @@ void LevelTwo::Render() {
 
 
 
-	if (projectile != nullptr) projectile->Render(renderer);
 	if (boss1 != nullptr) boss1->UpdateHealthBar(renderer, boss1->health);
 
 	if (!paused) {
@@ -466,54 +446,3 @@ void LevelTwo::spawnHarpoon()
 
 }
 
-void LevelTwo::spawnProjectile()
-{
-	Vec3 axes(0, 0, 1);
-	Matrix4 rotation = MMath::rotate((float)boss1->angle, axes);
-	Vec3 centerPos = Vec3(150.0f, 30.0f, 0.0f);
-	Vec3 offset = rotation * centerPos;
-	Vec3 bossCenter = boss1->pos + Vec3(boss1->body.w / 2, boss1->body.h / 2, 0.0f);
-	Vec3 newPos = bossCenter - offset;
-
-
-	Vec3 direction = Vec3(harry->pos.x + 25.0f - newPos.x, harry->pos.y + 25.0f - newPos.y, 0.0f);
-	Vec3 velocity = VMath::normalize(direction) * 300.0f;
-	projectile = new Projectile(SDL_Rect{ (int)newPos.x, (int)newPos.y, 25, 25 }, velocity, renderer, "textures/Bubble_1.png", 12.5f);
-
-	isProjectileFired = true;
-	projectileReloadTimer = new InGameTimer(4.5f);
-}
-void LevelTwo::spawnUpperProjectile()
-{
-	Vec3 axes(0, 0, 1);
-	Matrix4 rotation = MMath::rotate((float)boss1->angle, axes);
-	Vec3 centerPos = Vec3(150.0f, 30.0f, 0.0f);
-	Vec3 offset = rotation * centerPos;
-	Vec3 bossCenter = boss1->pos + Vec3(boss1->body.w / 2, boss1->body.h / 2, 0.0f);
-	Vec3 newPos = bossCenter - offset;
-
-
-	Vec3 direction = Vec3(harry->pos.x + 25.0f - newPos.x, harry->pos.y + 25.0f - 100.0f - newPos.y, 0.0f);
-	Vec3 velocity = VMath::normalize(direction) * 300.0f;
-	projectile = new Projectile(SDL_Rect{ (int)newPos.x, (int)newPos.y, 25, 25 }, velocity, renderer, "textures/Bubble_1.png", 12.5f);
-
-	isProjectileFired = true;
-	projectileReloadTimer = new InGameTimer(4.5f);
-}
-void LevelTwo::spawnLowerProjectile()
-{
-	Vec3 axes(0, 0, 1);
-	Matrix4 rotation = MMath::rotate((float)boss1->angle, axes);
-	Vec3 centerPos = Vec3(150.0f, 30.0f, 0.0f);
-	Vec3 offset = rotation * centerPos;
-	Vec3 bossCenter = boss1->pos + Vec3(boss1->body.w / 2, boss1->body.h / 2, 0.0f);
-	Vec3 newPos = bossCenter - offset;
-
-
-	Vec3 direction = Vec3(harry->pos.x + 25.0f - newPos.x, harry->pos.y + 25.0f + 100.0f - newPos.y, 0.0f);
-	Vec3 velocity = VMath::normalize(direction) * 300.0f;
-	projectile = new Projectile(SDL_Rect{ (int)newPos.x, (int)newPos.y, 25, 25 }, velocity, renderer, "textures/Bubble_1.png", 12.5f);
-
-	isProjectileFired = true;
-	projectileReloadTimer = new InGameTimer(4.5f);
-}

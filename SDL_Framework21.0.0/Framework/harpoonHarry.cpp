@@ -151,7 +151,6 @@ bool HarpoonHarry::isCollided(HarpoonHarry* harry, Enemy* enemy)
 	if (!Shielded) {
 		if ((harry->checkCollision(harry, enemy)) == true) {
 			health--;
-			std::cout << "Health = " << health << "\n";
 			return true;
 		}
 	}
@@ -186,7 +185,6 @@ bool HarpoonHarry::isHealthCollided(HarpoonHarry* harry, HealthPickup* hp)
 		else {
 			health++;
 		}
-			std::cout << "Health = " << health << "\n";
 			return true;
 	}
 	return false;

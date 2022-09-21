@@ -111,6 +111,5 @@ bool Harpoon::isCollided(Enemy* enemy, Harpoon* harpoon)
 	}
 
 	//If none of the sides from A are outside B
-	std::cout << "BANG!\n";
 	return true;
 }

@@ -123,15 +123,6 @@
     <ClCompile Include="Map.cpp">
       <Filter>Source Files\Audio and Video</Filter>
     </ClCompile>
-    <ClCompile Include="Powerups.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ShieldPU.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MGHarpoon.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TigerFish.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
@@ -153,14 +144,23 @@
     <ClCompile Include="PauseMenu.cpp">
       <Filter>Source Files\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="HUD.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Text.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="LevelTwo.cpp">
       <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="MGHarpoon.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Powerups.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="ShieldPU.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Source Files\Audio and Video</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files\Audio and Video</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -254,15 +254,6 @@
     <ClInclude Include="TextureManager.h">
       <Filter>Header Files\Audio Video</Filter>
     </ClInclude>
-    <ClInclude Include="Powerups.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ShieldPU.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MGHarpoon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TigerFish.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
@@ -278,14 +269,23 @@
     <ClInclude Include="DeathMenu.h">
       <Filter>Header Files\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="HUD.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="LevelTwo.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Header Files\Audio Video</Filter>
+    </ClInclude>
     <ClInclude Include="Text.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Audio Video</Filter>
+    </ClInclude>
+    <ClInclude Include="ShieldPU.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MGHarpoon.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Powerups.h">
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

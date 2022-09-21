@@ -111,7 +111,7 @@ void Map::LoadMap(int arr[23][40])
 void Map::UpdateStage(int stage)
 {
 	stageNum = stage;
-	std::cout << stageNum << std::endl;
+	//std::cout << stageNum << std::endl;
 }
 
 void Map::DrawMap(SDL_Renderer* renderer)

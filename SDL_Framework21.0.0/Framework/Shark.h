@@ -14,11 +14,22 @@ class Shark : public Enemy
 {
 public:
 	double angle;
+	Animation* SharkSwim;
+
+	//Health Bar
+
+	SDL_Rect TotalBar;
+	SDL_Rect HealthBar;
+
+	SDL_Texture* BarTex;
+	SDL_Texture* HealthTex;
+
 	Shark(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_);
 	~Shark();
 	void Update(float deltaTime, HarpoonHarry* harry);
 	void Render(SDL_Renderer* renderer) override;
-	Animation* SharkSwim;
+
+	void UpdateHealthBar(SDL_Renderer* r, int h);
 };
 
 #endif

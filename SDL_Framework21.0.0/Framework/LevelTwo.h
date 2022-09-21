@@ -53,7 +53,6 @@ private:
 	Boss* boss1;
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
-	Projectile* projectile;
 	HealthPickup* hp[4];
 
 	SDL_Renderer* renderer;
@@ -64,11 +63,9 @@ private:
 	bool paused = false;
 	Map* map;
 	InGameTimer* reloadTimer;
-	InGameTimer* projectileReloadTimer;
 	InGameTimer* biteTimer;
 	int newScene = 0;
 	bool isFired = false;
-	bool isProjectileFired = false;
 	bool isBitten = false;
 public:
 
@@ -81,9 +78,6 @@ public:
 	void Update(const float time);
 	void Render();
 	void spawnHarpoon();
-	void spawnProjectile();
-	void spawnUpperProjectile();
-	void spawnLowerProjectile();
 	bool getPaused() {
 		return paused;
 	}

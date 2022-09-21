@@ -12,7 +12,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	bg = new Background(renderer, 1, "textures/layers/1.png", 1, "textures/layers/2.png", 2, "textures/layers/3.png", 3, "textures/layers/4.png", 3, "textures/layers/5.png", 4, "textures/layers/6.png", 0, "textures/filler.png", 0, "textures/filler.png", 0.028f);
 
 	SharkBoss = new Shark(SDL_Rect{ 1400, 360, 300, 200 }, 2.0f, renderer, "textures/SharkBoss.png", 100.0f);
-	SharkBoss->health = 1;
+	SharkBoss->health = 5;
 
 	harry = new HarpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
@@ -248,7 +248,6 @@ void LevelOne::Update(const float deltaTime) {
 	if (SharkBoss != nullptr && bg->getProg() >= 99.0f) {
 		SharkBoss->Update(deltaTime, harry);
 		/*if(!isProjectileFired && SharkBoss->pos.x < 1200.0f)	spawnProjectile();*/
-		std::cout << SharkBoss->pos.x << " " << SharkBoss->pos.y << std::endl;
 	}
 
 	
@@ -279,7 +278,6 @@ void LevelOne::Update(const float deltaTime) {
 					SharkBoss->health -= 1;
 					harpoon[i] = nullptr;
 					delete harpoon[i];
-					//std::cout << SharkBoss->health << std::endl;
 				}
 				else {
 					bossHurt->playSFX();

@@ -60,7 +60,7 @@ private:
 
 	Text creditText[9];
 
-	int currentMenu = 0; // Switch between menus. 0 = Intro, 1 = Main Menu, 2 = Levels Menu, 3 = Settings Menu, 4 = Tutorial Menu, 5 = Credit
+	int currentMenu = 1; // Switch between menus. 0 = Intro, 1 = Main Menu, 2 = Levels Menu, 3 = Settings Menu, 4 = Tutorial Menu, 5 = Credit
 	int newScene = 0; // Switch between scenes. -1 = Quit, 1 = LevelOne, 0 = Dont switch
 	bool startTimer;
 public:

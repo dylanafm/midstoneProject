@@ -28,7 +28,7 @@ void FinishMenu::finishUpdate(SDL_Event event_)
 void FinishMenu::finishRender(SDL_Renderer* renderer)
 {
 	if (!GameWin) text.writeText("Well Done!", SDL_Color{ 0, 255, 255 }, SDL_Rect{ 415, 150, 450, 60 }, renderer);
-	if (GameWin) text.writeText("Game Complete!", SDL_Color{ 0, 255, 255 }, SDL_Rect{ 415, 255, 450, 60 }, renderer);
+	if (GameWin) text.writeText("Game Completed!", SDL_Color{ 0, 255, 255 }, SDL_Rect{ 415, 255, 450, 60 }, renderer);
 	if (!GameWin) NextLevel->Render(renderer);
 	MainMenu->Render(renderer);
 	Quit->Render(renderer);
