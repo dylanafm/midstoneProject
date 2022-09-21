@@ -21,14 +21,14 @@
 #include "Background.h"
 #include "Projectile.h"
 #include "MusicPlayer.h"
-#include "healthPickup.h"
+#include "HealthPickup.h"
 #include "Sfx.h"
 #include "Powerups.h"
 #include "MGHarpoon.h"
 
 using namespace MATH;
 class HUD;
-class healthPickup;
+class HealthPickup;
 class Background;
 class Shark;
 class Harpoon;
@@ -54,7 +54,7 @@ private:
 	SDL_Window* window;
 	Matrix4 projectionMatrix;
 	Projectile* projectile;
-	healthPickup* hp[5];
+	HealthPickup* hp[5];
 
 	SDL_Renderer* renderer;
 

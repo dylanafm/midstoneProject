@@ -163,7 +163,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Harpoon.cpp" />
     <ClCompile Include="HarpoonHarry.cpp" />
-    <ClCompile Include="healthPickup.cpp" />
+    <ClCompile Include="HealthPickup.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="InGameTimer.cpp" />
     <ClCompile Include="LevelOne.cpp" />
@@ -204,7 +204,7 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Harpoon.h" />
     <ClInclude Include="HarpoonHarry.h" />
-    <ClInclude Include="healthPickup.h" />
+    <ClInclude Include="HealthPickup.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="InGameTimer.h" />
     <ClInclude Include="LevelOne.h" />

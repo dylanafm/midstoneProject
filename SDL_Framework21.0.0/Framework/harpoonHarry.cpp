@@ -164,7 +164,7 @@ bool HarpoonHarry::isCollided(HarpoonHarry* harry, Enemy* enemy)
 	return false;
 }
 
-bool HarpoonHarry::checkHealthCollision(HarpoonHarry* harry, healthPickup* hp)
+bool HarpoonHarry::checkHealthCollision(HarpoonHarry* harry, HealthPickup* hp)
 {
 	Vec3 hpCenter = Vec3(hp->pos.x + hp->body.w / 2.0f, hp->pos.y + hp->body.h / 2.0f, 0.0f);
 	Vec3 harryCenter = Vec3(harry->pos.x + harry->harryBox.w / 2.0f, harry->pos.y + harry->harryBox.h / 2.0f, 0.0f);
@@ -178,7 +178,7 @@ bool HarpoonHarry::checkHealthCollision(HarpoonHarry* harry, healthPickup* hp)
 	return false;
 }
 
-bool HarpoonHarry::isHealthCollided(HarpoonHarry* harry, healthPickup* hp)
+bool HarpoonHarry::isHealthCollided(HarpoonHarry* harry, HealthPickup* hp)
 {
 
 	if ((harry->checkHealthCollision(harry, hp)) == true) {

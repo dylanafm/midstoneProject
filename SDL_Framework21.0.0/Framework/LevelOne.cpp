@@ -23,11 +23,11 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	currentHarpoon = 0;
 	song = new MusicPlayer("Music/levelonetheme.ogg", 2);
 
-	hp[0] = new healthPickup(Vec3(2500.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[1] = new healthPickup(Vec3(3500.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[2] = new healthPickup(Vec3(4500.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[3] = new healthPickup(Vec3(5800.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[4] = new healthPickup(Vec3(8000.0f, rand() % 680, 0.0f), 2.0f, renderer);
+	hp[0] = new HealthPickup(Vec3(2500.0f, rand() % 680, 0.0f), 2.0f, renderer);
+	hp[1] = new HealthPickup(Vec3(3500.0f, rand() % 680, 0.0f), 2.0f, renderer);
+	hp[2] = new HealthPickup(Vec3(4500.0f, rand() % 680, 0.0f), 2.0f, renderer);
+	hp[3] = new HealthPickup(Vec3(5800.0f, rand() % 680, 0.0f), 2.0f, renderer);
+	hp[4] = new HealthPickup(Vec3(8000.0f, rand() % 680, 0.0f), 2.0f, renderer);
 
 	fish[0] = new Fish(SDL_Rect{ 400, rand() % 680, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);
 	fish[1] = new Fish(SDL_Rect{ 800, rand() % 680, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f);

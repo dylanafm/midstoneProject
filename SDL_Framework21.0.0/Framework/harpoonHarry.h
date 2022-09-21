@@ -7,10 +7,10 @@
 #include "Vector.h"
 #include "Fish.h"
 #include "Animation.h"
-#include "healthPickup.h"
+#include "HealthPickup.h"
 
 class Animation;
-class healthPickup;
+class HealthPickup;
 
 class HarpoonHarry : public Body
 {
@@ -41,9 +41,9 @@ public:
 
 	bool isCollided(HarpoonHarry* harry, Enemy* enemy);
 
-	bool checkHealthCollision(HarpoonHarry* harry, healthPickup* hp);
+	bool checkHealthCollision(HarpoonHarry* harry, HealthPickup* hp);
 
-	bool isHealthCollided(HarpoonHarry* harry, healthPickup* hp);
+	bool isHealthCollided(HarpoonHarry* harry, HealthPickup* hp);
 
 	void render(SDL_Renderer* render);
 

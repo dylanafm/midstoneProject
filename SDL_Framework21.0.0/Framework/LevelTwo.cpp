@@ -23,10 +23,10 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	currentHarpoon = 0;
 	song = new MusicPlayer("Music/levelonetheme.ogg", 2);
 
-	hp[0] = new healthPickup(Vec3(2500.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[1] = new healthPickup(Vec3(4100.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[2] = new healthPickup(Vec3(5800.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[3] = new healthPickup(Vec3(6500.0f, rand() % 680, 0.0f), 2.0f, renderer);
+	hp[0] = new HealthPickup(Vec3(2500.0f, rand() % 680, 0.0f), 2.0f, renderer);
+	hp[1] = new HealthPickup(Vec3(4100.0f, rand() % 680, 0.0f), 2.0f, renderer);
+	hp[2] = new HealthPickup(Vec3(5800.0f, rand() % 680, 0.0f), 2.0f, renderer);
+	hp[3] = new HealthPickup(Vec3(6500.0f, rand() % 680, 0.0f), 2.0f, renderer);
 
 	tigerFish[0] = new TigerFish(SDL_Rect{ 400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
 	tigerFish[1] = new TigerFish(SDL_Rect{ 800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);

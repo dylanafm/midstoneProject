@@ -1,7 +1,7 @@
-#include "healthPickup.h"
+#include "HealthPickup.h"
 #include "TextureManager.h"
 
-healthPickup::healthPickup(Vec3 pos_, float scrollSpeed_, SDL_Renderer* render)
+HealthPickup::HealthPickup(Vec3 pos_, float scrollSpeed_, SDL_Renderer* render)
 {
 	pos = pos_;
 	scrollSpeed = scrollSpeed_;
@@ -18,26 +18,26 @@ healthPickup::healthPickup(Vec3 pos_, float scrollSpeed_, SDL_Renderer* render)
 	radiusInPixels = 1.0f;
 }
 
-healthPickup::~healthPickup()
+HealthPickup::~HealthPickup()
 {
 	SDL_DestroyTexture(healthTexture);
 }
 
-void healthPickup::scroll()
+void HealthPickup::scroll()
 {
 	pos.x = pos.x - scrollSpeed;
 }
 
-void healthPickup::render(SDL_Renderer* render)
+void HealthPickup::render(SDL_Renderer* render)
 {
 	SDL_RenderCopy(render, healthTexture, nullptr, &body);
 }
 
-void healthPickup::collide(HarpoonHarry* harry)
+void HealthPickup::collide(HarpoonHarry* harry)
 {
 }
 
-void healthPickup::update(float deltaTime)
+void HealthPickup::update(float deltaTime)
 {
 	body.x = pos.x;
 	body.y = pos.y;

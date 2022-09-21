@@ -6,11 +6,11 @@
 
 class HarpoonHarry;
 
-class healthPickup
+class HealthPickup
 {
 public:
-	healthPickup(Vec3 pos_,float scrollSpeed_, SDL_Renderer* render_);
-	~healthPickup();
+	HealthPickup(Vec3 pos_,float scrollSpeed_, SDL_Renderer* render_);
+	~HealthPickup();
 	Vec3 pos, vel, accelPrevious, accelCurrent, accel;
 	float scrollSpeed, radiusInPixels;
 	void scroll();
