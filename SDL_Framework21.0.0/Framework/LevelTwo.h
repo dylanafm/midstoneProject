@@ -11,7 +11,6 @@
 #include "FinishMenu.h"
 #include "DeathMenu.h"
 #include "HUD.h"
-#include "TigerFish.h"
 #include "Harpoon.h"
 #include "InGameTimer.h"
 #include "Map.h"
@@ -49,7 +48,7 @@ private:
 
 	HarpoonHarry* harry;
 	Harpoon* harpoon[50];
-	TigerFish* tigerFish[80];
+	Fish* tigerFish[80];
 	Boss* boss1;
 	SDL_Window* window;
 	Matrix4 projectionMatrix;

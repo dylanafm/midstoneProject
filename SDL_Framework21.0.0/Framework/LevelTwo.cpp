@@ -28,78 +28,78 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	hp[2] = new HealthPickup(Vec3(5800.0f, rand() % 680, 0.0f), 2.0f, renderer);
 	hp[3] = new HealthPickup(Vec3(6500.0f, rand() % 680, 0.0f), 2.0f, renderer);
 
-	tigerFish[0] = new TigerFish(SDL_Rect{ 400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[1] = new TigerFish(SDL_Rect{ 800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[2] = new TigerFish(SDL_Rect{ 1200, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[3] = new TigerFish(SDL_Rect{ 1600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[4] = new TigerFish(SDL_Rect{ 1600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[5] = new TigerFish(SDL_Rect{ 1800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[6] = new TigerFish(SDL_Rect{ 1800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[7] = new TigerFish(SDL_Rect{ 2000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[8] = new TigerFish(SDL_Rect{ 2000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[0] = new Fish(SDL_Rect{ 400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[1] = new Fish(SDL_Rect{ 800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[2] = new Fish(SDL_Rect{ 1200, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[3] = new Fish(SDL_Rect{ 1600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[4] = new Fish(SDL_Rect{ 1600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[5] = new Fish(SDL_Rect{ 1800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[6] = new Fish(SDL_Rect{ 1800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[7] = new Fish(SDL_Rect{ 2000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[8] = new Fish(SDL_Rect{ 2000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
 
-	tigerFish[9] = new TigerFish(SDL_Rect{ 3000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[10] = new TigerFish(SDL_Rect{ 3000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[11] = new TigerFish(SDL_Rect{ 3100, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[12] = new TigerFish(SDL_Rect{ 3100, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[13] = new TigerFish(SDL_Rect{ 3200, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[14] = new TigerFish(SDL_Rect{ 3200, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[15] = new TigerFish(SDL_Rect{ 3200, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[16] = new TigerFish(SDL_Rect{ 3300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[17] = new TigerFish(SDL_Rect{ 3300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[18] = new TigerFish(SDL_Rect{ 3400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[19] = new TigerFish(SDL_Rect{ 3400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[20] = new TigerFish(SDL_Rect{ 3500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[21] = new TigerFish(SDL_Rect{ 3500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[22] = new TigerFish(SDL_Rect{ 3500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[23] = new TigerFish(SDL_Rect{ 3500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[24] = new TigerFish(SDL_Rect{ 3600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[25] = new TigerFish(SDL_Rect{ 3600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[26] = new TigerFish(SDL_Rect{ 3700, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[27] = new TigerFish(SDL_Rect{ 3800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[28] = new TigerFish(SDL_Rect{ 3900, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[29] = new TigerFish(SDL_Rect{ 4000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[30] = new TigerFish(SDL_Rect{ 4000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[31] = new TigerFish(SDL_Rect{ 4000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[32] = new TigerFish(SDL_Rect{ 4000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[33] = new TigerFish(SDL_Rect{ 4300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[34] = new TigerFish(SDL_Rect{ 4300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[35] = new TigerFish(SDL_Rect{ 4300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[36] = new TigerFish(SDL_Rect{ 4400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[37] = new TigerFish(SDL_Rect{ 4400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[38] = new TigerFish(SDL_Rect{ 4400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[39] = new TigerFish(SDL_Rect{ 4500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[40] = new TigerFish(SDL_Rect{ 4500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[41] = new TigerFish(SDL_Rect{ 4600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[42] = new TigerFish(SDL_Rect{ 4600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[43] = new TigerFish(SDL_Rect{ 4700, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[9] = new Fish(SDL_Rect{ 3000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[10] = new Fish(SDL_Rect{ 3000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[11] = new Fish(SDL_Rect{ 3100, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[12] = new Fish(SDL_Rect{ 3100, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[13] = new Fish(SDL_Rect{ 3200, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[14] = new Fish(SDL_Rect{ 3200, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[15] = new Fish(SDL_Rect{ 3200, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[16] = new Fish(SDL_Rect{ 3300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[17] = new Fish(SDL_Rect{ 3300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[18] = new Fish(SDL_Rect{ 3400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[19] = new Fish(SDL_Rect{ 3400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[20] = new Fish(SDL_Rect{ 3500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[21] = new Fish(SDL_Rect{ 3500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[22] = new Fish(SDL_Rect{ 3500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[23] = new Fish(SDL_Rect{ 3500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[24] = new Fish(SDL_Rect{ 3600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[25] = new Fish(SDL_Rect{ 3600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[26] = new Fish(SDL_Rect{ 3700, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[27] = new Fish(SDL_Rect{ 3800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[28] = new Fish(SDL_Rect{ 3900, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[29] = new Fish(SDL_Rect{ 4000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[30] = new Fish(SDL_Rect{ 4000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[31] = new Fish(SDL_Rect{ 4000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[32] = new Fish(SDL_Rect{ 4000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[33] = new Fish(SDL_Rect{ 4300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[34] = new Fish(SDL_Rect{ 4300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[35] = new Fish(SDL_Rect{ 4300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[36] = new Fish(SDL_Rect{ 4400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[37] = new Fish(SDL_Rect{ 4400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[38] = new Fish(SDL_Rect{ 4400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[39] = new Fish(SDL_Rect{ 4500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[40] = new Fish(SDL_Rect{ 4500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[41] = new Fish(SDL_Rect{ 4600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[42] = new Fish(SDL_Rect{ 4600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[43] = new Fish(SDL_Rect{ 4700, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
 
-	tigerFish[44] = new TigerFish(SDL_Rect{ 5600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[45] = new TigerFish(SDL_Rect{ 5600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[46] = new TigerFish(SDL_Rect{ 5700, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[47] = new TigerFish(SDL_Rect{ 5700, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[48] = new TigerFish(SDL_Rect{ 5700, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[49] = new TigerFish(SDL_Rect{ 5800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[50] = new TigerFish(SDL_Rect{ 5800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[51] = new TigerFish(SDL_Rect{ 5800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[52] = new TigerFish(SDL_Rect{ 5900, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[53] = new TigerFish(SDL_Rect{ 5900, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[54] = new TigerFish(SDL_Rect{ 5900, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[55] = new TigerFish(SDL_Rect{ 6000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[56] = new TigerFish(SDL_Rect{ 6000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[57] = new TigerFish(SDL_Rect{ 6100, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[58] = new TigerFish(SDL_Rect{ 6100, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[59] = new TigerFish(SDL_Rect{ 6100, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[60] = new TigerFish(SDL_Rect{ 6100, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[61] = new TigerFish(SDL_Rect{ 6200, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[62] = new TigerFish(SDL_Rect{ 6200, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[63] = new TigerFish(SDL_Rect{ 6300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[64] = new TigerFish(SDL_Rect{ 6300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[65] = new TigerFish(SDL_Rect{ 6300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[66] = new TigerFish(SDL_Rect{ 6400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[67] = new TigerFish(SDL_Rect{ 6400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[68] = new TigerFish(SDL_Rect{ 6500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
-	tigerFish[69] = new TigerFish(SDL_Rect{ 6500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f);
+	tigerFish[44] = new Fish(SDL_Rect{ 5600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[45] = new Fish(SDL_Rect{ 5600, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[46] = new Fish(SDL_Rect{ 5700, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[47] = new Fish(SDL_Rect{ 5700, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[48] = new Fish(SDL_Rect{ 5700, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[49] = new Fish(SDL_Rect{ 5800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[50] = new Fish(SDL_Rect{ 5800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[51] = new Fish(SDL_Rect{ 5800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[52] = new Fish(SDL_Rect{ 5900, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[53] = new Fish(SDL_Rect{ 5900, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[54] = new Fish(SDL_Rect{ 5900, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[55] = new Fish(SDL_Rect{ 6000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[56] = new Fish(SDL_Rect{ 6000, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[57] = new Fish(SDL_Rect{ 6100, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[58] = new Fish(SDL_Rect{ 6100, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[59] = new Fish(SDL_Rect{ 6100, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[60] = new Fish(SDL_Rect{ 6100, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[61] = new Fish(SDL_Rect{ 6200, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[62] = new Fish(SDL_Rect{ 6200, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[63] = new Fish(SDL_Rect{ 6300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[64] = new Fish(SDL_Rect{ 6300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[65] = new Fish(SDL_Rect{ 6300, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[66] = new Fish(SDL_Rect{ 6400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[67] = new Fish(SDL_Rect{ 6400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[68] = new Fish(SDL_Rect{ 6500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
+	tigerFish[69] = new Fish(SDL_Rect{ 6500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
 	
 	Shield = new ShieldPU(SDL_Rect{ 4400, rand() % 680, 50, 50 }, 2, "textures/Shield.png", renderer);
 	rf = new MGHarpoon(SDL_Rect{ 6100, rand() % 680, 50, 50 }, 2, "textures/MGH.png", renderer);
@@ -252,11 +252,6 @@ void LevelTwo::Update(const float deltaTime) {
 
 	if (boss1 != nullptr && bg->getProg() >= 99.0f) {
 		boss1->Update(deltaTime, harry, renderer);
-		//if (!isProjectileFired && boss1->pos.x < 1280) {
-			//spawnProjectile();
-			//spawnUpperProjectile();
-			//spawnLowerProjectile();
-		//}
 	}
 
 	for (int i = 0; i < std::size(tigerFish); i++) {
@@ -403,7 +398,7 @@ void LevelTwo::Render() {
 
 	for (int i = 0; i < std::size(tigerFish); i++) {
 		if (tigerFish[i] != nullptr) tigerFish[i]->Render(renderer);
-		if (tigerFish[i] != nullptr && !paused) tigerFish[i]->tigerFishAnim->PlayAnim(0, 2, 0, 175);
+		if (tigerFish[i] != nullptr && !paused) tigerFish[i]->fishAnim->PlayAnim(0, 2, 0, 175);
 
 	}
 

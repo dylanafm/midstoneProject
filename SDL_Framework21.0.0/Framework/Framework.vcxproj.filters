@@ -123,9 +123,6 @@
     <ClCompile Include="Map.cpp">
       <Filter>Source Files\Audio and Video</Filter>
     </ClCompile>
-    <ClCompile Include="TigerFish.cpp">
-      <Filter>Source Files\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="Shark.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
@@ -253,9 +250,6 @@
     </ClInclude>
     <ClInclude Include="TextureManager.h">
       <Filter>Header Files\Audio Video</Filter>
-    </ClInclude>
-    <ClInclude Include="TigerFish.h">
-      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Shark.h">
       <Filter>Header Files\GameObjects</Filter>

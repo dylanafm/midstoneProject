@@ -19,7 +19,7 @@ private:
 	float deltaTime;
 	int moveDir;
 public:
-	Fish(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_);
+	Fish(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_, int frames);
 	~Fish();
 
 	void Render(SDL_Renderer* renderer);

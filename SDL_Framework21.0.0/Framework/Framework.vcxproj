@@ -159,7 +159,6 @@
     <ClCompile Include="FinishMenu.cpp" />
     <ClCompile Include="Fish.cpp" />
     <ClCompile Include="Shark.cpp" />
-    <ClCompile Include="TigerFish.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Harpoon.cpp" />
     <ClCompile Include="HarpoonHarry.cpp" />
@@ -200,7 +199,6 @@
     <ClInclude Include="FinishMenu.h" />
     <ClInclude Include="Fish.h" />
     <ClInclude Include="Shark.h" />
-    <ClInclude Include="TigerFish.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Harpoon.h" />
     <ClInclude Include="HarpoonHarry.h" />

@@ -1,9 +1,10 @@
 #include "Fish.h"
 #include <iomanip>
-Fish::Fish(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_) :
+Fish::Fish(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_, int frames) :
 	Enemy(body_, scrollSpeed, renderer, path, radius_){
 	fishAnim = new Animation(texture);
-	fishAnim->SetUpAnim(8, 1);
+	//fishAnim->SetUpAnim(8, 1);
+	fishAnim->SetUpAnim(frames, 1);
 	startingY = pos.y;
 	moveDir = 1;
 	moveSpeed = 100.0f;
