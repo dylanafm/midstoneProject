@@ -16,7 +16,7 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 
 	boss1 = new Boss(SDL_Rect{ 1400, 360, 300, 200 }, 1, renderer, "textures/bossAnim.png", 100.0f);
 	boss1->health = 5;
-	harry = new harpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
+	harry = new HarpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
 
 	playerHUD = new HUD();

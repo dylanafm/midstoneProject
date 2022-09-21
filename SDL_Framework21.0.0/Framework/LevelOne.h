@@ -6,7 +6,7 @@
 #include <SDL.h>
 #include "VMath.h"
 #include "Body.h"
-#include "harpoonHarry.h"
+#include "HarpoonHarry.h"
 #include "pauseMenu.h"
 #include "DeathMenu.h"
 #include "finishMenu.h"
@@ -30,7 +30,7 @@ using namespace MATH;
 class HUD;
 class healthPickup;
 class Background;
-class harpoonHarry;
+class HarpoonHarry;
 class Shark;
 class Harpoon;
 class Fish;
@@ -48,7 +48,7 @@ private:
 	Background* bg;
 	//Animator* a;
 	
-	harpoonHarry* harry;
+	HarpoonHarry* harry;
 	Harpoon* harpoon[50];
 	Fish* fish[60];
 	Shark* SharkBoss;

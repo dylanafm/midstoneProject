@@ -18,7 +18,7 @@ Camera::Camera(int x_, int y_, int w_, int h_)
 
 }
 //Call in update
-void Camera::camMove(harpoonHarry* harry)
+void Camera::camMove(HarpoonHarry* harry)
 {
 	cam.x = harry->pos.x - 400;
 	cam.y = harry->pos.y - 320;

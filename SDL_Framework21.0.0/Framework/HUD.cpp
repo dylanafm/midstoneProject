@@ -12,7 +12,7 @@ HUD::~HUD()
 {
 }
 
-void HUD::displayHUD(SDL_Renderer* renderer, int hX_, int hY_, int hW_, int hH_, harpoonHarry* harry, InGameTimer* reload, Background* levelProgress)
+void HUD::displayHUD(SDL_Renderer* renderer, int hX_, int hY_, int hW_, int hH_, HarpoonHarry* harry, InGameTimer* reload, Background* levelProgress)
 {
 	hX = hX_;
 	hY = hY_;

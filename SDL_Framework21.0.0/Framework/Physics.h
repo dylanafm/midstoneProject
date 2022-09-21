@@ -1,6 +1,6 @@
 #ifndef PHYSICS_H
 #define PHYSICS_H
-#include "harpoonHarry.h"
+#include "HarpoonHarry.h"
 #include "VMath.h"
 
 using namespace MATH;
@@ -8,8 +8,8 @@ using namespace MATH;
 class Physics {
 public:
 	
-	static void ApplyForces(harpoonHarry&object, const float waterHeight);
-	static void SimpleNewtonMotion(harpoonHarry& object, const float deltaTime);
+	static void ApplyForces(HarpoonHarry&object, const float waterHeight);
+	static void SimpleNewtonMotion(HarpoonHarry& object, const float deltaTime);
 
 };
 

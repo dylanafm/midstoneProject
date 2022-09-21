@@ -18,7 +18,7 @@ ShieldPU::~ShieldPU()
 	SDL_DestroyTexture(tex);
 }
 
-void ShieldPU::Protect(harpoonHarry* harry)
+void ShieldPU::Protect(HarpoonHarry* harry)
 {
 	if (checkCollide(harry)) {
 
@@ -41,7 +41,7 @@ void ShieldPU::Scroll()
 
 }
 
-bool ShieldPU::checkCollide(harpoonHarry* harry)
+bool ShieldPU::checkCollide(HarpoonHarry* harry)
 {
 	Vec3 powerupCenter = Vec3(box.x + box.w / 2.0f, box.y + box.h / 2.0f, 0.0f);
 	Vec3 harryCenter = Vec3(harry->pos.x + harry->harryBox.w / 2.0f, harry->pos.y + harry->harryBox.h / 2.0f, 0.0f);

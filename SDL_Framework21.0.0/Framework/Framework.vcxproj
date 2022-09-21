@@ -151,7 +151,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Body.cpp" />
-    <ClCompile Include="boss.cpp" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DeathMenu.cpp" />
@@ -162,7 +162,7 @@
     <ClCompile Include="TigerFish.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Harpoon.cpp" />
-    <ClCompile Include="harpoonHarry.cpp" />
+    <ClCompile Include="HarpoonHarry.cpp" />
     <ClCompile Include="healthPickup.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="InGameTimer.cpp" />
@@ -192,7 +192,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Body.h" />
-    <ClInclude Include="boss.h" />
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DeathMenu.h" />
@@ -203,7 +203,7 @@
     <ClInclude Include="TigerFish.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Harpoon.h" />
-    <ClInclude Include="harpoonHarry.h" />
+    <ClInclude Include="HarpoonHarry.h" />
     <ClInclude Include="healthPickup.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="InGameTimer.h" />

@@ -4,12 +4,12 @@
 
 #include <SDL.h>
 #include "Text.h"
-#include "harpoonHarry.h"
+#include "HarpoonHarry.h"
 #include "Harpoon.h"
 #include "InGameTimer.h"
 #include "LevelOne.h"
 #include "Background.h"
-class harpoonHarry;
+class HarpoonHarry;
 
 class HUD
 {
@@ -21,7 +21,7 @@ public:
 	HUD();
 	~HUD();
 
-	void displayHUD(SDL_Renderer* renderer, int hX_, int hY_, int hW_, int hH_, harpoonHarry* harry, InGameTimer* reload, Background* levelProgress);
+	void displayHUD(SDL_Renderer* renderer, int hX_, int hY_, int hW_, int hH_, HarpoonHarry* harry, InGameTimer* reload, Background* levelProgress);
 
 };
 

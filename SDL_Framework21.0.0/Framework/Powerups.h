@@ -1,6 +1,6 @@
 #ifndef POWERUPS_H
 #define POWERUPS_H
-#include "harpoonHarry.h"
+#include "HarpoonHarry.h"
 #include "TextureManager.h"
 
 
@@ -19,7 +19,7 @@ public:
 
 	void Render(SDL_Renderer* renderer);
 	void Scroll();
-	bool checkCollide(harpoonHarry* harry);
+	bool checkCollide(HarpoonHarry* harry);
 	Vec3 getPos() { return pos; }
 
 };

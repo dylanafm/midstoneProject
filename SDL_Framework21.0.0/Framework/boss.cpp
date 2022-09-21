@@ -13,7 +13,7 @@ Boss::~Boss()
 	delete swim;
 }
 
-void Boss::Update(float deltaTime, harpoonHarry* harry)
+void Boss::Update(float deltaTime, HarpoonHarry* harry)
 {
 	Vec3 direction = Vec3(harry->pos.x - pos.x - 100.0f, harry->pos.y - pos.y - 100.0f, 0.0f);
 	vel = VMath::normalize(direction) * 90.0f;

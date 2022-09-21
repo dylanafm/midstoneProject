@@ -48,7 +48,7 @@
     <ClCompile Include="Body.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="boss.cpp">
+    <ClCompile Include="Boss.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
@@ -60,7 +60,7 @@
     <ClCompile Include="Harpoon.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="harpoonHarry.cpp">
+    <ClCompile Include="HarpoonHarry.cpp">
       <Filter>Source Files\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="healthPickup.cpp">
@@ -185,7 +185,7 @@
     <ClInclude Include="Enemy.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="boss.h">
+    <ClInclude Include="Boss.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Fish.h">
@@ -194,7 +194,7 @@
     <ClInclude Include="Harpoon.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="harpoonHarry.h">
+    <ClInclude Include="HarpoonHarry.h">
       <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="healthPickup.h">

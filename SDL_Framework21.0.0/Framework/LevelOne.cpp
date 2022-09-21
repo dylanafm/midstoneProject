@@ -14,7 +14,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	SharkBoss = new Shark(SDL_Rect{ 1400, 360, 300, 200 }, 2.0f, renderer, "textures/SharkBoss.png", 100.0f);
 	SharkBoss->health = 1;
 
-	harry = new harpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
+	harry = new HarpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
 	
 	bg->SetProgress(99.0f);

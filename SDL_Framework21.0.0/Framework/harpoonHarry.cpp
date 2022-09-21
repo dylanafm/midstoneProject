@@ -1,4 +1,4 @@
-#include "harpoonHarry.h"
+#include "HarpoonHarry.h"
 #include <math.h>
 #include <cmath>
 #include <iostream>
@@ -6,7 +6,7 @@
 #include "TextureManager.h"
 
 
-harpoonHarry::harpoonHarry(SDL_Renderer* renderer, const char* path, float radius_)
+HarpoonHarry::HarpoonHarry(SDL_Renderer* renderer, const char* path, float radius_)
 {
 	timeRemaining = 0.0f;
 	gunTimeRemain = 0.0f;
@@ -43,11 +43,11 @@ harpoonHarry::harpoonHarry(SDL_Renderer* renderer, const char* path, float radiu
 	radiusInPixels = radius_;
 }
 
-harpoonHarry::~harpoonHarry(){
+HarpoonHarry::~HarpoonHarry(){
 	delete swim;
 	SDL_DestroyTexture(texture);
 }
-void harpoonHarry::HandleEvents(SDL_Event sdlEvent) {
+void HarpoonHarry::HandleEvents(SDL_Event sdlEvent) {
 	const Uint8* keystate = SDL_GetKeyboardState(NULL);
 	if (keystate[SDL_SCANCODE_W]) {
 		finalForce += Vec3(0.0f, -10000.0f, 0.0f);
@@ -63,7 +63,7 @@ void harpoonHarry::HandleEvents(SDL_Event sdlEvent) {
 	}	
 }
 
-void harpoonHarry::Update(float deltaTime)
+void HarpoonHarry::Update(float deltaTime)
 {
 	if (timeRemaining > 0.0f) {
 
@@ -131,7 +131,7 @@ void harpoonHarry::Update(float deltaTime)
 	}
 	}
 
-bool harpoonHarry::checkCollision(harpoonHarry* harry, Enemy* enemy)
+bool HarpoonHarry::checkCollision(HarpoonHarry* harry, Enemy* enemy)
 {
 	
 	Vec3 enemyCenter = Vec3(enemy->pos.x + enemy->body.w / 2.0f, enemy->pos.y + enemy->body.h / 2.0f, 0.0f);
@@ -146,7 +146,7 @@ bool harpoonHarry::checkCollision(harpoonHarry* harry, Enemy* enemy)
 	return false;
 }
 
-bool harpoonHarry::isCollided(harpoonHarry* harry, Enemy* enemy)
+bool HarpoonHarry::isCollided(HarpoonHarry* harry, Enemy* enemy)
 {
 	if (!Shielded) {
 		if ((harry->checkCollision(harry, enemy)) == true) {
@@ -164,7 +164,7 @@ bool harpoonHarry::isCollided(harpoonHarry* harry, Enemy* enemy)
 	return false;
 }
 
-bool harpoonHarry::checkHealthCollision(harpoonHarry* harry, healthPickup* hp)
+bool HarpoonHarry::checkHealthCollision(HarpoonHarry* harry, healthPickup* hp)
 {
 	Vec3 hpCenter = Vec3(hp->pos.x + hp->body.w / 2.0f, hp->pos.y + hp->body.h / 2.0f, 0.0f);
 	Vec3 harryCenter = Vec3(harry->pos.x + harry->harryBox.w / 2.0f, harry->pos.y + harry->harryBox.h / 2.0f, 0.0f);
@@ -178,7 +178,7 @@ bool harpoonHarry::checkHealthCollision(harpoonHarry* harry, healthPickup* hp)
 	return false;
 }
 
-bool harpoonHarry::isHealthCollided(harpoonHarry* harry, healthPickup* hp)
+bool HarpoonHarry::isHealthCollided(HarpoonHarry* harry, healthPickup* hp)
 {
 
 	if ((harry->checkHealthCollision(harry, hp)) == true) {
@@ -192,7 +192,7 @@ bool harpoonHarry::isHealthCollided(harpoonHarry* harry, healthPickup* hp)
 	return false;
 }
 
-void harpoonHarry::render(SDL_Renderer* render)
+void HarpoonHarry::render(SDL_Renderer* render)
 {
 	crop = swim->getCrop();
 

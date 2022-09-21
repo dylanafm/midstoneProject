@@ -6,7 +6,7 @@
 #include <SDL.h>
 #include "VMath.h"
 #include "Body.h"
-#include "harpoonHarry.h"
+#include "HarpoonHarry.h"
 #include "pauseMenu.h"
 #include "DeathMenu.h"
 #include "HUD.h"
@@ -47,7 +47,7 @@ private:
 	Background* bg;
 	//Animator* a;
 
-	harpoonHarry* harry;
+	HarpoonHarry* harry;
 	Harpoon* harpoon[50];
 	TigerFish* tigerFish[80];
 	Boss* boss1;

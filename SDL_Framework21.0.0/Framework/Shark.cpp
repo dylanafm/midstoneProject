@@ -13,7 +13,7 @@ Shark::~Shark()
 	delete SharkSwim;
 }
 
-void Shark::Update(float deltaTime, harpoonHarry* harry)
+void Shark::Update(float deltaTime, HarpoonHarry* harry)
 {
 
 	Vec3 direction = Vec3(harry->pos.x - pos.x - 150.0f, harry->pos.y - pos.y - 70.0f, 0.0f);

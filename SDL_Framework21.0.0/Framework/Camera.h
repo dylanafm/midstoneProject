@@ -2,7 +2,7 @@
 #define CAMERA_H
 #include "LevelOne.h"
 #include "Map.h"
-#include "harpoonHarry.h"
+#include "HarpoonHarry.h"
 
 class Camera
 {
@@ -15,7 +15,7 @@ public:
 
 	SDL_Rect cam;
 	
-	void camMove(harpoonHarry* harry);
+	void camMove(HarpoonHarry* harry);
 private:
 };
 

@@ -3,7 +3,7 @@
 #include <cmath>
 
 
-void Physics::ApplyForces(harpoonHarry& object, const float waterHeight)
+void Physics::ApplyForces(HarpoonHarry& object, const float waterHeight)
 {
 	float V, theta;
 	theta = 2 * acos(abs(object.pos.y - waterHeight) / object.radius);
@@ -29,7 +29,7 @@ void Physics::ApplyForces(harpoonHarry& object, const float waterHeight)
 	object.finalForce += Ffinal;
 }
 
-void Physics::SimpleNewtonMotion(harpoonHarry& object, const float deltaTime) {
+void Physics::SimpleNewtonMotion(HarpoonHarry& object, const float deltaTime) {
 	object.pos += object.vel * deltaTime + 0.5f * object.accelPrevious * deltaTime * deltaTime;
 	object.vel += 0.5 * (object.accelCurrent + object.accelPrevious) * deltaTime;
 }

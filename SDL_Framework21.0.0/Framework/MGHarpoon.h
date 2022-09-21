@@ -14,11 +14,11 @@ public:
 	MGHarpoon(SDL_Rect box_, float scrollSpeed_, const char* path, SDL_Renderer* renderer);
 	~MGHarpoon();
 
-	void RapidFire(harpoonHarry* harry);
+	void RapidFire(HarpoonHarry* harry);
 
 	void Render(SDL_Renderer* renderer);
 	void Scroll();
-	bool checkCollide(harpoonHarry* harry);
+	bool checkCollide(HarpoonHarry* harry);
 	Vec3 getPos() { return pos; }
 
 };

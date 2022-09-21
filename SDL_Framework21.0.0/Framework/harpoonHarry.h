@@ -10,7 +10,7 @@
 #include "Animation.h"
 class Animation;
 class healthPickup;
-class harpoonHarry : public Body
+class HarpoonHarry : public Body
 {
 private:
 	
@@ -20,8 +20,8 @@ public:
 	Animation* swim;
 
 
-	harpoonHarry(SDL_Renderer* renderer, const char* path, float radius_);
-	~harpoonHarry();
+	HarpoonHarry(SDL_Renderer* renderer, const char* path, float radius_);
+	~HarpoonHarry();
 
 	int health;
 	Vec3 accelPrevious, accelCurrent, accel, finalForce, center;
@@ -39,13 +39,13 @@ public:
 
 	void applyForce(const Vec3 force) { accel = force / mass; accelPrevious = accelCurrent; accelCurrent = force / mass;}
 
-	bool checkCollision(harpoonHarry* harry, Enemy* enemy);
+	bool checkCollision(HarpoonHarry* harry, Enemy* enemy);
 
-	bool isCollided(harpoonHarry* harry, Enemy* enemy);
+	bool isCollided(HarpoonHarry* harry, Enemy* enemy);
 
-	bool checkHealthCollision(harpoonHarry* harry, healthPickup* hp);
+	bool checkHealthCollision(HarpoonHarry* harry, healthPickup* hp);
 
-	bool isHealthCollided(harpoonHarry* harry, healthPickup* hp);
+	bool isHealthCollided(HarpoonHarry* harry, healthPickup* hp);
 
 	void render(SDL_Renderer* render);
 
