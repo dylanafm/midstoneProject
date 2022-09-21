@@ -13,7 +13,7 @@
 #include "InGameTimer.h"
 
 using namespace MATH;
-class mainMenu : public Scene {
+class MainMenu : public Scene {
 private:
 
 
@@ -64,8 +64,8 @@ private:
 	int newScene = 0; // Switch between scenes. -1 = Quit, 1 = LevelOne, 0 = Dont switch
 	bool startTimer;
 public:
-	mainMenu(SDL_Window* sdlWindow);
-	~mainMenu();
+	MainMenu(SDL_Window* sdlWindow);
+	~MainMenu();
 	bool OnCreate();
 	void OnDestroy();
 	void Update(const float time);

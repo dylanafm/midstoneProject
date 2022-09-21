@@ -7,7 +7,8 @@
 #include "VMath.h"
 #include "Body.h"
 #include "HarpoonHarry.h"
-#include "pauseMenu.h"
+#include "PauseMenu.h"
+#include "FinishMenu.h"
 #include "DeathMenu.h"
 #include "HUD.h"
 #include "TigerFish.h"
@@ -58,8 +59,8 @@ private:
 	SDL_Renderer* renderer;
 
 	DeathMenu* dMenu;
-	pauseMenu* pMenu;
-	finishMenu* fMenu;
+	PauseMenu* pMenu;
+	FinishMenu* fMenu;
 	bool paused = false;
 	Map* map;
 	InGameTimer* reloadTimer;

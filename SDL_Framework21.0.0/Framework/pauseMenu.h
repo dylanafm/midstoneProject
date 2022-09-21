@@ -3,7 +3,7 @@
 
 #include "button.h"
 
-class pauseMenu
+class PauseMenu
 {
 private:
 	Button* Resume;
@@ -25,8 +25,8 @@ private:
 	bool paused = true;
 
 public:
-	pauseMenu(SDL_Renderer* r, int currentScene_);
-	~pauseMenu();
+	PauseMenu(SDL_Renderer* r, int currentScene_);
+	~PauseMenu();
 	void pauseUpdate(SDL_Event event_);
 	void pauseRender(SDL_Renderer* renderer);
 	bool getPaused() {

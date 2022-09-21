@@ -1,12 +1,12 @@
 #include "Scene0.h"
-#include "mainMenu.h"
+#include "MainMenu.h"
 #include "GameManager.h"
 #include <SDL.h>
 #include <SDL_image.h>
 #include "TextureManager.h"
 
 
-mainMenu::mainMenu(SDL_Window* sdlWindow_) {
+MainMenu::MainMenu(SDL_Window* sdlWindow_) {
 	window = sdlWindow_;
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
@@ -31,12 +31,12 @@ mainMenu::mainMenu(SDL_Window* sdlWindow_) {
 	LevelTwo = new Button(700, 200, 200, 200, Vec3(20, 20, 210), "2");
 }
 
-mainMenu::~mainMenu() {
+MainMenu::~MainMenu() {
 	delete window;
 	delete renderer;
 }
 
-bool mainMenu::OnCreate() {
+bool MainMenu::OnCreate() {
 	int w, h;
 	SDL_GetWindowSize(window, &w, &h);
 	Matrix4 ndc = MMath::viewportNDC(w, h);
@@ -69,7 +69,7 @@ bool mainMenu::OnCreate() {
 	return true;
 }
 
-void mainMenu::OnDestroy() {
+void MainMenu::OnDestroy() {
 	SDL_DestroyRenderer(renderer);
 	delete Start;
 	delete Levels;
@@ -91,7 +91,7 @@ void mainMenu::OnDestroy() {
 	delete Song;
 }
 
-void mainMenu::Update(const float deltaTime) {
+void MainMenu::Update(const float deltaTime) {
 	SDL_Event event;
 	if (Song == nullptr) { cout << "Song is Null" << endl; }
 
@@ -145,7 +145,7 @@ void mainMenu::Update(const float deltaTime) {
 
 }
 
-void mainMenu::Render() {
+void MainMenu::Render() {
 	SDL_RenderClear(renderer);
 	if(currentMenu == 5) {
 		SDL_RenderCopyEx(renderer, creditBG, nullptr, new SDL_Rect{ 0, 0, 1280, 720 }, 0.0, nullptr, SDL_FLIP_NONE);

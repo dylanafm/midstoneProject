@@ -129,9 +129,9 @@ bool LevelTwo::OnCreate() {
 
 	song->playSong();
 
-	pMenu = new pauseMenu(renderer, 3);
+	pMenu = new PauseMenu(renderer, 3);
 	dMenu = new DeathMenu(3);
-	fMenu = new finishMenu(renderer);
+	fMenu = new FinishMenu(renderer);
 
 	if (!pMenu->setUpButtons(renderer)) return false;
 	if (!dMenu->setUpButtons(renderer)) return false;

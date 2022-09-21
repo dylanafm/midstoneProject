@@ -2,7 +2,7 @@
 #include "Window.h"
 #include "Timer.h"
 #include "Scene0.h"
-#include "mainMenu.h"
+#include "MainMenu.h"
 #include "LevelOne.h"
 #include "LevelTwo.h"
 
@@ -38,7 +38,7 @@ bool GameManager::OnCreate() {
 		return false;
 	}
 
-	currentScene = new mainMenu(windowPtr->GetSDL_Window());
+	currentScene = new MainMenu(windowPtr->GetSDL_Window());
 	if (currentScene == nullptr) {
 		OnDestroy();
 		return false;
@@ -65,7 +65,7 @@ void GameManager::Run() {
 		}
 		else if (currentScene->getScene() == 2) {
 			currentScene->OnDestroy();
-			currentScene = new mainMenu(windowPtr->GetSDL_Window());
+			currentScene = new MainMenu(windowPtr->GetSDL_Window());
 			currentScene->OnCreate();
 		}
 		else if (currentScene->getScene() == 3) {

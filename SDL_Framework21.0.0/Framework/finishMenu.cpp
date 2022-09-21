@@ -1,21 +1,21 @@
-#include "finishMenu.h"
+#include "FinishMenu.h"
 #include "TextureManager.h"
 
-finishMenu::finishMenu(SDL_Renderer* r)
+FinishMenu::FinishMenu(SDL_Renderer* r)
 {
 	if(!GameWin) NextLevel = new Button(390, 230, 500, 60, Vec3(20, 20, 210), "Next Level");
 	MainMenu = new Button(415, 330, 450, 60, Vec3(20, 20, 210), "Main Menu");
 	Quit = new Button(540, 430, 200, 60, Vec3(20, 20, 210), "Quit");
 }
 
-finishMenu::~finishMenu()
+FinishMenu::~FinishMenu()
 {
 	delete NextLevel;
 	delete MainMenu;
 	delete Quit;
 }
 
-void finishMenu::finishUpdate(SDL_Event event_)
+void FinishMenu::finishUpdate(SDL_Event event_)
 {
 	if (!GameWin) NextLevel->Update();
 	MainMenu->Update();
@@ -25,7 +25,7 @@ void finishMenu::finishUpdate(SDL_Event event_)
 	if (Quit->buttonClicked(event_)) { Quit->click->playSFX(); newScene = -1; paused = false; }
 }
 
-void finishMenu::finishRender(SDL_Renderer* renderer)
+void FinishMenu::finishRender(SDL_Renderer* renderer)
 {
 	if (!GameWin) text.writeText("Well Done!", SDL_Color{ 0, 255, 255 }, SDL_Rect{ 415, 150, 450, 60 }, renderer);
 	if (GameWin) text.writeText("Game Complete!", SDL_Color{ 0, 255, 255 }, SDL_Rect{ 415, 255, 450, 60 }, renderer);
@@ -34,7 +34,7 @@ void finishMenu::finishRender(SDL_Renderer* renderer)
 	Quit->Render(renderer);
 }
 
-bool finishMenu::setUpButtons(SDL_Renderer* renderer)
+bool FinishMenu::setUpButtons(SDL_Renderer* renderer)
 {
 	if (!GameWin) {
 		if (!NextLevel->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;

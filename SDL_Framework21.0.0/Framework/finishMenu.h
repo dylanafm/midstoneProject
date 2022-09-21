@@ -4,7 +4,7 @@
 #include "Button.h"
 #include "Text.h"
 
-class finishMenu
+class FinishMenu
 {
 private:
 	Button* NextLevel;
@@ -17,8 +17,8 @@ private:
 	bool paused = true;
 
 public:
-	finishMenu(SDL_Renderer* r);
-	~finishMenu();
+	FinishMenu(SDL_Renderer* r);
+	~FinishMenu();
 	void finishUpdate(SDL_Event event_);
 	void finishRender(SDL_Renderer* renderer);
 	bool getPaused() {

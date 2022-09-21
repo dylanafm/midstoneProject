@@ -1,7 +1,7 @@
-#include "pauseMenu.h"
+#include "PauseMenu.h"
 #include "TextureManager.h"
 
-pauseMenu::pauseMenu(SDL_Renderer* r, int currentScene_)
+PauseMenu::PauseMenu(SDL_Renderer* r, int currentScene_)
 {
 	Resume = new Button(490, 95, 300, 60, Vec3(20, 20, 210), "Resume");
 	Restart = new Button(465, 195, 350, 60, Vec3(20, 20, 210), "Restart");
@@ -19,7 +19,7 @@ pauseMenu::pauseMenu(SDL_Renderer* r, int currentScene_)
 
 }
 
-pauseMenu::~pauseMenu()
+PauseMenu::~PauseMenu()
 {
 	delete Resume;
 	delete Restart;
@@ -31,7 +31,7 @@ pauseMenu::~pauseMenu()
 	SDL_DestroyTexture(tutorialIMG);
 }
 
-void pauseMenu::pauseUpdate(SDL_Event event_)
+void PauseMenu::pauseUpdate(SDL_Event event_)
 {
 	Resume->Update();
 	Restart->Update();
@@ -50,7 +50,7 @@ void pauseMenu::pauseUpdate(SDL_Event event_)
 	
 }
 
-void pauseMenu::pauseRender(SDL_Renderer* renderer)
+void PauseMenu::pauseRender(SDL_Renderer* renderer)
 {
 	if (currentMenu == 1) {
 		Resume->Render(renderer);
@@ -69,7 +69,7 @@ void pauseMenu::pauseRender(SDL_Renderer* renderer)
 	}
 }
 
-bool pauseMenu::setUpButtons(SDL_Renderer* renderer)
+bool PauseMenu::setUpButtons(SDL_Renderer* renderer)
 {
 	if (!Resume->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
 	if (!Restart->setImage("textures/blue_button01.png", "textures/green_button00.png", renderer)) return false;
