@@ -1,7 +1,10 @@
 #ifndef MGHARPOON_H
 #define MGHARPOON_H
-#include "Powerups.h"
-class Powerups;
+
+#include <SDL.h>
+#include "Vector.h"
+#include "HarpoonHarry.h"
+
 class MGHarpoon
 {
 private:

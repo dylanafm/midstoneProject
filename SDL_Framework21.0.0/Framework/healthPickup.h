@@ -9,18 +9,19 @@ class HarpoonHarry;
 class HealthPickup
 {
 public:
-	HealthPickup(Vec3 pos_,float scrollSpeed_, SDL_Renderer* render_);
-	~HealthPickup();
+	
 	Vec3 pos, vel, accelPrevious, accelCurrent, accel;
 	float scrollSpeed, radiusInPixels;
+	SDL_Rect body;
+	SDL_Texture* healthTexture;
+
+	HealthPickup(Vec3 pos_, float scrollSpeed_, SDL_Renderer* render_);
+	~HealthPickup();
 	void scroll();
 	void render(SDL_Renderer* render);
 	void collide(HarpoonHarry* harry);
 	void update(float deltaTime);
 
-
-	SDL_Rect body;
-	SDL_Texture* healthTexture;
 };
 
 #endif

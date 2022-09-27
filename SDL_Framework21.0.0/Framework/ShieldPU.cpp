@@ -1,5 +1,5 @@
 #include "ShieldPU.h"
-#include "Powerups.h"
+
 
 ShieldPU::ShieldPU(SDL_Rect box_, float scrollSpeed_, const char* path, SDL_Renderer* renderer)
 {

@@ -1,8 +1,11 @@
 #ifndef SHIELDPU_H
 #define SHIELDPU_H
-#include "Powerups.h"
 
-class Powerups;
+#include <SDL.h>
+#include "Vector.h"
+#include "HarpoonHarry.h"
+#include "TextureManager.h"
+
 class HarpoonHarry;
 
 class ShieldPU
