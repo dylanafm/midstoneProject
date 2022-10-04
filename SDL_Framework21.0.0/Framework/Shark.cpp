@@ -2,7 +2,8 @@
 #include "VMath.h"
 
 Shark::Shark(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_):
-	Enemy(body_, scrollSpeed, renderer, path, radius_){
+	Enemy(body_, renderer, path, radius_)
+{
 	angle = 0.0;
 	SharkSwim = new Animation(texture);
 	SharkSwim->SetUpAnim(3, 1);

@@ -2,7 +2,7 @@
 #include "VMath.h"
 
 Boss::Boss(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_):
-	Enemy(body_, scrollSpeed, renderer, path, radius_){
+	Enemy(body_, renderer, path, radius_){
 	angle = 0.0;
 	swim = new Animation(texture);
 	swim->SetUpAnim(2, 1);

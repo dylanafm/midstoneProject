@@ -36,7 +36,7 @@ public:
 	Boss(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_);
 	~Boss();
 	void Update(float deltaTime, HarpoonHarry* harry, SDL_Renderer* renderer);
-	void Render(SDL_Renderer* renderer) override;
+	void Render(SDL_Renderer* renderer);
 
 	void UpdateHealthBar(SDL_Renderer* r, int h);
 	void spawnProjectile(HarpoonHarry* harry, SDL_Renderer* renderer);

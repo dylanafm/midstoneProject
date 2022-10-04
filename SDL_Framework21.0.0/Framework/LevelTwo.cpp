@@ -10,7 +10,7 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	//a = new Animator(renderer);
 	bg = new Background(renderer, 1, "textures/layers2/1.png", 1, "textures/layers2/2.png", 2, "textures/layers2/3.png", 3, "textures/layers2/4.png", 1, "textures/layers2/5.png", 4, "textures/layers2/6.png", 4, "textures/layers2/7.png", 4, "textures/layers2/8.png", 0.030f);
 
-	bg->SetProgress(99.0f);
+	bg->SetProgress(0.0f);
 
 
 

@@ -27,7 +27,7 @@ public:
 	Shark(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_);
 	~Shark();
 	void Update(float deltaTime, HarpoonHarry* harry);
-	void Render(SDL_Renderer* renderer) override;
+	void Render(SDL_Renderer* renderer);
 
 	void UpdateHealthBar(SDL_Renderer* r, int h);
 };
