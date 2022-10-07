@@ -161,6 +161,7 @@ void LevelOne::OnDestroy() {
 
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
+	// Update powerups
 	for (int i = 0; i < std::size(hp); i++) {
 		if (hp[i] != nullptr && hp[i]->isActive) {
 			hp[i]->Update(deltaTime);
@@ -168,8 +169,14 @@ void LevelOne::Update(const float deltaTime) {
 		}
 	}
 
+	if (Shield != nullptr && Shield->isActive) {
+		Shield->Update(deltaTime);
+		harry->isPowerupCollided(harry, Shield);
+	}
+
+	// Delete powerups that are outside the screen
 	for (int i = 0; i < std::size(hp); i++) {
-		if (hp[i] != nullptr){
+		if (hp[i] != nullptr) {
 			if (hp[i]->pos.x < 0) {
 				delete hp[i];
 				hp[i] = nullptr;
@@ -178,8 +185,7 @@ void LevelOne::Update(const float deltaTime) {
 	}
 
 	if (Shield != nullptr) {
-		Shield->Update(deltaTime);
-		if (harry->isPowerupCollided(harry, Shield)) {
+		if (Shield->pos.x < 0) {
 			delete Shield;
 			Shield = nullptr;
 		}
