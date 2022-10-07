@@ -17,6 +17,9 @@ ShieldPU::~ShieldPU()
 void ShieldPU::Ability(HarpoonHarry* harry)
 {
 	pickup->playSFX();
+	isActive = false;
+	texture = nullptr;
+
 	harry->Shielded = true;
 	harry->timeRemaining = 5.0f;
 }
