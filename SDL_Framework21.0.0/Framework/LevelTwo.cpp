@@ -174,10 +174,21 @@ void LevelTwo::OnDestroy() {
 void LevelTwo::Update(const float deltaTime) {
 	SDL_Event event;
 	for (int i = 0; i < std::size(hp); i++) {
-		if (hp[i] != nullptr)  hp[i]->Update(deltaTime);
+		if (hp[i] != nullptr && hp[i]->isActive) {
+			hp[i]->Update(deltaTime);
+			harry->isPowerupCollided(harry, hp[i]);
+		}
+	}
+
+	if (Shield != nullptr && Shield->isActive) {
+		Shield->Update(deltaTime);
+		harry->isPowerupCollided(harry, Shield);
+	}
+
+	// Delete powerups that are outside the screen
+	for (int i = 0; i < std::size(hp); i++) {
 		if (hp[i] != nullptr) {
-			if (harry->isPowerupCollided(harry, hp[i])) {
-				healthsfx->playSFX();
+			if (hp[i]->pos.x < 0) {
 				delete hp[i];
 				hp[i] = nullptr;
 			}
@@ -185,7 +196,7 @@ void LevelTwo::Update(const float deltaTime) {
 	}
 
 	if (Shield != nullptr) {
-		if (harry->isPowerupCollided(harry, Shield)) {
+		if (Shield->pos.x < 0) {
 			delete Shield;
 			Shield = nullptr;
 		}
@@ -193,11 +204,19 @@ void LevelTwo::Update(const float deltaTime) {
 
 	if (rf != nullptr) {
 		rf->Update(deltaTime);
-		if (harry->isPowerupCollided(harry, rf)) {
+		harry->isPowerupCollided(harry, rf);
+
+
+	}
+
+
+	if (rf != nullptr) {
+		if (rf->pos.x < 0) {
 			delete rf;
 			rf = nullptr;
 		}
 	}
+
 
 	if (!paused) {
 		if (bg->getProg() <= 100.0f) {
