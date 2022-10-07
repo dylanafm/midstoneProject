@@ -1,8 +1,8 @@
 #include "MGHarpoon.h"
 #include "HarpoonHarry.h"
 
-MGHarpoon::MGHarpoon(SDL_Rect body_, SDL_Renderer* renderer, const char* path):
-	Powerup(body_, renderer, path)
+MGHarpoon::MGHarpoon(SDL_Rect body_, SDL_Renderer* renderer):
+	Powerup(body_, renderer, "textures/MGH.png")
 {
 	pickupSound = new Sfx("SFX/MGH.wav", 10);
 

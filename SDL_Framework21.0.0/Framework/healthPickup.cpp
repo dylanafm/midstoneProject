@@ -1,8 +1,8 @@
 #include "HealthPickup.h"
 #include "HarpoonHarry.h"
 
-HealthPickup::HealthPickup(SDL_Rect body_, SDL_Renderer* renderer, const char* path):
-	Powerup(body_, renderer, path)
+HealthPickup::HealthPickup(SDL_Rect body_, SDL_Renderer* renderer):
+	Powerup(body_, renderer, "textures/HealthIMG.png")
 {
 	pickupSound = new Sfx("SFX/life_pickup.flac", 10);
 

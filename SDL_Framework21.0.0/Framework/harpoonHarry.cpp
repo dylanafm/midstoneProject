@@ -165,7 +165,7 @@ bool HarpoonHarry::checkPowerupCollision(HarpoonHarry* harry, Powerup* powerup)
 
 	if (((hpCenter.x - harryCenter.x) * (hpCenter.x - harryCenter.x) +
 		(harryCenter.y - hpCenter.y) * (harryCenter.y - hpCenter.y)) <=
-		((powerup->radiusInPixels + harry->radiusInPixels) * (powerup->radiusInPixels + harry->radiusInPixels))) {
+		((powerup->getRadius() + harry->radiusInPixels) * (powerup->getRadius() + harry->radiusInPixels))) {
 		return true;
 	}
 

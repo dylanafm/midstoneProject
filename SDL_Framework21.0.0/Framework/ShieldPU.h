@@ -8,7 +8,7 @@ class Powerup;
 class ShieldPU : public Powerup
 {
 public:
-	ShieldPU(SDL_Rect body_, SDL_Renderer* renderer, const char* path);
+	ShieldPU(SDL_Rect body_, SDL_Renderer* renderer);
 	~ShieldPU();
 
 	void Ability(HarpoonHarry* harry);

@@ -2,8 +2,8 @@
 #include "HarpoonHarry.h"
 
 
-ShieldPU::ShieldPU(SDL_Rect body_, SDL_Renderer* renderer, const char* path):
-	Powerup(body_, renderer, path)
+ShieldPU::ShieldPU(SDL_Rect body_, SDL_Renderer* renderer):
+	Powerup(body_, renderer, "textures/Shield.png")
 {
 	pickupSound = new Sfx("SFX/shield.wav", 10);
 

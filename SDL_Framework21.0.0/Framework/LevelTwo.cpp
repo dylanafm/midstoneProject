@@ -23,10 +23,10 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	currentHarpoon = 0;
 	song = new MusicPlayer("Music/levelonetheme.ogg", 2);
 
-	hp[0] = new HealthPickup(SDL_Rect{ 2500, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
-	hp[1] = new HealthPickup(SDL_Rect{ 4100, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
-	hp[2] = new HealthPickup(SDL_Rect{ 5800, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
-	hp[3] = new HealthPickup(SDL_Rect{ 6500, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
+	hp[0] = new HealthPickup(SDL_Rect{ 2500, rand() % 680, 50, 50 }, renderer);
+	hp[1] = new HealthPickup(SDL_Rect{ 4100, rand() % 680, 50, 50 }, renderer);
+	hp[2] = new HealthPickup(SDL_Rect{ 5800, rand() % 680, 50, 50 }, renderer);
+	hp[3] = new HealthPickup(SDL_Rect{ 6500, rand() % 680, 50, 50 }, renderer);
 
 	tigerFish[0] = new Fish(SDL_Rect{ 400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
 	tigerFish[1] = new Fish(SDL_Rect{ 800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
@@ -101,8 +101,8 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	tigerFish[68] = new Fish(SDL_Rect{ 6500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
 	tigerFish[69] = new Fish(SDL_Rect{ 6500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
 	
-	Shield = new ShieldPU(SDL_Rect{ 4400, rand() % 680, 50, 50 }, renderer, "textures/Shield.png");
-	rf = new MGHarpoon(SDL_Rect{ 6100, rand() % 680, 50, 50 }, renderer, "textures/MGH.png");
+	Shield = new ShieldPU(SDL_Rect{ 4400, rand() % 680, 50, 50 }, renderer);
+	rf = new MGHarpoon(SDL_Rect{ 6100, rand() % 680, 50, 50 }, renderer);
 
 	harpoonShoot = new Sfx("SFX/shoot.ogg", 10);
 	fishHurt = new Sfx("SFX/blobdeath.wav", 10);

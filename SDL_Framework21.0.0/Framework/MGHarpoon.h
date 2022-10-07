@@ -6,7 +6,7 @@
 class MGHarpoon : public Powerup
 {
 public:
-	MGHarpoon(SDL_Rect body_, SDL_Renderer* renderer, const char* path);
+	MGHarpoon(SDL_Rect body_, SDL_Renderer* renderer);
 	~MGHarpoon();
 
 	void Ability(HarpoonHarry* harry);
