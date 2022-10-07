@@ -16,6 +16,8 @@ MGHarpoon::~MGHarpoon()
 void MGHarpoon::Ability(HarpoonHarry* harry)
 {
 	pickup->playSFX();
+	isActive = false;
+	texture = nullptr;
 	harry->rapidFire = true;
 	harry->gunTimeRemain = 5.0f;
 }

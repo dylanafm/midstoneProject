@@ -187,12 +187,19 @@ void LevelOne::Update(const float deltaTime) {
 
 	if (rf != nullptr) {
 		rf->Update(deltaTime);
-		if (harry->isPowerupCollided(harry, rf)) {
+		harry->isPowerupCollided(harry, rf);
+	
+		
+	}
+	
+	
+	if (rf != nullptr) {
+		if (rf->pos.x < 0) {
 			delete rf;
 			rf = nullptr;
 		}
-	}
-	
+		}
+
 	if (!paused) {
 		if (bg->getProg() <= 100.0f) {
 			if (Shield != nullptr)  Shield->Scroll();
