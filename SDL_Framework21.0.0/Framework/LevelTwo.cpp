@@ -102,7 +102,7 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	tigerFish[69] = new Fish(SDL_Rect{ 6500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
 	
 	Shield = new ShieldPU(SDL_Rect{ 4400, rand() % 680, 50, 50 }, renderer, "textures/Shield.png");
-	rf = new MGHarpoon(SDL_Rect{ 6100, rand() % 680, 50, 50 }, 2, "textures/MGH.png", renderer);
+	rf = new MGHarpoon(SDL_Rect{ 6100, rand() % 680, 50, 50 }, renderer, "textures/MGH.png");
 
 	harpoonShoot = new Sfx("SFX/shoot.ogg", 10);
 	fishHurt = new Sfx("SFX/blobdeath.wav", 10);
@@ -177,6 +177,7 @@ void LevelTwo::Update(const float deltaTime) {
 		if (hp[i] != nullptr)  hp[i]->Update(deltaTime);
 		if (hp[i] != nullptr) {
 			if (harry->isPowerupCollided(harry, hp[i])) {
+				healthsfx->playSFX();
 				delete hp[i];
 				hp[i] = nullptr;
 			}
@@ -190,10 +191,12 @@ void LevelTwo::Update(const float deltaTime) {
 		}
 	}
 
-	if (rf != nullptr)  rf->RapidFire(harry);
-	if (rf != nullptr && rf->checkCollide(harry)) {
-		delete rf;
-		rf = nullptr;
+	if (rf != nullptr) {
+		rf->Update(deltaTime);
+		if (harry->isPowerupCollided(harry, rf)) {
+			delete rf;
+			rf = nullptr;
+		}
 	}
 
 	if (!paused) {

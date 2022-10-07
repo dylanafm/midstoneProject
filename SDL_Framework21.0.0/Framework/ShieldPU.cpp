@@ -5,12 +5,13 @@
 ShieldPU::ShieldPU(SDL_Rect body_, SDL_Renderer* renderer, const char* path):
 	Powerup(body_, renderer, path)
 {
+	pickup = new Sfx("SFX/shield.wav", 10);
 
 }
 
 ShieldPU::~ShieldPU()
 {
-
+	delete pickup;
 }
 
 void ShieldPU::Ability(HarpoonHarry* harry)

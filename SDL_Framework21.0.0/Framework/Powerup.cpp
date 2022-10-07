@@ -6,12 +6,10 @@ Powerup::Powerup(SDL_Rect body_, SDL_Renderer* renderer, const char* path) :
 	scrollSpeed = 2.0f;
 	radiusInPixels = body.w / 2;
 
-	pickup = new Sfx("SFX/shield.wav", 10);
 }
 
 Powerup::~Powerup()
 {
-	delete pickup;
 }
 
 void Powerup::Ability(HarpoonHarry* harry)

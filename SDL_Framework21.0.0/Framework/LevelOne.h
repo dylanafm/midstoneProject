@@ -95,7 +95,6 @@ public:
 	Sfx* playerHurt;
 	Sfx* playerDie;
 	Sfx* bossHurt;
-	Sfx* healthsfx;
 
 };
 

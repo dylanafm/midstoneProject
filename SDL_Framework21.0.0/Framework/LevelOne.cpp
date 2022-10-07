@@ -92,14 +92,14 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	
 	//Shield = new ShieldPU(SDL_Rect{ 3300, rand() % 680, 50, 50 }, renderer, "textures/Shield.png");
 	Shield = new ShieldPU(SDL_Rect{ 1000, rand() % 680, 50, 50 }, renderer, "textures/Shield.png");
-	rf = new MGHarpoon(SDL_Rect{ 6700, rand() % 680, 50, 50 }, 2, "textures/MGH.png", renderer);
+	//rf = new MGHarpoon(SDL_Rect{ 6700, rand() % 680, 50, 50 }, renderer, "textures/MGH.png");
+	rf = new MGHarpoon(SDL_Rect{ 2000, rand() % 680, 50, 50 }, renderer, "textures/MGH.png");
 
 	harpoonShoot = new Sfx("SFX/shoot.ogg", 10);
 	fishHurt = new Sfx("SFX/blobdeath.wav", 10);
 	playerHurt = new Sfx("SFX/pain.wav", 10);
 	playerDie = new Sfx("SFX/die.wav", 10);
 	bossHurt = new Sfx("SFX/bossdeath.wav", 10);
-	healthsfx = new Sfx("SFX/life_pickup.flac", 10);
 }
 
 LevelOne::~LevelOne() {
@@ -149,7 +149,6 @@ void LevelOne::OnDestroy() {
 	if (playerHurt != nullptr) delete playerHurt;
 	if (playerDie != nullptr) delete playerDie;
 	if (bossHurt != nullptr) delete bossHurt;
-	if (healthsfx != nullptr) delete healthsfx;
 	for (int i = 0; i < std::size(hp); i++)
 		if (hp[i] != nullptr) delete hp[i];
 	for (int i = 0; i < std::size(fish); i++)
@@ -166,7 +165,6 @@ void LevelOne::Update(const float deltaTime) {
 		if (hp[i] != nullptr) {
 			hp[i]->Update(deltaTime);
 			if (harry->isPowerupCollided(harry, hp[i])) {
-				healthsfx->playSFX();
 				delete hp[i];
 				hp[i] = nullptr;
 			}
@@ -180,12 +178,13 @@ void LevelOne::Update(const float deltaTime) {
 			Shield = nullptr;
 		}
 	}
-	
-	if (rf != nullptr){  
-		rf->RapidFire(harry);
-		if (rf->checkCollide(harry))
+
+	if (rf != nullptr) {
+		rf->Update(deltaTime);
+		if (harry->isPowerupCollided(harry, rf)) {
 			delete rf;
 			rf = nullptr;
+		}
 	}
 	
 	if (!paused) {
