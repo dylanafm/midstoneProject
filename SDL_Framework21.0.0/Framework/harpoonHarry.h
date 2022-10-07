@@ -1,16 +1,16 @@
 #ifndef HARPOONHARRY_H
 #define HARPOONHARRY_H
 
-#include "Body.h"
 #include <SDL.h>
 #include <SDL_image.h>
+#include "Body.h"
 #include "Vector.h"
-#include "Fish.h"
+#include "Enemy.h"
+//#include "Powerup.h"
 #include "Animation.h"
-#include "HealthPickup.h"
 
 class Animation;
-class HealthPickup;
+class Powerup;
 
 class HarpoonHarry : public Body
 {
@@ -37,13 +37,13 @@ public:
 
 	void applyForce(const Vec3 force) { accel = force / mass; accelPrevious = accelCurrent; accelCurrent = force / mass;}
 
-	bool checkCollision(HarpoonHarry* harry, Enemy* enemy);
+	bool checkEnemyCollision(HarpoonHarry* harry, Enemy* enemy);
 
-	bool isCollided(HarpoonHarry* harry, Enemy* enemy);
+	bool isEnemyCollided(HarpoonHarry* harry, Enemy* enemy);
 
-	bool checkHealthCollision(HarpoonHarry* harry, HealthPickup* hp);
+	bool checkPowerupCollision(HarpoonHarry* harry, Powerup* powerup);
 
-	bool isHealthCollided(HarpoonHarry* harry, HealthPickup* hp);
+	bool isPowerupCollided(HarpoonHarry* harry, Powerup* powerup);
 
 	void render(SDL_Renderer* render);
 

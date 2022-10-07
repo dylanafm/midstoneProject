@@ -23,10 +23,10 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	currentHarpoon = 0;
 	song = new MusicPlayer("Music/levelonetheme.ogg", 2);
 
-	hp[0] = new HealthPickup(Vec3(2500.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[1] = new HealthPickup(Vec3(4100.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[2] = new HealthPickup(Vec3(5800.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[3] = new HealthPickup(Vec3(6500.0f, rand() % 680, 0.0f), 2.0f, renderer);
+	hp[0] = new HealthPickup(SDL_Rect{ 2500, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
+	hp[1] = new HealthPickup(SDL_Rect{ 4100, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
+	hp[2] = new HealthPickup(SDL_Rect{ 5800, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
+	hp[3] = new HealthPickup(SDL_Rect{ 6500, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
 
 	tigerFish[0] = new Fish(SDL_Rect{ 400, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
 	tigerFish[1] = new Fish(SDL_Rect{ 800, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
@@ -101,7 +101,7 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	tigerFish[68] = new Fish(SDL_Rect{ 6500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
 	tigerFish[69] = new Fish(SDL_Rect{ 6500, rand() % 680, 50, 50 }, 2, renderer, "textures/TigerFish.png", 25.0f, 3);
 	
-	Shield = new ShieldPU(SDL_Rect{ 4400, rand() % 680, 50, 50 }, 2, "textures/Shield.png", renderer);
+	Shield = new ShieldPU(SDL_Rect{ 4400, rand() % 680, 50, 50 }, renderer, "textures/Shield.png");
 	rf = new MGHarpoon(SDL_Rect{ 6100, rand() % 680, 50, 50 }, 2, "textures/MGH.png", renderer);
 
 	harpoonShoot = new Sfx("SFX/shoot.ogg", 10);
@@ -174,19 +174,20 @@ void LevelTwo::OnDestroy() {
 void LevelTwo::Update(const float deltaTime) {
 	SDL_Event event;
 	for (int i = 0; i < std::size(hp); i++) {
-		if (hp[i] != nullptr)  hp[i]->update(deltaTime);
+		if (hp[i] != nullptr)  hp[i]->Update(deltaTime);
 		if (hp[i] != nullptr) {
-			if (harry->isHealthCollided(harry, hp[i])) {
-				healthsfx->playSFX();
+			if (harry->isPowerupCollided(harry, hp[i])) {
 				delete hp[i];
 				hp[i] = nullptr;
 			}
 		}
 	}
-	if (Shield != nullptr)  Shield->Protect(harry);
-	if (Shield != nullptr && Shield->checkCollide(harry)) {
-		delete Shield;
-		Shield = nullptr;
+
+	if (Shield != nullptr) {
+		if (harry->isPowerupCollided(harry, Shield)) {
+			delete Shield;
+			Shield = nullptr;
+		}
 	}
 
 	if (rf != nullptr)  rf->RapidFire(harry);
@@ -202,7 +203,7 @@ void LevelTwo::Update(const float deltaTime) {
 
 			bg->Scroll();
 			for (int i = 0; i < std::size(hp); i++) {
-				if (hp[i] != nullptr) hp[i]->scroll();
+				if (hp[i] != nullptr) hp[i]->Scroll();
 			}
 			for (int i = 0; i < std::size(tigerFish); i++) {
 				if (tigerFish[i] != nullptr) tigerFish[i]->Scroll();
@@ -241,7 +242,7 @@ void LevelTwo::Update(const float deltaTime) {
 	}
 	if (boss1 != nullptr) {
 		if (!isBitten) {
-			if (harry->isCollided(harry, boss1)) {
+			if (harry->isEnemyCollided(harry, boss1)) {
 				playerHurt->playSFX();
 
 				biteTimer = new InGameTimer(2.0f);
@@ -262,7 +263,7 @@ void LevelTwo::Update(const float deltaTime) {
 		if (tigerFish[i] != nullptr) {
 
 
-			if (harry->isCollided(harry, tigerFish[i])) {
+			if (harry->isEnemyCollided(harry, tigerFish[i])) {
 				playerHurt->playSFX();
 
 				delete tigerFish[i];
@@ -369,7 +370,7 @@ void LevelTwo::Render() {
 	SDL_RenderClear(renderer);
 	bg->Render(renderer);
 	for (int i = 0; i < std::size(hp); i++) {
-		if (hp[i] != nullptr) hp[i]->render(renderer);
+		if (hp[i] != nullptr) hp[i]->Render(renderer);
 	}
 	//a->Render(renderer);
 	harry->render(renderer);

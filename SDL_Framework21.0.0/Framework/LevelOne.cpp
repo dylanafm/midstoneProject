@@ -17,17 +17,17 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	harry = new HarpoonHarry(renderer, "textures/HarrySheet.png", 25.0f);
 	harry->pos = Vec3(100.0f, 100.0f, 100.0f);
 	
-	bg->SetProgress(99.0f);
+	bg->SetProgress(0.0f);
 
 	playerHUD = new HUD();
 	currentHarpoon = 0;
 	song = new MusicPlayer("Music/levelonetheme.ogg", 2);
 
-	hp[0] = new HealthPickup(Vec3(2500.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[1] = new HealthPickup(Vec3(3500.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[2] = new HealthPickup(Vec3(4500.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[3] = new HealthPickup(Vec3(5800.0f, rand() % 680, 0.0f), 2.0f, renderer);
-	hp[4] = new HealthPickup(Vec3(8000.0f, rand() % 680, 0.0f), 2.0f, renderer);
+	hp[0] = new HealthPickup(SDL_Rect{ 2500, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
+	hp[1] = new HealthPickup(SDL_Rect{ 3500, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
+	hp[2] = new HealthPickup(SDL_Rect{ 4500, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
+	hp[3] = new HealthPickup(SDL_Rect{ 5800, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
+	hp[4] = new HealthPickup(SDL_Rect{ 8000, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
 
 	fish[0] = new Fish(SDL_Rect{ 400, rand() % 680, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f, 8);
 	fish[1] = new Fish(SDL_Rect{ 800, rand() % 680, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f, 8);
@@ -90,7 +90,8 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	fish[58] = new Fish(SDL_Rect{ 6900, rand() % 680, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f, 8);
 	fish[59] = new Fish(SDL_Rect{ 6900, rand() % 680, 50, 50 }, 2, renderer, "textures/blobfish.png", 25.0f, 8);
 	
-	Shield = new ShieldPU(SDL_Rect{ 3300, rand() % 680, 50, 50 }, 2, "textures/Shield.png", renderer);
+	//Shield = new ShieldPU(SDL_Rect{ 3300, rand() % 680, 50, 50 }, renderer, "textures/Shield.png");
+	Shield = new ShieldPU(SDL_Rect{ 1000, rand() % 680, 50, 50 }, renderer, "textures/Shield.png");
 	rf = new MGHarpoon(SDL_Rect{ 6700, rand() % 680, 50, 50 }, 2, "textures/MGH.png", renderer);
 
 	harpoonShoot = new Sfx("SFX/shoot.ogg", 10);
@@ -163,19 +164,21 @@ void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
 	for (int i = 0; i < std::size(hp); i++) {
 		if (hp[i] != nullptr) {
-			hp[i]->update(deltaTime);
-			if (harry->isHealthCollided(harry, hp[i])) {
+			hp[i]->Update(deltaTime);
+			if (harry->isPowerupCollided(harry, hp[i])) {
 				healthsfx->playSFX();
 				delete hp[i];
 				hp[i] = nullptr;
 			}
 		}
 	}
-	if (Shield != nullptr){  
-		Shield->Protect(harry); 
-		if (Shield->checkCollide(harry))
+
+	if (Shield != nullptr) {
+		Shield->Update(deltaTime);
+		if (harry->isPowerupCollided(harry, Shield)) {
 			delete Shield;
 			Shield = nullptr;
+		}
 	}
 	
 	if (rf != nullptr){  
@@ -192,7 +195,7 @@ void LevelOne::Update(const float deltaTime) {
 
 			bg->Scroll();
 			for (int i = 0; i < std::size(hp); i++) {
-				if (hp[i] != nullptr) hp[i]->scroll();
+				if (hp[i] != nullptr) hp[i]->Scroll();
 			}
 			for (int i = 0; i < std::size(fish); i++) {
 				if (fish[i] != nullptr) fish[i]->Scroll();
@@ -227,7 +230,7 @@ void LevelOne::Update(const float deltaTime) {
 	}
 	if (SharkBoss != nullptr) {
 		if (!isBitten) {
-			if (harry->isCollided(harry, SharkBoss)) {
+			if (harry->isEnemyCollided(harry, SharkBoss)) {
 				playerHurt->playSFX();
 
 				biteTimer = new InGameTimer(2.0f);
@@ -238,7 +241,7 @@ void LevelOne::Update(const float deltaTime) {
 
 	if (projectile != nullptr) {
 		projectile->Update(deltaTime);
-		if (harry->isCollided(harry, projectile)) {
+		if (harry->isEnemyCollided(harry, projectile)) {
 			if(!harry->Shielded) playerHurt->playSFX();
 			delete projectile;
 			projectile = nullptr;
@@ -259,7 +262,7 @@ void LevelOne::Update(const float deltaTime) {
 		if (fish[i] != nullptr) {
 
 
-			if (harry->isCollided(harry, fish[i])) {
+			if (harry->isEnemyCollided(harry, fish[i])) {
 				playerHurt->playSFX();
 
 				delete fish[i];
@@ -370,7 +373,7 @@ void LevelOne::Render() {
 	SDL_RenderClear(renderer);
 	bg->Render(renderer);
 	for (int i = 0; i < std::size(hp); i++) {
-		if (hp[i] != nullptr) hp[i]->render(renderer);
+		if (hp[i] != nullptr) hp[i]->Render(renderer);
 	}
 	//a->Render(renderer);
 	harry->render(renderer);

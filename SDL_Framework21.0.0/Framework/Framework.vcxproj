@@ -158,6 +158,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FinishMenu.cpp" />
     <ClCompile Include="Fish.cpp" />
+    <ClCompile Include="Powerup.cpp" />
     <ClCompile Include="Shark.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Harpoon.cpp" />
@@ -176,7 +177,6 @@
     <ClCompile Include="MusicPlayer.cpp" />
     <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="Physics.cpp" />
-    <ClCompile Include="Powerups.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Scene0.cpp" />
     <ClCompile Include="Sfx.cpp" />
@@ -198,6 +198,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FinishMenu.h" />
     <ClInclude Include="Fish.h" />
+    <ClInclude Include="Powerup.h" />
     <ClInclude Include="Shark.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Harpoon.h" />
@@ -216,7 +217,6 @@
     <ClInclude Include="MusicPlayer.h" />
     <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="Physics.h" />
-    <ClInclude Include="Powerups.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene0.h" />

@@ -1,7 +1,10 @@
 #ifndef TEXTUREMANAGER_H
 #define TEXTUREMANAGER_H
 
-#include "LevelOne.h"
+#include <SDL.h>
+#include <SDL_image.h>
+#include <string>
+#include <iostream>
 
 class TextureManager
 {

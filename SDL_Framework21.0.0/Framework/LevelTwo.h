@@ -12,6 +12,7 @@
 #include "DeathMenu.h"
 #include "HUD.h"
 #include "Harpoon.h"
+#include "Powerup.h"
 #include "InGameTimer.h"
 #include "Map.h"
 #include "boss.h"
@@ -22,7 +23,6 @@
 #include "MusicPlayer.h"
 #include "HealthPickup.h"
 #include "Sfx.h"
-#include "Powerups.h"
 #include "MGHarpoon.h"
 
 using namespace MATH;
@@ -32,6 +32,7 @@ class Background;
 class Shark;
 class Harpoon;
 class Fish;
+class Powerup;
 class ShieldPU;
 class MGHarpoon;
 class LevelTwo : public Scene {

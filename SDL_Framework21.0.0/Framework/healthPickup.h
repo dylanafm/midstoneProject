@@ -1,27 +1,17 @@
 #ifndef HEALTHPICKUP_H
 #define HEALTHPICKUP_H
-#include "LevelOne.h"
-#include "LTexture.h"
-#include "HarpoonHarry.h"
 
-class HarpoonHarry;
+#include "Powerup.h"
 
-class HealthPickup
+class Powerup;
+
+class HealthPickup : public Powerup
 {
 public:
-	
-	Vec3 pos, vel, accelPrevious, accelCurrent, accel;
-	float scrollSpeed, radiusInPixels;
-	SDL_Rect body;
-	SDL_Texture* healthTexture;
-
-	HealthPickup(Vec3 pos_, float scrollSpeed_, SDL_Renderer* render_);
+	HealthPickup(SDL_Rect body_, SDL_Renderer* renderer, const char* path);
 	~HealthPickup();
-	void scroll();
-	void render(SDL_Renderer* render);
-	void collide(HarpoonHarry* harry);
-	void update(float deltaTime);
 
+	void Ability(HarpoonHarry* harry);
 };
 
 #endif

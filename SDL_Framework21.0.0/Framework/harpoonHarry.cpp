@@ -83,10 +83,7 @@ void HarpoonHarry::Update(float deltaTime)
 	if (gunTimeRemain <= 0.0f)
 	{
 		rapidFire = false;
-	}
-
-
-	
+	}	
 	if (pos.x <= 0) {
 
 		pos.x = 1;
@@ -106,8 +103,6 @@ void HarpoonHarry::Update(float deltaTime)
 	}
 	else
 	{
-
-
 		applyForce(finalForce);
 		finalForce = Vec3(0.0f, 0.0f, 0.0f);
 		pos += vel * deltaTime + 0.5f * accelPrevious * deltaTime * deltaTime;
@@ -129,9 +124,9 @@ void HarpoonHarry::Update(float deltaTime)
 		harryBox.x = pos.x;
 		harryBox.y = pos.y;
 	}
-	}
+}
 
-bool HarpoonHarry::checkCollision(HarpoonHarry* harry, Enemy* enemy)
+bool HarpoonHarry::checkEnemyCollision(HarpoonHarry* harry, Enemy* enemy)
 {
 	
 	Vec3 enemyCenter = Vec3(enemy->pos.x + enemy->body.w / 2.0f, enemy->pos.y + enemy->body.h / 2.0f, 0.0f);
@@ -146,16 +141,16 @@ bool HarpoonHarry::checkCollision(HarpoonHarry* harry, Enemy* enemy)
 	return false;
 }
 
-bool HarpoonHarry::isCollided(HarpoonHarry* harry, Enemy* enemy)
+bool HarpoonHarry::isEnemyCollided(HarpoonHarry* harry, Enemy* enemy)
 {
 	if (!Shielded) {
-		if ((harry->checkCollision(harry, enemy)) == true) {
+		if ((harry->checkEnemyCollision(harry, enemy)) == true) {
 			health--;
 			return true;
 		}
 	}
 	else {
-		if ((harry->checkCollision(harry, enemy)) == true) {
+		if ((harry->checkEnemyCollision(harry, enemy)) == true) {
 			return true;
 		}
 	}
@@ -163,29 +158,25 @@ bool HarpoonHarry::isCollided(HarpoonHarry* harry, Enemy* enemy)
 	return false;
 }
 
-bool HarpoonHarry::checkHealthCollision(HarpoonHarry* harry, HealthPickup* hp)
+bool HarpoonHarry::checkPowerupCollision(HarpoonHarry* harry, Powerup* powerup)
 {
-	Vec3 hpCenter = Vec3(hp->pos.x + hp->body.w / 2.0f, hp->pos.y + hp->body.h / 2.0f, 0.0f);
+	Vec3 hpCenter = Vec3(powerup->pos.x + powerup->body.w / 2.0f, powerup->pos.y + powerup->body.h / 2.0f, 0.0f);
 	Vec3 harryCenter = Vec3(harry->pos.x + harry->harryBox.w / 2.0f, harry->pos.y + harry->harryBox.h / 2.0f, 0.0f);
 
 	if (((hpCenter.x - harryCenter.x) * (hpCenter.x - harryCenter.x) +
 		(harryCenter.y - hpCenter.y) * (harryCenter.y - hpCenter.y)) <=
-		((hp->radiusInPixels + harry->radiusInPixels) * (hp->radiusInPixels + harry->radiusInPixels))) {
+		((powerup->radiusInPixels + harry->radiusInPixels) * (powerup->radiusInPixels + harry->radiusInPixels))) {
 		return true;
 	}
 
 	return false;
 }
 
-bool HarpoonHarry::isHealthCollided(HarpoonHarry* harry, HealthPickup* hp)
+bool HarpoonHarry::isPowerupCollided(HarpoonHarry* harry, Powerup* powerup)
 {
-
-	if ((harry->checkHealthCollision(harry, hp)) == true) {
-		if (health >= 3) { health = 3; }
-		else {
-			health++;
-		}
-			return true;
+	if ((harry->checkPowerupCollision(harry, powerup)) == true) {
+		powerup->Ability(this);
+		return true;
 	}
 	return false;
 }

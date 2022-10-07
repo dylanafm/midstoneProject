@@ -49,7 +49,7 @@ void Boss::Update(float deltaTime, HarpoonHarry* harry, SDL_Renderer* renderer)
 
 	if (projectile != nullptr) {
 		projectile->Update(deltaTime);
-		if (harry->isCollided(harry, projectile)) {
+		if (harry->isEnemyCollided(harry, projectile)) {
 			if (!harry->Shielded) playerHurt->playSFX();
 			delete projectile;
 			projectile = nullptr;

@@ -11,8 +11,6 @@ class Animation;
 class Fish : public Enemy
 {
 private:
-	
-
 	float scrollSpeed;
 	bool directionUp;
 	float moveSpeed;

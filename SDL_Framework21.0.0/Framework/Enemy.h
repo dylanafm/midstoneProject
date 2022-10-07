@@ -6,12 +6,14 @@
 
 using namespace MATH;
 
-class Enemy : public Body {
+class Enemy : public Body 
+{
 public:
 	int health;
 	float radiusInPixels;
 	SDL_Rect crop;
 	
+	// Projectile
 	Enemy(SDL_Rect body, Vec3 vel_, SDL_Renderer* renderer, const char* path, float radius_);
 	Enemy(SDL_Rect body, SDL_Renderer* renderer, const char* path, float radius_);
 	~Enemy();
