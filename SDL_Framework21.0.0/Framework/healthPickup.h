@@ -8,9 +8,9 @@ class Powerup;
 
 class HealthPickup : public Powerup
 {
-private:
-	Sfx* pickup;
 public:
+	Sfx* pickup;
+
 	HealthPickup(SDL_Rect body_, SDL_Renderer* renderer, const char* path);
 	~HealthPickup();
 

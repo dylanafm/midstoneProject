@@ -23,7 +23,7 @@ LevelOne::LevelOne(SDL_Window* sdlWindow_) {
 	currentHarpoon = 0;
 	song = new MusicPlayer("Music/levelonetheme.ogg", 2);
 
-	hp[0] = new HealthPickup(SDL_Rect{ 2500, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
+	hp[0] = new HealthPickup(SDL_Rect{ 700, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
 	hp[1] = new HealthPickup(SDL_Rect{ 3500, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
 	hp[2] = new HealthPickup(SDL_Rect{ 4500, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
 	hp[3] = new HealthPickup(SDL_Rect{ 5800, rand() % 680, 50, 50 }, renderer, "textures/HealthIMG.png");
@@ -162,9 +162,15 @@ void LevelOne::OnDestroy() {
 void LevelOne::Update(const float deltaTime) {
 	SDL_Event event;
 	for (int i = 0; i < std::size(hp); i++) {
-		if (hp[i] != nullptr) {
+		if (hp[i] != nullptr && hp[i]->isActive) {
 			hp[i]->Update(deltaTime);
-			if (harry->isPowerupCollided(harry, hp[i])) {
+			harry->isPowerupCollided(harry, hp[i]);
+		}
+	}
+
+	for (int i = 0; i < std::size(hp); i++) {
+		if (hp[i] != nullptr){
+			if (hp[i]->pos.x < 0) {
 				delete hp[i];
 				hp[i] = nullptr;
 			}

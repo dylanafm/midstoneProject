@@ -10,6 +10,7 @@ Body::Body(){
 
 	texture = nullptr;
 	mass = 0.0f;
+	isActive = true;
 }
 
 Body::Body(SDL_Rect body_, Vec3 vel_, SDL_Renderer* renderer, const char* path)
@@ -22,6 +23,7 @@ Body::Body(SDL_Rect body_, Vec3 vel_, SDL_Renderer* renderer, const char* path)
 	accelPrevious = Vec3(0.0f, 0.0f, 0.0f);
 
 	texture = TextureManager::LoadTexture(path, renderer);
+	isActive = true;
 }
 
 Body::~Body(){

@@ -16,6 +16,8 @@ HealthPickup::~HealthPickup()
 void HealthPickup::Ability(HarpoonHarry* harry)
 {
 	pickup->playSFX();
+	isActive = false;
+	texture = nullptr;
 	if (harry->health < 3) {
 		harry->health += 1;
 	}

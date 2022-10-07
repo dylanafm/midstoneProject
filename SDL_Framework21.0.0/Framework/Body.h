@@ -11,6 +11,7 @@ public:
 	float mass;
 	SDL_Rect body;
 	SDL_Texture* texture;
+	bool isActive;
 public:
 	Body();
 	Body(SDL_Rect body_, Vec3 vel_, SDL_Renderer* renderer, const char* path);
