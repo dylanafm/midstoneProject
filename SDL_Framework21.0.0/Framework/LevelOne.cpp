@@ -174,6 +174,11 @@ void LevelOne::Update(const float deltaTime) {
 		harry->isPowerupCollided(harry, Shield);
 	}
 
+	if (rf != nullptr && rf->isActive) {
+		rf->Update(deltaTime);
+		harry->isPowerupCollided(harry, rf);
+	}
+
 	// Delete powerups that are outside the screen
 	for (int i = 0; i < std::size(hp); i++) {
 		if (hp[i] != nullptr) {
@@ -190,22 +195,15 @@ void LevelOne::Update(const float deltaTime) {
 			Shield = nullptr;
 		}
 	}
-
-	if (rf != nullptr) {
-		rf->Update(deltaTime);
-		harry->isPowerupCollided(harry, rf);
-	
-		
-	}
-	
 	
 	if (rf != nullptr) {
 		if (rf->pos.x < 0) {
 			delete rf;
 			rf = nullptr;
 		}
-		}
+	}
 
+	// Pause Menu
 	if (!paused) {
 		if (bg->getProg() <= 100.0f) {
 			if (Shield != nullptr)  Shield->Scroll();

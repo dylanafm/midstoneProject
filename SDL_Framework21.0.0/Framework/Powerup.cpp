@@ -5,11 +5,13 @@ Powerup::Powerup(SDL_Rect body_, SDL_Renderer* renderer, const char* path) :
 {
 	scrollSpeed = 2.0f;
 	radiusInPixels = body.w / 2;
-
+	
+	pickupSound = nullptr;
 }
 
 Powerup::~Powerup()
 {
+	delete pickupSound;
 }
 
 void Powerup::Ability(HarpoonHarry* harry)
@@ -18,6 +20,5 @@ void Powerup::Ability(HarpoonHarry* harry)
 
 void Powerup::Scroll()
 {
-
 	pos.x = pos.x - scrollSpeed;
 }

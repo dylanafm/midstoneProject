@@ -109,7 +109,6 @@ LevelTwo::LevelTwo(SDL_Window* sdlWindow_) {
 	playerHurt = new Sfx("SFX/pain.wav", 10);
 	playerDie = new Sfx("SFX/die.wav", 10);
 	bossHurt = new Sfx("SFX/bossdeath.wav", 10);
-	healthsfx = new Sfx("SFX/life_pickup.flac", 10);
 
 }
 
@@ -160,7 +159,6 @@ void LevelTwo::OnDestroy() {
 	if (playerHurt != nullptr) delete playerHurt;
 	if (playerDie != nullptr) delete playerDie;
 	if (bossHurt != nullptr) delete bossHurt;
-	if (healthsfx != nullptr) delete healthsfx;
 	for (int i = 0; i < std::size(hp); i++)
 		if (hp[i] != nullptr) delete hp[i];
 	for (int i = 0; i < std::size(tigerFish); i++)
@@ -173,6 +171,7 @@ void LevelTwo::OnDestroy() {
 
 void LevelTwo::Update(const float deltaTime) {
 	SDL_Event event;
+	// Update powerups
 	for (int i = 0; i < std::size(hp); i++) {
 		if (hp[i] != nullptr && hp[i]->isActive) {
 			hp[i]->Update(deltaTime);
@@ -183,6 +182,11 @@ void LevelTwo::Update(const float deltaTime) {
 	if (Shield != nullptr && Shield->isActive) {
 		Shield->Update(deltaTime);
 		harry->isPowerupCollided(harry, Shield);
+	}
+
+	if (rf != nullptr && rf->isActive) {
+		rf->Update(deltaTime);
+		harry->isPowerupCollided(harry, rf);
 	}
 
 	// Delete powerups that are outside the screen
@@ -203,21 +207,13 @@ void LevelTwo::Update(const float deltaTime) {
 	}
 
 	if (rf != nullptr) {
-		rf->Update(deltaTime);
-		harry->isPowerupCollided(harry, rf);
-
-
-	}
-
-
-	if (rf != nullptr) {
 		if (rf->pos.x < 0) {
 			delete rf;
 			rf = nullptr;
 		}
 	}
 
-
+	// Pause Menu
 	if (!paused) {
 		if (bg->getProg() <= 100.0f) {
 			if (Shield != nullptr)  Shield->Scroll();

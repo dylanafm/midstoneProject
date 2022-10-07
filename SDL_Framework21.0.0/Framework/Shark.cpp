@@ -1,5 +1,6 @@
 #include "Shark.h"
 #include "VMath.h"
+#include "TextureManager.h"
 
 Shark::Shark(SDL_Rect body_, float scrollSpeed, SDL_Renderer* renderer, const char* path, float radius_):
 	Enemy(body_, renderer, path, radius_)
